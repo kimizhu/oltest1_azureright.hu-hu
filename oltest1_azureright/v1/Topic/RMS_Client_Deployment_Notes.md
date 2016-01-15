@@ -3,74 +3,73 @@ description: na
 keywords: na
 title: RMS Client Deployment Notes
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 03cc8c6f-3b63-4794-8d92-a5df4cdf598f
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Client Deployment Notes
-The  Rights Management Service client (RMS client) version 2 is also known as the MSIPC client. It is software for Windows computers that communicates with Microsoft Rights Management services on-premises or in the cloud to help protect access to and usage of information as it flows through applications and devices, within the boundaries of your organization, or outside  those managed boundaries. In addition to shipping with the [Rights Management sharing application for Windows](https://technet.microsoft.com/library/dn919648.aspx), the RMS client is  available [as an optional download](http://www.microsoft.com/download/details.aspx?id=38396) that can, with acknowledgment and acceptance of its license agreement, be freely distributed with  third-party software so that clients can  protect and consume content that has been  protected by Rights Management services.
+# RMS-&#252;gyf&#233;l telep&#237;t&#233;si megjegyz&#233;sek
+A tartalomvédelmi szolgáltatás-ügyfél (RMS-ügyfelet) verziója 2 a MSIPC ügyfél is nevezik. Szoftver Windows rendszerű számítógép kommunikáló a Microsoft Rights Management services helyszíni vagy a felhőben való hozzáférés és védelme használati adatok, alkalmazások és eszközök – tranzakciós belül a határokat a szervezet, vagy azok kívül felügyelt határokat. A szállítási címhez tartozó rendelkező kívül a [Rights Management megosztóalkalmazás Windows](https://technet.microsoft.com/library/dn919648.aspx), érhető el az RMS-ügyfél [egy választható le](http://www.microsoft.com/download/details.aspx?id=38396) amely, nyugtázási és a hozzá tartozó licencszerződés elfogadása szabadon terjeszthető a harmadik féltől származó szoftverek, hogy az ügyfelek védelmét, és a Rights Management szolgáltatások által védett tartalmakat.
 
-This topic includes the following sections:
+Ez a témakör tartalmaz a következő szakaszok:
 
--   [Redistributing the RMS Client](#BKMK_RedistributeInstaller)
+-   [Az RMS-ügyfél kiosztatlan](#BKMK_RedistributeInstaller)
 
--   [Installing the RMS Client](#BKMK_InstallClient)
+-   [Az RMS-ügyfél telepítése](#BKMK_InstallClient)
 
--   [Questions and Answers About the RMS Client](#BKMK_QA)
+-   [Az RMS-ügyfél kapcsolatos kérdések és válaszok](#BKMK_QA)
 
--   [RMS Client Settings](#BKMK_Settings)
+-   [RMS-ügyfél beállítások](#BKMK_Settings)
 
--   [AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers](#BKMK_UsingTrustedServers)
+-   [Active Directory tartalomvédelmi szolgáltatások csak: Az RMS-ügyfél használandó korlátozása megbízható Active Directory Tartalomvédelmi kiszolgálók](#BKMK_UsingTrustedServers)
 
--   [RMS Service Discovery](#BKMK_ServiceDiscovery)
+-   [RMS szolgáltatás felderítése](#BKMK_ServiceDiscovery)
 
-## <a name="BKMK_RedistributeInstaller"></a>Redistributing the RMS Client
-The RMS client can be freely redistributed and bundled with other applications and IT solutions. If you are an application developer or solution provider and want to redistribute the  RMS client, you have two options:
+## <a name="BKMK_RedistributeInstaller"></a>Az RMS-ügyfél kiosztatlan
+Az RMS-ügyfél is szabadon terjeszti és más alkalmazások és az informatikai megoldások kapcsolt. Ha egy alkalmazás fejlesztői vagy a megoldás szolgáltató és kívánja terjeszteni az RMS-ügyfelet, két lehetőség áll rendelkezésére:
 
--   Recommended: Embed the RMS client installer in your application installation and run it in silent mode (the **/quiet** switch, detailed in the next section).
+-   Ajánlott: Az alkalmazás telepítési az RMS-ügyfél telepítő beágyazni, és futtassa azt a csendes módban (a **/quiet** kapcsoló, a következő szakaszban részletes).
 
--   Make the RMS client a prerequisite for your application. With this option, you might need to provide users with additional instructions for them to obtain, install, and update their computers with the client before they can use your application.
+-   Adja meg az alkalmazás előfeltételként szükséges az RMS-ügyfelet. Ezzel a beállítással szükség lehet beszerzése, telepítéséhez és frissítse a számítógépeket az ügyfél csak akkor az alkalmazás, hogy a további tudnivalókat a felhasználók számára.
 
-## <a name="BKMK_InstallClient"></a>Installing the RMS Client
-The RMS client is contained in an installer executable file named **setup_msipc_***&lt;arch&gt;***.exe**, where *&lt;arch&gt;* is either **x86** (for 32-bit client computers) or **x64** (for 64-bit client computers). The 64-bit (x64) installer package installs both a 32-bit runtime executable for compatibility with 32-bit applications that run on a 64-bit operating system installation, as well as a 64-bit runtime executable for supporting native 64-bit applications. The 32-bit (x86) installer will not run on a 64-bit Windows installation.
+## <a name="BKMK_InstallClient"></a>Az RMS-ügyfél telepítése
+Az RMS-ügyfél nevű telepítő végrehajtható fájl megtalálható **setup_msipc_***&lt; arch &gt;***.exe**, ahol *&lt; arch &gt;* vagy **x86** (az ügyfélszámítógépek 32 bites) vagy **x64** (a 64 bites ügyfélszámítógépek). A 64 bites (x 64) a telepítő a csomag telepíti, mind a 32 bites futásidejű végrehajtható egy 64 bites operációs rendszer telepítése a futó 32 bites alkalmazásokkal való kompatibilitás érdekében, valamint egy 64 bites futásidejű végrehajtható támogatja a natív 64 bites alkalmazásokat. A 32 bites (x 86) a telepítő nem fog futni egy 64 bites Windows-telepítés.
 
 > [!NOTE]
-> You need elevated privileges to install the RMS client, such as a member of the Administrators group on the local computer.
+> Telepítse az RMS-ügyfél, például a helyi számítógépen a Rendszergazdák csoport tagjának emelt szintű joggal kell rendelkeznie.
 
-You can install the  RMS client by using either of the following installation methods:
+Az RMS-ügyfél által az alábbi telepítési módszerek valamelyikével telepítheti:
 
--   **Silent mode.** By using the **/quiet** switch as part of the command-line options, you can silently install the  RMS client on computers. The following  example  shows a silent mode installation for the  RMS client on a 64-bit client computer:
+-   **Csendes mód.** Használatával a **/quiet** Váltás a parancssori kapcsolók részeként csendes telepítheti az RMS-ügyfél azokon a számítógépeken. A következő példában a telepítési csendes üzemmód az RMS-ügyfél egy 64 bites ügyfélszámítógépen:
 
     ```
     setup_msipc_x64.exe /quiet
     ```
 
--   **Interactive mode.** Alternately, you can install the  RMS client by using the GUI-based setup program that's provided by the  RMS Client  Installation Wizard. To do this, double-click the  RMS client installer package (**setup_msipc_***&lt;arch&gt;***.exe**) in the folder to which it was copied or downloaded on your local computer.
+-   **Interaktív módban.** Ehelyett az RMS-ügyfél is telepítheti a GUI-alapú telepítőprogram az RMS Ügyféltelepítő varázsló által biztosított használatával. Ehhez kattintson duplán az RMS-ügyfél telepítőcsomag (**setup_msipc_***&lt; arch &gt;***.exe**), amelyhez lett másolt vagy a helyi számítógépen le a mappában.
 
-## <a name="BKMK_QA"></a>Questions and Answers About the RMS Client
-The following section contains frequently asked questions about the RMS client and the answers to them.
+## <a name="BKMK_QA"></a>Az RMS-ügyfél kapcsolatos kérdések és válaszok
+A következő szakaszban az RMS-ügyfél és a válaszok kapcsolatos gyakori kérdések tartalmazza.
 
-### Which operating systems support the RMS client?
-The RMS client is supported with the following operating systems:
+### Melyik operációs rendszereket támogatja az RMS-ügyfél?
+Az RMS-ügyfél a következő operációs rendszerekben támogatott:
 
-|Windows Server Operating System|Windows Client Operating System|
-|-----------------------------------|-----------------------------------|
-|Windows Server 2012 R2|Windows 8.1|
+|Windows Server operációs rendszer|Ügyféloldali Windows operációs rendszer|
+|-------------------------------------|-------------------------------------------|
+|Windows Server 2012 R2|A Windows 8.1|
 |Windows Server 2012|Windows 8|
-|Windows Server 2008 R2|Windows 7 with minimum of SP1|
-|Windows Server 2008 (AD RMS only)|Windows Vista with minimum of SP2 (AD RMS only)|
+|Windows Server 2008 R2|Windows 7 SP1 minimális|
+|Windows Server 2008 (csak az AD RMS)|Windows Vista SP2 minimális (csak az AD RMS)|
 
-### Which processors or platforms support the  RMS client?
-The  RMS client is supported on x86 and x64 computing platforms.
+### Melyik processzor vagy a platformok támogatja az RMS-ügyfél?
+Az RMS-ügyfél x 86 és a platformok számítástechnika x 64 támogatott.
 
-### Where is the  RMS client installed?
-By default, the RMS client is installed in %ProgramFiles%\Active Directory Rights Management Services Client 2.&lt;minor version number&gt;.
+### Az RMS-ügyfelet futtató?
+Alapértelmezés szerint az RMS-ügyfél telepítve van-e %ProgramFiles%\Active Directory Rights Management szolgáltatások ügyfél 2. &lt; a verziószáma kisebb &gt;.
 
-### What files  are associated with the RMS client software?
-The following files  are installed as part of the  RMS client software:
+### Milyen fájlok társítva az RMS-ügyfélszoftver?
+A következő fájlokat telepíti az RMS-ügyfélszoftver részeként:
 
 -   Msipc.dll
 
@@ -80,161 +79,161 @@ The following files  are installed as part of the  RMS client software:
 
 -   MSIPCEvents.man
 
-In addition to these files, the RMS client also installs multilingual user interface (MUI) support files in 44 languages. To verify the languages supported, run the RMS client installation and when the installation is complete, review the contents of the multilingual support folders under the default path.
+Mellett ezeket a fájlokat az RMS-ügyfél is telepít többnyelvű felhasználói felület (MUI) fájlok 44 nyelven. Támogatott nyelvek ellenőrzéséhez futtassa az RMS-ügyfél telepítése, és a telepítés befejezésekor, tekintse át az alapértelmezett elérési út alatt a többnyelvű támogatási mappák tartalmát.
 
-### Is the RMS client included by default when I install a supported operating system?
-No. This version of the  RMS client ships as an optional download that can be installed separately on computers running supported versions of the Microsoft Windows operating system.
+### Az alapértelmezés szerint az RMS-ügyfél, támogatott operációs rendszer telepítése?
+Szám Ez az RMS-ügyfél verziója egy választható le, amely telepíthető alkalmazásáruházból külön-külön számítógépeken futó a Microsoft Windows operációs rendszer támogatott verzióit.
 
-### Is the RMS client automatically updated by Microsoft Update?
-If you installed this RMS client by using the silent installation option, the RMS client  inherits your current Microsoft Update settings. If you installed the RMS client by using the GUI-based setup program, the RMS client installation wizard  prompts you to enable Microsoft Update.
+### Az RMS-ügyfél automatikusan frissíti a Microsoft Update?
+Ha ez az RMS-ügyfél telepítve van a csendes telepítés lehetőség használatával, a az RMS-ügyfél örökli a jelenlegi Microsoft Update-beállításokat. Ha az RMS-ügyfél a GUI-alapú telepítőprogram használatával telepítve van, az RMS-ügyfél telepítővarázsló kéri ahhoz, hogy a Microsoft Update.
 
-## <a name="BKMK_Settings"></a>RMS Client Settings
-The following section contains settings information about the RMS client. This information might be helpful if you have problems with applications or services that use the RMS client.
+## <a name="BKMK_Settings"></a>RMS-ügyfél beállítások
+A következő szakaszban az RMS-ügyfél beállítások információt tartalmaz. Lehet, hogy ez az információ hasznos, ha az alkalmazások vagy az RMS-ügyfél használó szolgáltatások problémája van.
 
 > [!NOTE]
-> Some settings depend on whether the RMS-enlightened application runs as a client mode application (such as Microsoft Word and Outlook, or the RMS sharing application), or server mode application  (such as SharePoint and Exchange).  In the following tables, these settings are identified as **Client Mode** and **Server Mode**, respectively.
+> Egyes beállítások attól függ, hogy az RMS-enlightened alkalmazás fut-e egy ügyfélalkalmazás mód (például a Microsoft Word és az Outlook vagy a az RMS-megosztó alkalmazás) vagy a kiszolgáló mód alkalmazások (például a SharePoint és az Exchange).  A következő táblák, ezek a beállítások azonosítják **ügyfélmód** és **kiszolgáló mód**, illetve.
 
-### Where the RMS Client Stores Licenses on Client Computers
-The RMS client stores licenses on the local disk and also caches some  information in the Windows registry.
+### Az RMS-ügyfél tárolja az ügyfélszámítógépeken licencek, ahol
+Az RMS-ügyfél licencek tárolja a helyi lemezen, és is gyorsítótárába bizonyos információk a Windows beállításjegyzékében.
 
-|Description|Client Mode Paths|Server Mode Paths|
-|---------------|---------------------|---------------------|
-|License store location|%localappdata%\Microsoft\MSIPC|%allusersprofile%\Microsoft\MSIPC\Server\*&lt;SID&gt;*\|
-|Template store location|%localappdata%\Microsoft\MSIPC\Templates|%allusersprofile%\Microsoft\MSIPC\Server\Templates\*&lt;SID&gt;*\|
-|Registry location|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local Settings<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt;SID&gt;*|
+|Leírása|Ügyfél mód elérési utak|Kiszolgáló mód elérési utak|
+|-----------|---------------------------|-------------------------------|
+|Licenc tárolási helye|%localappdata%\Microsoft\MSIPC|%ALLUSERSPROFILE%\Microsoft\MSIPC\Server\*&lt; SID &gt;*\|
+|Sablon tárolási helye|%localappdata%\Microsoft\MSIPC\Templates|%ALLUSERSPROFILE%\Microsoft\MSIPC\Server\Templates\*&lt; SID &gt;*\|
+|Beállításjegyzék-helyhez|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local beállítások<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt; SID &gt;*|
 > [!NOTE]
-> *&lt;SID&gt;* is the secure identifier (SID) for the account under which the server application is running. For example, if the application is running under the built-in Network Service account,    replace *&lt;SID&gt;* with the value of the well-known SID for that account (S-1-5-20).
+> *&lt; SID &gt;* van a biztonsági azonosítója (SID), a fiók, amely alatt a kiszolgálói alkalmazás fut. Például, ha az alkalmazás fiókkal fut-e a beépített hálózati szolgáltatás, cserélje ki *&lt; SID &gt;* a jól ismert (S-1-5-20), a fiók SID-értékkel.
 
-### Windows Registry Settings for the RMS Client
-You can use Windows registry keys to set or modify some RMS client configurations. For example, as an administrator for RMS-enlightened applications that communicate with AD RMS servers, you might want to update the enterprise service location (override the AD RMS server that is currently selected for publishing) depending on the client computer's current location within your Active Directory topology. Or, you might  want to enable  RMS tracing at the client computer, to help troubleshoot a problem with an RMS-enlightened application. Use the following table to identify the registry settings that you can change for the RMS client.
+### Az RMS-ügyfelet Windows beállításjegyzék-beállításai
+Windows-beállításkulcsok segítségével beállítása vagy néhány RMS-ügyfél beállítások módosítása. Például az RMS-enlightened alkalmazások, amelyek az Active Directory tartalomvédelmi szolgáltatások kiszolgálókkal kommunikálni rendszergazdaként érdemes lehet frissíteni a vállalati szolgáltatás helyét (felülbírálás a AD RMS-kiszolgáló közzétételre kiválasztott) attól függően, hogy az Active Directory-topológia az ügyfélszámítógépen aktuális helyét. Vagy, érdemes lehet az ügyfélszámítógépen az RMS-enlightened alkalmazás probléma elhárítását segítő az RMS-nyomkövetés engedélyezése. A következő táblázat segítségével azonosítja a beállításjegyzék-beállítások, amelyek az RMS-ügyfél módosíthatja.
 
-|Task|Settings|
-|--------|------------|
-|AD RMS only: To update the enterprise service location for a client computer|Update the following registry keys:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />REG_SZ: default<br /><br />**Value:**&lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Certification<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />REG_SZ: default<br /><br />**Value:** &lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Licensing|
-|To enable and disable tracing|Update the following registry key:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />REG_DWORD: Trace<br /><br />**Value:** 1 to enable tracing, 0 to disable tracing (default)|
-|To change the frequency in days to refresh templates|The following registry values specify how often templates  will be refreshed on the user’s computer if the TemplateUpdateFrequencyInSeconds value is not set.  If neither of these values are set, the default refresh interval for applications using the RMS client  (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days  (minimum of 1) between downloads.|
-|To change the frequency in seconds to refresh templates<br /><br />Important: If this is specified, the value to refresh templates in days is ignored. Specify one or the other,  not both.|The following registry values specify how often templates  will be refreshed on the user’s computer. If this value or the value to change the frequency in days (TemplateUpdateFrequency) is not set,  the default refresh interval for applications using the RMS client (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds   (minimum of 1) between downloads.|
-|AD RMS only: To  download templates immediately at the next publishing request|During testing and evaluations, you might want the RMS client to download templates as soon as possible. To do this, remove the following registry key and the RMS client will download templates immediately at the next publishing request rather than wait for the time specified by the TemplateUpdateFrequency registry setting:<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;Server Name&gt;\Template<br /><br />**Note**: &lt;Server Name&gt; could have both external (corprights.contoso.com) and internal (corprights) URLs and therefore two different entries.|
-|AD RMS only: To enable support  for federated authentication|If the RMS client computer connects to an AD RMS cluster by using a federated trust, you must configure the federation home realm.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_SZ: FederationHomeRealm<br /><br />**Value:** The value of this registry entry is the uniform resource identifier (URI) for the federation service (for example, "https://fs-01.contoso.com").|
-|AD RMS only: To  support partner federation servers that require forms-based authentication for user input|By default, the  RMS client operates in silent mode and user input is not required. Partner federation servers, however, might be configured to require user input such as by way of forms-based authentication. In this case, you must configure the RMS client     ignore  silent mode so that the federated authentication form appears in a browser window and the user is promoted for authentication.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_DWORD: EnableBrowser<br /><br />**Note**: If the federation server is configured to use forms-based authentication, this key is required. If the federation server is configured to use Windows integrated authentication, this key is not required.|
-|AD RMS only: To  block ILS service consumption|By default, the RMS client enables consuming content protected by the ILS service but you can configure the client to block this service by setting the following registry key. If this registry key is set to block the ILS service, any attempts to open and consume content protected by the ILS service will return the following error:<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: **DisablePassportCertification**<br /><br />**Value:** 1 to block ILS consumption, 0 to allow ILS consumption (default)|
+|A feladat|Beállítások|
+|-------------|---------------|
+|Active Directory tartalomvédelmi szolgáltatások csak: A vállalati szolgáltatás helyét, az ügyfélszámítógép frissítése|A következő beállításkulcsok frissítése:<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />    REG_SZ: alapértelmezett<br />    **Érték:**&lt; http- vagy https-&gt; :// *RMS_Cluster_Name*/_wmcs/hitelesítő<br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />    REG_SZ: alapértelmezett<br />    **Érték:** &lt; http- vagy https-&gt; :// *RMS_Cluster_Name*/_wmcs/Licensing|
+|Engedélyezése és letiltása a nyomkövetés|A frissítés a következő beállításjegyzék-kulcs:<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />    REG_DWORD: Nyomkövetési<br />    **Érték:** 1-nyomkövetés, 0 letiltásához a nyomkövetés (alapértelmezett) engedélyezése|
+|Sablonok frissítése napokban gyakoriságának módosítása|Milyen gyakran adja meg a következő beállításjegyzék-értékek frissülnek sablonok, ha nincs megadva a TemplateUpdateFrequencyInSeconds érték a felhasználó számítógépén.  Ezek az értékek egyike sem van beállítva, ha az alkalmazások az RMS-ügyfél (verzió 1.0.1784.0) segítségével lehet letölteni a sablonok alapértelmezett frissítési időköze 1 nap. Ez előtt verziónál 7 naponként, az alapértelmezett érték.<br /><br />**Ügyfélmód:**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: TemplateUpdateFrequency<br />    **Érték:** Egész érték, amely megadja a közötti napok számát (legalább 1) letöltések.<br /><br />**Kiszolgáló mód:**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt; SID &gt;*<br />    REG_DWORD: TemplateUpdateFrequency<br />    **Érték:** Egész érték, amely megadja a közötti napok számát (legalább 1) letöltések.|
+|Módosíthatja a gyakorisága másodpercben sablonok frissítése **Important:** Ha ez meg van adva, a rendszer figyelmen kívül hagyja az érték frissítése a sablonok napokban. Adjon meg egy másik, vagy mindkettőt egyszerre nem.|Milyen gyakran adja meg a következő beállításjegyzék-értékek sablonok frissülnek, a felhasználó számítógépén. Ez az érték vagy az érték a gyakoriság módosítása a nap (TemplateUpdateFrequency) nincs megadva, az alapértelmezett frissítési időközt az RMS-ügyfél (verzió 1.0.1784.0) segítségével lehet letölteni a sablonok alkalmazások esetén 1 nap. Ez előtt verziónál 7 naponként, az alapértelmezett érték.<br /><br />**Ügyfélmód:**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: TemplateUpdateFrequencyInSeconds<br />    **Érték:** Egész érték, amely megadja a közötti másodpercek számát (legalább 1) letöltések.<br /><br />**Kiszolgáló mód:**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt; SID &gt;*<br />    REG_DWORD: TemplateUpdateFrequencyInSeconds<br />    **Érték:** Egész érték, amely megadja a közötti másodpercek számát (legalább 1) letöltések.|
+|Active Directory tartalomvédelmi szolgáltatások csak: A következő közzétételi kérésére azonnal sablonok letöltése|Tesztelés és kiértékelések során szükség lehet az RMS-ügyfél-sablonokat letölteni a lehető legrövidebb időn belül. Ehhez hajtsa végre a, távolítsa el a következő beállításjegyzék-kulcs és az RMS-ügyfél fog töltse le a következő közzétételi kérésére azonnal sablonok ahelyett, várjon, amíg az idő, az TemplateUpdateFrequency beállításjegyzék beállításban megadott:<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\ &lt; kiszolgálónév &gt; \Template **Note:** &lt; kiszolgálónév &gt; lehet külső (corprights.contoso.com) és a belső (corprights) URL-címek és ezért két különböző bejegyzéseket.|
+|Active Directory tartalomvédelmi szolgáltatások csak: Összevont hitelesítési támogatásának engedélyezése|Ha az RMS-ügyfélszámítógép összevont megbízhatósági kapcsolat használatával csatlakozik egy Active Directory Tartalomvédelmi fürt, konfigurálnia kell a összevonási honos tartományt.<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_SZ: : ÖsszevonásiKezdőTartomány<br />    **Érték:** Ez a bejegyzés értéke az egységes erőforrás-azonosító (URI) az összevonási szolgáltatás (például "https://fs-01.contoso.com").|
+|Active Directory tartalomvédelmi szolgáltatások csak: A partner összevonási kiszolgálók, amelyek esetében az űrlapalapú hitelesítést a felhasználói bevitel támogatása|Alapértelmezés szerint az RMS-ügyfél beavatkozás nélküli üzemmódban működik és a felhasználói bevitel nem szükséges. A partner összevonási kiszolgálók, azonban lehet, hogy úgy, hogy megkövetelése a felhasználói bevitel ilyen űrlapalapú hitelesítés vállalja. Ebben az esetben, konfigurálnia kell az RMS-ügyfelet, hogy az összevont hitelesítési űrlap böngésző ablakban jelenik meg, és a felhasználó a hitelesítéshez van előléptetni, figyelmen kívül hagyja, hogy csendes mód.<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_DWORD: EnableBrowser **Note:** Ha az összevonási kiszolgáló űrlapalapú hitelesítés használatára van konfigurálva, ez a kulcs meg kell adni. Ha az összevonási kiszolgáló integrált Windows-hitelesítés használatára van konfigurálva, akkor ez a kulcs nem szükséges.|
+|Active Directory tartalomvédelmi szolgáltatások csak: Blokkolása ILS szolgáltatás fogyasztás|Alapértelmezés szerint az RMS-ügyfél lehetővé teszi, hogy a igénybe, a ILS szolgáltatás által védett tartalom, de konfigurálható, hogy az ügyfél számára, hogy blokkolja a szolgáltatás a következő beállításjegyzék-kulcs beállításával. Ha ezt a beállításkulcsot a ILS szolgáltatás blokkolása van beállítva, nyissa meg, és a ILS szolgáltatás által védett tartalmakat tett kísérletek ad vissza, a következő hiba miatt:<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: **DisablePassportCertification**<br />    **Érték:** 1 blokkolása ILS felhasználás, 0, hogy a ILS-használat (alapértelmezett)|
 
-### Managing Template Distribution for the RMS Client
-Templates make it easy for users and administrators to quickly apply Rights Management protection and the RMS client automatically downloads templates from its RMS servers or service If you put the  templates in the following folder location, the RMS client will not download any templates from its default location and instead, download the templates that you have put in this folder. The RMS client might continue to download templates from other available RMS servers.
+### Az RMS-ügyfél sablon elosztásának kezelése
+Sablonok megkönnyítik a felhasználók és a rendszergazdák számára, hogy gyorsan alkalmazása a Rights Management protection, és az RMS-ügyfél automatikusan letöltések sablonok az RMS-kiszolgálók, vagy a szolgáltatás, a következő mappába ennél a sablonok, az RMS-ügyfél nem bármely sablonok letöltése alapértelmezett helyéről, és nem ehelyett töltse le az ebben a mappában elhelyezett sablonok. Az RMS-ügyfél sablonok le a többi elérhető RMS-kiszolgálók továbbra is.
 
-**Client Mode:** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
+**Ügyfélmód:** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
 
-**Server Mode:** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt;SID&gt;*
+**Kiszolgáló mód:** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt; SID &gt;*
 
-When you use this folder, there is no special naming convention required except that the templates should be issued by the RMS server or service and they must have the  .xml file name extension. For example, Contoso-Confidential.xml or Contoso-ReadOnly.xml are valid names.
+Ez a mappa használatakor nem semmilyen különleges elnevezési szükséges, kivéve, hogy az RMS-kiszolgáló által a sablonok kell kiadni, vagy a szolgáltatás, és a .xml kiterjesztésű kell rendelkeznie. Például a Contoso-Confidential.xml vagy a Contoso-ReadOnly.xml olyan érvényes nevek.
 
-## <a name="BKMK_UsingTrustedServers"></a>AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers
-The RMS client can be limited to using only specific trusted AD RMS servers by making the following changes to the Windows registry on local computers.
+## <a name="BKMK_UsingTrustedServers"></a>Active Directory tartalomvédelmi szolgáltatások csak: Az RMS-ügyfél használandó korlátozása megbízható Active Directory Tartalomvédelmi kiszolgálók
+Lehet, hogy az RMS-ügyfél csak az adott megbízható Active Directory tartalomvédelmi szolgáltatások kiszolgálókon használatára, így a következő módosításokat a helyi számítógépen a Windows beállításjegyzékének korlátozva.
 
-**To enable limiting RMS client to use only trusted AD RMS servers**
+**RMS korlátozása ahhoz, hogy az ügyfél használata csak megbízható AD RMS-kiszolgálók**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
     REG_DWORD: AllowTrustedServersOnly
 
-    **Value:** If a non-zero value is specified, the RMS client will trust only the specified servers that are configured in the TrustedServers list and the  Azure  Rights Management service.
+    **Érték:** Ha meg van adva a nullától eltérő érték, az RMS-ügyfél csak a megadott kiszolgálókat, amelyek az TrustedServers és az Azure Rights Management szolgáltatás vannak beállítva lesz megbízható.
 
-**To add members to the list of trusted AD RMS servers**
+**A tagok hozzáadását a megbízható Active Directory tartalomvédelmi szolgáltatások kiszolgálók listája**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
-    REG_SZ: *&lt;URL_or_HostName&gt;*
+    REG_SZ: *&lt; URL_or_HostName &gt;*
 
-    **Value:** The string values added in this registry key location can be either DNS domain name format (for example, **adrms.contoso.com**) or full URLs to trusted AD RMS servers (for example, **https://adrms.contoso.com**). If a specified URL starts with **https://**,  the RMS client will use SSL or TLS to contact   the specified AD RMS server.
+    **Érték:** A beállításjegyzék-helyhez hozzáadott karakterlánc-érték vagy DNS-tartomány neve formátumú lehet (például **adrms.contoso.com**) vagy a teljes URL-cím a megbízható Active Directory tartalomvédelmi szolgáltatások kiszolgálók (például **https://adrms.contoso.com**). Ha a megadott URL-cím kezdete **https://**,  az RMS-ügyfél használandó SSL vagy TLS kapcsolatot létesíteni a megadott Active Directory tartalomvédelmi szolgáltatások-kiszolgálóval.
 
-## <a name="BKMK_ServiceDiscovery"></a>RMS Service Discovery
-RMS service discovery lets the RMS client check which RMS server or service to communicate with before  protecting content. Service discovery might also happen when the RMS client consumes protected content, but this is less likely to happen because   the policy attached to the content  contains   the preferred RMS server or service and only if that is unsuccessful does the client then run service discovery.
+## <a name="BKMK_ServiceDiscovery"></a>RMS szolgáltatás felderítése
+RMS szolgáltatás felderítése lehetővé teszi, hogy mely RMS-kiszolgáló vagy a szolgáltatás számára a kommunikációt a tartalom védelme előtt ellenőrizze az RMS-ügyfelet. Szolgáltatás felderítése is fordulhat elő, amikor az RMS-ügyfél a védett tartalom használ, de kevésbé valószínű, hogy fordulhat elő, mert a házirend, a tartalom csatolt tartalmaz, az elsődleges RMS-kiszolgáló vagy a szolgáltatás, és csak akkor, ha a művelet sikertelen nem az ügyfél futtassa szolgáltatás felderítése.
 
-Service discovery first looks for an on-premises version of Rights Management (AD RMS). If that is unsuccessful, service discovery automatically looks for the cloud version of Rights Management (Azure RMS).
+Szolgáltatás felderítése először megkeresi a Rights Management (AD RMS) helyszíni verzióját. Ha, amely nem sikerül, a szolgáltatás felderítése automatikusan megkeresi, az a Rights Management (Azure RMS) felhő verziója.
 
-To perform service discovery for an on-premises deployment, the RMS client checks the following:
+Egy helyszíni-telepítési szolgáltatás felderítése végrehajtásához az RMS-ügyfél ellenőrzi a következők:
 
-1.  The Windows registry on the local computer: If service discovery settings are configured in the registry, these settings are tried first.  By default, these settings are not configured in the registry.
+1.  A Windows beállításjegyzékében a helyi számítógépen: Ha a szolgáltatás felderítési beállításai a beállításjegyzékben, először próbált ezeket a beállításokat.  Ezek a beállítások alapértelmezés szerint nincs konfigurálva a beállításjegyzékben.
 
-2.  Active Directory Domain Services: A domain-joined computer queries Active Directory for a service connection point (SCP). If an SCP is registered, the URL of the RMS server is returned to the RMS client to use.
+2.  Active Directory tartományi szolgáltatások: Számítógép tartományhoz lekérdezi az Active Directory egy szolgáltatáskapcsolódási pontja (SCP). Ha Szolgáltatáskapcsolódási regisztrálva van, akkor az RMS-kiszolgáló URL-CÍMÉT adja vissza használni az RMS-ügyfél.
 
-### AD RMS Only: Enabling Server-Side Service Discovery by Using Active Directory
-If your account has  sufficient privileges (Enterprise Admins and  local administrator for the AD RMS server), you can automatically register a a service connection point (SCP) when you install the AD RMS root cluster server. If a SCP already exists in the forest, you must first delete the existing SCP before you can register  a new one.
+### Active Directory tartalomvédelmi szolgáltatások csak: Kiszolgálóoldali szolgáltatás felderítése engedélyezése az Active Directory segítségével
+Ha a fiók nem rendelkezik megfelelő jogosultságokkal (a vállalati rendszergazdák és a helyi rendszergazda az Active Directory tartalomvédelmi szolgáltatások kiszolgáló), automatikusan regisztrálhatja a egy szolgáltatáskapcsolódási pontja (SCP), amikor telepíti az Active Directory tartalomvédelmi szolgáltatások gyökérkiszolgáló-fürt. Ha az erdő már létezik egy SCP, először előtt törölnie kell a meglévő SCP regisztrálhat, hogy egy új.
 
-You can register and delete an SCP after AD RMS is installed by using the following procedure. Before you start, make sure that your account has the required privileges (Enterprise Admins and  local administrator for the AD RMS server).
+Regisztrálása, és törölje a Szolgáltatáskapcsolódási, a következő eljárással Active Directory tartalomvédelmi szolgáltatások telepítése után. Mielőtt elkezdené, győződjön meg arról, hogy a fiók rendelkezik-e a szükséges jogosultságokkal (a vállalati rendszergazdák és a helyi rendszergazda az Active Directory tartalomvédelmi szolgáltatások kiszolgáló).
 
-##### To enable AD RMS service discovery by registering an SCP in Active Directory
+##### Szolgáltatáskapcsolódási regisztrálása az Active Directoryban teszik lehetővé az Active Directory Tartalomvédelmi szolgáltatás felderítése
 
-1.  Open the Active Directory Management Services console at the AD RMS server:
+1.  Nyissa meg az Active Directory-szolgáltatások felügyeleti konzolon az Active Directory tartalomvédelmi szolgáltatások kiszolgálón:
 
-    -   If you are using Windows Server 2008 R2 or Windows Server 2008, click **Start**, click **Administrative Tools**, and then click **Active Directory Rights Management Services**.
+    -   Ha a Windows Server 2008 R2 vagy a Windows Server 2008 használ, kattintson a **Start**, kattintson a **Felügyeleti eszközök**, és kattintson a **Active Directory tartalomvédelmi szolgáltatások**.
 
-    -   If you are using Windows Server 2012 R2 or Windows Server 2012,  in Server Manager, click **Tools**, and then click **Active Directory Rights Management Services**.
+    -   Ha a Windows Server 2012 R2 vagy használata a Windows Server 2012, a Kiszolgálókezelő, kattintson a **Eszközök**, és kattintson a **Active Directory tartalomvédelmi szolgáltatások**.
 
-2.  In the AD RMS console right-click the AD RMS cluster, and then click **Properties**.
+2.  Az Active Directory tartalomvédelmi szolgáltatások konzolon kattintson a jobb gombbal az Active Directory Tartalomvédelmi fürt, és kattintson a **Tulajdonságok**.
 
-3.  Click the **SCP** tab.
+3.  Kattintson a **SCP** fülre.
 
-4.  Select the **Change SCP** check box.
+4.  Válassza ki a **módosítása SCP** jelölőnégyzetet.
 
-5.  Select the **Set SCP to current certification cluster** option, and then click **OK**.
+5.  Válassza ki a **szolgáltatáskapcsolódási pontja beállítani a jelenlegi tanúsítási fürtre** lehetőséget, és kattintson a **OK**.
 
-### Enabling Client-Side Service Discovery by Using the Windows Registry
-As an alternative to using an SCP or where an SCP does not exist, you can configure the registry on the client computer so that the RMS client can locate its AD RMS server.
+### Ügyféloldali szolgáltatás segítségével a Windows beállításjegyzékének engedélyezésével
+Megoldásként Szolgáltatáskapcsolódási, vagy ha nem létezik Szolgáltatáskapcsolódási használatával konfigurálhatja a beállításjegyzék az ügyfélszámítógépen, hogy az RMS-ügyfél megkereséséhez az Active Directory tartalomvédelmi szolgáltatások kiszolgálója.
 
-##### To enable client-side AD RMS service discovery by using the Windows registry
+##### Ügyféloldali AD RMS szolgáltatás felderítése ahhoz, hogy a Windows beállításjegyzékének használatával
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  Nyissa meg a Beállításszerkesztőt, Regedit.exe:
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   A Futtatás ablakban az ügyfélszámítógépen írja be a **regedit**, és nyomja le az ENTER BILLENTYŰT, és nyissa meg a Beállításszerkesztőt.
 
-2.  In the Registry Editor, navigate to **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**.
+2.  A beállításszerkesztőben keresse meg a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**.
 
     > [!IMPORTANT]
-    > If you are running a 32-bit application on a 64-bit computer, the path will be as follows: 
+    > Ha egy 32 bites alkalmazás egy 64 bites számítógépen futtatja, az elérési utat a következők: 
     > **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSIPC**
 
-3.  To create the ServiceLocation subkey, right-click **MSIPC**, point to **New**, click **Key**, and then type **ServiceLocation**.
+3.  A ServiceLocation alkulcs létrehozása, kattintson a jobb gombbal **MSIPC**, mutasson a **Új**, kattintson a **kulcs**, majd írja be **ServiceLocation**.
 
-4.  To create the EnterpriseCertification subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type **EnterpriseCertification**.
+4.  A EnterpriseCertification alkulcs létrehozása, kattintson a jobb gombbal **ServiceLocation**, mutasson a **Új**, kattintson a **kulcs**, majd írja be **EnterpriseCertification**.
 
-5.  To set the enterprise certification URL, double-click the **(Default)** value, under the **EnterpriseCertification** subkey, and when the **Edit String** dialog box appears,  for **Value data**, type &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification, and then click **OK**.
+5.  A vállalati hitelesítő URL-cím megadásához kattintson duplán a **(alapértelmezett)** érték alatti a **EnterpriseCertification** alkulcs, és amikor a **karakterlánc szerkesztése** párbeszédpanel jelenik meg, a **érték**, típusa &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification, és kattintson a **OK**.
 
-6.  To create the EnterprisePublishing subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type EnterprisePublishing.
+6.  A EnterprisePublishing alkulcs létrehozása, kattintson a jobb gombbal **ServiceLocation**, mutasson a **Új**, kattintson a **kulcs**, majd írja be EnterprisePublishing.
 
-7.  To set the enterprise publishing URL, double-click **(Default)** , under the **EnterprisePublishing** subkey, and when the **Edit String** dialog box appears, type for **Value data** the following &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing, and then click **OK**.
+7.  A vállalati közzététel URL-cím megadásához kattintson duplán a **(alapértelmezett)** , alatti a **EnterprisePublishing** alkulcs, és ha a **karakterlánc szerkesztése** párbeszédpanel megjelenik, írja be a **érték** a következő &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing, és kattintson a **OK**.
 
-8.  Close the Registry Editor.
+8.  Zárja be a Beállításszerkesztőt.
 
-If the RMS client can't find an SCP by querying Active Directory and it's not specified in the registry, service discovery calls for AD RMS will fail.
+Ha nincs megadva, a beállításjegyzékben az RMS-ügyfél nem találja Szolgáltatáskapcsolódási lekérdezése az Active Directory, az Active Directory Tartalomvédelmi szolgáltatás felderítési hívások sikertelen lesz.
 
-### Redirecting Licensing Server Traffic
-In some cases, you might need to redirect traffic during service discovery, for example, when two organizations are merged and the old licensing server in one organization is retired and clients need to be redirected to a new licensing server. Or, you migrate from AD RMS to Azure RMS. To enable licensing redirection, use the following procedure.
+### Átirányítás a kiszolgáló forgalom licencelés
+Bizonyos esetekben előfordulhat, hogy kell forgalom átirányítási felderítésre szolgáltatás, például, ha két szervezetek amelyek egyesített, és a régi licencelési kiszolgáló egy szervezet visszavonásának, és átirányítja egy új licencelési kiszolgáló kell ügyfelek. Vagy az Azure RMS Active Directory tartalomvédelmi szolgáltatások át. Ahhoz, hogy a licencelési átirányítás, az alábbi eljárással.
 
-##### To enable RMS licensing redirection by using the Windows registry
+##### Átirányítás licencelési segítségével a Windows beállításjegyzékének RMS engedélyezése
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  Nyissa meg a Beállításszerkesztőt, Regedit.exe:
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   A Futtatás ablakban az ügyfélszámítógépen írja be a **regedit**, és nyomja le az ENTER BILLENTYŰT, és nyissa meg a Beállításszerkesztőt.
 
-2.  In the Registry Editor, navigate to one of the following:
+2.  A beállításszerkesztőben keresse meg, hogy a következők egyikét:
 
-    -   For 64-bit version of Office on x64 platform: HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
+    -   64 bites verziójának Office az x 64 platformra: HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
 
-    -   For 32-bit version of Office on x64 platform: HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
+    -   A Microsoft Office x 64 32 bites verzióját platform: HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
 
-3.  Create a LicensingRedirection subkey, by right-clicking **Servicelocation**, point to **New**, click **Key**, and then type **LicensingRedirection**.
+3.  Egy LicensingRedirection alkulcs létrehozása kattintson a jobb gombbal **Servicelocation**, mutasson a **Új**, kattintson a **kulcs**, majd írja be **LicensingRedirection**.
 
-4.  To set the licensing redirection, right-click the **LicensingRedirection** subkey, select **New**, and then select **String value**.  For **Name**, specify the previous server licensing URL and for **Value** specify the new server licensing URL.
+4.  A licencelési átirányítás megadásához kattintson a jobb gombbal a **LicensingRedirection** alkulcs, válassza **Új**, majd válassza ki **karakterlánc értéke**.  A **neve**, adja meg a korábbi kiszolgáló URL-cím licencelési és a **érték** adja meg az új kiszolgáló licencelési URL-cím.
 
-    For example, to redirect licensing from a server at Contoso.com to one at Fabrikam.com, you might enter the following values:
+    Át kell irányítani egy Fabrikam.com: Contoso.com kiszolgálóról licencelési, akkor előfordulhat, hogy írja be például a következő értékek:
 
-    **Name:**`https://contoso.com/_wmcs/licensing`
+    **Neve:** `https://contoso.com/_wmcs/licensing`
 
-    **Value:**`https://fabrikam.com/_wmcs/licensing`
+    **Érték:** `https://fabrikam.com/_wmcs/licensing`
 
     > [!NOTE]
-    > If the old licensing server has both intranet and extranet URLs specified then a new name and value mapping has to be set for both of these URLs under the LicensingRedirection key.
+    > Ha a régi licencelési kiszolgáló rendelkezik-intranetes és extranetes URL-cím megadott majd egy új nevet, és érték leképezési értékűre kell beállítani, a LicensingRedirection kulcs alatt ezeket URL-címeket is.
 
-5.  Repeat the previous step for all servers that need to be redirected.
+5.  Ismételje meg az előző lépésben kell átirányítja kiszolgálóira.
 
-6.  Close the Registry Editor.
+6.  Zárja be a Beállításszerkesztőt.
 

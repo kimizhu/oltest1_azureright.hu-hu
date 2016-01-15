@@ -3,25 +3,24 @@ description: na
 keywords: na
 title: Verifying Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 08664a01-81a5-4fa5-884c-7306ee55dba0
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Verifying Azure Rights Management
-After you have activated [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) and performed any additional configuration steps that are required for your organization, you can verify that the service is working as expected by protecting a file or email message by using one  user account, and then attempting to open and use that protected content from another user account.
+# Az Azure Rights Management ellenőrz&#233;se
+Miután aktiválta [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) végrehajtott bármilyen további konfigurációs lépések, amelyek szükségesek a szervezetben, és azt is ellenőrizze, hogy a szolgáltatás egy fájl vagy e-mail üzenet védelme egy felhasználói fiókkal által elvárt módon működik, majd megpróbálja megnyitása és használata, amely védett a tartalom a egy másik felhasználói fiók.
 
-To do this testing, you can use the information in [Helping Users to Protect Files by Using Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
+Ez a tesztelés ehhez információt is használhatja a a [A felhasználók fájlok Azure Rights Management használatával segíti.](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
 
-If your testing is unsuccessful, review the configuration steps in [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md), and use the [RMS Analyzer tool](http://www.microsoft.com/en-us/download/details.aspx?id=46437) to help identify and fix potential problems. You can also run this tool periodically, as a general health check.
+Ha a tesztelés sikertelen, tekintse át a konfigurációs lépéseket a [Azure Rights Management – üzembehelyezési menetrend](../Topic/Azure_Rights_Management_Deployment_Roadmap.md), és használja a [RMS Analyzer eszközt](http://www.microsoft.com/en-us/download/details.aspx?id=46437) azonosításához, és javítsa ki a lehetséges problémákat. Is futtathatja az eszköz rendszeres időközönként, általános állapotának ellenőrzése.
 
 > [!TIP]
-> If you need additional help, see the [Support options and community resources](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SupportOptions) section in the [Information and Support for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md) topic.
+> Ha további segítségre van szüksége, olvassa el a [Támogatási lehetőségek és a közösségi erőforrások](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SupportOptions) szakasz a [Információk és támogatás a Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md) című témakört.
 
-You can monitor how your organization is using information protection by using usage logging. For more information, see [Logging and Analyzing Azure Rights Management Usage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
+Hogyan a szervezet által használt információkat protection használat naplózása használatával figyelheti. További tudnivalókért tekintse meg a [Naplózás, és az Azure Rights Management használati elemzése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md)
 

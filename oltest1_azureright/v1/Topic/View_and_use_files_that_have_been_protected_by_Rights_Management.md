@@ -3,62 +3,61 @@ description: na
 keywords: na
 title: View and use files that have been protected by Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: e5fa4666-6906-405a-9e0c-2c52d4cd27c8
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# View and use files that have been protected by Rights Management
-When the [Rights Management (RMS) sharing application is installed on your computer](https://technet.microsoft.com/library/dn574734%28v=ws.10%29.aspx), you view a protected file by simply double-clicking it. The file might be an attachment in an email message, or you might see it when you use File Explorer.
+# Megtekint&#233;se &#233;s haszn&#225;lata a Rights Management v&#233;dett f&#225;jlok
+Ha a [a számítógépen telepítve van a Rights Management (RMS) megosztóalkalmazás](https://technet.microsoft.com/library/dn574734%28v=ws.10%29.aspx), egyszerűen dupla kattintással megtekintheti a védett fájl. Lehet, hogy a fájl egy e-mailt a mellékletet, vagy a fájl Explorer használatakor megjelenhet.
 
 > [!NOTE]
-> Before you can view the protected file, RMS must first confirm that you are authorized to view the file, which it does by checking your user name and password. In some cases, this might be cached and you will not see a prompt that asks for your credentials. In other cases, you will be prompted to supply your credentials.
+> Megtekintheti, hogy a védett fájlt, mielőtt RMS kell először győződjön meg arról, hogy Ön jogosult a fájl, amely hajtja végre a felhasználónév és jelszó bejelölésével megtekintése. Egyes esetekben ez lehetséges, hogy kerülnek a gyorsítótárba, és nem jelenik meg a kérdés, hogy a hitelesítő adatokat kér. Egyéb esetben bekéri a hitelesítő adatok megadására.
 > 
-> If your organization does not use either Azure Rights Management (Azure RMS) or AD RMS, you can apply for a free account that will accept your credentials so that you can open files that are protected by using RMS:
+> Ha a szervezet nem használja, vagy az Azure Rights Management (Azure RMS), vagy az Active Directory tartalomvédelmi szolgáltatások, egy ingyenes fiókra, amely a hitelesítő adatait fogadja el, így úgy is megnyithatja, amelyek segítségével az RMS által védett fájlokat jelentkezhet:
 > 
-> -   To apply for this account, click the link to apply for [RMS for individuals](http://go.microsoft.com/fwlink/?LinkId=309469).
+> -   Alkalmazása ehhez a fiókhoz, kattintson a hivatkozásra, jelentkezhet [egyének az RMS](http://go.microsoft.com/fwlink/?LinkId=309469).
 > 
->     When you sign up, use your company email address rather than a personal email address. If you are signing up because you were emailed a protected attachment, use the same email address that was used to send you the email message.
-> -   For more information, see [RMS for Individuals and Windows Azure Rights Management](http://technet.microsoft.com/library/dn592127.aspx).
+>     Hozza létre, ha egy személyes e-mail cím helyett a vállalati e-mail címét használja. Ha most jelentkezik, mert azt egy védett melléklet el lett küldve, használja ugyanazt az e-mail címet, használt e-mail üzenetet küldeni.
+> -   További tudnivalókért tekintse meg a [RMS egyének és a Windows Azure Rights Management](http://technet.microsoft.com/library/dn592127.aspx).
 
-## <a name="BKMK_ViewPFILE"></a>To view a protected file
-By using File Explorer or the email message that contains the attachment, double-click the protected file, and enter your credentials if prompted to do so.
+## <a name="BKMK_ViewPFILE"></a>Védett fájl megtekintése
+Fájl Intéző vagy a melléklet tartalmazó e-mail üzenetet segítségével, kattintson duplán a védett fájlt, és adja meg a hitelesítő adatait, ha a kéri.
 
-If you see two versions of the file but with different file name extensions, open the file that has a .ppdf file extension only if the other file does not open. If you cannot open the .ppdf version either, first install the [RMS sharing application](http://technet.microsoft.com/library/dn574734.aspx), which knows how to open files that have a .ppdf file name extension.
+Ha a fájl, de különböző kiterjesztésű két verzió jelenik meg, nyissa meg a kiterjesztésű fájl egy .ppdf fájl csak akkor, ha a másik fájl nem nyitható meg. A .ppdf verziója nem nyitható meg vagy, ha először telepíteni a [RMS-megosztó alkalmazás](http://technet.microsoft.com/library/dn574734.aspx), amely tudja, amelyek egy .ppdf kiterjesztésű fájlok megnyitását.
 
 > [!NOTE]
-> For more information, see “[What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)”.
+> További tudnivalókért tekintse meg a "[Mi az automatikusan létrehozott .ppdf fájlhoz?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)".
 
-How the file opens depends on how it was protected, which you can tell by looking at the file name extension. In each case, opening the file might be audited and remains audited as long as it is protected. In addition, if the file was sent as an email attachment, the sender might be notified by email each time you open the file.
+Hogyan a fájl megnyitása attól függ, hogy hogyan azt védett, amely megadható, hogy a fájl kiterjesztése megtekintésével. Minden esetben a fájl megnyitásakor előfordulhat, hogy naplózni, és mindaddig, amíg védett ellenőrzött marad. Ezenkívül a fájl e-mail mellékletként lett elküldve, ha a küldő előfordulhat, hogy értesítést által e-mailt a fájl megnyitásakor.
 
-|File name extension and protection|More information|
-|--------------------------------------|--------------------|
-|The file has a **.pfile** file name extension.<br /><br />The file was generically protected.|When you open the file, you see a **protected file** dialog box from the sharing application that tells you who protected the file and that you are expected to honor the co-owner permissions. Click **Open** to read the file.<br /><br />![](../Image/ADRMS_MSRMSApp_PfilePermission.png)|
-|The file has a **.ppdf** file name extension or is a protected text or image file (such as **.ptxt** or **.pjpg**).<br /><br />The file has been natively protected as a read-only copy.|The file opens by using the viewer that installs with the RMS sharing application. This file is read-only, even if you save it to another location or rename it.|
-|Other file name extensions.<br /><br />The file has been natively protected.|The file opens by using the application that is associated with the original file name extension, and a restriction banner is displayed at the top of the file. The banner might display the permissions that are applied to the file, or it might provide a link to display them. For example, you might see the following where you must click **Permission is currently restricted** to see the actual permissions that are applied to the file and the people that can access it:<br /><br />![](../Image/ADRMS_MSRMSApp_RestrictedAccess.png)|
-For a complete list of file name extensions that Rights Management supports, see the [Supported file types and file name extensions](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_SupportFileTypes) sections in the  [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md). If your file name extension is not listed, use a web search to see if it is a file name extension that is supported by another application.
+|Fájlnévkiterjesztést, és a védelem|További információ|
+|--------------------------------------|----------------------|
+|A fájl egy **.pfile** a fájl kiterjesztése.<br /><br />A fájl általánosságban védett.|A fájl megnyitásakor, ha azt látja, hogy egy **védett fájl** párbeszédpanel, amely bemutatja, akik védett, hogy a fájlt, és tartsa tiszteletben az együttes tulajdonos engedélyeket megosztási alkalmazásból. Kattintson a **megnyitása** olvasni a fájlt.<br /><br />![](../Image/ADRMS_MSRMSApp_PfilePermission.png)|
+|A fájl egy **.ppdf** kiterjesztés, vagy a szöveg vagy kép védett fájl (például **.ptxt** vagy **.pjpg**).<br /><br />A fájl natív módon védett csak olvasható másolata.|A fájl megnyitása a megjelenítő, amely telepíti az RMS-megosztó alkalmazás használatával. Ez a fájl csak olvasható, még akkor is, ha egy másik helyre menti, vagy nevezze át.|
+|Más kiterjesztésű fájlokat.<br /><br />A fájl védett natív módon.|A fájl megnyitása az eredeti fájlnévkiterjesztést társított alkalmazás használatával, és a korlátozás szalagcím akkor jelenik meg, a fájl tetején. A szalagcím jeleníthet meg az engedélyeket, amelyek a fájlt, vagy azt előfordulhat, hogy adjon meg egy hivatkozás megjeleníteni azokat. Például előfordulhat, hogy megjelenik a következő ahol kell kattintania **engedély jelenleg korlátozva** megtekintheti a tényleges engedélyeket, amelyek a fájlt, és a mások által elérhető:<br /><br />![](../Image/ADRMS_MSRMSApp_RestrictedAccess.png)|
+Kiterjesztések, amely támogatja a Rights Management teljes listáját lásd a [Támogatott fájltípusok és kiterjesztések](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_SupportFileTypes) területén, a  [A Rights Management megosztási alkalmazás rendszergazda guide](../Topic/Rights_Management_sharing_application_administrator_guide.md). A fájlnévkiterjesztés nem szerepel a listában, ha a webes keresés segítségével tekintse meg, ha-e a fájlnév kiterjesztését, amely egy másik alkalmazás által támogatott.
 
 > [!NOTE]
-> If, after confirming that the file is protected by Rights Management, and the file does not open, download and use the [RMS Analyzer tool](https://www.microsoft.com/en-us/download/details.aspx?id=46437). Follow the instructions in the tool to check for problems on your computer that might prevent a protected document from opening.
+> Ha a letöltés után erősítse meg, hogy a fájl a Rights Management által védett, és a fájl nem nyitható meg, és használja a [RMS Analyzer eszközt](https://www.microsoft.com/en-us/download/details.aspx?id=46437). Kövesse a megjelenő utasításokat az eszköz tekintse meg a problémákat a számítógépen, amely megakadályozza a védett dokumentum megnyitása.
 
-## <a name="BKMK_UserDefined"></a>To use files that have been protected (for example, edit and print the file)
-If, after opening the protected file,  you want to do more than just read it (for example, edit, copy, and print it):
+## <a name="BKMK_UserDefined"></a>Használatára, amely (például a Szerkesztés és a Nyomtatás a fájl) a védett fájlok
+Ha a védett fájl megnyitása után nem csak olvasható kívánt (például szerkesztése, másolása és nyomtatás):
 
-|File name extension|Instructions|
-|-----------------------|----------------|
-|The file has a **.pfile** file name extension.|Save the opened file and give it a new file name extension that is associated with the application that you want to use.<br /><br />For example, if a file was protected by using the file name document.vsdx.pfile, view the file and in File Explorer, save the file as document.vsdx.<br /><br />The new file is no longer protected. If you want to protect it, you must do this manually. For instructions, see [Protect a file on a device &#40;protect in-place&#41; by using the Rights Management sharing application](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
-|The file has a **.ppdf** file name extension or is a protected text or image file (such as **.ptxt** or **.pjpg**).|You can only view the file and if you rename or move it, the protection remains with the file.|
-|Other file name extensions.|Your device must have an application that understands Rights Management to use these files. These applications are called RMS-enlightened applications. Applications from Office 2016, Office 2013,  and Office 2010 (such as Word, Excel, PowerPoint, and Outlook) are examples of applications that are enlightened for Rights Management. But applications that do not come from Microsoft, such as other software companies and your own line-of-business applications, might also be enlightened for Rights Management.<br /><br />Applications that are enlightened for Rights Management know how to open files that have been protected by other Rights Management enlightened applications. They also persist the protection that is applied to them, even if you edit the file or save it to another file name or another location. These applications let you use the file according to the permissions that are currently applied to the file, so that if you have permissions to use the file, you can do so. For example, you might be able to edit the file but not print it.|
+|Fájlnévkiterjesztést|Utasítások|
+|------------------------|--------------|
+|A fájl egy **.pfile** a fájl kiterjesztése.|A megnyitott fájl mentéséhez, és adjon egy új fájlnévkiterjesztést, amely nincs társítva a használni kívánt alkalmazáshoz.<br /><br />Például a fájl segítségével, hogy a fájl neve document.vsdx.pfile védett, ha a fájl megtekintése, és a fájl Intéző, mentse a fájlt document.vsdx.<br /><br />Az új fájl már nem védett. Ha azt szeretné, hogy lássa el védelemmel, kézzel kell ehhez. További tudnivalókért tekintse meg a [Az eszközön a fájl védelme &#40;helyi védelem&#41; a Rights Management megosztóalkalmazás használatával](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
+|A fájl egy **.ppdf** kiterjesztés, vagy a szöveg vagy kép védett fájl (például **.ptxt** vagy **.pjpg**).|Csak megtekinteni tudja a fájlt, és ha átnevezése vagy áthelyezhető, a védelmi marad, a fájl.|
+|Más kiterjesztésű fájlokat.|Az eszköz olyan alkalmazást, amely használja ezeket a fájlokat a Rights Management megértette kell rendelkeznie. Ezek az alkalmazások nevezzük az RMS-enlightened alkalmazások. Példák az alkalmazásokat Office 2016, az Office 2013 és az Office 2010 (például a Word, Excel, PowerPoint és az Outlook) alkalmazások, amelyek a Rights Management vannak enlightened. De a Rights Management is előfordulhat, hogy alkalmazások, amelyek nem a Microsofttól származik, például a szoftver vállalatokat és a saját üzleti sor alkalmazások enlightened.<br /><br />Alkalmazások, amelyek a Rights Management ismernie a fájl megnyitását, amely más Rights Management által védett vannak-e enlightened enlightened alkalmazások. Azok a alkalmazott őket, még akkor is, ha a fájl szerkesztése, vagy egy másik fájlnevet, vagy egy másik helyre menti a védelmi is megmarad. Ezek az alkalmazások lehetővé teszik, hogy a fájlt, az engedélyek, amelyek jelenleg a fájl alapján használja, úgy, hogy ha a fájl engedélyeit, ehhez. Előfordulhat például, szerkessze a fájlt, de nyomtatni nem tud.|
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

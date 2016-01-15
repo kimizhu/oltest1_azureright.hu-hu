@@ -3,240 +3,233 @@ description: na
 keywords: na
 title: Configuring Custom Templates for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1775d8d0-9a59-42c8-914f-ce285b71ac1c
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Custom Templates for Azure Rights Management
-After you have activated Azure Rights Management (Azure RMS), users are automatically able to use two default templates that make it easy for them to apply policies to sensitive files that restrict access to authorized users in your organization. These two templates have the following rights policy restrictions:
+# Az Azure Rights Management egy&#233;ni sablonok konfigur&#225;l&#225;sa
+Azure Rights Management (Azure RMS) aktiválása után felhasználók képesek automatikusan könnyen házirendek alkalmazása, amelyek a hozzáférés korlátozása a szervezet jogosult felhasználók bizalmas fájlokat két alapértelmezett sablonok használatával. Ezek a sablonok két rendelkezik a következő jogosultságokkal házirendi korlátozásokkal:
 
--   Read-only viewing for the protected content
+-   A védett tartalomhoz csak olvasható megtekintése
 
-    -   Display name: **&lt;organization name&gt; - Confidential View Only**
+    -   Megjelenítendő név: **&lt; név &gt; - csak bizalmas nézet**
 
-    -   Specific permission: View Content
+    -   Adott engedély: Tartalom megtekintése
 
--   Read or Modify permissions for the protected content
+-   Olvassa el, vagy módosítsa az engedélyeket a védett tartalomhoz
 
-    -   Display name: **&lt;organization name&gt; - Confidential**
+    -   Megjelenítendő név: **&lt; név &gt; - bizalmas**
 
-    -   Specific permissions: View Content, Save File, Edit Content, View Assigned Rights, Allow Macros, Forward, Reply, Reply All
+    -   Adott engedélyek: Tartalom megtekintését, mentse a fájlt, tartalom szerkesztése, hozzárendelt jogok megtekintése, válasz mindenkinek makrói, előre, válasz, engedélyezése
 
-In addition, the [RMS sharing application](http://technet.microsoft.com/library/dn339006.aspx) lets users define their own set of permissions. And, for the Outlook client and Outlook Web Access, users can select the **Do Not Forward** option for email messages.
+Emellett a [RMS-megosztó alkalmazás](http://technet.microsoft.com/library/dn339006.aspx) lehetővé teszi, hogy a felhasználók saját engedélyek beállításainak megadása. És az Outlook ügyfélprogram és az Outlook Web Access jelölhetők ki a **nem továbbítható** beállítást az e-mailek.
 
-For many organizations, the default templates might be sufficient. But if you want to create your own custom rights policy templates, you can do so. Reasons for creating a custom template include the following:
+A számos szervezet az alapértelmezett sablonokat is elegendő lehet. Azonban ha azt szeretné, házirend-sablonok létrehozása a saját egyéni jogokat, azt megteheti. Egyéni sablonok okok a következők:
 
--   You want a template to grant rights to a subset of users in the organization rather than all users.
+-   Azt szeretné, hogy a sablon egy részét az összes felhasználó helyett a szervezet felhasználói jogosultságokat.
 
--   You want only a subset of users to be able to see and select a template (departmental template) from applications, rather than all users in the organization see and can select the template.
+-   Csak a felhasználók számára, és válasszon ki egy sablont (részlegek sablon) alkalmazások ahelyett, hogy a szervezet tekintse meg az összes felhasználó részhalmazát kívánja, és kiválaszthatja a sablont.
 
--   You want to define a custom right for a template, such as View and Edit, but not Copy and Print.
+-   Szeretné jobbra egy sablont, megtekintése és módosítása, például az egyéni határozza meg, de nem másolja, és nyomtassa ki.
 
--   You want to configure additional options in a template that include an expiration date and whether the content can be accessed without an Internet connection.
+-   További beállítások konfigurálása a sablonban, többek között a lejárati dátumot, hogy a tartalom elérhető internetkapcsolat nélkül szeretné.
 
-For users to be able to select a custom template that contains settings such as these, you must first create a custom template, configure it, and then publish it.
+A felhasználók kijelölheti egyéni például ezeket a beállításokat tartalmazó sablon meg kell először hozzon létre egy egyéni sablont, konfigurálja és közzéteszi az.
 
-Use the following sections to help you configure and use custom templates:
+Az alábbi szakaszok segítségével könnyebben konfigurálható és egyéni sablonokkal:
 
--   [How to create, configure, and publish a custom template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToConfigureCustomTemplates)
+-   [Hogyan lehet létrehozni, konfigurálni és egyéni sablon közzététele](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToConfigureCustomTemplates)
 
--   [How to copy a template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates)
+-   [A sablon másolása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates)
 
--   [How to remove (archive) templates](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToArchiveTemplates)
+-   [(Archívum) sablonok eltávolítása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToArchiveTemplates)
 
--   [Refreshing templates for users](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates)
+-   [A felhasználók sablonok frissítése](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates)
 
--   [Windows PowerShell reference](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_PowerShellTemplates)
+-   [A Windows PowerShell-hivatkozás](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_PowerShellTemplates)
 
-## <a name="BKMK_HowToConfigureCustomTemplates"></a>How to create, configure, and publish a custom template
-You create and manage custom templates in the Azure classic portal. You can do this directly from the Azure classic portal, or you can sign in to the Office 365 admin center, and choose the **advanced features** for Rights Management, which then redirects you to the Azure classic portal.
+## <a name="BKMK_HowToConfigureCustomTemplates"></a>Hogyan lehet létrehozni, konfigurálni és egyéni sablon közzététele
+Hozzon létre, és az Azure felügyeleti portálon egyéni sablonok kezelése. Ehhez használhatja közvetlenül az Azure felügyeleti portálról, vagy jelentkezzen be az Office 365 felügyeleti központban, és adja meg a **speciális szolgáltatásai** Rights Management, mely majd irányítja az Azure felügyeleti portálon.
 
-Use the following procedures to create, configure, and publish custom templates for Rights Management.
+Az alábbi eljárások segítségével létrehozni, konfigurálni és egyéni sablonok közzététele a Rights Management.
 
-#### To create a custom template
+#### Egyéni sablon létrehozása
 
-1.  Depending on whether you sign in to the Office 365 admin center, or the Azure classic portal, do one of the following:
+1.  Attól függően, hogy bejelentkezik az Office 365 felügyeleti központban, vagy az Azure portálon tegye a következők valamelyikét:
 
-    -   From the [Office 365 admin center](https://portal.office.com/):
+    -   Az a [Office 365 felügyeleti központban](https://portal.office.com/):
 
-        1.  In the left pane, click **service settings**.
+        1.  Kattintson a bal oldali ablaktáblában **szolgáltatás beállításai**.
 
-        2.  From the **service settings** page, click **rights management**.
+        2.  Az a **szolgáltatás beállításai** lap **a rights management**.
 
-        3.  In the **Protect your information** section, click **Manage**.
+        3.  Az a **adatai védelme** részen kattintson **kezelése**.
 
-        4.  In the **rights management** section, click **advanced features**.
+        4.  Az a **a rights management** részen kattintson **speciális szolgáltatásai**.
 
             > [!NOTE]
-            > If you haven’t activated Rights Management, first click **activate** and confirm your action. For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+            > Ha még nem aktiválta a Rights Management, előbb kattintson **aktiválása** és erősítse meg a műveletet. További információ: [Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md).
             > 
-            > If you haven’t clicked **advanced features** before, after Rights Management is activated, follow the on-screen instructions to get a free Azure subscription that’s required to access the Azure classic portal.
+            > Kattintott még nem **speciális szolgáltatásai** előtt, a Rights Management aktiválása után kövesse a képernyőn megjelenő utasításokat lekérni egy ingyenes Azure-előfizetést, amely az Azure portál eléréséhez szükséges.
 
-            Clicking **advanced features** loads the Azure classic portal, where you can manage **RIGHTS MANAGEMENT** for your organization's Azure Active Directory.
+            Lehetőségre kattintva **speciális szolgáltatásai** betölti az Azure-portálon, ahol kezelheti **RIGHTS MANAGEMENT** a szervezet Azure Active Directory.
 
-    -   From the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081):
+    -   Az a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=275081):
 
-        1.  In the left pane, click **ACTIVE DIRECTORY**.
+        1.  A bal oldali ablaktáblában kattintson a **az ACTIVE DIRECTORY**.
 
-        2.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+        2.  Az a **az active directory** lapra, kattintson a **a RIGHTS MANAGEMENT**.
 
-        3.  Select the directory to manage for Rights Management.
+        3.  Válassza ki a directory Rights Management kezeléséhez.
 
-        4.  If you have not already activated Rights Management, click **ACTIVATE** and confirm your action.
+        4.  Ha még nem aktiválta a Rights Management, kattintson a **AKTIVÁLÁSA** és erősítse meg a műveletet.
 
             > [!NOTE]
-            > For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+            > További információ: [Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md).
 
-2.  Create a new template:
+2.  Hozzon létre egy új sablont:
 
-    -   In the Azure classic portal, from the **Get started with Rights Management** quick start page, click **Create a new rights policy template**.
+    -   Az Azure-portálon a a **Ismerkedés a Rights Management** gyors start lap, kattintson a **Hozzon létre egy új jogmegadási sablon**.
 
-        If you do not immediately see this page after following the instructions for Office 365, use the navigation instructions, above,  for the Azure classic portal.
+        Ha nem azonnal láthatók a lapon az Office 365 utasítások végrehajtása után járjon navigációs, fent, az Azure portálon.
 
-3.  On the **Add a new rights policy template** page, choose a language in which you will type the template name and description that users will see (you can add more languages later). Then type a unique name and a description, and click the Complete button.
+3.  Az a **hozzáadása egy új jogmegadási sablon** lapon, válassza ki, amelyben meg fog írja be a sablon neve és leírása, amelyet a felhasználók nyelv (később is hozzáadhatja több nyelvet). Adjon egyedi nevet és egy leírást, majd a Kész gombra.
 
-From the **Get started with Rights Management** quick start page, now click **Manage your rights policy templates**. You will see your newly created template added to the list of templates, with a status of **Archived**. At this stage, the template is created but not configured, and is not visible to users.
+Az a **Ismerkedés a Rights Management** gyors start lap, kattintson a gombra **a jogmegadási sablonok kezelése**. Látni fogja az újonnan létrehozott sablon sablonok állapotú listájára felvett **Archivált**. Ebben a szakaszban a sablont létrehozni, de nincs beállítva, és nem látható a felhasználók számára.
 
-#### To configure and publish a custom template
+#### Konfigurálása és egyéni sablon közzététele
 
-1.  Select your newly created template from the **TEMPLATES** page in the Azure classic portal.
+1.  Válassza ki az újonnan létrehozott sablont a **SABLONOK** lap az Azure felügyeleti portálon.
 
-2.  From the **Your template has been added** quick start page, click **Get started** from step 1, **Configure rights for users and groups,** then click **GET STARTED NOW** or **ADD**, and then select the users and groups who will have rights to use the content that is protected by the new template.
-
-    > [!NOTE]
-    > The users or groups that you select must have an email address. In a production environment, this will nearly always be the case but in a simple testing environment, you might need to add email addresses to user accounts or groups.
-
-    As a best practice, use groups rather than users, which simplifies management of the templates. If you have Active Directory on-premises and are synchronizing to Azure AD, you can use mail-enabled groups that are either security groups or distribution groups. However, if you want to grant rights to all users in the organization, it will be more efficient to copy one of the default templates rather than specify multiple groups. For more information, see the [How to copy a template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates) section in this topic.
-
-    > [!TIP]
-    > You can later add users from outside your organization to the template by using the [Windows PowerShell module for Azure Rights Management](https://technet.microsoft.com/library/jj585012.aspx) and using one of the following methods:
-    > 
-    > -   **Use a rights definition object to update a template**:    Specify the external email addresses and their rights in a rights definition object, which you then use to update your template. You specify the rights definition object by using the [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) cmdlet to create a variable and then supply this variable to the  -RightsDefinition parameter with the [Set-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx) cmdlet to modify an existing template. However, if you're adding these users to an existing template, you will also need to define rights definition objects for the existing groups in the templates and not just the new, external users.
-    > -   **Export, edit, and import the updated template**:Use the [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet to export the template to a file that you can edit to add the external email addresses of these users and their rights to the existing groups and rights. Then use the [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet to import this change back into Azure RMS.
-
-3.  Click the Next button, and then assign one of the listed rights to your selected users and groups.
-
-    Use the displayed description for more information about each right (and for custom rights). More detailed  information is also available in [Configuring Usage Rights for Azure Rights Management](../Topic/Configuring_Usage_Rights_for_Azure_Rights_Management.md). However, applications that support RMS might vary in how they implement these rights. Consult their documentation and do your own testing with the applications that users use to check the behavior before you deploy the template for users. To make this template visible to only administrators for this testing, make this template a departmental template (step 6).
-
-4.  If you selected **Custom**, click the Next button, and then select those custom rights.
-
-    Although you can use any combination of the individual rights available, in some applications, some rights might have dependencies on other individual rights. When this is the case, the dependent rights are automatically selected for you.
-
-    > [!TIP]
-    > Consider adding the **Copy and Extract Content** right and grant this to selected administrators or personnel in other roles that have responsibilities for information recovery. Granting this right lets them remove protection if needed, from files and emails that will be protected by using this template. This ability to remove protection at the template level provides more fine-grained control than using the super user feature.
-
-5.  Click the Complete button.
-
-6.  If you want the template to be visible to only a subset of users when they see a list of templates in applications: Click **SCOPE** to configure this as a departmental template, and click **GET STARTED NOW**. Otherwise, go to step 9.
-
-    More information about departmental templates: By default, all users in your Azure directory see all the published templates and they can then select them from applications when they want to protect content. If you want specific users only to see some of the published templates, you must scope the templates to these users. Then, only these users will be able to select these templates. Other users that you do not specify will not see the templates and therefore, cannot select them. This technique can make choosing the correct template easier for users, especially when you create templates that are designed to be used by specific groups or departments. Users then see only the templates that are designed for them.
-
-    For example, you’ve created a template for the Human Resources department that applies the Read-only permission to members of the Finance department. So that only members of the Human Resources department can apply this template when they use the Rights Management sharing application, you scope the template to the email-enabled group named HumanResources. Then, only members of this group see and can apply this template.
-
-7.  On the **TEMPLATE VISIBILITY** page, select the users and groups who will be able to see and select the template from the RMS-enlightened applications. As before, as a best practice, use groups rather than users, and the groups or users you select must have an email address.
-
-8.  Click the Next button, and decide whether you need to configure application compatibility for your departmental template. If you do, click **APPLICATION COMPATIBILITY**, select the check box, and click **Complete**.
-
-    Why might you need to configure application compatibility? Not all applications can support departmental templates. To do so, the application must first authenticate with the RMS service before downloading the templates. If the authentication process does not occur, by default, none of the departmental templates are downloaded. You can override this behavior by specifying that all the departmental templates should download, by configuring application compatibility and selecting the **Show this template to all users when the applications do not support user identity** check box.
-
-    For example, if you do not configure application compatibility for the departmental template in our Human Resources example, only users in the Human Resources department see the departmental template when they use the RMS sharing application, but no users see the departmental template when they use Outlook Web Access (OWA) from Exchange Server 2013 because Exchange OWA and Exchange ActiveSync do not currently support departmental templates. If you override this default behavior by configuring application compatibility, only users in the Human Resources department see the departmental template when they use the RMS sharing application, but all users see the departmental template when they use Outlook Web Access (OWA). If users use OWA or Exchange ActiveSync from Exchange Online, either all users will see the departmental templates or no users will see the department templates, based on the template status (archival or published) in Exchange Online.
-
-    Office 2016 natively supports departmental templates, and so does Office 2013 with the latest  Office updates ([KB 3054853](https://support.microsoft.com/kb/3054853)).
+2.  A a **hozzá lett adva a sablon** gyors start lap, kattintson a **első lépések** 1,. lépésben **engedélyeit a felhasználók és csoportok konfigurálása** kattintson **az INDULÁSHOZ** vagy **hozzáadása**, majd válassza ki a felhasználókat és csoportokat, akihez a jogok a tartalmat az új sablon által védett.
 
     > [!NOTE]
-    > If you have applications that don’t yet natively support departmental templates, you can use a custom RMS template download script or other tools to deploy these templates to the local RMS client folder. Then, these applications will correctly display the departmental templates to only the users and groups that you selected for the template scope:
+    > A felhasználók vagy csoportok, akkor jelölje be az e-mail címet kell rendelkeznie. Éles környezetben ez az eset szinte mindig lesz, de egy egyszerű tesztelési környezetben szükség lehet e-mail címeket hozzá felhasználói fiókokat vagy csoportokat.
+
+    A bevált gyakorlat használata helyett felhasználók egyszerűbbé teszi a sablonok felügyeleti csoportok. Ha rendelkezik helyszíni Active Directory és az Azure AD szinkronizál, a levelezési csoportok, amelyek a biztonsági csoportokat vagy a terjesztési csoportok is használhatja. Azonban ha azt szeretné, a szervezet minden felhasználója engedélyek, lesz hatékonyabb másolja az alapértelmezett sablonok valamelyikét adja meg a több csoport helyett. További információ: a [A sablon másolása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates) című szakaszában talál.
+
+    > [!TIP]
+    > Később felhasználókat adhat át a sablon a szervezeten kívüli használatával a [Azure Rights Management Windows PowerShell-modul](https://technet.microsoft.com/library/jj585012.aspx) és a következő módszerek egyikével:
     > 
-    > -   For Office 2010, the client folder is **%localappdata%\Microsoft\DRM\Templates**.
-    > -   From a client computer that has downloaded all the templates, you can copy and then paste the template files to other computers.
+    > -   **Exportálási, szerkesztése és a frissített sablon importálása**:  Ez a legegyszerűbb módszer a külső felhasználók hozzáadása egy meglévő sablont, amely tartalmazza az egyéb csoportok. Használja a [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) sablon exportálása parancsmag egy. Szerkesztheti a külső e-mail címek, ezek a felhasználók és a meglévő csoportok és a jogok jogainak hozzáadása CSV-fájl. Ezután a [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) Azure RMS térni parancsmaggal importálja ezt a módosítást.
+    > -   **Használja a jogok definiáló objektum-sablonok frissítése**:    Adja meg a külső e-mail címek és a jogok a jogok definíció objektum, amely ezután használhatja a sablont frissítése. A jogok definiáló objektum használatával adja meg a [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) parancsmag segítségével hozzon létre egy változót, és adja meg az - RightsDefinition paramétert a változót a [Set-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx) parancsmaggal módosíthat egy meglévő sablont. Azonban ezek a felhasználók hozzáadása egy meglévő sablont, akkor is meg kell jogok definíció objektumok a meglévő csoportok definiálása a sablonok és nem csak az új, a külső felhasználók.
+
+3.  Kattintson a Tovább gombra, majd rendelje hozzá a felsorolt engedélyekkel a kijelölt felhasználók és csoportok egyikét.
+
+    További információ az egyes jogok (és egyéni engedélyek), használja a megjelenített leírása. Részletesebb információkat is érhető el a [Használati jogok konfigurálása az Azure Rights Management](../Topic/Configuring_Usage_Rights_for_Azure_Rights_Management.md). RMS támogató alkalmazások esetében azonban változó lehet, hogy hogyan végrehajtsa ezeket a jogokat. Tekintse át a dokumentációt, és hajtsa végre a saját a felhasználók ellenőrzése viselkedését, mielőtt telepítené a felhasználók számára a sablont használó alkalmazások tesztelése. Ez a sablon csak a rendszergazdák számára látható a teszteléshez bizonyosodjon sablon részlegek sablon (6. lépés).
+
+4.  Ha a kiválasztott **egyéni**, kattintson a Tovább gombra, majd válassza ki egyéni ezeket a jogokat.
+
+    Bár az egyéni jogosultságokat, az egyes alkalmazások bármilyen kombinációját képes használni, a vonatkozó bizonyos jogokkal előfordulhat, hogy más egyéni jogosultságai függőségekkel rendelkeznek. Ez a helyzet, amikor a függő jogok is automatikusan kijelöli.
+
+    > [!TIP]
+    > Fontolja meg a **másolása és a tartalom kibontása** jobbra, és ez jogot a kijelölt rendszergazdák vagy más szerepkörök, amelyek információt helyreállítási feladatkörök személyzet. Ezt a jogosultságot megadása lehetővé teszi, hogy védelmet, ha szükséges, a fájlok és az e-mailek, amely védi a sablon használatával távolítsa el őket. Ez a sablon szintű védelem eltávolítása biztosít további részletes vezérlési mint felügyelői funkcióval.
+
+5.  A Kész gombra.
+
+6.  Ha azt szeretné, hogy látható legyen a felhasználók csak egy részhalmazát sablonok alkalmazások listájának megjelenésekor a sablont: Kattintson a **hatókör** részlegek sablonként konfigurálásához, majd kattintson a **az INDULÁSHOZ**. Ellenkező esetben folytassa a 9.
+
+    Részlegek sablonokkal kapcsolatos további információk: Alapértelmezés szerint minden felhasználó az Azure könyvtárban, tekintse meg a közzétett sablonokat, és azok is jelölje ki azokat az alkalmazásokat tartalom védelmére szeretne. Ha azt szeretné, hogy csak néhány a közzétett sablonok a meghatározott felhasználókra, ezek a felhasználók a sablonok kell hatókörét. Ezek a felhasználók csak ezt követően kijelölheti ezeket a sablonokat lesz. Amely nem ad meg más felhasználók nem látják a sablonok, és ezért nem választhatja ki azokat. Ezzel a módszerrel teheti a felhasználók, könnyebben megfelelő sablon kiválasztása, különösen akkor, ha azokat a csoportokat vagy osztályok által használandó tervezett sablonokat hoz létre. Majd a felhasználók látni csak a sablonok, amelyek a számukra.
+
+    Például egy sablont a HR-osztály, alkalmazza a csak olvasási engedéllyel a pénzügyi részleg létrehozott. Így csak a HR-részleg tagjai alkalmazhatja a sablon használata a Rights Management megosztóalkalmazás, a sablon az e-mailek Engedélyezve csoporthoz hatókör nevű emberi. Ez a csoport Lásd és is csak tagjai alkalmazza ezt a sablont.
+
+7.  Az a **sablon látható** lapon, jelölje be a felhasználókat és csoportokat, akik fogja tudni érni, és válassza ki a sablont az RMS-kompatibilis alkalmazások. Az előtt, ajánlott eljárásként csoportok használata helyett felhasználók és csoportok vagy felhasználók választja rendelkeznie kell egy e-mail címet.
+
+8.  Kattintson a Tovább gombra, és döntse el, hogy kell-e a részlegek sablon kompatibilitási konfigurálása. Ha rákattint, **KOMPATIBILITÁSI**, jelölje be a jelölőnégyzetet, majd kattintson **teljes**.
+
+    Miért előfordulhat, hogy konfigurálnia kell kompatibilitási? Nem minden alkalmazás részlegek sablonok is támogatja. Ehhez az szükséges, az alkalmazás első hitelesítenie kell az RMS szolgáltatással a sablonok letöltése előtt. Ha a hitelesítési folyamat nem kerül sor, alapértelmezés szerint nincs a részlegek sablonok letöltődnek. Ez a viselkedés felülbírálhatja megadásával, hogy a részlegek sablonok kell letöltenie, az alkalmazás kompatibilitását, és válassza a **Ez a sablon megjelenítése az összes felhasználó számára, ha az alkalmazások nem támogatják a felhasználói identitás** jelölőnégyzetet.
+
+    Például ha nem konfigurálja a részlegek sablon kompatibilitási ebben a példában az emberi erőforrások, csak a felhasználók a HR-részleg megjelenik a részlegek sablon használata az RMS-megosztó alkalmazás, de a felhasználók nem részlegek sablon látható, ha az Outlook Web Access (OWA) az Exchange Server 2013, mivel az OWA Exchange és az Exchange ActiveSync jelenleg nem támogatja részlegek sablonok. Ez az alapértelmezett viselkedés úgy konfigurálja az alkalmazás kompatibilitását bírálja felül, ha csak a felhasználók a HR-részleg részlegek sablon látható, az RMS-megosztó alkalmazás használnak, de minden felhasználó részlegek sablon látható, amikor az Outlook Web Access (OWA) használnak. Felhasználók OWA vagy az Exchange ActiveSync, az Exchange Online használja, ha az összes a felhasználók látni fogják a részlegek sablonok vagy felhasználók nem látják a részleg sablonokat, a sablon állapota (archiváláshoz vagy közzétett) az Exchange Online alapján.
+
+    > [!NOTE]
+    > Nincs még natív módon támogató részlegek sablonok alkalmazások akkor is használhatja a [egyéni RMS sablon letöltési parancsfájl](http://go.microsoft.com/fwlink/?LinkId=524506) vagy más eszközök ezeket a sablonokat az RMS-ügyfél helyi mappa telepítéséhez. Ezt követően ezek az alkalmazások megfelelően megjeleníti a részlegek sablonok csak a felhasználók és csoportok, a sablon hatókör kiválasztott:
     > 
-    > You can [download the custom RMS template script from the Microsoft Connect site](http://go.microsoft.com/fwlink/?LinkId=524506). If you see an error when you click this link, you probably haven't registered on Microsoft Connect.   To register:
+    > -   Az Office 2010, az ügyfél-mappa van **%localappdata%\Microsoft\DRM\Templates**.
+    > -   Az ügyfélszámítógépről, amely az összes sablon töltött le másolja, és illessze be a sablonfájlokat más számítógépekre.
     > 
-    > 1.  Go to the [Microsoft Connect site](http://www.connect.microsoft.com) and sign in with your Microsoft Account.
-    > 2.  Click **Directory**, and select the **View Connect products currently not accepting feedback** category.
-    > 3.  Search for **Rights Management Services**, and for the **Microsoft RMS Enterprise Features** program, click **Join**.
+    > Office 2016 natív módon támogatja részlegek sablonok, és ezért nem a legújabb frissítések Office 2013 ([KB 3054853](https://support.microsoft.com/kb/3054853)).
 
-9. Click **CONFIGURE** and add additional languages that users use, together with the name and description of this template in that language. When you have multi-language users, it’s important to add each language that they use, and supply a name and description in that language. Users will then see the name and description of the template in the same language as their client operating system, which ensures they understand the policy applied to a document or email message. If there is no match with their client operating system, the name and description that they see falls back to the language and description that you defined when you first created the template.
+9. Kattintson a **KONFIGURÁLÁSA** és adja hozzá a felhasználók a nevét és leírását, a sablon a nyelven együtt használja, további nyelveket. Ha a felhasználók több nyelvet, fontos a minden nyelv használják, és adjon meg egy nevet és leírást a nyelven. Felhasználók megjelenik a nevét és leírását, a sablon nyelvével azonos nyelven, az ügyfél operációs rendszer, amely biztosítja, hogy a dokumentum vagy e-mail üzenet alkalmazott házirend megértik. Ha az ügyfél operációs rendszerrel nem egyezik, neve és leírása látható visszaáll a nyelvet és a leírást, amely a sablon létrehozásakor megadott.
 
-    Then check whether you want to make any changes to the following settings:
+    Ellenőrizze, hogy kívánja-e a következő beállításokat módosíthatja:
 
-    |Setting|More information|
-    |-----------|--------------------|
-    |**content expiration**|Define a date or number of days for this template when files that are protected by the template should not open. You can specify a date or specify a number of days starting from the time that the protection is applied to the file.<br /><br />When you specify a date, it is effective midnight, in your current time zone.|
-    |**offline access**|Use this setting to balance any security requirements that you have against the requirement that users must be able to open protected files when they don’t have an Internet connection.<br /><br />If you specify that content is not available without an Internet connection or that content is only available for a specified number of days, when that threshold is reached, users must be re-authenticated and their access is logged. When this happens, if their credentials are not cached, users are prompted to sign in before they can open the file.<br /><br />In addition to re-authentication, the policy and the user group membership is re-evaluated. This means that users could experience different access results for the same file if there are changes in the policy or group membership from when they last accessed the file.|
+    |Beállítás|További információ|
+    |-------------|----------------------|
+    |**a tartalom elévülési**|Határozza meg a dátum vagy a sablon napok száma, amikor ne nyissa meg a sablon által védett fájlok. Adja meg azt a dátumot, vagy adja meg az időt, amely a fájl érvényben van a védelmi kezdve napok számát.<br /><br />Dátum megadása esetén az időzóna hatékony éjfél.|
+    |**kapcsolat nélküli hozzáférés**|Ez a beállítás használatával egyenleg e biztonsági követelmények, hogy rendelkezik szembeni követelmény, hogy a felhasználók kell tudni megnyitni védett fájlokat, ha nincs internetkapcsolat.<br /><br />Ha megadja, hogy a tartalom nem érhető el internetkapcsolat nélkül, vagy tartalom érhető el csak a megadott számú nap, a küszöbérték elérésekor az lehet, hogy újra hitelesített felhasználók és a hozzáférésüket naplózza. Ha ez történik, ha a hitelesítő adatok nem kerülnek a gyorsítótárba, a bejelentkezés előtt tudják nyitni a fájlt a rendszer kéri a felhasználókat.<br /><br />Ismételt hitelesítés mellett a házirendet, és a felhasználói csoport tagsága újra értékelt. Ez azt jelenti, hogy felhasználók működése eltérő hozzáférési eredmények ugyanaz a fájl, ha a házirend és csoporttagsága, amikor azok utolsó érhetők el a fájlt a változtatások vannak.|
 
-10. When you are confident that the template is configured appropriately for your users, click **PUBLISH** to make the template visible for users, and then click **SAVE**.
+10. Ha meggyőződött arról, hogy a sablon megfelelően vannak konfigurálva a felhasználók számára, kattintson a **Közzététel** láthatóvá a sablon a felhasználók számára, és kattintson a **MENTÉS**.
 
-11. Click the Back button in the classic portal to return to the **TEMPLATES** page, where your template now has an updated status of **Published**.
+11. Kattintson a Vissza gombra, ha vissza szeretne lépni a kezelési portálon a **SABLONOK** oldal, ahol a sablon most már frissített állapotát **közzétett**.
 
-To make any changes to your template, select it, and then use the quick start steps again. Or, select one of the following options:
+Ne módosítsa a sablon, és jelölje ki, majd ismét hajtsa végre az első lépések lépéseket. Vagy válassza ki az alábbi lehetőségek egyikét:
 
--   To add more users and groups, and define the rights for those users and groups: Click **RIGHTS**, then click **ADD**.
+-   További felhasználók és csoportok hozzáadása, és adja meg a jogok csoportok és felhasználók számára: Kattintson a **jogok**, majd kattintson az **hozzáadása**.
 
--   To remove users or groups that you previously selected: Click **RIGHTS**, select the user or group from the list, and then click **DELETE**.
+-   Felhasználók vagy csoportok, a korábban kiválasztott eltávolítása: Kattintson a **jogok**, válassza ki a felhasználót vagy csoportot a listából, és kattintson a **törlése**.
 
--   To change which users can see the templates to select them from applications: Click **SCOPE**, then click **ADD** or **DELETE**, or **APPLICATION COMPATIBILITY**.
+-   Módosításához jelölje ki azokat az alkalmazásokat a sablonok mely felhasználók láthatják: Kattintson a **hatókör**, majd kattintson **hozzáadása** vagy **törlése**, vagy **KOMPATIBILITÁSI**.
 
--   To make the template no longer visible to all users: Click **CONFIGURE**, click **ARCHIVE**, and then click **SAVE**.
+-   Láthatóvá a sablon már nem az összes felhasználó számára: Kattintson a **KONFIGURÁLÁSA**, kattintson a **ARCHÍVUM**, és kattintson a **mentése**.
 
--   To make other configuration changes: Click **CONFIGURE**, make your changes, and then click **SAVE**.
+-   Az egyéb konfigurációs módosításokat: Kattintson a **KONFIGURÁLÁSA**, végezze el a változtatásokat, és kattintson a **MENTÉS**.
 
 > [!WARNING]
-> When you make changes to a template that was previously saved, clients will not see those changes to the template until templates are refreshed on their computers. For more information, see the [Refreshing templates for users](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates) section in this topic.
+> Ha módosítja egy korábban mentett sablont, az ügyfelek nem látják ezeket a módosításokat a sablon sablonok a vállalat számítógépein frissítéséig. További információ: a [A felhasználók sablonok frissítése](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates) című szakaszában talál.
 
-## <a name="BKMK_HowToCopyTemplates"></a>How to copy a template
-If you want to create a new template that has very similar settings to an existing template, select the original template on the **TEMPLATES** page, click **COPY**, specify a unique name, and make the changes that you need.
+## <a name="BKMK_HowToCopyTemplates"></a>A sablon másolása
+Ha szeretne létrehozni egy új sablont, amely rendelkezik egy meglévő sablont nagyon hasonlít a beállításokat, jelölje be az eredeti sablonnak a a **SABLONOK** lapján kattintson **MÁSOLÁSI**, adjon meg egy egyedi nevet és a szükséges módosításokat.
 
 > [!IMPORTANT]
-> When you copy a template, the **Published** or **Archived** status is also copied. So if you copy a published template, its immediate status will be published, unless you change it.
+> Ha egy sablont másol a **közzétett** vagy **Archivált** állapot bekerül is. Így ha egy közzétett sablon másolása, azonnali állapota lesz közzétéve, amíg nem változtatja meg.
 
-You can copy custom templates and the default templates. As a best practice, copy one of the default templates instead of creating a new custom template if you want the template to grant rights to all users in your organization. This method means that you don’t have to create or select multiple groups to specify all users. In this scenario however, be sure to specify a new name and description for the copied template for additional languages.
+Egyéni és az alapértelmezett sablonok másolhatja. Ajánlott eljárásként másolása helyett egy új egyéni sablont létrehozása, ha azt szeretné, hogy a szervezet minden felhasználója számára jogosultságot adni a sablon az alapértelmezett sablonok valamelyikét. Ez a módszer azt jelenti, hogy nem kell létrehozni, vagy adja meg az összes felhasználó több csoportnak válassza. Ebben a helyzetben azonban nem biztos benne, hogy új nevét és a további nyelveket a másolt sablon leírását adja meg.
 
-## <a name="BKMK_HowToArchiveTemplates"></a>How to remove (archive) templates
-The default templates cannot be deleted, but they can be archived so that users do not see them.
+## <a name="BKMK_HowToArchiveTemplates"></a>(Archívum) sablonok eltávolítása
+Az alapértelmezett sablonok nem lehet törölni, de archiválva, hogy a felhasználók nem látják azokat.
 
-Similarly, if you have published a custom template and no longer want users to be able to see it, you can edit the template and choose **ARCHIVE** and **SAVE** from the **CONFIGURE** page. Or, you can select it from the **TEMPLATES** page and select **ARCHIVE**.
+Hasonlóan közzétett rendelkeznek egy egyéni sablont, és már nem szeretné látni, hogy a felhasználók, ha szerkesztheti a sablont, és válassza a **ARCHÍVUM** és **mentése** a a **KONFIGURÁLÁSA** oldalon. Vagy választhatja azt a **SABLONOK** lapon, és válassza **ARCHÍVUM**.
 
-Because you cannot edit the default templates, to archive these templates, you must use the **ARCHIVE** option from the **TEMPLATES** page. You cannot archive the Outlook **Do Not Forward** option.
+Mivel az alapértelmezett sablonokat archiválására ezeket a sablonokat nem lehet szerkeszteni kell használnia a **ARCHÍVUM** a beállítást a **SABLONOK** lap. Az Outlook nem archiválja **nem továbbítható** beállítást.
 
-#### To remove a default template
+#### Alapértelmezett sablon eltávolítása
 
--   From the **TEMPLATES** page, select the default template, and click **ARCHIVE**.
+-   Az a **SABLONOK** lapon válassza ki az alapértelmezett sablont, és kattintson a **ARCHÍVUM**.
 
-The status changes from **Published** to **Archived**. If you change your mind, select the template and click **PUBLISH**.
+A állapota változik **közzétett** a **Archivált**. Ha meggondolja magát, válassza ki a sablont, és kattintson a **Közzététel**.
 
-## <a name="BKMK_RefreshingTemplates"></a>Refreshing templates for users
-When you use Azure RMS, templates are automatically downloaded to client computers so that users can select them from their applications. However, you might need to take additional steps if you make changes to the templates:
+## <a name="BKMK_RefreshingTemplates"></a>A felhasználók sablonok frissítése
+Azure RMS használatakor sablonok automatikusan letöltődnek ügyfélszámítógépekre, hogy a felhasználók közül lehet választani azokat az alkalmazásokat. Azonban szükség lehet további lépéseket, ha módosítja a sablonokat:
 
-|Application or service|How templates are refreshed after changes|
-|--------------------------|---------------------------------------------|
-|Exchange Online|Manual configuration required to refresh templates.<br /><br />For the configuration steps, expand the following section, [Exchange Online only: How to configure Exchange to download changed custom templates](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_ExchangeOnlineTemplatesUpdate).|
-|Office 365|Automatically refreshed  – no additional steps required.|
-|Office 2016 and Office 2013<br /><br />RMS sharing application for Windows|Automatically refreshed – on a schedule:<br /><br />For these later versions of Office: The default refresh interval  is every 7 days.<br /><br />For the RMS sharing application for Windows: Starting with version 1.0.1784.0, the default refresh interval is every 1 day. Prior versions have a default refresh interval of every 7 days.<br /><br />To force a refresh sooner than this schedule, expand the following section, [Office 2016, Office 2013, and RMS sharing application for Windows: How to force a refresh for a changed custom template](#BKMK_Office2013ForceUpdate).|
-|Office 2010|Refreshed when users log on.<br /><br />To force a refresh, ask or force users to log off and log back on again. Or, see the following section, [Office 2010 only: How to force a refresh for a changed custom template](#BKMK_Office2010ForceUpdate).|
-For mobile devices that use the RMS sharing application, templates are automatically downloaded (and refreshed if necessary) without additional configuration required.
+|Alkalmazás vagy szolgáltatás|Sablonok módosítása után frissítésének módját|
+|--------------------------------|-------------------------------------------------|
+|Exchange online-hoz|Manuális konfiguráció sablonok frissítéséhez szükséges.<br /><br />Bontsa ki az alábbi szakasz a konfigurációs lépéseket [Exchange Online csak: Töltse le az Exchange konfigurálása megváltozott egyéni sablonokkal](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_ExchangeOnlineTemplatesUpdate).|
+|Office 365-höz|Automatikusan frissülnek – nem szükséges további lépéseket.|
+|Office 2016 és Office 2013<br /><br />RMS-megosztó alkalmazás Windows rendszerhez|Automatikusan frissülnek – ütemezés szerint:<br /><br />-   Ezek az Office újabb verziója: Az alapértelmezett frissítési időköze 7 naponta fut.<br />-   Az RMS-megosztó alkalmazás Windows: Az alapértelmezett frissítési időköze 1.0.1784.0 verziójától kezdve, minden nap. Korábbi verziók van egy alapértelmezett frissítési időköze 7 naponta.<br /><br />Az ütemezés hamarabb kikényszeríti, bontsa ki az alábbi szakasz [Office 2016, Office 2013 és az RMS-megosztó alkalmazás Windows: A módosított egyéni sablon frissítése kényszerítése](#BKMK_Office2013ForceUpdate).|
+|Az Office 2010|A felhasználók bejelentkezéskor frissíteni.<br /><br />Kikényszeríti, kérje meg, vagy jelentkezzen ki, és jelentkezzen be újra a felhasználókat. Vagy a következő részben [Csak az Office 2010: A módosított egyéni sablon frissítése kényszerítése](#BKMK_Office2010ForceUpdate).|
+Az RMS-megosztó alkalmazás használó mobil eszközök sablonok automatikusan letöltődnek (és frissítése, ha szükséges) szükséges további konfiguráció nélkül.
 
-### <a name="BKMK_ExchangeOnlineTemplatesUpdate"></a>Exchange Online only: How to configure Exchange to download changed custom templates
-If you have already configured Information Rights Management (IRM) for Exchange Online, custom templates will not download for users until you make the following changes by using Windows PowerShell in Exchange Online.
+### <a name="BKMK_ExchangeOnlineTemplatesUpdate"></a>Exchange Online csak: Töltse le az Exchange konfigurálása megváltozott egyéni sablonokkal
+Felügyeleti szolgáltatás (IRM) már konfigurálta az Exchange online-hoz, ha egyéni sablonok nem letölti a felhasználók mindaddig, amíg módosítja a következő Windows PowerShell használatával az Exchange Online.
 
 > [!NOTE]
-> For more information about how to use Windows PowerShell in Exchange Online, see [Using PowerShell with Exchange Online](https://technet.microsoft.com/library/jj200677%28v=exchg.160%29.aspx).
+> További információ a Windows PowerShell használatáról az Exchange Online: [PowerShell használatával az Exchange Online](https://technet.microsoft.com/library/jj200677%28v=exchg.160%29.aspx).
 
-You must do this procedure each time you change a template.
+Ez az eljárás minden alkalommal, amikor módosítja egy sablont kell megtennie.
 
-##### To update templates for Exchange Online
+##### Az Exchange Online-sablonok frissítése
 
-1.  Using Windows PowerShell in Exchange Online, connect to the service:
+1.  A Windows PowerShell használatával az Exchange Online, kapcsolódni a szolgáltatáshoz:
 
-    1.  Supply your Office 365 user name and password:
+    1.  Adja meg az Office 365 felhasználónevet és jelszót:
 
         ```
         $Cred = Get-Credential
         ```
 
-    2.  Connect to the Exchange Online service by running the following two commands:
+    2.  Kapcsolódás az Exchange Online szolgáltatás a következő két parancsok futtatásával:
 
         ```
         $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell/ -Credential $Cred -Authentication Basic –AllowRedirection
@@ -246,148 +239,148 @@ You must do this procedure each time you change a template.
         Import-PSSession $Session
         ```
 
-2.  Use the [Import-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200724%28v=exchg.160%29.aspx) cmdlet to re-import your trusted publishing domain (TPD) from Azure RMS:
+2.  Használja a [Import-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200724%28v=exchg.160%29.aspx) parancsmaggal importálja újra a megbízható közzétételi tartomány (TPD) Azure RMS:
 
     ```
     Import-RMSTrustedPublishingDomain -Name "<TPD name>" -RefreshTemplates -RMSOnline
     ```
-    For example, if your TPD name is **RMS Online - 1** (a typical name for many organizations), enter: **Import-RMSTrustedPublishingDomain -Name "RMS Online - 1" -RefreshTemplates -RMSOnline**
+    Ha például a TPD neve **RMS Online – 1** (jellemző nevét számos szervezet), adja meg: **Import-RMSTrustedPublishingDomain -Name "RMS Online - 1" -RefreshTemplates -RMSOnline**
 
     > [!NOTE]
-    > To verify your TPD name, you can use the [Get-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200707%28v=exchg.160%29.aspx) cmdlet.
+    > A TPD neve ellenőrzéséhez használja a [Get-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200707%28v=exchg.160%29.aspx) parancsmagot.
 
-3.  To confirm that the templates have imported successfully, wait a few minutes and then run the [Get-RMSTemplate](http://technet.microsoft.com/library/dd297960%28v=exchg.160%29.aspx) cmdlet and set the Type to All. For example:
+3.  Győződjön meg arról, hogy a sablonok sikeresen importálta, várjon néhány percet, majd futtassa a [Get-RMSTemplate](http://technet.microsoft.com/library/dd297960%28v=exchg.160%29.aspx) parancsmag és az összes típust kell beállítania. Példa:
 
     ```
     Get-RMSTemplate -TrustedPublishingDomain "RMS Online - 1" -Type All
     ```
     > [!TIP]
-    > It's useful to keep a copy of the output so that you can easily copy the template names or GUIDs if you later archive a template.
+    > Akkor célszerű megtartani egy másolatot, a kimenet, így egyszerűen másolhatja a sablon nevét, vagy a GUID egy sablont később archiválja.
 
-4.  For each imported template that you want to be available in the Outlook Web App, you must use the [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet and set the Type to Distributed:
+4.  Minden egyes importált sablont, amelyet az Outlook Web Appjét elérhetőnek kell lenniük, a kell használnia a [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) parancsmag és az elosztott típust kell beállítania:
 
     ```
     Set-RMSTemplate -Identity "<name  or GUID of the template>" -Type Distributed
     ```
-    Because Outlook Web Access caches the UI for 24 hours, users might not see the new template for up to a day.
+    Mivel az Outlook Web Access gyorsítótárazza a felhasználói felület, 24 órán belül, a felhasználók nem láthatják az új sablon a naponta legfeljebb.
 
-In addition, if you archive a template (custom or default) and use Exchange Online with Office 365, users will continue to see the archived templates if they use the Outlook Web App or mobile devices that use the Exchange ActiveSync Protocol.
+Emellett ha egy sablon archiválja (egyéni vagy alapértelmezett), és használja az Exchange Online és az Office 365, felhasználók továbbra is az archivált sablonok megtekintéséhez, ha az Outlook Web Appjét vagy mobil eszközöket, amelyek az Exchange ActiveSync protokoll használnak.
 
-So that users no longer see these templates, connect to the service by using Windows PowerShell in Exchange Online, and then use the [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet by running the following command:
+Úgy, hogy a felhasználók többé nem látja a sablonok, az Exchange Online Windows PowerShell használatával kapcsolódni a szolgáltatáshoz, és ezután a [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) parancsmag a következő parancs futtatásával:
 
 ```
 Set-RMSTemplate -Identity "<name or GUID of the template>" -Type Archived
 ```
 
-### <a name="BKMK_Office2013ForceUpdate"></a>Office 2016,  Office 2013, and RMS sharing application for Windows: How to force a refresh for a changed custom template
-By editing the registry on the computers running Office 2016, Office 2013, or the Rights Management (RMS) sharing application for Windows, you can change the automatic schedule so that changed templates are refreshed on computers more frequently than their default value. You can also force an immediate refresh by deleting the existing data in a registry value.
+### <a name="BKMK_Office2013ForceUpdate"></a>Office 2016, Office 2013 és az RMS-megosztó alkalmazás Windows: A módosított egyéni sablon frissítése kényszerítése
+Office 2016, Office 2013 vagy a Rights Management (RMS) megosztóalkalmazás Windows rendszerű számítógépeken a beállításjegyzék szerkesztésével módosíthatja az automatikus ütemezést, hogy megváltozott-sablonok frissítése számítógépeken gyakrabban az alapértelmezett érték. Az azonnali frissítéshez kényszeríthet a meglévő adatok törlése a beállításazonosítót.
 
 > [!WARNING]
-> If you use the Registry Editor incorrectly, you might cause serious problems that might require you to reinstall the operating system. Microsoft cannot guarantee that you can solve problems that result from using the Registry Editor incorrectly. Use the Registry Editor at your own risk.
+> A Beállításszerkesztő helytelen használata, ha akkor súlyos problémákat okozhat, amelyek az operációs rendszer újratelepítését tehetik szükségessé. A Microsoft nem garantálja, hogy a Beállításszerkesztő nem megfelelő használatából fakadó problémák megoldhatók. A Beállításszerkesztőt saját kockázatára használhatja.
 
-##### To change the automatic schedule
+##### Az automatikus ütemezésének módosítása
 
-1.  Using a registry editor, create and set one of the following registry values:
+1.  A beállításjegyzék-szerkesztőben, hozzon létre és egyet a következő beállításazonosítókat:
 
-    -   To set an update frequency in days (minimum of 1 day):  Create a new registry value named **TemplateUpdateFrequency** and define an integer value for the data, which specifies the frequency in days to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+    -   A frissítés gyakoriságát beállítása a nap (legalább 1 nap):  Hozzon létre egy új beállításazonosító **TemplateUpdateFrequency** és adatok, és módosításokat letöltéséhez letöltött sablon napokban gyakoriságát határozza meg egy egész számot határozza meg. Az alábbi táblázat segítségével megkeresheti a beállításjegyzékbeli elérési utat a új beállításazonosító létrehozásához.
 
-        |Registry path|Type|Value|
-        |-----------------|--------|---------|
-        |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|REG_DWORD|TemplateUpdateFrequency|
+        |A beállításjegyzék elérési útja|Típusa|Érték|
+        |-----------------------------------|----------|---------|
+        |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|A REG_DWORD|TemplateUpdateFrequency|
 
-    -   To set an update frequency in seconds (minimum of 1 second):  Create a new registry value named **TemplateUpdateFrequencyInSeconds** and define an integer value for the data, which specifies the frequency in seconds to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+    -   A frissítés gyakoriságát megadása másodpercben (legalább 1 másodperc):  Hozzon létre egy új beállításazonosító **TemplateUpdateFrequencyInSeconds** és adatok, és minden olyan változás letöltéséhez letöltött sablon másodpercben gyakoriságát határozza meg egy egész számot határozza meg. Az alábbi táblázat segítségével megkeresheti a beállításjegyzékbeli elérési utat a új beállításazonosító létrehozásához.
 
-        |Registry path|Type|Value|
-        |-----------------|--------|---------|
-        |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|REG_DWORD|TemplateUpdateFrequencyInSeconds|
+        |A beállításjegyzék elérési útja|Típusa|Érték|
+        |-----------------------------------|----------|---------|
+        |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|A REG_DWORD|TemplateUpdateFrequencyInSeconds|
 
-    Make sure that you create and set one of these registry values, not both. If both are present, **TemplateUpdateFrequency** is ignored.
+    Győződjön meg arról, hozzon létre, és egyet beállításértékek, kettő egyszerre nem. Ha telepítve van, mindkettő **TemplateUpdateFrequency** figyelmen kívül hagyja.
 
-2.  If you want to force an immediate refresh of the templates, go to the next procedure. Otherwise, restart your Office applications and instances of File Explorer now.
+2.  Ha a sablonok az azonnali frissítéshez kényszeríteni kívánja, folytassa a a következő eljárást. Ellenkező esetben indítsa újra az Office alkalmazások és a Fájlkezelőben példányai most.
 
-##### To force an immediate refresh
+##### Az azonnali frissítéshez kényszerítése
 
-1.  Using a registry editor, delete the data for the **LastUpdatedTime** value. For example, the data might display **2015-04-20T15:52**; delete 2015-04-20T15:52 so that no data is displayed. Use the following table to locate the registry path to delete this registry value data.
+1.  A Beállításszerkesztő segítségével törli az adatokat a **LastUpdatedTime** értéket. Például előfordulhat, hogy az adatokat jeleníti meg **2015-04-20T15:52**; törlése 2015-04-20T15:52, hogy az adatokat nem jelenik meg. Az alábbi táblázat segítségével megkeresheti a beállításjegyzékbeli elérési utat a beállításérték törlése.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
-    |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;MicrosoftRMS_FQDN&gt;\Template|REG_SZ|LastUpdatedTime|
+    |A beállításjegyzék elérési útja|Típusa|Érték|
+    |-----------------------------------|----------|---------|
+    |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\ &lt; MicrosoftRMS_FQDN &gt; \Template|REG_SZ|LastUpdatedTime|
     > [!TIP]
-    > In the registry path, *&lt;MicrosoftRMS_FQDN&gt;* refers to your Microsoft RMS service FQDN. If you want to verify this value:
+    > A beállításjegyzékbeli elérési utat a *&lt; MicrosoftRMS_FQDN &gt;* hivatkozik a Microsoft RMS szolgáltatás teljes Tartománynevét. Ha azt szeretné, ez az érték ellenőrzése:
     > 
-    > 1.  Run the [Get-AadrmConfiguration](https://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet for Azure RMS. If you haven’t already installed the Windows PowerShell module for Azure RMS, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
-    > 2.  From the output, identify the **LicensingIntranetDistributionPointUrl** value.
+    > 1.  Futtassa a [Get-AadrmConfiguration](https://msdn.microsoft.com/library/windowsazure/dn629410.aspx) Azure RMS parancsmagot. Ha még nem már telepítette a Windows PowerShell modul Azure RMS, tekintse meg a [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+    > 2.  A kimenetben azonosítja a **LicensingIntranetDistributionPointUrl** értéket.
     > 
-    >     For example: **LicensingIntranetDistributionPointUrl   : https://5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com/_wmcs/licensing**
-    > 3.  From the value, remove **https://** and **/_wmcs/licensing** from this string. The remaining value is your Microsoft RMS service FQDN. In our example, the Microsoft RMS service FQDN would be the following value:
+    >     Példa: **LicensingIntranetDistributionPointUrl: https://5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com/_wmcs/licensing**
+    > 3.  Távolítsa el a értékből **https://** és **/_wmcs/licencelés** a karakterláncból. A többi érték a Microsoft RMS szolgáltatás teljes Tartománynevét. A fenti példában a Microsoft RMS szolgáltatás FQDN lenne a következő értéket:
     > 
     >     **5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com**
 
-2.  Delete the following folder and all files it contains: **%localappdata%\Microsoft\MSIPC\Templates**
+2.  A következő mappát, és a benne található összes fájl törlése: **%localappdata%\Microsoft\MSIPC\Templates**
 
-3.  Restart your Office applications and instances of File Explorer.
+3.  Indítsa újra az Office alkalmazások és a Fájlkezelőben példányai.
 
-### <a name="BKMK_Office2010ForceUpdate"></a>Office 2010 only: How to force a refresh for a changed custom template
-By editing the registry on the computers running Office 2010, you can set a value so that changed templates are refreshed on computers without waiting for users to log off and back on. You can also force an immediate refresh by deleting the existing data in a registry value.
+### <a name="BKMK_Office2010ForceUpdate"></a>Csak az Office 2010: A módosított egyéni sablon frissítése kényszerítése
+Az Office 2010-et futtató számítógépekre a beállításjegyzék szerkesztésével beállíthatja, hogy megváltozott sablonokat számítógépek frissítése nélkül a felhasználók számára, jelentkezzen ki, és a biztonsági értéket. Az azonnali frissítéshez kényszeríthet a meglévő adatok törlése a beállításazonosítót.
 
 > [!WARNING]
-> If you use the Registry Editor incorrectly, you might cause serious problems that might require you to reinstall the operating system. Microsoft cannot guarantee that you can solve problems that result from using the Registry Editor incorrectly. Use the Registry Editor at your own risk.
+> A Beállításszerkesztő helytelen használata, ha akkor súlyos problémákat okozhat, amelyek az operációs rendszer újratelepítését tehetik szükségessé. A Microsoft nem garantálja, hogy a Beállításszerkesztő nem megfelelő használatából fakadó problémák megoldhatók. A Beállításszerkesztőt saját kockázatára használhatja.
 
-##### To change the update frequency
+##### A frissítési gyakoriság módosítása
 
-1.  Using a registry editor, create a new registry value named **UpdateFrequency** and define an integer value for the data, which specifies the frequency in days to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+1.  A Beállításszerkesztő segítségével hozzon létre egy új beállításazonosító **UpdateFrequency** és adatok, és módosításokat letöltéséhez letöltött sablon napokban gyakoriságát határozza meg egy egész számot határozza meg. Az alábbi táblázat segítségével megkeresheti a beállításjegyzékbeli elérési utat a új beállításazonosító létrehozásához.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
-    |HKEY_CURRENT_USER\Software\Microsoft\MSDRM\TemplateManagement|REG_DWORD|UpdateFrequency|
+    |A beállításjegyzék elérési útja|Típusa|Érték|
+    |-----------------------------------|----------|---------|
+    |HKEY_CURRENT_USER\Software\Microsoft\MSDRM\TemplateManagement|A REG_DWORD|UpdateFrequency|
 
-2.  If you want to force an immediate refresh of the templates, go to the next procedure. Otherwise, restart your Office applications now.
+2.  Ha a sablonok az azonnali frissítéshez kényszeríteni kívánja, folytassa a a következő eljárást. Ellenkező esetben újraindítja most az Office-alkalmazásait.
 
-##### To force an immediate refresh
+##### Az azonnali frissítéshez kényszerítése
 
-1.  Using a registry editor, delete the data for the **LastUpdatedTime** value. For example, the data might display **2015-04-20T15:52**; delete 2015-04-20T15:52 so that no data is displayed. Use the following table to locate the registry path to delete this registry value data.
+1.  A Beállításszerkesztő segítségével törli az adatokat a **LastUpdatedTime** értéket. Például előfordulhat, hogy az adatokat jeleníti meg **2015-04-20T15:52**; törlése 2015-04-20T15:52, hogy az adatokat nem jelenik meg. Az alábbi táblázat segítségével megkeresheti a beállításjegyzékbeli elérési utat a beállításérték törlése.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
+    |A beállításjegyzék elérési útja|Típusa|Érték|
+    |-----------------------------------|----------|---------|
     |HKEY_CURRENT_USER\Software\Microsoft\MSDRM\TemplateManagement|REG_SZ|lastUpdatedTime|
 
-2.  Delete the following folder and all files it contains: **%localappdata%\Microsoft\MSIPC\Templates**
+2.  A következő mappát, és a benne található összes fájl törlése: **%localappdata%\Microsoft\MSIPC\Templates**
 
-3.  Restart your Office applications.
+3.  Indítsa újra az Office-alkalmazásait.
 
-## <a name="BKMK_PowerShellTemplates"></a>Windows PowerShell reference
-Everything that you can do in the Azure classic portal to create and manage templates, you can do from the command line, by using Windows PowerShell. In addition, you can export and import templates, so that you can copy templates between tenants or perform bulk edits of complex properties in templates, such as multilingual names and descriptions.
+## <a name="BKMK_PowerShellTemplates"></a>A Windows PowerShell-hivatkozás
+Minden, ami teheti Azure felügyeleti portálon hozhat létre és kezelhet sablonok végrehajthat a parancssorból, a Windows PowerShell használatával. Emellett is exportálhatja és sablonok, importálja, hogy másolja a bérlők között, vagy végezze el a komplex tulajdonságokat tömeges Szerkesztés sablonok, például a többnyelvű nevét és leírását.
 
-You can also use export and import to back up and restore your custom templates, As a best practice, regularly back up your custom templates, so that if you make a change that was not intended, you can easily revert to a previous version.
+Exportálás is használható, és biztonsági mentése és visszaállítása az egyéni sablonok bevált gyakorlat az importált, rendszeresen biztonsági másolatot készíteni az egyéni sablonokat úgy, hogy nem készült módosítást, ha egyszerűen visszatérhet egy korábbi verziót.
 
 > [!IMPORTANT]
-> To use Windows PowerShell to create and manage Azure RMS rights policy templates, you must have at least version 2.0.0.0 of the [Windows PowerShell module for Azure RMS](http://go.microsoft.com/fwlink/?LinkId=257721).
+> Windows PowerShell használatával létrehozása és kezelése az Azure RMS jogmegadási sablonok, rendelkeznie kell legalább 2.0.0.0 verzióját a [Azure RMS Windows PowerShell-modul](http://go.microsoft.com/fwlink/?LinkId=257721).
 > 
-> If you have previously installed this Windows PowerShell module, run the following command in a PowerShell window to check the version number: `(Get-Module aadrm -ListAvailable).Version`
+> Ha korábban telepítette a Windows PowerShell-modul, a következő parancsot egy PowerShell-ablak verziószámának ellenőrzése: `(Get-Module aadrm -ListAvailable).Version`
 
-For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+Telepítési tudnivalókat lásd: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-The cmdlets that support creating and managing templates:
+A parancsmagok létrehozása és kezelése sablonok támogató:
 
--   [Add-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727075.aspx)
+-   [Hozzáadás AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727075.aspx)
 
--   [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx)
+-   [Exportálás-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx)
 
 -   [Get-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727079.aspx)
 
 -   [Get-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727081.aspx)
 
--   [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx)
+-   [Importálás-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx)
 
--   [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx)
+-   [Új AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx)
 
--   [Remove-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727082.aspx)
+-   [Eltávolítás-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727082.aspx)
 
 -   [Set-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx)
 
-## Next steps
-After you’ve configured custom templates for Azure Rights Management, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) to check whether there are other configuration steps that you might want to do before you roll out [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] to users and administrators. If there are no other configuration steps that you need to do, see [Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md) for operational guidance to support a successful deployment for your organization.
+## További lépések
+Miután konfigurálta az egyéni sablonok Azure Rights Management, használja a [Azure Rights Management – üzembehelyezési menetrend](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) történő ellenőrzése, hogy további konfigurációs lépéseket forgassa előtt célszerű [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] felhasználók és rendszergazdák. Ha nincs más konfigurációs lépésre meg szeretné tekinteni, [Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md) a sikeres telepítését támogatja a szervezet működési útmutatást.
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

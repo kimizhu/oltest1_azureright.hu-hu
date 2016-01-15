@@ -3,36 +3,35 @@ description: na
 keywords: na
 title: Remove protection from a file by using the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: da95b938-eaad-4c83-a21e-ff1d4872aae4
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Remove protection from a file by using the Rights Management sharing application
-To remove protection from a file (that is, unprotect a file) that was previously protected by using the RMS sharing application, use the **Remove Protection** option from File Explorer.
+# A Rights Management megoszt&#243;alkalmaz&#225;s haszn&#225;lat&#225;val egy f&#225;jl v&#233;delm&#233;nek megsz&#252;ntet&#233;se
+Fájl védelmének eltávolításához (Ez azt jelenti, hogy a fájl védelem), amely az RMS-megosztó alkalmazás segítségével korábban már védett, használnia a **távolítsa el a védelmi** fájl Explorer lehetőséget.
 
 > [!IMPORTANT]
-> You must be an owner of the file to remove protection.
+> A fájl a védelem megszüntetéséhez tulajdonos kell lennie.
 
-### To remove protection from a file
+### A védelem megszüntetéséhez-fájlból
 
-1.  From File Explorer, right-click the file (for example, Sample.ptxt), select **Protect with RMS**, click **Protect in-place**, and then click **Remove Protection**:
+1.  A fájl Explorer, kattintson a jobb gombbal a fájl (például Sample.ptxt), jelölje be **védelme az RMS**, kattintson a **védelem**, és kattintson a **távolítsa el a védelmi**:
 
     ![](../Image/ADRMS_MSRMSApp_RemoveProtection.png)
 
-    You might be prompted for credentials.
+    Előfordulhat, hogy bekéri az Ön hitelesítő adatokat.
 
-The original protected file is deleted (for example, Sample.ptxt) and replaced with a file that has the same name but with the unprotected file name extension (for example, Sample.txt).
+Az eredeti védett fájlt (például Sample.ptxt) törlődik, és olyan fájl, amelynek ugyanaz a neve, de a védelem nélküli fájlnévkiterjesztést (például példa.txt) helyettesíti.
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

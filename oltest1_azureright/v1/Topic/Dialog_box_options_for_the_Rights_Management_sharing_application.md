@@ -3,64 +3,63 @@ description: na
 keywords: na
 title: Dialog box options for the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 7b91ab30-6363-4929-bcbd-4dfbd05f644a
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Dialog box options for the Rights Management sharing application
-Use this information to help you specify the options in the RMS sharing application **add protection** dialog box or the **share protected** dialog box. You will see this dialog box when you [protect a file to share](http://technet.microsoft.com/library/dn574735.aspx) or you [protect a file in place](http://technet.microsoft.com/library/dn574733.aspx) and choose custom permissions.
+# A Rights Management megoszt&#243;alkalmaz&#225;s p&#225;rbesz&#233;dpanel be&#225;ll&#237;t&#225;sai
+Ezt az információt segítségével, akkor adja meg a beállításokat az RMS-megosztó alkalmazás a **védelem hozzáadása** párbeszédpanel vagy a **védett megosztás** párbeszédpanel megnyitásához. Látni fogja az ezen a párbeszédpanelen mezőben, ha Ön [osztani egy fájl védelme](http://technet.microsoft.com/library/dn574735.aspx) vagy [helyen egy fájl védelme](http://technet.microsoft.com/library/dn574733.aspx) és válassza az egyéni engedélyek.
 
 > [!IMPORTANT]
-> If the options you see are different from those documented here, you probably don’t have the latest version of the sharing application installed. You can download the latest version from the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page.
+> Ha a beállításokat lát eltérnek a itt dokumentált, valószínűleg nem rendelkezik telepített megosztási alkalmazás legújabb verzióját. Letöltheti a legújabb verzióját a [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) oldalon.
 > 
-> How do you know if you have the latest version? Look for **Microsoft Rights Management sharing application** listed in Programs and Features, and check the corresponding version number. To see and use the options in the table, the version should be at least **1.0.1770.0**. You can check the latest version number from the download page.
+> Honnan meg, hogy van-e a legújabb verzióra? Keressen **a Microsoft Rights Management megosztóalkalmazás** felsorolt programok és szolgáltatások, és tekintse meg a megfelelő verziószám. Tekintse meg, és a beállítások a táblázatban, a verzióját kell legalább **1.0.1770.0**. Ellenőrizheti, hogy a legújabb verziója szám a letöltési lapra.
 
-In addition to the options that you can choose, you might also be wondering:
+A választható lehetőségek, kívül is felmerülhet:
 
--   [What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
+-   [Mi az automatikusan létrehozott .ppdf fájlhoz?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
 
--   [What’s the difference between generic protection and built-in (native) protection?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative)
+-   [Mi az általános védelmi és beépített (natív) protection közötti különbség?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative)
 
-|Option|Description|
-|----------|---------------|
-|**USERS**|If you haven’t already specified an email address from Outlook, type the email addresses of the people that you want to be able to open the file.<br /><br />If your organization uses the on-premises version of Rights Management (AD RMS), the email addresses you can  specify are restricted to  people within your organization. When this applies, and you try to specify external email addresses, you will see a message that says your company configuration allows sharing of protected content only within the company. However, if your organization uses Azure RMS, these email addresses can be for people within  your  organization, or for people in another organization.<br /><br />For example: janetm@contoso.com; p.dover@fabrikam.com|
-|**Generic Protection**|If this option is selected, it means that the file you selected cannot be natively protected. For more information, see. [What’s the difference between generic protection and built-in (native) protection?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative) in this topic.|
-|**Viewer – View Only**<br /><br />**Reviewer – View and Edit**<br /><br />**Co-Author – View, Edit, Copy, and Print**<br /><br />**Co-Owner – All Permissions**<br /><br />Note: All these options have a round icon before the name, which represent a world globe. This icon is used because typically, you select one of these options when you send your attachment to somebody in a different organization.|Select one of these options if you want to define the rights for your protected document. Click each option to view a description.<br /><br />When you choose one of these options, only the people you specify in **USERS** have the rights you specify to open and use the document. For example, if they forward to somebody else, the document would not open.|
-|Policy templates that your administrator configures.<br /><br />For example, if your company name is Contoso, Ltd: **Contoso, Ltd - Confidential View Only**<br /><br />Note: All these options have a square icon before the name, which represent an office building. This icon is used because typically, you select one of these options when you send your attachment to somebody in your organization.|When you share a document with people who work for your organization, you see the available policy templates that your administrator configures. Choose one of these when the document should not be shared outside your organization.<br /><br />When you choose one of these options, your administrator defines the rights for the document and who can open it.|
-|**Expire these documents on**|Select this option only for time-sensitive files that the users that you selected should not be able to open after a date that you specify. You will still be able to open the original file but after midnight (your current time zone), on the day that you specify, others will not be able to open the file.<br /><br />This option is not available if you select a policy template that your administrator configures.|
-|**Email me when somebody tries to open these documents**|Note: This option is currently in preview.<br /><br />Select this option if you want to receive email notifications whenever somebody tries to open the document that you’re protecting. The email message will say who tried to open it, when, and whether they were successful.<br /><br />This option is available only if your organization uses Azure RMS. If your organization uses the on-premises version of Rights Management (AD RMS), you will not see this option.|
-|**Allow me to instantly revoke access to these documents**|Choose this option if you might need to revoke access to the documents later by using the document tracking site, and revocation needs to take effect immediately. However, setting this option means that while the document is not revoked, users always need an Internet connection to read the document, each time they access it. There might be some scenarios where users can’t connect their device to the Internet, and users can’t read your document as you intended.<br /><br />If you do not choose this option, you can still revoke the documents later, by using the document tracking site. However, because users do not always need an Internet connection to read the document, they won’t know immediately that the document is revoked and can continue to read it until they next authenticate with Azure RMS. By default, the maximum number of days that somebody could continue to read a protected document that you’ve revoked is 30 days, but an administrator can change this value to be fewer or greater than 30 days.<br /><br />This option is available only if your organization uses Azure RMS. If your organization uses the on-premises version of Rights Management (AD RMS), you will not see this option.|
+|A beállítás|Leírása|
+|---------------|-----------|
+|**A FELHASZNÁLÓK**|Ha még nem már megadott Outlook e-mail cím, írja be a lehet megnyitni a fájlt kívánt személyek e-mail címét.<br /><br />A szervezet a Rights Management (AD RMS) helyszíni verzióját használja, ha az Itt adhatja meg az e-mail címekre csak a szervezeten belüli személyek. Ha ez vonatkozik, és próbálja beállítani a külső e-mail cím, a vállalati konfiguráció lehetővé teszi, hogy a védett tartalom csak a vállalaton belüli megosztását értesítő üzenet jelenik meg. Azonban ha a szervezet Azure RMS használ, ezekre az e-mail címekre lehet a szervezeten belüli személyek, vagy egy másik szervezet tagjai.<br /><br />Például: janetm@contoso.com; p.dover@Fabrikam.com|
+|**Általános védelmi**|Ha ezt a lehetőséget választja, az azt jelenti, hogy a kiválasztott fájl nem lehet natív módon védetté tenni. További tudnivalókért tekintse meg. [Mi az általános védelmi és beépített (natív) protection közötti különbség?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_GenericNative) a jelen témakörben található.|
+|**Viewer – csak a nézet**<br /><br />**Felülvizsgáló – megtekintése és szerkesztése**<br /><br />**Társ Szerző – nézet, a Szerkesztés, a másolás és a nyomtatás**<br /><br />**Társ tulajdonos – minden engedély** **Note:** Ezekkel a beállításokkal rendelkezik a előtt a nevét, a kerekítés ikon képviselt egy globális földgolyó méretét. Az ikon szolgál, mert általában valamelyikét választja ki ezeket a beállításokat a melléklet, hogy valaki egy másik szervezet küldésekor.|Válassza ki az alábbi lehetőségek egyikét, ha azt szeretné, hogy a jogok a védett dokumentum meghatározásához. Kattintson az egyes beállítások megtekintéséhez leírását.<br /><br />Ha úgy dönt, az alábbi lehetőségek egyikét, csak a felhasználók megadott **felhasználók** a megfelelő engedélyekkel rendelkezik adja meg, ha megnyitása és használata a dokumentumot. Például ha azok továbbítani valaki másnak, a dokumentum nem nyitja meg.|
+|Házirend-sablonok, amely a rendszergazda konfigurálja.<br /><br />Ha például a vállalat nevét a Contoso, Ltd.: **Contoso, Ltd. - csak a bizalmas megtekintése** **Note:** Ezek a beállítások egy office felépítése határoz meg, amely a nevet, mielőtt egy szögletes ikon rendelkezik. Erre az ikonra használatos, mert általában valamelyikét választja ki ezeket a beállításokat a melléklet, hogy valaki a szervezet küldésekor.|Ha dokumentumot oszt működik, akik a szervezetben, tekintse meg az elérhető sablonok, amely a rendszergazda konfigurálja. Válassza ki az egyik ezek a dokumentum nem lehet megosztott saját szervezetén kívül.<br /><br />Ha úgy dönt, az alábbi lehetőségek egyikét, a rendszergazda határozza meg a jogok a dokumentum, és azt, aki megnyitható.|
+|**Ezeket a dokumentumokat lejárati dátuma**|Jelölje be ezt a lehetőséget csak időérzékeny fájlok, amelyek a kiválasztott felhasználók nem kell egy Ön által megadott dátum után nyissa meg. Továbbra is fogja tudni megnyitni az eredeti fájlt, de éjfél (a jelenlegi időzóna), a megadott napon, után mások nem tudják megnyitni a fájlt.<br /><br />Ez a lehetőség nem érhető el, ha egy csoportházirend-sablon, amely a rendszergazda konfigurálja.|
+|**E-mailt, ha valaki megpróbálja megnyitni ezeket a dokumentumokat**|**Note:** Ez a beállítás előzetes használatban van.<br />Válassza ezt a lehetőséget, ha azt szeretné, hogy e-mailek Ha értesítést szeretne kapni valaki megpróbálja megnyitni a dokumentumot, amit a védelme. Az e-mailt jelezni fogja, akik próbált megnyitni, amikor, és hogy sikeres volt-e azokat.<br /><br />Ez a beállítás csak akkor, ha a szervezet használ az Azure RMS érhető el. Ha a szervezet a Rights Management (AD RMS) helyszíni verzióját használja, ezt a beállítást nem jelenik meg.|
+|**Nekem azonnal visszavonni az ezeket a dokumentumokat való hozzáférés engedélyezése**|Válassza ezt a lehetőséget, ha lehetséges, hogy a dokumentum nyomon követése a webhely használatával később visszavonni a hozzáférést a dokumentumok kell, és a visszavont tanúsítványok a következőre azonnal érvénybe lépnek. Azonban beállítás Ez a beállítás azt jelenti, amíg a dokumentum nem vonták vissza, a felhasználók mindig internetkapcsolat szükséges olvasni a dokumentumot, minden alkalommal, azok-e férni. Előfordulhat, hogy bizonyos esetekben, ahol a felhasználók nem tud kapcsolódni az eszközt az internethez, és felhasználók nem tudja olvasni a dokumentum megfelelően.<br /><br />Válassza ezt a lehetőséget, ha továbbra is vonhatja a dokumentumok később, a dokumentum követési webhely használatával. Azonban a felhasználók nem mindig kell az internetkapcsolatot a dokumentum olvasásakor, mert nem tudják azonnal, hogy a dokumentum visszavonva, és olvassa el, amíg a következő hitelesítéshez az Azure RMS továbbra is. Alapértelmezés szerint, hogy valaki továbbra is olvasható egy védett dokumentum, amely már a visszavont napok maximális száma 30 nap, de a rendszergazda módosíthatja ezt az értéket kevesebb vagy 30 nap-nál nagyobbnak kell lennie.<br /><br />Ez a beállítás csak akkor, ha a szervezet használ az Azure RMS érhető el. Ha a szervezet a Rights Management (AD RMS) helyszíni verzióját használja, ezt a beállítást nem jelenik meg.|
 
-## <a name="BKMK_GenericNative"></a>What’s the difference between generic protection and built-in (native) protection?
+## <a name="BKMK_GenericNative"></a>Mi az általános védelmi és beépített (natív) protection közötti különbség?
 
--   When you **generically protect a file**, unauthorized people cannot open the file. But after authorized people open the file, they could then forward it unprotected to other people or save it in a location that others could access. They do, however, see a message that tells them what permissions they have for the file, and they are asked to honor these, but this protection cannot be enforced. In addition, when you generically protect a file, you cannot restrict the permissions further than authorization. For example you cannot restrict the content to view-only, or do not print.:
-
-    > [!NOTE]
-    > A generically protected file always has a file name extension of **.pfile**.
-
--   In comparison, when you use the **built-in (native) protection** of Rights Management with applications that support this (for example, Office files), the protection applies to the file even if the file is then sent to somebody else or saved in another location. And, when you protect these files, you can use restrictive permissions such as read-only, or the permission to edit but not print or copy. For example, you could select **Viewer – View Only**, so that the content cannot be edited, printed, or copied.
-
-For additional technical information, see the [Levels of protection – native and generic](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
-
-## <a name="BKMK_PPDF"></a>What’s the .ppdf file that’s automatically created?
-
--   When you share a protected file by email (share protected), the RMS sharing application automatically creates a **.ppdf** version of the file for Word, Excel, PowerPoint, or PDF. This is a read-only protected version of the file that only authorized people can open, and it ensures that the recipients can always read the attachment, even if they are using a mobile device that doesn’t have an application that natively supports Rights Management. Providing these people have the RMS sharing app installed, they will be able to read the attachment.
-
-    In this scenario, unlike a generically protected file, usage restriction is enforced. The recipient will not be able to save this version of the file and if they forward the attachment to somebody else, the original restrictions remain with the document. Only people that were authorized for the protected document will be able to open it.
+-   Ha Ön **általánosságban a fájl védelmét**, a fájl nem nyitható meg a jogosulatlan személyek. De után a hitelesített felhasználók nyissa meg a fájlt, azok sikerült majd továbbítja másoknak nem védett, vagy menti, amely mások hozzáférhet helyen. Azok, azonban egy üzenet jelenik meg, amely meghatározza, milyen jogosultságokkal rendelkeznek a fájlt, és ezek tiszteletben kell, de a védelem nem kényszeríthető. Általánosságban a fájl védelmét, amikor ezen kívül nem az engedélyek engedélyezési további korlátozhatják. Például a tartalom nem korlátozhatják a csak a nézet a, vagy nem a nyomtatás.:
 
     > [!NOTE]
-    > A .ppdf file is automatically created when you share protected (share by email) but is not created when you protect in-place.
+    > Általánosságban a védett fájl mindig van egy fájlnévkiterjesztést, **.pfile**.
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+-   Az összehasonlítás, használatakor a **beépített (natív) védelmi** Rights Management alkalmazásokkal, amely támogatja ezt a (például az Office-fájlok), a védelem vonatkozik a fájl még akkor is, ha a fájlt a rendszer elküldi a valaki más vagy egy másik helyre mentett. És abban az esetben, ha ezek a fájlok, korlátozó engedélyeket használhatja például az csak olvasható, vagy az engedély szerkesztése, de nem nyomtatás, vagy másolja. Válassza ki például **Viewer – csak a nézet**, így a tartalom nem szerkeszthető, nyomtató, vagy másolja.
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+További technikai tudnivalókért tekintse meg a [Védelmi – natív és általános szintek](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) szakasz a [A Rights Management megosztási alkalmazás rendszergazda guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+## <a name="BKMK_PPDF"></a>Mi az automatikusan létrehozott .ppdf fájlhoz?
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+-   Védett fájl e-mailek (a védett megosztás) által közösen használja, ha az RMS-megosztó az alkalmazás automatikusan létrehoz egy **.ppdf** verziója, a Word, az Excel, a PowerPoint vagy a PDF-fájl. Ez az, hogy egy csak olvasható védett fájl verzióját, amely csak a hitelesített felhasználók is megnyithatja, és biztosítja, hogy a címzett mindig tudja olvasni a melléklet, még akkor is, ha a mobil eszköz, amely nem tartalmaz, amely natív módon támogatja a Rights Management alkalmazás használnak. Ezek a felhasználók az RMS-megosztó alkalmazás telepítve van, nyújtó azokat nem fogja tudni olvasni azokat a melléklet.
+
+    Ebben az esetben eltérően általánosságban a védett fájl, a használat korlátozással. A címzett nem fogja tudni menteni a fájlt a jelen verziójában, és továbbítja azokat a melléklet, hogy valaki másnak, ha az eredeti korlátozások marad, a dokumentumot. Lesz, hogy csak azok a felhasználók, hogy a védett dokumentum volt hitelesített megnyitható.
+
+    > [!NOTE]
+    > .Ppdf fájl automatikusan jön létre, ha megosztani a védett (megosztás által e-mailek), de nem jön létre, ha az Ön helyi védelem.
+
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
+
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

@@ -3,434 +3,295 @@ description: na
 keywords: na
 title: RMS Protection with Windows Server File Classification Infrastructure (FCI)
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 9aa693db-9727-4284-9f64-867681e114c9
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Protection with Windows Server File Classification Infrastructure (FCI)
-Use this article for instructions and a script to use the Rights Management (RMS) client with the RMS Protection tool to configure File Server Resource Manager and file classification infrastructure (FCI).
+# RMS-v&#233;delmi Windows Server f&#225;jl besorol&#225;s infrastrukt&#250;r&#225;val (FCI)
+Ez a cikk útmutatásért és a parancsfájl segítségével a Rights Management (RMS) ügyfél konfigurálása a Fájlkiszolgálói erőforrás-kezelő és a fájl besorolás infrastruktúra (FCI) használata az RMS-védelmi eszköz.
 
-This solutions lets you automatically protect all files in a folder on a file server running Windows Server, or automatically protect files that meet a specific criteria. For example, files that have been classified as containing confidential or sensitive information. This solution uses [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) to protect the files, so you must have this technology deployed in your organization.
+Ez a megoldások lehetővé teszi automatikusan védelme az összes Windows Server operációs rendszert futtató kiszolgálón fájl mappában lévő fájlok, vagy automatikusan a fájlok, amelyek megfelelnek egy adott feltételeknek védelme. Például fájlok, amelyek a bizalmas adatokat tartalmazó rendelkezik lett osztályozott. Ez a megoldás használja [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) lehet védetté tenni a fájlokat, így ez a technológia a szervezetben telepített kell rendelkeznie.
 
 > [!NOTE]
-> Although Azure RMS includes a [connector](https://technet.microsoft.com/library/dn375964.aspx) that supports file classification infrastructure, that solution supports native protection only—for example, Office files.
+> Bár az Azure RMS tartalmaz egy [összekötő](https://technet.microsoft.com/library/dn375964.aspx) hogy támogatja a besorolás infrastruktúra fájl, az, hogy támogatja-e a megoldás csak a natív védelmi – például az Office-fájlok.
 > 
-> To support all file types with file classification infrastructure, you must use the Windows PowerShell **RMS Protection** module, as documented in this article. The RMS Protection cmdlets, like the RMS sharing application, support generic protection as well as native protection, which means that all files can be protected. For more information about these different protection levels, see the [Levels of protection – native and generic](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+> Támogatja a fájl besorolás infrastruktúra-összes fájltípusok, használnia kell a Windows PowerShell **RMS védelmi** modul, a cikkben leírtak szerint. Az RMS-védelmi parancsmagok az RMS-megosztó alkalmazás, például támogatja az általános védelmi, valamint a natív protection, ami azt jelenti, hogy minden fájl lehet védetté tenni. A különböző védelmi szintek kapcsolatos további információkért tekintse meg a [Védelmi – natív és általános szintek](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) szakasz a [A Rights Management megosztási alkalmazás rendszergazda guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
 
-The instructions that follow are for Windows Server 2012 R2 or Windows Server 2012. If you run other supported versions of Windows, you might need to adapt some of the steps for differences between your operating system version and the one documented in this article.
+Az alábbi utasításokat a Windows Server 2012 R2 vagy a Windows Server 2012 vannak. Ha futtatja a Windows más támogatott verziója, szükség lehet néhány, az operációs rendszer verziója, és a cikkben szereplő közötti eltérések vonatkozó lépéseket igazítani.
 
-## Prerequisites for Azure RMS protection with Windows Server FCI
-Prerequisites for these instructions:
+## A Windows Server FCI az Azure RMS védelemre Előfeltételek
+Az alábbi utasításokat Előfeltételek:
 
--   On each file server where you will run File Resource Manager with file classification infrastructure:
+-   Minden fájl a kiszolgálón, ahol működik az erőforrás-kezelő fájl az fájl besorolás infrastruktúra:
 
-    -   You have installed File Server Resource Manager as one of the role services for the File Services role.
+    -   Fájlkiszolgálói erőforrás-kezelő egyik a Fájlszolgáltatások szerepkör szerepkör-szolgáltatások telepítése.
 
-    -   You have identified a local folder that contains files to protect with Rights Management. For example, C:\FileShare.
+    -   Helyi mappa, amely tartalmazza a Rights Management szolgáltatással fájl jelölte meg. Ha például C:\FileShare.
 
-    -   You have installed the RMS Protection tool, including the prerequisites for the tool (such as the RMS client) and for Azure RMS (such as the service principal account). For more information, see [RMS Protection Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+    -   Az RMS-védelmi eszköz, beleértve az előfeltételeket, az eszköz (például az RMS-ügyfél) és az Azure RMS (például a fő szolgáltatásfiók) telepítését. További tudnivalókért tekintse meg a [RMS Protection parancsmagok](https://msdn.microsoft.com/library/azure/mt433195.aspx).
 
-    -   If you want to change the default level of RMS protection (native or generic) for specific file name extensions, you have edited the registry as described in the [File API configuration](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx) page.
+    -   Ha módosítani szeretné az alapértelmezett RMS adatvédelmi szintet (natív vagy általános) adott kiterjesztések, a beállításjegyzék módosította, leírtak szerint a [fájl API-konfigurációs](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx) oldalon.
 
-    -   You have an Internet connection, with configured computer settings if required for a proxy server. For example: `netsh winhttp import proxy source=ie`
+    -   Ha egy proxykiszolgáló szükséges van aktív internetkapcsolat, a konfigurált számítógép beállításait. Példa: `netsh winhttp import proxy source=ie`
 
--   You have configured the additional prerequisites for your Azure Rights Management deployment, as described in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx). Specifically, you have the following values to connect to Azure RMS by using a service principal:
+-   A konfigurált Azure Rights Management telepítéssel további előfeltételei leírtak szerint [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx). Pontosabban van az Azure RMS használatával egy egyszerű kapcsolódni a következő értékek:
 
     -   BposTenantId
 
     -   AppPrincipalId
 
-    -   Symmetric key
+    -   Szimmetrikus kulcs
 
--   You have synchronized your on-premises Active Directory user accounts with Azure Active Directory or Office 365, including their email address. This is required for all users that might need to access files after they are protected by FCI and Azure RMS. If you do not  do this step (for example, in a test environment), users might be blocked from accessing these files. If you need more information about this account configuration, see [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
+-   A helyszíni Active Directory felhasználói fiókok szinkronizálta Azure Active Directoryban, vagy az Office 365, beleértve az e-mail címüket. Ez azért szükséges, elérni a fájlokat, miután azok FCI és az Azure RMS által védett igénylő előfordulhat, hogy minden felhasználó számára. Ha nem ez a lépés (például tesztkörnyezetben), a felhasználók hozzáférjenek, hogy ezek a fájlok blokkolhatja. Ha további információt a fiók konfigurálásának van szüksége, tekintse meg a [Azure Rights Management előkészítése](../Topic/Preparing_for_Azure_Rights_Management.md).
 
--   You have identified the Rights Management template to use, which will protect the files. Make sure that you know the ID for this template by using the [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) cmdlet.
+-   A Rights Management használt sablon, amelyet a fájlok jelölte meg. Győződjön meg arról, hogy tudja-e az ID ez a sablon segítségével a [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) parancsmagot.
 
-## Instructions to configure File Server Resource Manager FCI for Azure RMS protection
-Follow these instructions to automatically protect all files in a folder, by using a Windows PowerShell script as a custom task. Do these procedures in this order:
+## Fájlkiszolgálói erőforrás-kezelő FCI konfigurálása az Azure RMS protection utasításokat
+Kövesse az alábbi utasításokat automatikusan védelme érdekében a Windows PowerShell-parancsfájl segítségével egyéni feladat egy a mappában lévő összes fájlt. Hajtsa végre ezeket a lépéseket itt megadott sorrendben:
 
-1.  Save the Windows PowerShell script
+1.  A Windows PowerShell-parancsfájl mentése
 
-2.  Create a classification property for Rights Management (RMS)
+2.  A Rights Management (RMS) besorolási tulajdonság létrehozása
 
-3.  Create a classification rule (Classify for RMS)
+3.  (Az RMS szolgáltatást besorolás) besorolás szabály létrehozása
 
-4.  Configure the classification schedule
+4.  A besorolás ütemezésének megadása
 
-5.  Create a custom file management task (Protect files with RMS)
+5.  Egyéni felügyeleti feladat létrehozása (védelme fájlok, amelyek az RMS)
 
-6.  Test the configuration by manually running the rule and task
+6.  A beállítások tesztelése manuálisan futtatja, a szabály, és a feladat
 
-At the end of these instructions, all files in your selected folder will be classified with the custom property of RMS, and these files will then be protected by Rights Management. For a more complex configuration that selectively protects some files and not others, you can then create or use a different classification property and rule, with a file management task that protects just those files.
+Az alábbi utasításokat végén a kijelölt mappában lévő összes fájlt, ha az egyéni tulajdonság RMS kerülnek osztályozásra, és ezeket a fájlokat majd kell Rights Management által védett. Az összetettebb konfigurációjának külön-külön védő bizonyos fájlokat, és nem mások majd létrehozhat vagy egy másik besorolást tulajdonság, és a szabály, egy fájl felügyeleti feladatot, amely csak azokat a fájlokat védő használni.
 
-#### Save the Windows PowerShell script
+#### A Windows PowerShell-parancsfájl mentése
 
-1.  Expand the [Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI](#BKMK_RMSProtection_Script) section in this article, and copy its contents. Paste the contents of the script and  name the file **RMS-Protect-FCI.ps1** on your own computer.
+1.  Bontsa ki a [Fájlkiszolgálói erőforrás-kezelő FCI használatával az Azure RMS védelemre Windows PowerShell-parancsfájl](#BKMK_RMSProtection_Script) cikkben részében, és másolja a tartalmát. A parancsfájl tartalmának beillesztése, és a fájl neve **RMS-Protect-FCI.ps1** a saját számítógépen.
 
-2.  Review the script and make the following changes:
+2.  Tekintse át a parancsfájlt, és a következő módosításokat:
 
-    -   Search for the following string and replace it with your own AppPrincipalId that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   A következő karakterlánc, és lecseréli a saját AppPrincipalId használt keresése a [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) parancsmag kapcsolódni az Azure RMS:
 
         ```
         <enter your AppPrincipalId here>
         ```
-        For example, the script might look like this:
+        Például a parancsfájl utasítás ez:
 
         `[Parameter(Mandatory = $false)]`
 
-        `[Parameter(Mandatory = $false)]             [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
+        `[Parameter(Mandatory = $false)] [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
 
-    -   Search for the following string and replace it with your own symmetric key that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   Keresés a következő karakterlánc, és lecseréli a saját szimmetrikus kulcsot használata a [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) parancsmag kapcsolódni az Azure RMS:
 
         ```
         <enter your key here>
         ```
-        For example, the script might look like this:
+        Például a parancsfájl utasítás ez:
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$SymmetricKey = "zIeMu8zNJ6U377CLtppkhkbl4gjodmYSXUVwAO5ycgA="`
 
-    -   Search for the following string and replace it with your own BposTenantId (tenant ID) that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   Keresés a következő karakterlánc, és lecseréli a saját BposTenantId (bérlői ID) használata a [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) parancsmag kapcsolódni az Azure RMS:
 
         ```
         <enter your BposTenantId here>
         ```
-        For example, the script might look like this:
+        Például a parancsfájl utasítás ez:
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$BposTenantId = "23976bc6-dcd4-4173-9d96-dad1f48efd42",`
 
-    -   If your server is running Windows Server 2012, you might have to manually load the RMSProtection module at the beginning of the script. Add the following command (or equivalent if  the "Program Files"  folder is  on a drive other than the  C: drive :
+    -   Ha a kiszolgáló fut a Windows Server 2012, előfordulhat, a RMSProtection modul a parancsfájl elején manuálisan betöltéséhez. Adja hozzá a következő parancsot (vagy ezzel egyenértékű, ha a "Program Files" mappa egy másik a C: meghajtón meghajtóra:
 
         ```
         Import-Module "C:\Program Files\WindowsPowerShell\Modules\RMSProtection\RMSProtection.dll"
         ```
 
-3.  Sign the script. If you do not sign the script (more secure), you must configure Windows PowerShell on the servers that run it. For example, run a Windows PowerShell session with the **Run as Administrator** option, and type: **Set-ExecutionPolicy Unrestricted**. However, this configuration lets all unsigned scripts run (less secure).
+3.  A parancsfájl alá. Ha nem írja alá a parancsfájl (biztonságosabb), konfigurálnia kell a Windows PowerShell a kiszolgálókat, futtassa a. Például a Windows PowerShell munkamenetet futtassa a **Futtatás rendszergazdaként** lehetőséget, és írja be: **Set-ExecutionPolicy Unrestricted**. Azonban a konfiguráció lehetővé teszi, hogy az összes aláíratlan parancsfájlok (kevésbé biztonságos).
 
-    For more information about signing Windows PowerShell scripts, see [about_Signing](https://technet.microsoft.com/library/hh847874.aspx) in the PowerShell documentation library.
+    Bejelentkezés a Windows PowerShell-parancsfájlok kapcsolatos további információkért tekintse meg a [about_Signing](https://technet.microsoft.com/library/hh847874.aspx) a PowerShell dokumentációs könyvtárában.
 
-4.  Save the file locally on each file server that will run File Resource Manager with file classification infrastructure. For example, save the file in **C:\RMS-Protection**. Secure this file by using NTFS permissions so that unauthorized users cannot modify it.
+4.  Mentse a fájlt a helyi minden kiszolgálón fájl, amely az fájl besorolás infrastruktúra fájl rendszererőforrás-kezelő fog futni. Például, mentse a fájlt a **C:\RMS-Protection**. Ezt a fájlt biztonságos az NTFS-engedélyek használatával, így nem engedélyezett felhasználók nem módosítható.
 
-You're now ready to start configuring File Server Resource Manager.
+Most készen áll elindítani a Fájlkiszolgálói erőforrás-kezelő konfigurálása.
 
-#### Create a classification property for Rights Management (RMS)
+#### A Rights Management (RMS) besorolási tulajdonság létrehozása
 
--   In File Server Resource Manager, Classification Management, create a new local property:
+-   A Fájlkiszolgálói erőforrás-kezelő, besorolás felügyeleti, hozzon létre egy új helyi tulajdonság:
 
-    -   **Name**: Type **RMS**
+    -   **Name**: Típusa **RMS**
 
-    -   **Description**:   Type **Rights Management protection**
+    -   **Leírás**:   Típusa **Rights Management protection**
 
-    -   **Property Type**: Select **Yes/No**
+    -   **Tulajdonságtípus**: Válasszon **Igen/nem**
 
-    -   **Value**: Select **Yes**
+    -   **Value**: Válasszon **Igen**
 
-We can now create a classification rule that uses this property.
+Most mi hozhat létre egy besorolás szabály, amely használja ezt a tulajdonságot.
 
-#### Create a classification rule (Classify for RMS)
+#### (Az RMS szolgáltatást besorolás) besorolás szabály létrehozása
 
--   Create a new classification rule:
+-   Hozzon létre egy új besorolás szabály:
 
-    -   On the **General** tab:
+    -   Az a **Általános** lap:
 
-        -   **Name**: Type **Classify for RMS**
+        -   **Name**: Típusa **Classify for RMS**
 
-        -   **Enabled**: Keep the default, which is that this checkbox is selected.
+        -   **Engedélyezve**: Őrizze meg az alapértelmezett, amely, hogy ez a jelölőnégyzet be van jelölve.
 
-        -   **Description**: Type **Classify all files in the &lt;folder name&gt; folder for Rights Management**.
+        -   **Leírás**: Típus **Classify all files in the &lt;folder name&gt; folder for Rights Management**.
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Classify all files in the C:\FileShare folder for Rights Management**
+            Cserélje ki *&lt; Mappanév &gt;* a választott mappa nevét. Például **a C:\FileShare mappában lévő összes fájlt osztályozására a Rights Management**
 
-        -   **Scope**: Add your chosen folder. For example, **C:\FileShare**.
+        -   **Scope**: Adja meg a kiválasztott mappát. Például **C:\FileShare**.
 
-            Do not select the checkboxes.
+            Jelölje be a jelölőnégyzeteket.
 
-    -   On the **Classification** tab:
+    -   Az a **besorolás** lap:
 
-    -   **Classification method**: Select **Folder Classifier**
+    -   **Besorolás metódus**: Válasszon **mappa osztályozó**
 
-    -   **Property** name: Select **RMS**
+    -   **Tulajdonság** neve: Válasszon **RMS**
 
-    -   Property **value**: Select **Yes**
+    -   Tulajdonság **érték**: Válasszon **Igen**
 
-Although you can run the classification rules manually, for ongoing operations, you will want this rule to run on a schedule so that new files will be classified with the RMS property.
+Bár is futtathatja a besorolási szabályok manuálisan, folyamatban lévő műveletek esetén érdemes Ez a szabály futtatásához ütemezés szerint, úgy, hogy az új fájlok kerülnek osztályozásra, ha az RMS-tulajdonság.
 
-#### Configure the classification schedule
+#### A besorolás ütemezésének megadása
 
--   On the **Automatic Classification** tab:
+-   Az a **automatikus osztályozás** lap:
 
-    -   **Enable fixed schedule**: Select this checkbox.
+    -   **Rögzített ütemezésének engedélyezése**: Jelölje be ezt a jelölőnégyzetet.
 
-    -   Configure the schedule for all classification rules to run, which includes our new rule to classify files with the RMS property.
+    -   Minden besorolás szabály futtatásához, ez kiterjed az új szabály-fájlok, amelyek az RMS-tulajdonság osztályozására ütemezésének konfigurálása.
 
-    -   **Allow continuous classification for new files**: Select this checkbox so that new files will be classified.
+    -   **Engedélyezése az új fájlok folyamatos besorolás**: Jelölje be ezt a jelölőnégyzetet, úgy, hogy az új fájlok kerülnek osztályozásra.
 
-    -   Optional: Make any other changes that you want, such as configuring options for reports and notifications.
+    -   Nem kötelező: Más módosítást kívánt, például a jelentések és értesítések beállítások konfigurálása.
 
-Now you've completed the classification configuration, you're ready to configure a management task to apply the RMS protection to the files.
+A besorolás konfigurálása befejeződött, most készen áll konfigurálása az RMS-védelmi alkalmazandó fájlokat egy felügyeleti feladatot.
 
-#### Create a custom file management task (Protect files with RMS)
+#### Egyéni felügyeleti feladat létrehozása (védelme fájlok, amelyek az RMS)
 
--   In **File Management Tasks**, create a new file management task:
+-   A **Fájlkezelési feladatok**, hozzon létre egy új fájlt felügyeleti feladatot:
 
-    -   On the **General** tab:
+    -   Az a **Általános** lap:
 
-        -   **Task name**: Type **Protect files with RMS**
+        -   **Tevékenység neve**: Típusa **Protect files with RMS**
 
-        -   Keep the **Enable** checkbox selected.
+        -   Megtartja a **engedélyezése** kiválasztott jelölőnégyzetet.
 
-        -   **Description**: Type **Protect files in &lt;folder name&gt; with Rights Management and a template by using a Windows PowerShell script.**
+        -   **Leírás**: Típusa **Protect files in &lt;folder name&gt; with Rights Management and a template by using a Windows PowerShell script.**
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Protect files in C:\FileShare with Rights Management and a template by using a Windows PowerShell script**
+            Cserélje ki *&lt; Mappanév &gt;* a választott mappa nevét. Például **C:\FileShare a Rights Management és a sablon fájljainak védelme a Windows PowerShell-parancsfájl segítségével**
 
-        -   **Scope**: Select your chosen folder. For example, **C:\FileShare**.
+        -   **Scope**: Válassza ki a kiválasztott mappát. Például **C:\FileShare**.
 
-            Do not select the checkboxes.
+            Jelölje be a jelölőnégyzeteket.
 
-    -   On the **Action** tab:
+    -   Az a **művelet** lap:
 
-        -   **Type**: Select **Custom**
+        -   **Type**: Válasszon **egyéni**
 
-        -   **Executable**: Specify the following:
+        -   **Végrehajtható fájl**: Adja meg a következőket:
 
             ```
             C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
             ```
-            If Windows is not on your C: drive, modify this path or browse to this file.
+            Ha a Windows nem a C: meghajtón, módosítsa az elérési út, vagy a tallózással keresse meg ezt a fájlt.
 
-        -   **Argument**: Specify the following, supplying your own values for &lt;path&gt; and &lt;template ID&gt;:
+        -   **Argumentum**: Adja meg a következőket, a saját &lt; elérési út &gt; értékeit és &lt; Sablonazonosító &gt;:
 
             ```
             -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID <template GUID> -OwnerMail [Source File Owner Email]"
             ```
-            For example, if you copied the script to C:\RMS-Protection and the template ID you identified from the prerequisites is e6ee2481-26b9-45e5-b34a-f744eacd53b0, specify the following:
+            Például ha a parancsfájl C:\RMS-Protection másolt, és a sablon azonosítója, akkor az Előfeltételek azonosított e6ee2481-26b9-45e5-b34a-f744eacd53b0, adja meg a következőket:
 
             `-Noprofile -Command "C:\RMS-Protection\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID e6ee2481-26b9-45e5-b34a-f744eacd53b0 -OwnerMail [Source File Owner Email]"`
 
-            In this command, **[Source File Path]** and **[Source File Owner Email]** are both FCI-specific variables, so type these exactly as they appear in the command above. The first one is used by FCI to automatically specify the identified file in the folder, and the second is for FCI to automatically retrieve the email address of the named Owner of the identified file. This command is repeated for each file in the folder, which in our example, is each file in the C:\FileShare folder that additionally, has RMS as a file classification property.
+            Ez a parancs a **[forrásfájl elérési útvonalát]** és **[adatforrás fájl tulajdonos E-mail]** mindkét FCI-specifikus változók úgy írja be ezeket a fenti parancsban jelenjenek meg. A legelső FCI által automatikusan megadására szolgál az azonosított fájl a mappában, és a második pedig automatikusan beolvasni az e-mail cím, az azonosított fájl elnevezett tulajdonosának FCI. Ez a parancs ismétlődik minden fájl a mappában, amely ebben a példában, minden fájl emellett rendelkezik az RMS fájl besorolás tulajdonságként C:\FileShare mappában.
 
             > [!NOTE]
-            > The **-OwnerMail [Source File Owner Email]** parameter and value ensures that the original owner of the file is granted the Rights Management owner of the file after it is protected. This ensures that the original file owner has all Rights Management rights to their own files. When files are created by a domain user, the email address is  automatically retrieved from Active Directory by using the user account name in the file's Owner property. To do this, the file server must be in the same domain or trusted domain as the user.
+            > A **-OwnerMail [Source File Owner Email]** paraméter és érték gondoskodik arról, hogy a fájl eredeti tulajdonosa megkapta a fájlt a Rights Management tulajdonosának után a védett. Ez biztosítja, hogy az eredeti fájl tulajdonosa a saját fájlok összes Rights Management jogosultsággal rendelkezik-e. A tartományi felhasználók fájlt hoz létre, ha az e-mail cím van automatikusan lekéri a Active Directory segítségével a felhasználói fiók nevét a fájl tulajdonosa tulajdonság. Ehhez a fájlkiszolgálóhoz kell lennie a ugyanabban a tartományban, vagy a megbízható tartomány, a felhasználó.
             > 
-            > Whenever possible, assign the original owners to protected documents, to ensure that these users continue to have full control over the files that they created. However, if you use the [Source File Owner Email] variable as above, and a file does not have a domain user defined as the owner (for example, a local account was used to create the file, so the owner displays SYSTEM), the script will fail.
+            > Ha lehetséges, rendelje hozzá az eredeti tulajdonosok védett dokumentumok, győződjön meg arról, hogy ezek a felhasználók továbbra is, hogy azok a létrehozott fájlok teljes hozzáféréssel rendelkeznek. Azonban, ha a fenti [adatforrás fájl tulajdonos E-mail] változó és egy fájlt a nem rendelkezik definiált tulajdonosaként tartományi felhasználó (például egy helyi fiók létrehozásához használt a fájlt, így a tulajdonos jeleníti meg a rendszer), a parancsfájl sikertelen lesz.
             > 
-            > For files that do not have a domain user as owner, you can either copy and save these files yourself as a domain user, so that you become the owner for just these files. Or, if you have permissions, you can manually change the owner.  Or alternatively, you can supply a specific email address (such as your own or a group address for the IT department) instead of the [Source File Owner Email] variable, which means that all files you protect by using this script will use this email address to define the new owner.
+            > Nem rendelkezik a tartományi felhasználók tulajdonosaként-fájlok esetén lehetősége van másolása, majd mentse ezeket a fájlokat magát a tartományi felhasználót, hogy a tulajdonos csak ezeket a fájlokat a válik. Vagy, akkor jogosult, ha a tulajdonos manuálisan módosíthatja.  Másik lehetőségként, megadhat egy adott e-mail címet, vagy (például a saját vagy egy csoport címe az IT-részleg) helyett a [adatforrás fájl tulajdonos E-mail] változó, ami azt jelenti, hogy minden fájl védetté tenni, ha ez a parancsfájl segítségével használandó Ez az e-mail cím határozza meg az új tulajdonos.
 
-    -   **Run the command as**: Select **Local System**
+    -   **a parancsot, mint**: Válasszon **helyi rendszer**
 
-    -   On the **Condition** tab:
+    -   Az a **feltétel** lap:
 
-        -   **Property**: Select **RMS**
+        -   **Tulajdonság**: Válasszon **RMS**
 
-        -   **Operator**: Select **Equal**
+        -   **Operátor**: Válasszon **egyenlő**
 
-        -   **Value**: Select **Yes**
+        -   **Value**: Válasszon **Igen**
 
-    -   On the **Schedule** tab:
+    -   Az a **ütemezés** lap:
 
-        -   **Run at**: Configure your preferred schedule.
+        -   **Run at**: Az előnyben részesített ütemezésének megadása.
 
-            Allow plenty of time for the script to complete. Although this solution  protects all files in the folder, the script runs once for each file, each time. Although this takes longer than protecting all the files at the same time, which the RMS Protection tool supports, this file-by-file configuration for FCI is more powerful. For example, the protected files can have different owners (retain the original owner) when you use the   [Source File Owner Email] variable, and this file-by-file action will be required if you later change the configuration to selectively protect files rather than all files in a folder.
+            Bőségesen idő a parancsfájl végrehajtására. Bár ez a megoldás védi a mappában lévő összes fájlt, a parancsfájl futtatása egyszer, így minden alkalommal. Bár ez több időt vesz igénybe minden fájl védelme egyszerre, amely támogatja az RMS-védelmi eszköz, mint nagyobb teljesítményű esetén ez a fájl-fájl beállítás FCI. Például, hogy a védett fájlt is különböző tulajdonosok (megőrzi az eredeti tulajdonos) Ha az [adatforrás fájl tulajdonos E-mail] változó használjuk, és ez a fájl által művelet szükségessé válik, ha később módosítja a konfigurációt, külön-külön a mappában lévő összes fájlok helyett a fájlok védelme érdekében.
 
-        -   **Run continuously on new files**: Select this checkbox.
+        -   **Folyamatosan fusson az új fájlok**: Jelölje be ezt a jelölőnégyzetet.
 
-#### Test the configuration by manually running the rule and task
+#### A beállítások tesztelése manuálisan futtatja, a szabály, és a feladat
 
-1.  Run the classification rule:
+1.  Futtassa a besorolási szabály:
 
-    1.  Click **Classification Rules** &gt; **Run Classification With All Rules Now**
+    1.  Kattintson a **besorolási szabályok** &gt; **besorolás az összes futtatása**
 
-    2.  Click **Wait for classification to complete**, and then click **OK**.
+    2.  Kattintson a **Várjon, amíg a besorolás befejezéséhez**, és kattintson a **OK**.
 
-2.  Wait for the **Running Classification** dialog box to close and then view the results in the automatically displayed report. You should see **1** for the **Properties** field and the number of files in your folder. Confirm by using File Explorer and checking the properties of files in your chosen folder. On the **Classification** tab, you should see **RMS** as a property name and **Yes** for its **Value**.
+2.  Várjon, amíg a a **futó besorolás** a párbeszédpanel bezárásához és a automatikusan megjelenített jelentésben tekintse meg az eredményeket. Végrehajtásakor **1** számára a **Tulajdonságok** mező és a mappában lévő fájlok száma. Ellenőrizze a fájl Intéző használatával, és a kiválasztott mappában lévő fájlok tulajdonságainak ellenőrzése. A a **besorolás** lapjának végrehajtásakor **RMS** tulajdonság nevét és **Igen** a saját **érték**.
 
-3.  Run the file management task:
+3.  A fájl felügyeleti feladat futtatása:
 
-    1.  Click **File Management Tasks** &gt; **Protect files with RMS** &gt; **Run File Management Task Now**
+    1.  Kattintson a **Fájlkezelési feladatok** &gt; **-fájlok, amelyek az RMS védelme** &gt; **fájl felügyeleti feladat futtatása**
 
-    2.  Click **Wait for the task to complete**, and then click **OK**.
+    2.  Kattintson a **várja meg a feladat végrehajtásához**, és kattintson a **OK**.
 
-4.  Wait for the **Running File Management Task** dialog box to close and then view the results in the automatically displayed report. You should see the number of files that are in your chosen folder in the **Files** field. Confirm that the files in your chosen folder are now protected by RMS. For example, if your chosen folder is C:\FileShare, type the following in a Windows PowerShell session and confirm that no files have a status of **UnProtected**:
+4.  Várjon, amíg a a **Fájlkezelési feladat futtatása** a párbeszédpanel bezárásához és a automatikusan megjelenített jelentésben tekintse meg az eredményeket. Megjelenik a kiválasztott mappájában lévő fájlok száma a **fájlok** mező. Győződjön meg arról, hogy a kiválasztott mappában lévő fájlok most RMS által védett. Például, ha a kiválasztott mappa C:\FileShare, írja be a következő egy Windows PowerShell munkamenetet, és győződjön meg arról, hogy fájlokat állapotú **UnProtected**:
 
     ```
     foreach ($file in (Get-ChildItem -Path C:\FileShare -Force | where {!$_.PSIsContainer})) {Get-RMSFileStatus -f $file.PSPath}
     ```
     > [!TIP]
-    > Some troubleshooting tips:
+    > Hibaelhárítási tippek:
     > 
-    > -   If you see **0** in the report, instead of the number of files in your folder, this indicates that the script did not run. First, check the script itself by loading it in Windows PowerShell ISE to validate the script contents and try running it to see if any errors are displayed. With no arguments specified, the script will try to connect and authenticate to Azure RMS.
+    > -   Ha azt látja, hogy **0** a jelentésben a mappában lévő fájlok száma helyett Ez azt jelzi, hogy a parancsfájl nem futott. Először ellenőrizze a parancsfájl magát a parancsfájl tartalmának ellenőrzése, és próbálja meg futtatni, tekintse meg, ha a hibák jelennek-e a Windows PowerShell ISE betöltésével. A parancsfájl a megadott argumentum nélkül megpróbálja csatlakozáshoz, és az Azure RMS hitelesítést.
     > 
-    >     -   If the script reports that it couldn't connect to Azure RMS, check the values it displays for the service principal account, which you specified in the script.  For more information about how to create this service principal account, see the second prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx)
-    >     -   If the script reports that it could connect to Azure RMS and your Azure region is outside North America, check that you have edited the registry correctly for this configuration. A good test for this is to run Get-RMSTemplate directly from Windows PowerShell on the server. For more information about the registry edits, see the third prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx).
-    > -   If the script by itself runs in Windows PowerShell ISE without errors, try running it as follows from a  PowerShell session, specifying a file name to protect and without the -OwnerEmail parameter:
+    >     -   Ha a parancsfájl azt jelenti, hogy nem tudott-e kapcsolódni a Azure RMS, ellenőrizze az értékeket, az egyszerű szolgáltatásfiókjának, amely a parancsfájl megadott jeleníti meg.  Ez egyszerű szolgáltatásfiók létrehozásával kapcsolatban további tudnivalókért tekintse meg a második előfeltételként szükséges a [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx)
+    >     -   Ha a parancsfájl azt jelenti, hogy nem az Azure RMS csatlakozni, és az Azure régióra kívül Észak-Amerika, ellenőrizze a szerkesztett megfelelően a beállításjegyzéket ebben a konfigurációban. Ez egy hasznos teszt számára futtassa a Get-RMSTemplate közvetlenül a Windows PowerShell a kiszolgálón. A beállításjegyzék módosításának kapcsolatos további információkért tekintse meg a harmadik előfeltételként szükséges a [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx).
+    > -   Ha saját maga a parancsfájl hiba nélkül fut a Windows PowerShell ISE, próbálja meg futtatni a következő PowerShell munkamenetből megadása egy fájl neve lehet védetté tenni, és a - OwnerEmail paraméter nélkül:
     > 
     >     ```
     >     powershell.exe -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File <full path and name of a file>' -TemplateID <template GUID>"
     >     ```
-    >     -   If the script runs successfully in this Windows PowerShell session, check  your entries for **Executive** and **Argument** in the file management task action.  If you have specified **-OwnerEmail [Source File Owner Email]**, try removing this parameter.
+    >     -   Ha a parancsfájl a Windows PowerShell-munkamenet sikeresen fut, győződjön meg a **végrehajtó** és **argumentum** a fájl felügyeleti feladat művelet.  Ha a megadott **- OwnerEmail [adatforrás fájl tulajdonos E-mail]**, távolítsa el ezt a paramétert.
     > 
-    >         If the file management task works successfully without  **-OwnerEmail [Source File Owner Email]**, check that the unprotected files have a domain user listed as the file owner, rather than **SYSTEM**.  To do this, use the **Security** tab for the file's properties, and then click **Advanced**. The **Owner** value is displayed immediately after the file **Name**. Also, verify that the file server is in the same domain or a trusted domain to lookup the user's email address from Active Directory Domain Services.
-    > -   If you see the correct number of files in the report but the files are not protected, try protecting the files manually by using the [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) cmdlet, to see if any errors are displayed.
+    >         Ha a fájl-felügyeleti feladat sikeresen nélkül működik  **- OwnerEmail [adatforrás fájl tulajdonos E-mail]**, ellenőrizze, hogy a nem védett fájlokat rendelkezik-e a tulajdonosként fájl, tartományi felhasználó helyett **rendszer**.  Ehhez használja a **biztonsági** a fájl tulajdonságok fülre, és kattintson a **Speciális**. A **tulajdonos** értéke megjelenik a fájl után azonnal **neve**. Is győződjön meg arról, hogy a fájlkiszolgáló ugyanabban a tartományban, vagy a felhasználó e-mail címe az Active Directory tartományi szolgáltatásokból megtalálni megbízható tartományban van-e.
+    > -   Ha azt látja, hogy a megfelelő számú fájlokat a jelentésben szereplő, de a fájlok nem védettek, próbálja meg a fájlok manuálisan védelme a használatával a [védelme-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) parancsmag, tekintse meg a jelennek-e ki a hibákat.
 
-When you have confirmed that these tasks run successfully, you can close File Resource Manager. New files will be automatically protected and all files will be protected again when the schedules run. Re-protecting files ensures that any changes to the template are applied to the files.
+Ha meggyőződött, ezek a feladatok végrehajtása sikeresen befejeződött, bezárhatja fájl rendszererőforrás-kezelő. Új fájlok automatikusan védett, és minden fájl védi újra az ütemezések futtatásakor. Újra a fájl védett gondoskodik arról, hogy a módosításokat a sablon a fájlok érvényesek-e.
 
-### <a name="BKMK_RMSProtection_Script"></a>Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI
-This section contains the sample script to copy and edit, as described in the preceding section.
+### <a name="BKMK_RMSProtection_Script"></a>Fájlkiszolgálói erőforrás-kezelő FCI használatával az Azure RMS védelemre Windows PowerShell-parancsfájl
+Ez a szakasz tartalmaz a minta parancsprogram másolása és szerkesztéséhez, az előző részben leírtak szerint.
 
-*&#42;&#42;Disclaimer&#42;&#42;: This sample script is not supported under any Microsoft standard support program or service. This sample*
-*script is provided AS IS without warranty of any kind.*
+*&#42;&#42;A Jótállás kizárása&#42;&#42;: A minta parancsprogram alatt bármely Microsoft standard támogatás program vagy a szolgáltatás nem támogatott. A minta parancsprogram formájában kerül, mindenféle garancia nélkül.*
 
 ```
-<#
-.SYNOPSIS 
-     Helper script to protect all file types with Azure RMS and FCI.
-.DESCRIPTION
-     Protect files with Azure RMS and Windows Server FCI, using an RMS template ID.   
-#>
-param(
-            [Parameter(Mandatory = $false)]
-            [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })]
-            [string]$File,
-
-            [Parameter(Mandatory = $false)]
-            [string]$TemplateID,
-
-            [Parameter(Mandatory = $false)]
-            [string]$OwnerMail,
-
-            [Parameter(Mandatory = $false)]
-            [string]$AppPrincipalId = "<enter your AppPrincipalId here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$SymmetricKey = "<enter your key here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$BposTenantId = "<enter your BposTenantId here>"
-) 
-
-# script information
-[String] $Script:Version = 'version 1.0' 
-[String] $Script:Name = "RMS-Protect-FCI.ps1"
-
-#global working variables
-[switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running.
-
-#**Functions (general helper)***************************************
-function Get-ScriptName(){ 
-
-	return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1)
-}
-
-#**Functions (script specific)**************************************
-
-function Check-Module{
-
-	param ([String]$Module = $(Throw "Module name not specified"))
-
-	[bool]$isResult = $False
-
-	#try to load the module
-	if (get-module -list -name $Module) {
-		import-module $Module
-
-		if (get-module -name $Module ) {
-
-			$isResult = $True
-		} else {
-			$isResult = $False
-		} 
-
-	} else {
-			$isResult = $False
-	}
-	return $isResult
-}
-
-function Protect-File ($ffile, $ftemplateId, $fownermail) {
-
-    [bool] $returnValue = $false
-    try {
-        If ($OwnerMail -eq $null -or $OwnerMail -eq "") {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId")
-        } else {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail")
-        }
-    } catch {
-        Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId")
-            }
-    return $returnValue
-}
-
-function Set-RMSConnection ($fappId, $fkey, $fbposId) {
-
-	[bool] $returnValue = $false
-    try {
-               Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId
-        Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-        $returnValue = $true
-    } catch {
-        Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-
-    }
-    return $returnValue
-}
-
-#**Main Script (Script)*********************************************
-Write-Host ("-== " + $Script:Name + " " + $Version + " ==-")
-
-$Script:isScriptProcess = $True
-
-# Validate Azure RMS connection by checking the module and then connection
-if ($Script:isScriptProcess) {
- 		if (Check-Module -Module RMSProtection){
-    	$Script:isScriptProcess = $True
-	} else {
-
-		Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black"	        
-		$Script:isScriptProcess = $False
-	}
-}
-
-if ($Script:isScriptProcess) {
-	#Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" )	
-    if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) {
-	    Write-Host ("Connected to Azure RMS")
-
-    } else {
-		Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black"
-		$Script:isScriptProcess = $False
-	}
-}
-
-#  Start working loop
-if ($Script:isScriptProcess) {
-    if ( !(($File -eq $null) -or ($File -eq "")) ) {
-        if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) {
-            $Script:isScriptProcess = $False           
-        }
-    }
-}
-
-# Closing
-if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"}
-write-host ("-== " + $Script:Name + " " + $Version + "  ==-")
-if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
+<# .SYNOPSIS Helper script to protect all file types with Azure RMS and FCI. .DESCRIPTION Protect files with Azure RMS and Windows Server FCI, using an RMS template ID. #> param( [Parameter(Mandatory = $false)] [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })] [string]$File, [Parameter(Mandatory = $false)] [string]$TemplateID, [Parameter(Mandatory = $false)] [string]$OwnerMail, [Parameter(Mandatory = $false)] [string]$AppPrincipalId = "<enter your AppPrincipalId here>", [Parameter(Mandatory = $false)] [string]$SymmetricKey = "<enter your key here>", [Parameter(Mandatory = $false)] [string]$BposTenantId = "<enter your BposTenantId here>" ) # script information [String] $Script:Version = 'version 1.0' [String] $Script:Name = "RMS-Protect-FCI.ps1" #global working variables [switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running. #**Functions (general helper)*************************************** function Get-ScriptName(){ return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1) } #**Functions (script specific)************************************** function Check-Module{ param ([String]$Module = $(Throw "Module name not specified")) [bool]$isResult = $False #try to load the module if (get-module -list -name $Module) { import-module $Module if (get-module -name $Module ) { $isResult = $True } else { $isResult = $False } } else { $isResult = $False } return $isResult } function Protect-File ($ffile, $ftemplateId, $fownermail) { [bool] $returnValue = $false try { If ($OwnerMail -eq $null -or $OwnerMail -eq "") { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId") } else { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail") } } catch { Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId") } return $returnValue } function Set-RMSConnection ($fappId, $fkey, $fbposId) { [bool] $returnValue = $false try { Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") $returnValue = $true } catch { Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") } return $returnValue } #**Main Script (Script)********************************************* Write-Host ("-== " + $Script:Name + " " + $Version + " ==-") $Script:isScriptProcess = $True # Validate Azure RMS connection by checking the module and then connection if ($Script:isScriptProcess) { if (Check-Module -Module RMSProtection){ $Script:isScriptProcess = $True } else { Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } if ($Script:isScriptProcess) { #Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" ) if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) { Write-Host ("Connected to Azure RMS") } else { Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } #  Start working loop if ($Script:isScriptProcess) { if ( !(($File -eq $null) -or ($File -eq "")) ) { if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) { $Script:isScriptProcess = $False } } } # Closing if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"} write-host ("-== " + $Script:Name + " " + $Version + "  ==-") if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
 ```
 
-## Modifying the instructions to selectively protect files
-When you have the preceding instructions working, it's then very easy to modify them for a more sophisticated configuration. For example, protect files by using the same script but only for files that contain personal identifiable information, and perhaps select a template that has more restrictive rights.
+## A varázsló utasításait külön-külön védelme a fájlok módosítása
+Ha a fenti útmutatás működik, akkor is majd nagyon könnyen bonyolultabb konfiguráció módosítására. Például a fájlok védelme a azonos parancsfájl használatával, de csak olyan személyes azonosításra alkalmas adatainak tartalmazó fájlokat, és talán válasszon ki egy sablont, amely jobban korlátozó jogokkal rendelkezik.
 
-To do this, use one of the built-in classification properties (for example, **Personally Identifiable Information**) or create your own new property. Then create a new rule that uses this property. For example, you might select the **Content Classifier**, choose the **Personally Identifiable Information** property with a value of **High**, and configure the string or expression pattern that identifies the file to be configured for this property (such as the  string "**Date of Birth**").
+Ehhez tegye a beépített besorolási tulajdonságok (például **személyi azonosító adatok**), vagy hozzon létre a saját új tulajdonságot. Majd hozzon létre egy új szabály, amely használja ezt a tulajdonságot. Például előfordulhat, hogy válassza a **tartalom osztályozó**, válassza a **személyi azonosító adatok** tulajdonság értéke **magas**, és konfigurálja a karakterlánc- vagy kifejezés mintát, amely azonosítja a fájlt, konfigurálni kell a ehhez a tulajdonsághoz (például a karakterlánc "**születési idő dátum**").
 
-Now all you need to do is create a new file management task that uses the same script but perhaps with a different template, and configure the condition for the classification property that you have just configured. For example, instead of the condition that we configured previously (**RMS** property, **Equal**, **Yes**), select the **Personally Identifiable Information** property with the **Operator** value set to **Equal** and the **Value** of **High**.
+Most kell tennie csak az új felügyeleti feladat létrehozása használó azonos parancsfájl de talán egy másik sablont, és konfigurálja az éppen konfigurált besorolási tulajdonság feltételét. Például a feltétellel, hogy mi a korábban beállított helyett (**RMS** tulajdonság, **egyenlő**, **Igen**), jelölje be a **személyi azonosító adatok** tulajdonság a a **operátor** értéke **egyenlő** és a **érték** a **magas**.
 

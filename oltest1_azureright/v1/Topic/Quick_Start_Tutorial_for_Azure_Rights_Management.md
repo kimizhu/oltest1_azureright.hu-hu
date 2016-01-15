@@ -3,237 +3,235 @@ description: na
 keywords: na
 title: Quick Start Tutorial for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1db923bf-7d19-4fdd-a413-bfeb58af5e03
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Quick Start Tutorial for Azure Rights Management
-Use this tutorial to quickly try out Microsoft Azure Rights Management (also known as Azure RMS) for your organization with just 5 steps that should take you less than 15 minutes. You’ll activate the service, securely send a confidential document by email to somebody in another organization, and then be able to track when that document is opened. When the confidential document is emailed, it is encrypted while in transit and can be read only by the person it is sent to, using the permissions that are set by the sender.
+# R&#246;vid&#237;tett oktat&#243;program Azure Rights Management
+Ez oktatóprogram gyorsan kipróbálására a Microsoft Azure Rights Management (más néven az Azure RMS) használata a szervezet, amely kell vennie kisebb, mint 15 percnyi csak 5 lépéseket. Fogja a szolgáltatás aktiválása, biztonságosan bizalmas dokumentum küldése e-mailek által valaki más szervezet és tudják, hogy a dokumentum megnyitása nyomon követésére. A bizalmas dokumentum küldve van, ha az átvitel titkosítva van, és csak akkor olvashatja csak az személy érkezik, a küldő által beállított engedélyek használatával.
 
 ![](../Image/AzRMS_QuickStartStepsAll.PNG)
 
-This tutorial is aimed at IT administrators and consultants, to help them evaluate Azure Rights Management as an information protection solution for an organization. In a production environment, the instructions to activate the service would be done by an administrator and the instructions to send the document would be done by end users. Both sets of instructions are included in this tutorial, to demonstrate the end-to-end scenario of securely sending a confidential document to somebody in another organization. If you have any problems completing this tutorial, send an email message to [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial) and we will help you out.
+Ez oktatóprogram célja a rendszergazdák és a tanácsadó, Súgó azokat egy információk védelme megoldás a szervezet Azure Rights Management értékelődik ki. Éles környezetben a rendszergazda által történik az utasításokat a szolgáltatás aktiválása, és a végfelhasználók által az utasításokat a dokumentum küldése történik. Mindkét utasításokat bemutatására a végpont forgatókönyv biztonságosan küldött bizalmas dokumentum valaki más szervezet, a oktatóprogram szerepelnek. Ha nehézségekbe ütközik a oktatóprogram befejezése, e-mail üzenet küldése [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial) és mi segít.
 
-To complete this tutorial, you will need the following:
+Ez a oktatóprogram befejezéséhez szüksége lesz a következők:
 
--   A subscription that supports Azure Rights Management . This can be a paid subscription or a trial subscription. If you want to use document tracking, which is required for step 5 in this tutorial, your subscription must support document tracking. For more information about the subscription options and links to free trials, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+-   Egy előfizetést, amely támogatja az Azure Rights Management. Ez lehet a előfizetéses vagy próba-előfizetéssel. Ha módosítani szeretné használni a dokumentum nyomon követése, amely kötelező 5. lépés a oktatóprogram, az előfizetés támogatnia kell a dokumentum nyomon követése. Az előfizetési beállítások és a szabad kísérletek mutató hivatkozások kapcsolatos további tudnivalókért tekintse meg a [Felhő előfizetések, amelyek támogatják az Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) szakasz a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) című témakört.
 
-    Tip: If you need to get a subscription, do this in advance because this process can sometimes take a while to complete.
+    Tipp: Szerezze be az előfizetés van szüksége, ha erre előre, mert egyes esetekben vehet igénybe.
 
--   An administrator account to sign in to the Office 365 admin center or the Azure classic portal, so that you can activate the Rights Management service. This account must also have an email address and a working email service (for example, Exchange Online or Exchange Server).
+-   Jelentkezzen be az Office 365 felügyeleti központban vagy az Azure portál, így a Rights Management szolgáltatás aktiválhatja a rendszergazdai fiók. Ez a fiók is rendelkeznie kell egy e-mail címet és egy működő e-mail szolgáltatás (például az Exchange Online vagy az Exchange Server).
 
--   A computer running Windows (minimum of Windows 7 SP1), and which has installed either Office 2016, Office 2013, or Office 2010.
+-   Windows (Windows 7 SP1 legalább), és amely telepítette az Office 2016, az Office 2013 vagy az Office 2010 rendszert futtató számítógép.
 
-Let’s get started.
+Lássuk a kezdeti lépéseket.
 
-## Step 1: Activate the Rights Management service
+## 1. lépés: A Rights Management szolgáltatás aktiválása
 ![](../Image/AzRMS_QuickStartSteps1.PNG)
 
-Even though you might have a subscription that supports Azure Rights Management, the service is disabled by default. To activate it, you can use either the Office 365 admin center, or the Azure classic portal:
+Annak ellenére, hogy a előfordulhat, hogy egy előfizetést, amely támogatja az Azure Rights Management, a szolgáltatás alapértelmezés szerint le van tiltva. Az aktiválás is használhatja, vagy az Office 365 felügyeleti központban, vagy az Azure portál:
 
--   If you have an Office 365 subscription that includes Azure Rights Management, or an Office 365 subscription that excludes Azure Rights Management but you have a subscription for Azure RMS Premium: **Use the Office 365 admin center**.
+-   Ha az Office 365-előfizetéssel, amely tartalmazza az Azure Rights Management, vagy az Office 365 előfizetéssel rendelkezik, amely kizárja az Azure Rights Management, de az Azure RMS önálló előfizetés: **Használja az Office 365 felügyeleti központban**.
 
--   If you do not have an Office 365 subscription: **Use the Azure classic portal**.
+-   Ha nem rendelkezik az Office 365-előfizetés: **Használja az Azure portál**.
 
 ![](../Image/AzRMS_Tutorial_1_Screenshots.png)
 
-#### To activate Rights Management from the Office 365 admin center
+#### Az Office 365 felügyeleti központban a Rights Management aktiválása
 
-1.  Go to the [Office 365 portal](https://portal.office.com/) and sign in with your work or school account.
+1.  Nyissa meg a [Office 365 portálon](https://portal.office.com/) és a bejelentkezés a munka vagy iskola fiókjával.
 
-2.  If the Office 365 admin center does not automatically display, select the app launcher icon in the upper-left and choose **Admin**. The **Admin** tile appears only to Office 365 administrators.
+2.  Ha az Office 365 felügyeleti központban nem jeleníti meg automatikusan, jelölje ki az alkalmazás indító ikon bal felső, és válassza a **rendszergazdai**. A **rendszergazdai** mozaik jelenik meg, csak az Office 365-rendszergazdák számára.
 
     > [!TIP]
-    > For admin center help, see [About the Office 365 admin center - Admin Help](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
+    > Felügyeleti központ segítségért tekintse meg a [kapcsolatos az Office 365 felügyeleti központban - rendszergazdai súgó](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
 
-3.  In the left pane, expand **SERVICE SETTINGS**.
+3.  A bal oldali ablaktáblában bontsa ki a **SZOLGÁLTATÁSBEÁLLÍTÁSOK**.
 
-4.  Click **Rights Management**.
+4.  Kattintson a **Rights Management**.
 
-5.  On the **RIGHTS MANAGEMENT** page, click **Manage**.
+5.  Az a **a RIGHTS MANAGEMENT** lapra, kattintson a **kezelése**.
 
-6.  On the **rights management** page, click **activate**.
+6.  Az a **rights management** lapra, kattintson a **aktiválása**.
 
-7.  When prompted **Do you want to activate Rights Management?**, click **activate**.
+7.  Amikor a rendszer **szeretné aktiválni a Rights Management?**, kattintson a **aktiválása**.
 
-You should now see **Rights management is activated** and the option to deactivate (you might need to manually refresh the page)
+Most végrehajtásakor **Rights management aktiválva van** és a lehetőség inaktiválása (szükség lehet az oldal manuális frissítéséhez)
 
-At this time, do not click **advanced features**. This takes you to the Azure classic portal where you can configure templates, which are not needed for this tutorial. Instead, you can close the Office 365 admin center.
+Ebben az időszakban, ne jelölje be a **Speciális funkciók**. Ez jut az Azure portál amennyiben úgy is konfigurálhatja a sablonok, amelyek nem szükségesek a oktatóprogram a. Ehelyett bezárhatja az Office 365 felügyeleti központban.
 
-#### To activate Rights Management from the Azure portal
+#### A Rights Management aktiválása a Azure portálról
 
-1.  Go to the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081) and sign in.
+1.  Nyissa meg a [Azure portál](http://go.microsoft.com/fwlink/p/?LinkID=275081) és a bejelentkezés.
 
-2.  In the left pane, click **ACTIVE DIRECTORY**.
+2.  A bal oldali ablaktáblában kattintson a **az ACTIVE DIRECTORY**.
 
-3.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+3.  Az a **az active directory** lapra, kattintson a **a RIGHTS MANAGEMENT**.
 
-4.  Select the directory to manage for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], click **ACTIVATE**, and then confirm your action.
+4.  Jelölje ki a könyvtárat, kezelheti a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], kattintson a **Aktiválás**, majd erősítse meg a műveletet.
 
-The **RIGHTS MANAGEMENT STATUS** should now display **Active** and the **ACTIVATE** option is replaced with **DEACTIVATE**.
+A **RIGHTS MANAGEMENT állapot** most megjelenjen-e **aktív** és a **Aktiválás** beállítást a rendszer kicseréli a **INAKTIVÁLÁS**.
 
-Although you can configure other options for Rights Management in the portal, these are not needed for this tutorial, so you can close the Azure classic portal.
+Bár a portál is konfigurálhatja a Rights Management egyéb beállítások, ezek nem szükségesek a ez oktatóprogram, így az Azure portál bezárhatja.
 
-That’s all you need to do for this first step. The service is activated so all users in your organization can now start to protect important and sensitive documents. In a production environment, you might want to restrict who can do this initially, for a phased rollout. But it’s not necessary for this tutorial.
+Ez minden, az első lépés szükséges. A szolgáltatás aktiválva van, így a szervezet összes felhasználó most elindíthatja a fontos és időérzékeny dokumentumok védelme érdekében. Éles üzemi környezetben korlátozhatja, akik ehhez első lépésként egy szakaszolt alkalmazásokon lehet szükség. De nem szükséges a oktatóprogram.
 
-Although not included here, for a production deployment, you probably will also probably want to configure custom templates. Templates make it easier for users to quickly apply the right settings when they need to protect files. When you activate Rights Management, you automatically get 2 default templates and it’s likely you will want to supplement these with your own custom templates in a production environment. But templates are not needed for this tutorial, so you’re ready to go to the next step.
+Bár a nem szereplő itt, az éles üzemi környezetben valószínűleg is valószínűleg kívánt egyéni sablonok konfigurálása. Sablonok megkönnyíti a felhasználók számára, hogy gyorsan alkalmazása a jobb oldali beállításait, ha szükségük van a fájlok védelme érdekében. Ha aktiválni a Rights Management, 2 alapértelmezett sablonok automatikusan kap, és valószínűleg kívánt kiegészítik az ezen a saját egyéni sablonok éles környezetben. Azonban a sablonok nem szükséges a oktatóprogram, így készen áll a következő lépéssel.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About activating Rights Management and controlling who can protect files and email when the service is activated   →|[Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)|
-|About the default templates and how to create new, custom templates   →|[Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
+|Ha azt szeretné, hogy a további információk|További információk|
+|-----------------------------------------------|-----------------------|
+|A Rights Management aktiválása, és annak beállítását, akik védhető a fájlok és az e-mailt, ha a szolgáltatás aktiválva →|[Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md)|
+|Az alapértelmezett sablonokat és létrehozása új, egyéni sablonok →|[Az Azure Rights Management egyéni sablonok konfigurálása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
 
-## Step 2: Install the Rights Management sharing application
+## 2. lépés: A Rights Management megosztóalkalmazás telepítése
 ![](../Image/AzRMS_QuickStartSteps2.PNG)
 
-The Rights Management sharing application (also known as the “RMS sharing app”) isn’t a requirement for Azure Rights Management, but we recommend it for all computers and mobile devices that support Azure Rights Management. The RMS sharing application integrates with Office applications by installing an Office add-in so that users can easily protect files directly from the ribbon. It also makes it possible to protect all files types by applying generic protection for files that are not natively supported by Azure Rights Management, and a document tracking site for users to track and revoke files that they have protected. We’ll be using the document tracking site later in this tutorial.
+A Rights Management megosztóalkalmazás (más néven a "RMS-megosztó alkalmazás") nem Azure Rights Management követelmény, de az összes számítógép és a mobil eszközök, amely támogatja az Azure Rights Management javasoljuk. Az RMS-megosztó alkalmazás integrálódik, az Office alkalmazások telepítésével az Office-bővítmény, hogy a felhasználók könnyen védhető fájlok közvetlenül a menüszalagon látható. Azt is lehetővé teszi az összes fájltípusok védelme fájlt, amelyet nem támogatottak natív módon Azure Rights Management, és a dokumentum nyomon követése a webhely felhasználói nyomon követésére és azok védelme fájlok visszavonni az általános védelmi alkalmazásával. A hely követési később ez oktatóprogram a dokumentum fogjuk használni.
 
-This application is free to download and offers a scripted install for production environments. But for this tutorial, we’ll install it locally.
+Az alkalmazás letöltéséhez ingyenes, és kínál egy éles környezetben a telepítése. De ez a oktatóprogram a mi lesz helyi szinten telepítse.
 
 ![](../Image/AzRMS_Tutorial_2_Screenshots.png)
 
-#### To download and install the Rights Management sharing application
+#### Töltse le és telepítse a Rights Management megosztóalkalmazás
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  Nyissa meg a [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) oldalon, a Microsoft webhelyén.
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the **Setup.exe** file to install the Microsoft Rights Management sharing application.
+2.  Az a **számítógépek** területen kattintson a ikonja a **RMS alkalmazás Windows rendszerhez** és mentse a **Setup.exe** fájlt a Microsoft Rights Management megosztóalkalmazás telepítése.
 
-3.  For a local install, you must use an administrator account to run the Setup.exe file that was downloaded. If you are prompted to continue, click **Yes**.
+3.  Helyi telepítés egy rendszergazdai fiók, futtassa a Setup.exe fájlt, amely töltött le kell használnia. Ha továbbra is kéri, kattintson a **Igen**.
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  Az a **a telepítő a Microsoft RMS** lapra, kattintson a **Tovább**, és várjon, amíg a telepítés befejezéséhez.
 
-5.  When the installation finishes, click **Restart** if prompted to restart your computer, or click  **Close** to complete the installation.
+5.  A telepítés befejezésekor kattintson **újraindítása** Ha a rendszer kéri, indítsa újra a számítógépet, vagy kattintson a  **Bezárás** a telepítés befejezéséhez.
 
-You’re now ready to start protecting files that contain information that you want to share but only with the people that you specify.
+Most készen áll, amelyet meg szeretne osztani másokkal, de csak a megadott felhasználókkal információkat tartalmazó fájlokat védelmének megkezdéséhez.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About a local installation of the Rights Management sharing application for Windows and user instructions   →|[Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx)|
-|About the scripted installation of the Rights Management sharing application for Windows and more technical information   →|[Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx)|
-|To understand the difference between native protection and generic protection   →|[What’s the difference between generic protection and built-in (native) protection?](https://technet.microsoft.com/library/dn574738.aspx)|
+|Ha azt szeretné, hogy a további információk|További információk|
+|-----------------------------------------------|-----------------------|
+|A Rights Management megosztóalkalmazás a Windows és a felhasználó utasításokat → egy helyi telepítési információk|[A Rights Management megosztási alkalmazás felhasználói útmutató](http://technet.microsoft.com/library/dn339006.aspx)|
+|A Rights Management megosztóalkalmazás a Windows rendszerhez és a további technikai információk → a parancsfájlalapú telepítéséről|[A Rights Management megosztási alkalmazás rendszergazda guide](http://technet.microsoft.com/library/dn339003.aspx)|
+|A natív protection, és az általános védelmi → különbséget|[Mi az általános védelmi és beépített (natív) protection közötti különbség?](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 3: Email your document that you want to protect
+## 3. lépés: A dokumentum lehet védetté tenni kívánt e-mail
 ![](../Image/AzRMS_QuickStartSteps3.PNG)
 
-For this step, first create and save a document using Word that will represent your document that you want to protect, and name it **Confidential.docx**. For this tutorial, it doesn’t matter what text it actually contains, but you will want it to contain some text so you can more easily confirm that the authorized recipient could read it. For example, you might type: **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.**
+Ez a lépés első létrehozása és használata, amely a dokumentum kívánt védelme határoz meg, és nevezze el, a Word dokumentum mentése **Confidential.docx**. Ez a oktatóprogram nem számít, hogy milyen szöveg ténylegesen tartalmaz, de érdemes azt a szöveget tartalmazza, így Ön egyszerűbben ellenőrizze, hogy, hogy a meghatalmazott címzett sikerült olvasni. Előfordulhat, hogy például a típusa: **Ha el az e-mail mellékletek tudja olvasni, a küldő sikeresen osztott védett fájl Azure RMS.**
 
-You’re then ready to safely share this document by email.
+Ezután készen áll a dokumentum biztonságosan osztani az e-mail.
 
 ![](../Image/AzRMS_Tutorial_3_Screenshots.png)
 
-#### To safely share your document by email
+#### A dokumentum biztonságosan osztani az e-mail
 
-1.  Using Outlook, create a new message and attach the file that you just created.
+1.  Outlook használja, hozzon létre egy új, és az újonnan létrehozott fájlt csatolni.
 
-2.  In the **To** box, type one or more business email addresses. Make sure you specify a business email address, such as **janetm@contoso.com** or **p.dover@fabrikam.com** because currently, Azure Rights Management doesn’t support personal email addresses that you might use at home from your Internet provider. Don’t worry about whether the person you’re sending it to also has Azure Rights Management or not.
+2.  Az a **a** mezőbe írjon be egy vagy több üzleti e-mail címek. Győződjön meg arról, például adja meg munkahelyi e-mail cím, **janetm@contoso.com** vagy **p.dover@fabrikam.com** mert jelenleg Azure Rights Management nem támogatja a személyes e-mail címek, előfordulhat, hogy az Internet szolgáltatótól otthon használja. Ne aggódjon a címzett azt is van-e Azure Rights Management vagy sem.
 
-3.  Type a subject, such as  **Confidential document** and then type a short message for the email, such as **Please read this confidential document and do not share it with others.**
+3.  Írja be például a tárgyat,  **Bizalmas dokumentum** és írja be például az e-mailek egy rövid üzenet **olvassa el a a bizalmas dokumentum, és nem másokkal.**
 
-4.  Then, on the **Message** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+4.  Ezután a a **üzenet** lapon, a a **RMS** csoportjában kattintson **védett megosztás** és kattintson a **védett megosztás** újra:
 
-5.  In the **share protected** dialog box:
+5.  Az a **védett megosztás** párbeszédpanel:
 
-    1.  Select **Viewer – View Only**.
+    1.  Válasszon **Viewer – csak a nézet**.
 
-        This means our recipients will be able to view the document but not edit or print it.
+        Ez azt jelenti, hogy a dokumentum megtekintéséhez, de nem szerkesztése, vagy kinyomtathatja a címzettek tudják.
 
-    2.  Select **Email me when somebody tries to open these documents**.
+    2.  Válasszon **e-mailt kérek, ha valaki megpróbálja megnyitni ezeket a dokumentumokat**.
 
-        You’ll get an email notification each time the recipients try to open the attachment, and also if somebody else tries to open it—for example, your recipient forwards the email to co-worker. In this last scenario, you’ll see that access was denied and from the user details, you can decide whether to send that person a copy of the document that they can open.
+        Jelenik meg az értesítő e-mailek minden alkalommal, amikor a címzett próbálja megnyitni a melléklet, és is, ha valaki megpróbálja megnyitni – például a címzett továbbítja az e-mailt együttes dolgozó. Ez az utolsó esetben látni fogja a, hogy a rendszer megtagadta a hozzáférést, és a felhasználó adatait is meghatározható küldése, hogy a személy, amely tudják nyitni a dokumentum egy példányát.
 
-    3.  Select **Allow me to instantly revoke access to these documents**.
+    3.  Válasszon **szeretnék azonnal visszavonni az ezeket a dokumentumokat a hozzáférést**.
 
-        This option requires the recipients to have an Internet connection each time they open the attachment but with the benefit that if you later revoke the document, the next time they try to open it, they will not be able to. If you do not select this option, the recipients might be able to open it even without an Internet connection but with the disadvantage that if you later revoke the document, there might be a delay for when that takes effect.
+        Ez a beállítás megköveteli a címzett, hogy az internetkapcsolatot a melléklet minden megnyitásakor, de előnyökkel, hogy később a a dokumentum visszavonni, ha a következő alkalommal azok próbálja megnyitni, azokat nem fogja tudni elvégezni. Ha nem jelöli be ezt a lehetőséget, a címzett lehet az internetkapcsolat nélkül is, de az, hogy ha később a a dokumentum visszavonni, lehet, ha, amely lép érvénybe a késés hátrányos megnyitható.
 
-    4.  Click **Send Now**.
+    4.  Kattintson a **küldése**.
 
-        The email with attachment is sent to the email addresses that you specified. In addition to your email message, they will see instructions how to read the attached document that is protected by Azure Rights Management.
+        Az e-mailt a melléklettel küld a megadott e-mail címek. Az e-mail üzenet kívül látja utasításokat a csatolt dokumentum Azure Rights Management által védett olvasása.
 
-Now you’ve sent your protected document, you’re ready to ask your recipients to wait for it to arrive and then open it. But don’t close Outlook, because we’ll use it again in our final step to track the attachment.
+A védett dokumentum elküldött, most készen áll címzettekkel várja meg annak a érkeznek, és nyissa meg a kérdés. De az Outlook, ne zárja be, mert a fogjuk használni azt újra a végső lépésben a melléklet nyomon követésére.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions and alternative methods for protecting files that you share by email   →|[Protect a file that you share by email by using the Rights Management sharing application](https://technet.microsoft.com/library/dn574735.aspx)|
-|About the options in the **share protected** dialog box   →|[Dialog box options for the Rights Management sharing application](https://technet.microsoft.com/library/dn574738.aspx)|
+|Ha azt szeretné, hogy a további információk|További információk|
+|-----------------------------------------------|-----------------------|
+|Részletes útmutatást és más módon történő e-mail → megosztott fájl védett|[A Rights Management megosztóalkalmazás használatával e-mail megosztott fájl védelme](https://technet.microsoft.com/library/dn574735.aspx)|
+|A lehetőségek a kapcsolatban a **védett megosztás** párbeszédpanel →|[A Rights Management megosztóalkalmazás párbeszédpanel beállításai](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 4: Ask your recipients to open the emailed document
+## 4. lépés: Kérje meg a címzett a mailezett dokumentum megnyitása
 ![](../Image/AzRMS_QuickStartSteps4.PNG)
 
-Your recipients can use many devices to read the protected document that you sent as an email attachment. The devices include iPads, iPhones, Android tablets and phones, Mac computers, as well as Windows computers.
+A címzettek sok eszköz segítségével olvassa el a védett dokumentumot e-mail mellékletként küldött. Az eszközök között iPads, a iPhones, a Android táblagépek és a telefonok, a Mac-számítógépek, valamint Windows rendszerű számítógép.
 
-Ask them to read the email message that you sent. They will see your email message and before that, the following text:
+Kérje meg az elküldött e-mailt olvasni őket. Az e-mailt látja és előtt, amely a következő szöveg:
 
-**The sender has protected the attachments with Microsoft RMS. You must** [sign in](http://aka.ms/rms)
-      **to open them.**
+**A küldő a mellékleteket, a Microsoft RMS rendelkezik védett. Kell** [Bejelentkezés](http://aka.ms/rms) **megnyitásához őket.**
 
-When they click the link, it takes them to instructions to install the RMS sharing app and if necessary, sign up for a free account. The free account grants them a subscription for RMS for individuals, which ensures that authorized users can always read a protected document, even if their organization does not have Azure RMS. They are then ready to read the protected attachment by using the following instructions.
+A hivatkozásra, ha tart azokat az RMS-megosztó alkalmazás telepítése, és ha szükséges, a bejelentkezés utasításokat a egy ingyenes fiókot. A szabad fiók biztosít azokat egy előfizetést az RMS szolgáltatást egyének, amely biztosítja, hogy engedéllyel rendelkező felhasználók bármikor olvashatja egy védett dokumentum, még akkor is, ha a szervezet nem rendelkezik az Azure RMS. Ezután készen állnak a védett melléklet olvasható az alábbi utasításokat.
 
 ![](../Image/AzRMS_Tutorial_4_Screenshots.png)
 
-#### To view the protected document attachment
+#### A védett dokumentum melléklet megtekintése
 
-1.  Because Azure Rights Management protected a Word document, there are two attachments for the email message. These are actually two versions of the same file but with different file name extensions. Open the version that has the **.ppdf** file name extension (**Confidential.ppdf**).
+1.  Azure Rights Management védett, a Word dokumentumba, mert nincsenek az e-mailt két mellékleteket. Ezek a ugyanazt a fájlt, de különböző kiterjesztésű ténylegesen két verziója. Nyissa meg a verzióját, amelynek a **.ppdf** fájlnévkiterjesztés (**Confidential.ppdf**).
 
-    If you have a version of [Office on your device that supports Rights Management](https://technet.microsoft.com/library/dn655136.aspx), you can open the other version of the file (**Confidential.docx**), so that it opens in Word.
+    Ha egy verziója van [Office az eszközön, amely támogatja a Rights Management](https://technet.microsoft.com/library/dn655136.aspx), úgy is megnyithatja, az fájl verziója (**Confidential.docx**), így a Word jelenik meg.
 
-2.  If you are prompted for your user name and password, enter your user name in the same format as the email address that was used to send you the email and attachment. For example, **janetm@contoso.com** or **p.dover@fabrikam.com**. For your password, type the password that you supplied when you signed up for RMS for individuals. Or, if your organization has Azure RMS, enter your usual work password.
+2.  Kéri a felhasználónevet és jelszót, ha az e-mail cím, küldjön e-mailek és a melléklet használt ugyanabban a formában adja meg a felhasználónevet. Például **janetm@contoso.com** vagy **p.dover@fabrikam.com**. A jelszót írja be az RMS használatához való regisztráció egyének megadott jelszót. Vagy ha a szervezet Azure RMS, adja meg a szokásos munka jelszavát.
 
-The document opens and you can now read the contents. For example, it might say **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.** Because it’s read-only, you cannot change the contents.
+A dokumentum nyílik meg, és most olvassa el a tartalmát. Például, hogy előfordulhat, hogy **el az e-mail mellékletek tudja olvasni, ha a küldő sikeresen osztott védett fájl Azure RMS egyidejű használatát** Mivel az csak olvasható, a tartalom nem módosítható.
 
-As an optional step, you could ask your recipient to forward the email to other people that you didn’t include in your original email. Even if those other people work for an organization that has Azure Rights Management or they apply for their own RMS for individuals subscription, they won’t be able to open the attachment. When they are promoted for their user name, access to the document will be denied.
+Nem kötelező lépésként sikerült kérje meg a címzett, az e-mailek továbbítására, amely nem tartozik az eredeti e-mailben mások számára. Akkor is, ha ezek mások számára a szervezet Azure Rights Management működik, vagy a saját RMS egyének előfizetés vonatkoznak, azokat nem fogja tudni megnyitni a mellékletet. Ezeket a rendszer támogatni a felhasználónév, amikor a rendszer megtagadja a dokumentum a hozzáférést.
 
-Now that the recipient has opened the attachment and optionally, forwarded it to somebody else, expect to get an email notification that reports this activity. But email messages are easy to lose over time, so a better way to track who accessed your document is to use the document tracking site, which is covered in the final step.
+Most, hogy a címzett megnyitotta a mellékletet, és szükség esetén továbbított azt valaki másnak, várt lekérni a jelentéseket a tevékenység e-mailben értesítést. De e-mailek könnyen elveszíti az idő múlásával, így jobban nyomon követésének módját, akik érhető el a dokumentum használni a webhely, amelyre az utolsó lépésben követési dokumentumot.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for viewing files that are protected by Azure Rights Management   →|[View and use files that have been protected by Rights Management](https://technet.microsoft.com/library/dn574741.aspx)|
-|About the free subscription, RMS for individuals   →|[RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
-|About the two versions of the file that you see attached to the email message   →|[What’s the .ppdf file that’s automatically created?](https://technet.microsoft.com/library/dn574738.aspx)|
+|Ha azt szeretné, hogy a további információk|További információk|
+|-----------------------------------------------|-----------------------|
+|Teljes utasítások Azure Rights Management → által védett fájlok megtekintése|[Megtekintése és használata a Rights Management védett fájlok](https://technet.microsoft.com/library/dn574741.aspx)|
+|A szabad előfizetésével, a személyek → az RMS|[RMS egyének és az Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
+|A két verzió, a fájl kapcsolatban, hogy látható csatolva az e-mail üzenet →|[Mi az automatikusan létrehozott .ppdf fájlhoz?](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 5: Track your protected document
+## 5. lépés: A védett dokumentum nyomon követése
 ![](../Image/AzRMS_QuickStartSteps5.PNG)
 
 > [!NOTE]
-> For this step, you must have a subscription that supports document tracking. To check whether your subscription includes document tracking, see [Comparison of Rights Management Services (RMS) Offerings](https://technet.microsoft.com/dn858608.aspx).
+> Ez a lépés rendelkeznie kell egy előfizetést, amely támogatja a dokumentum nyomon követése. Ellenőrizze, hogy az előfizetés tartalmazza-e a dokumentum nyomon követése, lásd a [Rights Management szolgáltatások (RMS) összehasonlítás ajánlatok](https://technet.microsoft.com/dn858608.aspx).
 
-This step is optional, but most people like to know if the attachment they sent to people has been opened, when, and even from where. For example:
+Ez a lépés nem kötelező, de a legtöbb személyek, például ismernie kell a melléklet személyeknek jelentkezéseket lett megnyitva, akkor, ha, és még honnan. Példa:
 
--   You’re expecting a response from somebody by a specified time and you can see from the document tracking site that she hasn’t opened the document even though the deadline is approaching. You send her a follow-up email or telephone her as a timely reminder.
+-   Várt választ valaki által megadott idő, és megtekintheti a dokumentum követési webhelyről, hogy ő még nem nyitható meg a dokumentum annak ellenére, hogy a határidő közeledik. A nyomon követési e-mail küldése rendszerbe, vagy a telefon rendszerbe, ne feledje időben.
 
--   After seeing that somebody has opened the document, you follow up to ask her if she has any questions or requires additional information.
+-   Biztosításáért, hogy valaki megnyitotta a dokumentumot, a nyomon követés után kérje a saját if ő kérdése van, vagy további információk igényel.
 
 ![](../Image/AzRMS_Tutorial_5_Screenshots.png)
 
-#### To track your protected document
+#### A védett dokumentum nyomon követésére
 
-1.  Using Outlook, on the **Home** tab, in the **RMS** group, click **Track Usage**.
+1.  Használja az Outlook, a **kezdőlap** lapon, a a **RMS** csoportjában kattintson **nyomon követése használati**.
 
-2.  If you see the **Protect and share on your terms** page, click **Sign in** and supply your user name and password again.
+2.  Ha azt látja, hogy a **védelme és a megosztás a saját feltételei szerint** lapra, kattintson a **Bejelentkezés** és a felhasználónevet és jelszót adja meg újra.
 
-3.  On the **Your shared documents** page, you’ll see the document that you attached to the email, **Confidential.docx**. At this point, it’s the only file displayed but as you share additional protected documents, the list will grow.
+3.  Az a **a megosztott dokumentumok** oldalon, látni fogja a dokumentum, amely az e-mailt, csatolt **Confidential.docx**. Ezen a ponton fájl csak jelenik meg, de a lista növekszik, a további védett dokumentumok megosztásához.
 
-    From this page, you’ll see when you shared the document (when you sent the email with the protected attachment), the date of the last activity, and the name of the recipient you sent the email to. Click the document name for additional details.
+    Ezen az oldalon látni fogja, ha a dokumentum (elküldésekor meg az e-mailt a védett melléklettel), a dátumot, az utolsó tevékenység és a címzett, az e-mailben küldött neve megosztott. További részleteket a dokumentum neve gombra.
 
-4.  On the new page, which has the name of the file that you clicked, you’ll see summary details for that document only, and a list of other options that are available for the document (**List**, **Timeline**, **Map**, **Settings**).
+4.  Az új lap, amelyen rákattintott a fájl nevét, a látni fogja, hogy a dokumentum csak az összefoglaló információk, és más beállítások listáját, amelyek a dokumentum (**lista**, **Ütemterv**, **térkép**, **Beállítások**).
 
-    Click each option to explore different ways to track your protected document. Or, still on the **Summary** page, click **Open in Excel** to export the information to a spreadsheet, or click **Revoke access** to stop sharing the document.
+    Nyomon követheti a védett dokumentum különböző módjai minden lehetőséget választva. Vagy továbbra is az a **Összefoglalás** lapján kattintson **Megnyitás az Excel programban** exportálja az adatokat egy számolótáblába, vagy kattintson **hozzáférés visszavonása** a dokumentum megosztását.
 
-You can return to this site to track further activity for your protected document, or revoke access if necessary. You can even access the site from your mobile device or tablet, by using a browser with this link: [document tracking](http://go.microsoft.com/fwlink/?LinkId=529562)
+Térjen vissza erre a webhelyre, a védett dokumentumhoz tevékenység további követéséhez, vagy ha szükséges, visszavonni a hozzáférést. Akkor is hozzáférhet a hely a mobileszköz vagy tábla, a böngésző segítségével, ez a hivatkozás: [dokumentumkövetési](http://go.microsoft.com/fwlink/?LinkId=529562)
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for tracking your documents   →|[Track and revoke your documents when you use the RMS sharing application](https://technet.microsoft.com/library/dn986611.aspx)|
-|Two minute video that explains and shows document tracking   →|[Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
-|For troubleshooting and customer questions   →|[FAQ for Document Tracking](https://technet.microsoft.com/dn947488)|
+|Ha azt szeretné, hogy a további információk|További információk|
+|-----------------------------------------------|-----------------------|
+|Részletes utasítások a dokumentumok → nyomon követésére|[Nyomon követése, és a dokumentumok visszavonni, az RMS-megosztó alkalmazás használata esetén](https://technet.microsoft.com/library/dn986611.aspx)|
+|Videó két perc, amely ismerteti, valamint a dokumentumkövetési → jeleníti meg|[Az Azure RMS dokumentumok nyomon követése és visszavonása](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
+|A hibaelhárítás és a felhasználói kérdések →|[Gyakran ismételt kérdések a dokumentumok nyomon követése](https://technet.microsoft.com/dn947488)|
 
-## Next Steps
-This tutorial stepped you through just one scenario for how Azure RMS can help protect your data. To see other common uses, see the [Azure RMS in action](https://technet.microsoft.com/library/jj585026.aspx) section from the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) article. There are other sections in this article that you might also find useful, such as how Azure RMS works and what business problems it can solve.
+## Az alábbi lépéseket
+Ez az oktatóanyag lépcsőzetes keresztül egyetlen eset hogyan Azure RMS segítségével az adatok védelme. Egyéb gyakori alkalmazások megtekintéséhez nyissa meg a [Azure RMS művelettel](https://technet.microsoft.com/library/jj585026.aspx) szakasz a [Mi az Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) cikk. Nincsenek más szakaszok is találhat hasznos cikkben, például az Azure RMS működése, és milyen üzleti problémák megoldásához is.
 
-If you’re ready to start deploying Azure RMS, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for your deployment steps and links for how-to instructions.
+Ha Ön megkezdheti az Azure RMS használata telepítése a [Azure Rights Management – üzembehelyezési menetrend](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) a központi telepítés lépéseit, és a hivatkozások útmutató utasításokat.
 
-## See Also
+## Lásd még
 [Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

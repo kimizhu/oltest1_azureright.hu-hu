@@ -3,57 +3,56 @@ description: na
 keywords: na
 title: Installing Windows PowerShell for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 0d665ed6-b1de-4d63-854a-bc57c1c49844
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Installing Windows PowerShell for Azure Rights Management
-Use the following information to help you install Windows PowerShell for Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS).
+# A Windows PowerShell telep&#237;t&#233;se Azure Rights Management
+Használja a következő információkat a segítenek a Windows PowerShell telepítse a Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS).
 
-You can use this Windows PowerShell module to administer [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] from the command line by using any computer that has an Internet connection and that meets the prerequisites listed in the next section. Windows PowerShell for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] supports scripting for automation or might be necessary for advanced configuration scenarios. For more information about the administration tasks and configurations that the module supports, see [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
+Ez a Windows PowerShell-modul segítségével felügyelheti [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] használatával a parancssorból bármilyen számítógépen, hogy van-e internetkapcsolata és, amely megfelel az Előfeltételek felsorolt, a következő szakaszban. A Windows PowerShell [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] automatizálásra scripting támogatja, vagy a speciális konfigurációs forgatókönyvek szükséges lehet. A felügyeleti feladatokat, és a modul támogató konfigurációk további tájékoztatásért lásd: [Az Azure Rights Management felügyelete a Windows PowerShell használatával](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
 
-## Prerequisites
-This table lists the prerequisites to install and use Windows PowerShell for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+## Előfeltételek
+Ez a táblázat felsorolja az előfeltételek telepítése és használata a Windows PowerShell for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
 
-|Requirement|More information|
-|---------------|--------------------|
-|A version of Windows that supports the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] administration module|Check the list of supported operating systems in the **System Requirements** section of the [download page for the Azure Rights Management Administration Tool](http://go.microsoft.com/fwlink/?LinkId=257721).|
-|Minimum version of Windows PowerShell: 2.0|Support for the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] administration module is introduced in Windows PowerShell 2.0.<br /><br />By default, most Windows operating systems install with at least version 2.0 of Windows PowerShell. If you need to install Windows PowerShell 2.0, see [Install Windows PowerShell 2.0](http://msdn.microsoft.com/library/ff637750.aspx).<br /><br />Tip: You can confirm the version of Windows PowerShell that you are running by typing **$PSVersionTable** in a Windows PowerShell session.|
-|Minimum version of the Microsoft .NET Framework: 4.5<br /><br />Note: This version of the Microsoft .NET Framework is included with the later operating systems, so you should  need to manually install it only if your client operating system is less than Windows 8.0 or your server operating system is less than Windows Server 2012.|If the minimum version of the  Microsoft .NET Framework is not already installed, you can download [Microsoft .NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653).<br /><br />This minimum version of the Microsoft .NET Framework is required for some of the classes that the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] administration module uses.|
-|Microsoft Online Services Sign-In Assistant 7.0|The Microsoft Online Services Sign-In Assistant is required for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] authentication.<br /><br />For more information, see [Download Center: Microsoft Online Services Assistant for IT Professionals RTW](http://www.microsoft.com/en-us/download/details.aspx?id=41950).|
+|Követelmény|További információ|
+|---------------|----------------------|
+|Verziószámú, amely támogatja a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] Adminisztráció modul|Ellenőrizze a támogatott operációs rendszerek listáját a **Rendszerkövetelmények** szakasza a [lap letöltése a Azure Rights Management felügyeleti eszköz](http://go.microsoft.com/fwlink/?LinkId=257721).|
+|A Windows PowerShell minimális verziója: 2.0|Támogatja a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] Adminisztráció modul a Windows PowerShell 2.0-s bevezetett.<br /><br />Alapértelmezés szerint a legtöbb Windows operációs rendszer telepítése legalább Windows PowerShell 2.0-s verzióját. Ha a Windows PowerShell 2.0 telepítése van szüksége, tekintse meg a [telepítse a Windows PowerShell 2.0](http://msdn.microsoft.com/library/ff637750.aspx). **Tip:** Beírásával futó Windows PowerShell verziójának megerősítése **$PSVersionTable** Windows PowerShell munkamenetben.|
+|A Microsoft .NET-keretrendszer minimális verziója: 4.5 **Tip:** A Microsoft .NET Framework jelen verziójában része az újabb operációs rendszerek, így csak akkor kell a manuálisan kell telepítenie, ha az ügyfél operációs rendszere kisebb, mint a Windows 8.0, vagy a kiszolgálói operációs rendszer Windows Server 2012-nél kisebb.|Ha ez nem telepítette, letöltheti a [a Microsoft .NET-keretrendszer 4.5](http://www.microsoft.com/download/details.aspx?id=30653).<br /><br />Ez a Microsoft .NET-keretrendszer verziója szükséges osztályok részénél, amely a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] Adminisztráció modul használ.|
+|Microsoft Online Services – bejelentkezési segéd 7.0|A Microsoft Online Services bejelentkezési segédje meg kell adni a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] hitelesítés.<br /><br />További tudnivalókért tekintse meg a [Download Center: Microsoft Online Services az informatikai szakemberek RTW Segéd](http://www.microsoft.com/en-us/download/details.aspx?id=41950).|
 
-## How to install the Rights Management administration module
+## A Rights Management Adminisztráció modul telepítése
 
-1.  Go to the Microsoft Download Center and [download the Azure Rights Management Administration Tool](https://go.microsoft.com/fwlink/?LinkId=257721), which contains the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] administration module for Windows PowerShell.
+1.  Nyissa meg a Microsoft Download Center és [Töltse le az Azure Rights Management felügyeleti eszközt](https://go.microsoft.com/fwlink/?LinkId=257721), amely tartalmazza a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] Adminisztráció modul Windows Powershellhez.
 
-2.  From the local folder where you downloaded and saved the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] installer file, double-click the executable file that you downloaded for your platform (WindowsAzureADRightsManagementAdministration_x64 or WindowsAzureADRightsManagementAdministration_x86.exe) to start the Azure AD Rights Management Administration Setup Wizard.
+2.  A helyi mappában, ahol le, és menti a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] telepítő fájl, kattintson duplán a végrehajtható fájl, amely az Azure AD Rights felügyeleti felügyeleti telepítő varázsló elindításához le a Platform (WindowsAzureADRightsManagementAdministration_x64 vagy WindowsAzureADRightsManagementAdministration_x86.exe).
 
-3.  Complete the wizard.
+3.  A varázsló befejezéséhez.
 
-Windows PowerShell for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] is now installed.
+A Windows PowerShell [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] most már telepítve van.
 
-## Next steps
-To see which cmdlets are available, start Windows PowerShell with the **Run as administrator** option and type the following:
+## További lépések
+Tekintse meg, mely parancsmagok érhetők el, indítsa el a Windows PowerShell a **Futtatás rendszergazdaként** lehetőséget, és írja be a következőt:
 
 ```
 Get-Command -Module aadrm
 ```
-Use `the Get-Help <cmdlet_name>` command to see the Help for a specific cmdlet.
+Használata `the Get-Help <cmdlet_name>` parancsot egy adott parancsmag súgójában.
 
-For more information:
+További információ:
 
--   Full list of cmdlets available: [Azure Rights Management Cmdlets](https://msdn.microsoft.com/library/windowsazure/dn629398.aspx)
+-   Teljes listáját a parancsmagok érhető el: [Azure Rights Management parancsmagok](https://msdn.microsoft.com/library/windowsazure/dn629398.aspx)
 
--   List of main configuration scenarios that support Windows PowerShell: [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md)
+-   Fő konfigurációs forgatókönyvek, amely támogatja a Windows PowerShell listája: [Az Azure Rights Management felügyelete a Windows PowerShell használatával](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md)
 
-Before you can run any commands that configure the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service, you must connect to the  service by using the [Connect-AadrmService](https://msdn.microsoft.com/library/windowsazure/dn629415.aspx) cmdlet. When you have finished running the configuration commands that you want, disconnect from the service by using the [Disconnect-AadrmService](https://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet.
+Konfigurálása parancs futtatása előtt a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] szolgáltatást, csatlakoznia kell a szolgáltatás segítségével a [Connect-AadrmService](https://msdn.microsoft.com/library/windowsazure/dn629415.aspx) parancsmagot. Ha befejezte, hogy a kívánt konfigurációs parancsok fut, leválasztása a szolgáltatás használatával a [kapcsolat bontása-AadrmService](https://msdn.microsoft.com/library/windowsazure/dn629416.aspx) parancsmagot.
 
 > [!NOTE]
-> If you have not yet activated [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], you can do this after you have connected to the service, by using the [Enable-Aadrm](https://msdn.microsoft.com/library/windowsazure/dn629412.aspx) cmdlet.
+> Ha még nem aktiválta [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], ehhez a szolgáltatás segítségével csatlakozás után a [engedélyezése-történő együttműködésre](https://msdn.microsoft.com/library/windowsazure/dn629412.aspx) parancsmagot.
 
-## See Also
-[Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md)
+## Lásd még
+[Az Azure Rights Management felügyelete a Windows PowerShell használatával](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md)
 

@@ -3,386 +3,357 @@ description: na
 keywords: na
 title: Migrating from AD RMS to Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 828cf1f7-d0e7-4edf-8525-91896dbe3172
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Migrating from AD RMS to Azure Rights Management
-Use the following set of instructions to  migrate your Active Directory Rights Management Services (AD RMS) deployment to Azure Rights Management (Azure RMS). After the migration, users will still have access to documents and email messages that your organization protected by using AD RMS, and newly protected content will use Azure RMS.
+# &#193;ttelep&#237;t&#233;s Active Directory tartalomv&#233;delmi szolg&#225;ltat&#225;sok az Azure Rights Management
+A következő set utasítás használatával telepítse át az Active Directory tartalomvédelmi szolgáltatások (AD RMS) telepítés Azure Rights Management (Azure RMS). Az áttelepítés után felhasználók továbbra is hozzáférhet a dokumentumhoz, és e-mailek, hogy a szervezet Active Directory tartalomvédelmi szolgáltatások használatával védett, és újonnan védett tartalmat fogja használni az Azure RMS.
 
-Not sure whether this AD RMS migration is right for your organization?
+Nem biztos, hogy az AD RMS-áttelepítés a szervezet számára megfelelő?
 
--   For an introduction to Azure RMS,  the business problems that it can solve, what it looks like to administrators and users, and how it works, see [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md)
+-   Azure RMS, üzleti problémák megoldásában azt is megoldható, néz ki a rendszergazdák és a felhasználók és működésének bemutatását lásd: [Mi az Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md)
 
--   For a comparison of Azure RMS with AD RMS, see [Comparing Azure Rights Management and AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
+-   Egy Azure RMS AD RMS-sel szemben, lásd: [Azure Rights Management és az Active Directory tartalomvédelmi szolgáltatások összehasonlítása](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
 
-## Prerequisites for migrating AD RMS to Azure RMS
-Before you start the migration to Azure RMS, make sure that the following prerequisites are in place and that you understand any limitations.
+## Az Azure RMS áttelepítése Active Directory tartalomvédelmi szolgáltatások előfeltételei
+Azure RMS-nek az áttelepítés megkezdése előtt győződjön meg arról, hogy vannak-e az alábbi előfeltételek teljesülnek, és, hogy érti korlátozások.
 
-|Requirement|More information|
-|---------------|--------------------|
-|A supported RMS deployment|All releases of AD RMS from Windows Server 2008 through Windows Server 2012 R2 support a migration to Azure RMS:<br /><br />Windows Server 2008 (x86 or x64)<br /><br />Windows Server 2008 R2 (x64)<br /><br />Windows Server 2012 (x64)<br /><br />Windows Server 2012 R2 (x64)<br /><br />All valid AD RMS topologies are supported:<br /><br />Single forest, single RMS cluster<br /><br />Single forest, multiple licensing-only RMS clusters<br /><br />Multiple forests, multiple RMS clusters<br /><br />**Note**: By default, multiple RMS clusters migrate to a single Azure RMS tenant. If you want different RMS tenants, you must treat them as different migrations. A key from one RMS cluster cannot be imported to more than one Azure RMS tenant.|
-|All requirements to run Azure RMS, including an Azure RMS tenant (not activated)|See [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).<br /><br />Although you must have an Azure RMS tenant before you can migrate from AD RMS, we recommend that you do not activate the Rights Management service before the migration. The migration process includes this step after you have exported keys and templates from AD RMS and imported them to Azure RMS. However, if Azure RMS is already activated, you can still migrate from AD RMS.|
-|Preparation for Azure RMS:<br /><br />Directory synchronization between your on-premises directory and Azure Active Directory<br /><br />Mail-enabled groups in Azure Active Directory|See [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).|
-|If you have used the Information Rights Management (IRM) functionality of Exchange Server (for example, transport rules and Outlook Web Access) or SharePoint Server with AD RMS:<br /><br />Plan for a short period of time when IRM will not be available on these servers|You can continue to use IRM on these servers with Azure RMS after the migration. However, one of the migration steps is to temporarily disable the IRM service, install and configure a connector, reconfigure the servers, and then re-enable IRM.<br /><br />This is the only interruption to service during the migration process.|
-Limitations:
+|Követelmény|További információ|
+|---------------|----------------------|
+|A támogatott RMS telepítése|A Windows Server 2008, Windows Server 2012 R2 keresztül az AD RMS összes kiadására Azure RMS áttelepítést támogatják:<br /><br />-   Windows Server 2008 (x 86 vagy x 64)<br />-   Windows Server 2008 R2 (x 64)<br />-   Windows Server 2012 (x 64)<br />-   Windows Server 2012 R2 (x 64) **Note:** Ha a Windows Server 2003 fut a Windows RMS, ezen az operációs rendszer verziója lesz az támogatási 2015 során. Azure RMS áttelepítheti az RMS jelen verziójában, de ez a folyamat csak akkor, ha továbbra is támogatott az operációs rendszer támogatott. Megoldás akkor képes importálni a megbízható közzétételi tartomány (TPD) AD RMS által támogatott verzióra, és importálja újból a TPD az RMS 1.0 kompatibilitási beállítás megadása nélkül. Eltávolítható kapcsolatos további információkért lásd: [megbízható közzétételi tartomány](http://technet.microsoft.com/library/dd996639%28v=ws.10%29.aspx)<br />Az összes érvényes Active Directory tartalomvédelmi szolgáltatások topológiák támogatottak:<br /><br />-   Egyetlen erdő, az RMS-fürt egyetlen<br />-   Egyetlen erdő esetén, több csak licencelési RMS-fürt<br />-   Több erdővel, több RMS-fürt **Note:** Alapértelmezés szerint több RMS-fürt egyetlen Azure RMS bérlőként át. Azt szeretné, hogy a különböző RMS bérlők, kell kezelni a különböző áttelepítések. A kulcs az RMS-fürt egynél több Azure RMS bérlő nem importálható.|
+|Azure RMS, beleértve az Azure RMS bérlő (nincs aktiválva) futtatására vonatkozó összes követelmények|Lásd: [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md).<br /><br />Bár az Azure RMS bérlő kell rendelkeznie, mielőtt áttelepítené AD RMS, javasoljuk, hogy a felhasználó nem aktiválta a Rights Management szolgáltatás az áttelepítés előtt. Az áttelepítési folyamat tartalmazza az ebben a lépésben exportált kulcsok és sablonok az Active Directory tartalomvédelmi szolgáltatások, és importálja azokat az Azure RMS után. Azonban ha az Azure RMS már aktiválva van, továbbra is áttelepíthetők az AD RMS.|
+|Az Azure RMS előkészítése:<br /><br />-   A helyszíni címtár között az Azure Active Directory címtár-szinkronizálás<br />-   Levelezési csoportok az Azure Active Directoryban|Lásd: [Azure Rights Management előkészítése](../Topic/Preparing_for_Azure_Rights_Management.md).|
+|Ha Exchange Server (például átviteli szabályok és az Outlook Web Access) vagy a SharePoint Server tartalomvédelmi szolgáltatással (IRM) funkcióját használja az AD RMS szolgáltatással:<br /><br />-   Ha a tartalomvédelmi szolgáltatás nem lesz elérhető ezeken a kiszolgálókon rövid időn tervezése|E szolgáltatás használatához az Azure RMS ezeken a kiszolgálókon az áttelepítés után továbbra is. Azonban az áttelepítési műveleteket egyik átmenetileg letiltja a Tartalomvédelmi szolgáltatás telepítése és a-összekötő konfigurálása, konfigurálja újra a kiszolgálókat, és majd engedélyezze újra a tartalomvédelmi szolgáltatás.<br /><br />Ez a szolgáltatás csak megszakítás az áttelepítési folyamat során.|
+A korlátozások vonatkoznak:
 
--   Although the migration process supports migrating your server licensing certificate (SLC) key to a hardware security module (HSM) for Azure RMS, Exchange Online does not currently support this configuration. If you want full IRM functionality with Exchange Online after you migrate to Azure RMS, your Azure RMS tenant key must be [managed by Microsoft](http://technet.microsoft.com/library/dn440580.aspx). Alternatively, you can run IRM with reduced functionality in Exchange Online  when your Azure RMS tenant is managed by you (BYOK). For more information about using Exchange Online with Azure RMS, see [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration) in these instructions.
+-   Bár az áttelepítési folyamat a kiszolgáló licencelési hardveres biztonsági modult (HSM)-tanúsítvány kulcsot az Azure RMS áttelepítését támogatja, az Exchange Online jelenleg nem támogatja ezt a konfigurációt. Ha az Exchange Online teljes Tartalomvédelmi szolgáltatás Azure RMS való áttelepítése után, az Azure RMS bérlői kulcsot kell [a Microsoft által felügyelt](http://technet.microsoft.com/library/dn440580.aspx). Másik lehetőségként hajthat végre a tartalomvédelmi szolgáltatás csökkentett az Exchange Online esetén az Azure RMS bérlői meg (BYOK) kezeli. Az Azure RMS Exchange Online használatával kapcsolatos további információkért lásd: [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration) az alábbi utasításokat.
 
--   If you have software and clients that are not supported with Azure RMS, they will not be able to protect or consume content that is protected by Azure RMS. Be sure to check the supported applications and clients section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+-   Ha a szoftver- és az ügyfelek, amelyek nem támogatják az Azure RMS, nem fogják tudni védelme és Azure RMS által védett tartalmakat. Ellenőrizze a támogatott alkalmazások és az ügyfelek szakasz a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) témakör.
 
--   If you import your on-premises key to Azure RMS as archived (you do not set the TPD to be the active during the import process) and you migrate users in batches for a phased migration, content that is newly protected by the migrated users will not be accessible to users who remain on AD RMS. In this scenario, whenever  possible, keep the migration time short and migrate users in logical batches such that if they collaborate with one another, they are migrated together.
+-   Ha importálja a helyszíni kulcsot az Azure RMS archivált (nincs megadva a TPD az importálási folyamat során az aktív legyen) és telepít át a felhasználók számára a fázisos áttelepítés kötegekben, újonnan az áttelepített felhasználók által védett tartalom nem lesz elérhető a felhasználók számára az Active Directory tartalomvédelmi szolgáltatások maradnak. Ebben az esetben amikor csak lehetséges, az áttelepítés rövid idő tartani, és át a felhasználók logikai kötegekben, úgy, hogy azok együttműködni egymással, ha azok együtt át.
 
-    This limitation does not apply when you set the TPD to active during the import process, because all users will protect content by using the same key. We recommend this configuration because it lets you migrate all users independently and at your own pace.
+    Ez a korlátozás nem vonatkozik beállításakor a TPD aktív az importálás során, mivel minden felhasználó tartalom védelméhez a azonos kulccsal. Ez a konfiguráció azt javasoljuk, mert lehetővé teszi, hogy minden felhasználó át függetlenül és a saját számítógépére.
 
--   If you collaborate with external partners (for example, by using trusted user domains or federation), they must also migrate to Azure RMS either at the same time as your migration, or as soon as possible afterwards. To continue to access content that your organization previously protected by using AD RMS, they must make client configuration changes that are similar to those that you make, and included in this document.
+-   Ha (például megbízható felhasználói tartományok vagy használatával összevonási) külső partnerekkel folytatott együttműködés, ezek is kell Azure RMS vagy egyszerre az áttelepítést, vagy a lehető leghamarabb később át. A folytatáshoz, hogy a szervezet Active Directory tartalomvédelmi szolgáltatások használatával korábban védett, akkor kell változtatásokat ügyfél konfigurációs hasonlóak, hogy a tartalom, és ez a dokumentum megtalálható eléréséhez.
 
-    Because of the possible configuration variations that your partners might have, exact instructions for this reconfiguration are out of scope for this document. For help, contact Microsoft Customer Support Services (CSS).
+    Miatt előfordulhat, hogy a partnerek lehetséges konfigurációs változatok a újrakonfigurálása pontos utasítások kívül esnek a hatókörön ehhez a dokumentumhoz. Segítségért forduljon a Microsoft ügyfélszolgálathoz (CSS).
 
-## Steps for migrating AD RMS to Azure RMS
+## Az Azure RMS áttelepítése Active Directory tartalomvédelmi szolgáltatások lépései
 
-|Migration step|More information|
-|------------------|--------------------|
-|**1. Download the Azure RMS Management Administration Tools**|For instructions, see [Step 1: Download the Azure Rights Management Administration Tool](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step1Migration).|
-|**2. Export configuration data from AD RMS and import it to Azure RMS**|You export the configuration data (keys, templates, URLs) from AD RMS to an XML file, and then upload that file to Azure RMS by using the Import-AadrmTpd Windows PowerShell cmdlet. Additional steps might be needed, depending your on AD RMS key configuration:<br /><br />**Software-protected key to software-protected key migration**: Centrally managed, password-based keys in AD RMS to Microsoft-managed Azure RMS tenant key. This is the simplest migration path and no additional steps are required.<br /><br />**HSM-protected  key to HSM-protected key migration**: Keys that are stored by an HSM for AD RMS to customer-managed Azure RMS tenant key (the “bring your own key” or BYOK scenario). This requires additional steps to transfer the key from your on-premises Thales HSM to the Azure RMS HSM.<br /><br />**Software-protected key to HSM-protected key migration**: Centrally managed, password-based keys in AD RMS to customer-managed Azure RMS tenant key (the “bring your own key” or BYOK scenario). This requires the most configuration because you must first extract your software key and import it to an on-premises HSM, and then do the additional steps to transfer the key from your on-premises Thales HSM to the Azure RMS HSM.<br /><br />For instructions, see [Step 2. Export configuration data from AD RMS and import it to Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step2Migration).|
-|**3. Activate your RMS tenant**|If possible, do this step after the import process and not before.<br /><br />For more information and instructions, see [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).|
-|**4. Configure imported templates**|When you import your rights policy templates, their status is archived. If you want users to be able to see and use them, you must change the template status to published in the Azure classic portal.<br /><br />For instructions, see [Step 4. Configure imported templates](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step4Migration).|
-|**5. Reconfigure clients to use Azure RMS**|Existing Windows computers must be reconfigured to use the Azure RMS service instead of AD RMS. This step applies to computers in your organization, and to computers in partner organizations if you have collaborated with them while you were running AD RMS.<br /><br />In addition, if you have deployed the [mobile device extensions](http://technet.microsoft.com/library/dn673574.aspx) to support mobile devices such as iOS phones and iPads, Android phones and tablets, Windows phone, and Mac computers, you must remove the SRV records in DNS that redirected these clients to use AD RMS.<br /><br />For instructions, see [Step 5. Reconfigure clients to use Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step5Migration).|
-|**6. Configure IRM integration with Exchange Online**|This step is required if you want to use Exchange Online with Azure RMS.<br /><br />For instructions, see [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration).|
-|**7. Deploy the RMS connector**|This step is required if you want to use any of the following on-premises services with Azure RMS:<br /><br />Exchange Server (for example, transport rules and Outlook Web Access)<br /><br />SharePoint Server<br /><br />Windows Server that runs File Classification Infrastructure<br /><br />For instructions, see [Step 7. Deploy the RMS connector](#BKMK_Step7Migration).|
-|**8. Decommission AD RMS**|When you have confirmed that all clients are using Azure RMS and no longer accessing the AD RMS servers, you can decommission your AD RMS deployment.<br /><br />For instructions, see [Step 8. Decommission AD RMS](#BKMK_Step8Migration).|
-|**9. Re-key your Azure RMS tenant key**|This step is required if you were not running in Cryptographic Mode 2 before the migration, and optional but recommended for all migrations to help safeguard the security of your Azure RMS tenant key.<br /><br />For instructions, see [Step 9. Re-key your Azure RMS tenant key](#BKMK_Step9Migration).|
+|Áttelepítési lépés|További információ|
+|----------------------|----------------------|
+|**1. Töltse le az Azure RMS felügyeleti felügyeleti eszközei**|Útmutatásért lásd: [Step 1: Download the Azure Rights Management Administration Tool](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step1Migration).|
+|**2. Az AD RMS konfigurációs adatok exportálja és importálja azt Azure RMS**|XML-fájlba exportálja a konfigurációs adatokat (kulcsok, sablonok, az URL-címek) AD RMS, majd töltse fel, hogy a fájl Azure RMS Import-AadrmTpd Windows PowerShell parancsmag használatával. További lépéseket is szükség lehet attól függően, hogy a a AD RMS-konfiguráció:<br /><br />-   Szoftver védett kulcs áttelepítési szoftver védett kulcsot: Központilag felügyelt, jelszó kulcsokat az Active Directory tartalomvédelmi szolgáltatások, a Microsoft által felügyelt Azure RMS bérlői kulcshoz. Ez a legegyszerűbb áttelepítési elérési útja és nincs további lépések szükségesek.<br />-   Kulcs áttelepítési HSM védett HSM védett kulcsot: Az AD RMS-ügyfél által felügyelt Azure RMS bérlői kulcs Hardvermodult által tárolt kulcsok (a "saját kulcsot kerüljön" vagy BYOK forgatókönyv). Ehhez a kulcs átvitele a helyszíni Thales HSM Azure RMS működnek további lépéseket.<br />-   Kulcs áttelepítési HSM védett szoftver védett kulcsot: Központilag felügyelt jelszó alapú kulcsokat az AD RMS-ügyfél által felügyelt Azure RMS bérlői kulcsot (a "saját kulcsot kerüljön" vagy BYOK forgatókönyv). Ehhez a legtöbb configuration, mert kell először bontsa ki a szoftver-kulcs, és importálja azt a helyszíni Hardvermodult és a további lépéseket, a kulcs átvitele a helyszíni Thales HSM Azure RMS működnek majd tegye.<br /><br />Útmutatásért lásd: [Step 2. Export configuration data from AD RMS and import it to Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step2Migration).|
+|**3. Az RMS-bérlő aktiválása**|Ha lehetséges tegye meg ezt a lépést, az importálási folyamat után, és nem előtt.<br /><br />További információt és útmutatást talál [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).|
+|**4. Importált sablonok konfigurálása**|A jogmegadási sablonok importálásakor az állapotukat archiválva legyen. Ha azt szeretné, hogy a felhasználók láthatják, és a használatukat, módosítania kell a hagyományos Azure portálon közzétett sablon állapotot.<br /><br />Útmutatásért lásd: [Step 4. Configure imported templates](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step4Migration).|
+|**5. Konfigurálja újra az Azure RMS Alkalmazást használó ügyfelek**|Windows-számítógépek AD RMS helyett az Azure RMS szolgáltatás használatára kell konfigurálni. Ha meg van kapcsolóprofil velük, amíg az Active Directory tartalomvédelmi szolgáltatások futtatása során ezt a lépést a szervezet számítógépeire, és partnerszervezet található számítógépekre vonatkozik.<br /><br />Továbbá, ha telepítette a [mobileszköz bővítmények](http://technet.microsoft.com/library/dn673574.aspx) mobileszközök, például az iOS-telefonok és Ipadek, Android telefonok és táblagépek, Windows phone és Mac számítógépek támogatásához el kell távolítania az SRV-rekordot a DNS-ben, amely használja az AD RMS ezek az ügyfelek átirányítva.<br /><br />Útmutatásért lásd: [Step 5. Reconfigure clients to use Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step5Migration).|
+|**6. Exchange Online IRM integráció konfigurálása**|Ez a lépés szükség, ha az Azure RMS Exchange Online használni kívánt.<br /><br />Útmutatásért lásd: [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration).|
+|**7. Az RMS-összekötő telepítése**|Ez a lépés szükség, ha azt szeretné, hogy az alábbi helyszíni szolgáltatások az Azure RMS használata:<br /><br />-   Exchange-kiszolgáló (például átviteli szabályok és az Outlook Web Access)<br />-   SharePoint-kiszolgáló<br />-   Fájl besorolást infrastruktúra futtató Windows-kiszolgáló<br /><br />Útmutatásért lásd: [Step 7. Deploy the RMS connector](#BKMK_Step7Migration).|
+|**8. Active Directory tartalomvédelmi szolgáltatások leszerelése**|Ha megerősítette, hogy minden ügyfél Azure RMS Alkalmazást használ, és többé nem érik el az AD RMS-kiszolgálókat, az AD RMS-telepítés képes leszerelni.<br /><br />Útmutatásért lásd: [Step 8. Decommission AD RMS](#BKMK_Step8Migration).|
+|**9. Az Azure RMS bérlői kulcs újbóli kulcs**|Ez a lépés szükség, ha nem futottak a 2. kriptográfiai mód az áttelepítés előtt, és nem kötelező, de ajánlott tartalmazó összes az Azure RMS bérlői kulcs biztonságának védelme érdekében.<br /><br />Útmutatásért lásd: [Step 9. Re-key your Azure RMS tenant key](#BKMK_Step9Migration).|
 
-### <a name="BKMK_Step1Migration"></a>Step 1: Download the Azure Rights Management Administration Tool
-Go to the Microsoft Download Center and download the [Azure Rights Management Administration Tool](http://go.microsoft.com/fwlink/?LinkId=257721), which contains the Azure RMS administration module for Windows PowerShell.
+### <a name="BKMK_Step1Migration"></a>1. lépés: Töltse le az Azure Rights Management felügyeleti eszköz
+Nyissa meg a Microsoft Download Center, és töltse le a [Azure Rights Management felügyeleti eszköz](http://go.microsoft.com/fwlink/?LinkId=257721), az Azure RMS felügyeleti modul Windows PowerShell benne.
 
-### <a name="BKMK_Step2Migration"></a>Step 2. Export configuration data from AD RMS and import it to Azure RMS
-This step is a two-part process:
+### <a name="BKMK_Step2Migration"></a>2. lépés. Az AD RMS konfigurációs adatok exportálja és importálja azt Azure RMS
+Ez a lépés két lépésből áll:
 
-1.  Export the configuration data from AD RMS by exporting the trusted publishing domains (TPDs) to an .xml file. This process is the same for all migrations.
+1.  A konfigurációs adatok exportálása az AD RMS (eltávolítható) a megbízható közzétételi tartomány exportálása .xml kiterjesztésű fájlba. Ez a folyamat megegyezik a összes.
 
-2.  Import the configuration data to Azure RMS. There are different processes for this step, depending on your current AD RMS deployment configuration and your preferred topology for your Azure RMS tenant key.
+2.  A konfigurációs adatok importálását az Azure RMS-nek. Van-e ezt a lépést, az aktuális Active Directory tartalomvédelmi szolgáltatások telepítési konfigurációt, és az Azure RMS bérlői kulcs előnyben részesített topológiájától függően a különböző folyamat.
 
-#### Export the configuration data from AD RMS
-Do the following procedure on all AD RMS clusters, for all trusted publishing domains that have protected content for your organization. You do not need to run this on licensing-only clusters.
-
-> [!NOTE]
-> If you are using Windows Server 2003 Rights Management, instead of these instructions, follow the procedure [Export SLC, TUD, TPD and RMS private key](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) from the [Migrating from Windows RMS to AD RMS in a Different Infrastructure](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) topic.
-
-###### To export the configuration data (trusted publishing domain information)
-
-1.  Log on the AD RMS cluster as a user with AD RMS administration permissions.
-
-2.  From the AD RMS management console (**Active Directory Rights Management Services**), expand the AD RMS cluster name, expand **Trust Policies**, and then click **Trusted Publishing Domains**.
-
-3.  In the results pane, select the trusted publishing domain, and then, from the Actions pane, click **Export Trusted Publishing Domain**.
-
-4.  In the **Export Trusted Publishing Domain** dialog box:
-
-    -   Click **Save As** and save to path and a file name of your choice. Make sure to specify **.xml** as the file name extension (this is not appended automatically).
-
-    -   Specify and confirm a strong password. Remember this password, because you will need it later, when you import the configuration data to Azure RMS.
-
-    -   Do not select the checkbox to save the trusted domain file in RMS version 1.0.
-
-When you have exported all the trusted publishing domains, you’re ready to start the procedure to import this data to Azure RMS.
-
-#### Import the configuration data to Azure RMS
-The exact procedures for this step depend on your current AD RMS deployment configuration, and your preferred topology for your Azure RMS tenant key.
-
-Your current AD RMS deployment will be using one of the following configurations for your server licensor certificate (SLC) key:
-
--   Password protection in the AD RMS database. This is the default configuration.
-
--   HSM protection by using a Thales hardware security module (HSM).
-
--   HSM protection by using a hardware security module (HSM) from a supplier other than Thales.
-
--   Password protected by using an external cryptographic provider.
+#### Az AD RMS konfigurációs adatok exportálása
+Hajtsa végre az alábbi eljárást az összes megbízható közzétételi tartomány védett tartalmak a szervezet összes AD RMS fürtökön. Nem kell futtatni a csak licencelési fürtökön.
 
 > [!NOTE]
-> For more information about using hardware security modules with AD RMS, see [Using AD RMS with Hardware Security Modules](http://technet.microsoft.com/library/jj651024.aspx).
+> Windows Server 2003 tartalomvédelmi használatakor utasítások helyett az alábbi eljárással [titkos kulcs exportálása kiszolgálólicenc-tanúsítvány, TUD, TPD és RMS](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) a a [való áttelepítését Windows RMS infrastruktúra különböző Active Directory tartalomvédelmi szolgáltatások](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) témakör.
 
-The two Azure RMS tenant key topology options are: Microsoft manages your tenant key (**Microsoft-managed**) or you manage your tenant key (**customer-managed**). When you manage your own Azure RMS tenant key, it’s sometimes referred to as “bring your own key” (BYOK) and requires a hardware security module (HSM) from Thales. For more information, see the [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey) section in the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+###### A konfigurációs adatokat (megbízható közzétételi tartomány információk) exportálása
+
+1.  Jelentkezzen be az AD RMS-fürt felhasználóként AD RMS-val felügyeleti engedélyekkel.
+
+2.  Az Active Directory tartalomvédelmi szolgáltatások felügyeleti konzolról (**Active Directory tartalomvédelmi szolgáltatások**), bontsa ki az AD RMS-fürt neve, **megbízhatósági házirendek**, és kattintson a **megbízható közzétételi tartomány**.
+
+3.  Az eredménypanelen jelölje ki a megbízható közzétételi tartomány és a Műveletek ablaktáblában kattintson a **megbízható közzétételi tartomány exportálása**.
+
+4.  Az a **exportálása megbízható közzétételi tartomány** párbeszédpanel:
+
+    -   Kattintson a **Mentés másként** és elérési útjával és az Ön által választott fájlnévvel mentse. Ellenőrizze, hogy **.xml** a fájl kiterjesztése (Ez a rendszer nem hozzáfűzi automatikusan).
+
+    -   Adja meg, és erősítse meg egy erős jelszót. Ne feledje ezt a jelszót, mert, mert később szüksége lesz, ha a konfigurációs adatokat importál a Azure RMS.
+
+    -   Nem jelölőnégyzet bejelölésével a megbízható tartományba mentés RMS 1.0-s verzióját.
+
+Összes megbízható közzétételi tartomány exportálása, amikor készen áll az adatok importálása az Azure RMS a folyamat megkezdéséhez.
+
+#### A konfigurációs adatok importálását az Azure RMS
+A pontos eljárások ebben a lépésben az aktuális Active Directory tartalomvédelmi szolgáltatások telepítési konfigurációt, és az Azure RMS bérlői kulcs az előnyben részesített topológiát függenek.
+
+Az aktuális AD RMS-telepítés fog használni egy, az alábbi konfigurációk a kiszolgáló kiszolgálólicenc-tanúsítvány kulcs:
+
+-   Az AD RMS adatbázis jelszavas védelmet. Ez az alapértelmezett konfigurációt.
+
+-   HSM védelmi Thales hardveres biztonsági modult (HSM) használatával.
+
+-   HSM védelme eltérő Thales szállítótól hardveres biztonsági modult (HSM) használatával.
+
+-   A jelszó egy külső titkosítási szolgáltató használatával védett.
+
+> [!NOTE]
+> Hardver biztonsági modulokat használó AD RMS-sel kapcsolatos további információkért lásd: [használata AD RMS hardveres biztonsági modulok](http://technet.microsoft.com/library/jj651024.aspx).
+
+Az Azure RMS bérlői két fő topológia lehetőségek állnak rendelkezésére: Microsoft felügyeli a bérlő kulcs (**a Microsoft által felügyelt**) vagy a bérlői kulcs kezelheti (**az ügyfél által felügyelt**). A saját Azure RMS bérlői kulcs kezelésekor néha szerepel a "saját kulcsot kerüljön" (BYOK) és a hardveres biztonsági modult (HSM) a Thales igényel. További információ: a [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey) szakasz a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) témakör.
 
 > [!IMPORTANT]
-> Exchange Online is not currently  compatible with Azure RMS BYOK.  If you want to use BYOK after your migration and plan to use Exchange Online, make sure that you understand how this configuration reduces IRM functionality for Exchange Online. Review  the information in the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in the  [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic to help you choose the best Azure RMS tenant key topology for your migration.
+> Exchange online-hoz nincs Azure RMS BYOK jelenleg kompatibilis.  Ha azt szeretné, az áttelepítés után BYOK használja, és tervezi használni az Exchange Online tudja, hogy, hogy hogyan ebben a konfigurációban csökkenti a Tartalomvédelmi szolgáltatás Exchange online-hoz. Tekintse át az információkat a [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) szakasz a  [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) a témakörhöz, és válassza ki a legjobb Azure RMS segítségével bérlői kulcsok topológia az áttelepítéshez.
 
-Use the following table to identify which procedure to use for your migration. Combinations that are not listed are not supported.
+A következő táblázat segítségével meghatározhatja az áttelepítéshez használandó melyik eljárást. Kombinációk, amelyek nem szerepelnek a listán nem támogatottak.
 
-|Current AD RMS deployment|Chosen Azure RMS tenant key topology|Migration instructions|
-|-----------------------------|----------------------------------------|--------------------------|
-|Password protection in the AD RMS database|Microsoft-managed|See the **Software-protected key to software-protected key migration** procedure after this table.<br /><br />This is the simplest migration path and requires only that you transfer your configuration data to Azure RMS.|
-|HSM protection by using a Thales nShield hardware security module (HSM)|Customer-managed (BYOK)|See the **HSM-protected key to HSM-protected key migration** procedure after this table.<br /><br />This requires the BYOK toolset and two set of steps to transfer the key from your on-premises HSM to the Azure RMS HSMs and then transfer your configuration data to Azure RMS.|
-|Password protection in the AD RMS database|Customer-managed (BYOK)|See the **Software-protected key to HSM-protected key migration** procedure after this table.<br /><br />This requires the BYOK toolset and three sets of steps to first extract your software key and import it to an on-premises HSM, then transfer the key from your on-premises HSM to the Azure RMS HSMs, and finally transfer your configuration data to Azure RMS.|
-|HSM protection by using a hardware security module (HSM) from a supplier other than Thales|Customer-managed (BYOK)|Contact the supplier for you HSM for instructions how to transfer your key from this HSM to a Thales nShield Hardware Security Module (HSM). Then follow the instructions for the **HSM-protected key to HSM-protected key migration** procedure after this table.|
-|Password protected by using an external cryptographic provider|Customer-managed (BYOK)|Contact the supplier for you cryptographic provider for instructions how to transfer your key to a Thales nShield hardware security module (HSM). Then follow the instructions for the **HSM-protected key to HSM-protected key migration** procedure after this table.|
-Before you start these procedures, make sure that you can access the .xml files that you created earlier when you exported the trusted publishing domains. For example, these might be saved to a USB thumb drive that you move from the AD RMS server to the Internet-connected workstation.
+|Aktuális AD RMS telepítése|A választott Azure RMS bérlői kulcsok topológia|Áttelepítési utasítások|
+|------------------------------|---------------------------------------------------|---------------------------|
+|Az AD RMS-adatbázisban a jelszavas védelem|A Microsoft által felügyelt|Tekintse meg a **kulcs áttelepítési szoftver védett kulcs szoftver védett** a táblázat utáni eljárás.<br /><br />Ez a legegyszerűbb áttelepítési elérési utat, és csak igényel, a konfigurációs adatok átvitele Azure RMS.|
+|HSM védelmi Thales nShield hardveres biztonsági modult (HSM) használatával|Az ügyfél által felügyelt (BYOK)|Tekintse meg a **kulcs áttelepítési HSM védett kulcs HSM védett** a táblázat utáni eljárás.<br /><br />Ehhez a BYOK toolset és lépéseket követve átvitele a helyszíni HSM a kulcsot az Azure RMS HSMs, majd a konfigurációs adatok átvitele az Azure RMS két csoportját.|
+|Az AD RMS-adatbázisban a jelszavas védelem|Az ügyfél által felügyelt (BYOK)|Tekintse meg a **kulcs áttelepítési HSM védett kulcs szoftver védett** a táblázat utáni eljárás.<br /><br />Ehhez a BYOK toolset és lépéseket az első három különböző bontsa ki a kulcsot, és úgy, hogy a helyszíni Hardvermodult majd a helyszíni HSM a kulcsot az Azure RMS HSMs át, és végül Azure RMS át a konfigurációs adatok importálása.|
+|HSM védelmi Thales eltérő szállítótól hardveres biztonsági modult (HSM) használatával|Az ügyfél által felügyelt (BYOK)|Vegye fel a kapcsolatot meg HSM vonatkozó utasítások a kulcs átvitele a HSM egy Thales nShield hardver biztonsági modul Hardvermodul módját. Kövesse az utasításokat a **kulcs áttelepítési HSM védett kulcs HSM védett** a táblázat utáni eljárás.|
+|Jelszóval védett külső kriptográfiai szolgáltató használatával|Az ügyfél által felügyelt (BYOK)|Vegye fel a kapcsolatot, kriptográfiai szolgáltató vonatkozó utasítások a kulcs átvitele Thales nShield hardveres biztonsági modulra (HSM). Kövesse az utasításokat a **kulcs áttelepítési HSM védett kulcs HSM védett** a táblázat utáni eljárás.|
+Ezek az eljárások megkezdése előtt győződjön meg arról, hogy hozzá tud férni az .xml-fájlok, amelyet korábban hozott létre a megbízható közzétételi tartomány exportálása során. Például ezek előfordulhat, hogy menteni egy USB-meghajtóra, amely az internethez csatlakozó munkaállomásra az AD RMS-kiszolgáló áthelyezése.
 
 > [!NOTE]
-> However you store these files, use security best practices to protect them because this data includes your private key.
+> Azonban tárolja ezeket a fájlokat, a használata ajánlott eljárásokkal védelme érdekében, mivel ezeket az adatokat a titkos kulcsot tartalmaz.
 
-##### Software-protected key to software-protected key migration
-Use this procedure to import the AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by Microsoft.
+##### Szoftver védett kulcs áttelepítési szoftver védett kulcs
+Ezzel az eljárással az AD RMS konfigurációs importálásához Azure RMS, a Microsoft által felügyelt Azure RMS-bérlő kulcs eredményez.
 
-###### To import the configuration data to Azure RMS
+###### A konfigurációs adatok importálása az Azure RMS
 
-1.  On an Internet-connected workstation, download and install the Windows PowerShell module for Azure RMS (minimum version 2.1.0.0), which includes the [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdlet.
+1.  Az internethez csatlakozó munkaállomáson töltse le és Azure RMS (2.1.0.0 minimális verzió), amely tartalmazza a Windows PowerShell-modul telepítése a [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) parancsmagot.
 
     > [!TIP]
-    > If you have previously downloaded and installed the module, check the version number by running: `(Get-Module aadrm -ListAvailable).Version`
+    > Ha korábban letöltött és telepített, a modul, ellenőrizze a verziószámot futtatásával: `(Get-Module aadrm -ListAvailable).Version`
 
-    For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+    A telepítési utasításokért lásd: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-2.  Start Windows PowerShell with the **Run as administrator** option and use the [Connect-AadrmService](http://msdn.microsoft.com/library/azure/dn629415.aspx) cmdlet to connect to the Azure RMS service:
+2.  Indítsa el a Windows PowerShell a **Futtatás rendszergazdaként** lehetőséget, és használja a [Connect-AadrmService](http://msdn.microsoft.com/library/azure/dn629415.aspx) parancsmag csatlakozni az Azure RMS szolgáltatás:
 
     ```
     Connect-AadrmService
     ```
-    When prompted, enter your [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] tenant administrator credentials (typically, you will use an account that is a global administrator for Azure Active Directory or Office 365).
+    Ha a rendszer kéri, adja meg a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] bérlői rendszergazdai hitelesítő adatait (meg fogja használni, általában olyan fiókkal, amely egy globális rendszergazda Azure Active Directoryban, vagy az Office 365).
 
-3.  Use the [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdlet to upload the first exported trusted publishing domain (.xml) file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that you want to use in Azure RMS to protect content after the migration. Use the following command:
+3.  Használja a [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) töltse fel az első parancsmag exportált megbízható közzétételi tartomány (.xml) fájl. Ha egynél több .xml fájlt, mert több megbízható közzétételi tartomány volt, válassza ki a fájlt, amely tartalmazza az exportált megbízható közzétételi tartomány kívánt tartalom védeni az áttelepítés után az Azure RMS segítségével. A következő parancsot használja:
 
     ```
     Import-AadrmTpd -TpdFile <PathToTpdPackageFile> -ProtectionPassword -Active $True -Verbose
     ```
-    For example: **Import-AadrmTpd -TpdFile E:\contosokey1.xml -ProtectionPassword -Active $true -Verbose**
+    Példa: **Import-AadrmTpd -TpdFile E:\contosokey1.xml -ProtectionPassword -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Ha a rendszer kéri, adja meg a jelszót, amelyet korábban megadott, és győződjön meg arról, hogy szeretné-e a művelet végrehajtására.
 
-4.  When the command completes, repeat step 3 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command. For example: **Import-AadrmTpd -TpdFile E:\contosokey2.xml -ProtectionPassword -Active $false -Verbose**
+4.  A parancs befejeződése után ismételje meg a 3. lépés minden fennmaradó .xml fájl, amelyet hozott létre a megbízható közzétételi tartomány exportálása. Állítsa be ezeket a fájlokat, de **-Active** a **false** az importálási parancs futtatásakor. Példa: **Import-AadrmTpd -TpdFile E:\contosokey2.xml -ProtectionPassword -Active $false -Verbose**
 
-5.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/azure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+5.  Használja a [kapcsolat bontása-AadrmService](http://msdn.microsoft.com/library/azure/dn629416.aspx) parancsmag le az Azure RMS szolgáltatás:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Most már készen váltson [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-##### HSM-protected key to HSM-protected key migration
-It’s a two-part procedure to import your HSM key and AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by you (BYOK).
+##### Kulcs áttelepítési HSM védett HSM védett kulcs
+Akkor importálhatja az Azure RMS eredményez az Azure RMS bérlői kulcs (BYOK) Ön által kezelt HSM kulcs és az AD RMS konfigurációs kétrészes eljárást.
 
-You must first package your HSM key so it's ready to transfer to Azure RMS, and then import it with the configuration data.
+A HSM kulcs először kell csomagot, így Azure RMS át, és importálja a konfigurációs adatok készen áll.
 
-###### Part 1: Package your HSM key so it's ready to transfer to Azure RMS
+###### 1. rész: Csomag a HSM kulcsot, így Azure RMS átvitele készen áll
 
-1.  Follow the steps in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md), using the procedure **Generate and transfer your tenant key – over the Internet** with the following exceptions:
+1.  Kövesse a [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) szakasza a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md), hajtsa végre az eljárást **létrehozása és átvitele a bérlő kulcs – az interneten keresztül** a következő kivételekkel:
 
-    -   Do not follow the steps for **Generate your tenant key**, because you already have the equivalent from your AD RMS deployment. You must identify the key used by your AD RMS server from the Thales installation and use this key during the migration. Thales encrypted key files are usually named **key_(keyAppName)_(keyIdentifier)** locally on the server.
+    -   Ne hajtsa végre a lépéseket a **a bérlő kulcs létrehozása**, mert az AD RMS-telepítés a már rendelkezik a megfelelő. Azonosítsa a kulcs az Thales telepítési az AD RMS-kiszolgáló által használt kell, és használja ezt a kulcsot az áttelepítés során. Kulcs titkosított fájlok általában neve Thales **key_(keyAppName)_(keyIdentifier)** helyileg a kiszolgálón.
 
-    -   Do not follow the steps for **Transfer your tenant key to Azure RMS**, which uses the  Add-AadrmKey command.  Instead, you will transfer your prepared HSM key when you upload your exported trusted publishing domain, by using the Import-AadrmTpd command.
+    -   Ne hajtsa végre a lépéseket a **a bérlő kulcsának átvitele Azure RMS**, amely használja az Add-AadrmKey parancsot.  Ehelyett az előkészített HSM kulcs helyez át, az exportált megbízható közzétételi tartomány az Import-AadrmTpd paranccsal feltöltésekor.
 
-2.  On the Internet-connected workstation, in Windows PowerShell session, reconnect to the Azure RMS service.
+2.  Az internethez csatlakozó munkaállomáson Windows PowerShell-munkamenetben, csatlakoztassa újra az Azure RMS szolgáltatás.
 
-Now that you’ve prepared your HSM key for Azure RMS, you’re ready to import your HSM key file and AD RMS configuration data.
+Most, hogy a HSM kulcsot az Azure RMS előkészítése már készen áll a HSM kulcsfájl és az AD RMS konfigurációs adatok importálása.
 
-###### Part 2: Import the HSM key and configuration data to Azure RMS
+###### 2. rész: A HSM kulcs és a konfigurációs adatok importálása a Azure RMS
 
-1.  Still on the Internet-connect workstation and in the Windows PowerShell session, upload the first exported trusted publishing domain (.xml) file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that corresponds to the HSM key you want to use in Azure RMS to protect content after the migration. Use the following command:
+1.  Továbbra is a munkaállomáson Internet-csatlakozás és a Windows PowerShell-munkamenetben töltse fel az első exportált megbízható közzétételi tartomány (.xml) fájlt. Ha egynél több .xml fájlt, mert több megbízható közzétételi tartomány volt, válassza ki az exportált megbízható közzétételi tartomány, amely megfelel a tartalom védelméhez, az áttelepítés után az Azure RMS használni kívánt HSM kulcsot tartalmazó fájlt. A következő parancsot használja:
 
     ```
     Import-AadrmTpd -TpdFile <PathToTpdPackageFile> -ProtectionPassword -HsmKeyFile <PathToBYOKPackage> -Active $True -Verbose
     ```
-    For example: **Import -TpdFile E:\no_key_tpd_contosokey1.xml  -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $true -Verbose**
+    Példa: **Import -TpdFile E:\no_key_tpd_contosokey1.xml  -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Ha a rendszer kéri, adja meg a jelszót, amelyet korábban megadott, és győződjön meg arról, hogy szeretné-e a művelet végrehajtására.
 
-2.  When the command completes, repeat step 1 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command.  For example: **Import -TpdFile E:\contosokey2.xml -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $false -Verbose**
+2.  A parancs befejeződése után ismételje meg minden fennmaradó hozott létre a megbízható közzétételi tartomány exportálása .xml fájl 1. lépés. Állítsa be ezeket a fájlokat, de **-Active** a **false** az importálási parancs futtatásakor.  Példa: **Import -TpdFile E:\contosokey2.xml -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $false -Verbose**
 
-3.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+3.  Használja a [kapcsolat bontása-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) parancsmag le az Azure RMS szolgáltatás:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Most már készen váltson [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-##### Software-protected key to HSM-protected key migration
-It’s a three-part procedure to import the AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by you (BYOK).
+##### Kulcs áttelepítési HSM védett szoftver védett kulcs
+Egy háromrészes importálásáról az AD RMS konfigurációs Azure RMS az Azure RMS bérlői kulcs (BYOK) Ön által kezelt eredményez.
 
-You must first extract your server licensor certificate (SLC) key from the configuration data and transfer the key to an on-premises Thales HSM, then package and transfer your HSM key to Azure RMS, and then import the configuration data.
+Meg kell először a kiszolgáló kiszolgálólicenc-tanúsítvány kulcs beolvasni a konfigurációs adatokat és a kulcs át egy helyszíni Thales HSM majd csomag és a HSM kulcsának átvitele Azure RMS, és importálja a konfigurációs adatokat.
 
-###### Part 1: Extract your SLC from the configuration data and import the key to your on-premises HSM
+###### 1. rész: A kiszolgálólicenc-tanúsítvány beolvasni a konfigurációs adatokat, és importálja a kulcsot a helyszíni HSM
 
-1.  Use the following steps in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic:
+1.  Használja a következő lépéseket a [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) szakasza a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) témakör:
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your Internet-connected workstation**
+    -   **Létrehozása és átvitele a bérlő kulcs – az interneten keresztül**: **Az internethez csatlakozó munkaállomás előkészítése**
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your disconnected workstation**
+    -   **Létrehozása és átvitele a bérlő kulcs – az interneten keresztül**: **A leválasztott munkaállomás előkészítése**
 
-    Do not follow the steps to generate your tenant key, because you already have the equivalent in the exported configuration data (.xml) file. Instead, you will run a command to extract this key from the file and import it to your on-premises HSM.
+    Nem kövesse a bérlő kulcs létrehozása, mert már rendelkezik a megfelelő az exportált konfigurációs adatokat (.xml) fájl. Ehelyett fogja futtatni bontsa ki a kulcs a fájlból, és importálja azt a helyszíni HSM parancsot.
 
-2.  On the disconnected workstation, run the following command:
+2.  A leválasztott munkaállomáson futtassa a következő parancsot:
 
     ```
     KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath <TPD> -ProtectionPassword -KeyIdentifier <KeyID> -ExchangeKeyPackage <BYOK-KEK-pka-Region> -NewSecurityWorldPackage <BYOK-SecurityWorld-pkg-Region>
     ```
-    For example, for North America: **KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath E:\contosokey1.xml -ProtectionPassword -KeyIdentifier contosorms1key –- -ExchangeKeyPackage &lt;BYOK-KEK-pka-NA-1&gt; -NewSecurityWorldPackage &lt;BYOK-SecurityWorld-pkg-NA-1&gt;**
+    Például a közép-európai: **KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath E:\contosokey1.xml -ProtectionPassword -KeyIdentifier contosorms1key –- -ExchangeKeyPackage &lt;BYOK-KEK-pka-NA-1&gt; -NewSecurityWorldPackage &lt;BYOK-SecurityWorld-pkg-NA-1&gt;**
 
-    Additional information:
+    További információ:
 
-    -   The ImportRmsCentrallyManagedKey parameter indicates that the operation is to import the SLC key.
+    -   A ImportRmsCentrallyManagedKey paraméter azt jelzi, hogy a művelet a kiszolgálólicenc-tanúsítvány kulcs importálása.
 
-    -   If you don’t specify the password in the command, you will be prompted to specify it.
+    -   Ha a parancs nem adja meg a jelszót, a rendszer kérni azt adja meg.
 
-    -   The KeyIdentifier parameter is for a key friendly name that creates the key file name. You must use only lower-case ASCII characters.
+    -   A KeyIdentifier paraméter a kulcs valódi nevét, amely hozza létre a nyilvánoskulcs-fájl nevét. Csak kisbetűs ASCII-karaktereket kell használnia.
 
-    -   The ExchangeKeyPackage parameter specifies a region-specific key exchange key (KEK) package that has a name beginning with BYOK-KEK-pkg-.
+    -   A ExchangeKeyPackage paraméter határozza meg a területhez kulcscsere kulcsa (KEK) csomagok BYOK kezdődő neveket-KEK - pkg-.
 
-    -   The NewSecurityWorldPackage parameter specifies a region-specific security world package that has a name beginning with BYOK-SecurityWorld-pkg-.
+    -   A NewSecurityWorldPackage paraméter határozza meg a területhez biztonsági world csomagok BYOK kezdődő neveket-SecurityWorld - pkg-.
 
-    This command results in the following:
+    Ezzel a paranccsal az eredmény a következő:
 
-    -   An HSM key file: %NFAST_KMDATA%\local\key_mscapi_&lt;KeyID&gt;
+    -   Egy HSM kulcsfájl: &lt; KeyID &gt; %NFAST_KMDATA%\local\key_mscapi_
 
-    -   RMS configuration data file with the SLC removed: %NFAST_KMDATA%\local\no_key_tpd_&lt;KeyID&gt;.xml
+    -   RMS konfigurációs adatok fájlt, amely a kiszolgálólicenc-tanúsítvány eltávolítása: &lt; KeyID &gt; %NFAST_KMDATA%\local\no_key_tpd_ .xml
 
-3.  If you have more than one RMS configuration data files, repeat step 2 for the remainder of these files.
+3.  Ha egynél több RMS konfigurációs adatfájlok, ismételje meg ezeket a fájlokat a hátralévő 2. lépés.
 
-Now that your SLC has been extracted so that it’s an HSM-based key, you’re ready to package and transfer it to Azure RMS.
+Most, hogy a kiszolgálólicenc-tanúsítvány kivonták úgy, hogy az egy HSM-alapú kulcsot, készen áll a csomag és vigye át az Azure RMS.
 
-###### Part 2: Package and transfer your HSM key to Azure RMS
+###### 2. rész: Csomag és a HSM kulcsának átvitele Azure RMS
 
-1.  Use the following steps from the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md):
+1.  A következő lépésekkel a [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) szakasza a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md):
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your tenant key for transfer**
+    -   **Létrehozása és átvitele a bérlő kulcs – az interneten keresztül**: **A bérlő kulcsát átviteli előkészítése**
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Transfer your tenant key to Azure RMS**
+    -   **Létrehozása és átvitele a bérlő kulcs – az interneten keresztül**: **A bérlő kulcsának átvitele Azure RMS**
 
-Now that you’ve transferred your HSM key to Azure RMS, you’re ready to import your AD RMS configuration data, which contains only a pointer to the newly transferred tenant key.
+Most, hogy a HSM kulcsot az Azure RMS átvitt már készen áll a csak az újonnan átvitt bérlői kulcs mutatót tartalmaz, amelyek az AD RMS konfigurációs adatok importálását.
 
-###### Part 3: Import the configuration data to Azure RMS
+###### 3. rész: A konfigurációs adatok importálását az Azure RMS
 
-1.  Still on the Internet-connected workstation and in the Windows PowerShell session, copy over the RMS configuration files with the SLC removed (from the disconnected workstation, %NFAST_KMDATA%\local\no_key_tpd_&lt;KeyID&gt;.xml)
+1.  Továbbra is a munkaállomáson internetre csatlakoztatott és a Windows PowerShell-munkamenetben másolja át az RMS konfigurációs fájlokat a kiszolgálólicenc-tanúsítvány eltávolítva (leválasztott munkaállomás %NFAST_KMDATA%\local\no_key_tpd_ &lt; KeyID &gt; .xml)
 
-2.  Upload the first file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that corresponds to the HSM key you want to use in Azure RMS to protect content after the migration. Use the following command:
+2.  Töltse fel az első fájlt. Ha egynél több .xml fájlt, mert több megbízható közzétételi tartomány volt, válassza ki az exportált megbízható közzétételi tartomány, amely megfelel a tartalom védelméhez, az áttelepítés után az Azure RMS használni kívánt HSM kulcsot tartalmazó fájlt. A következő parancsot használja:
 
     ```
     Import-AadrmTpd -TpdFile <PathToNoKeyTpdPackageFile> -ProtectionPassword -HsmKeyFile <PathToKeyTransferPackage> -Active $true -Verbose
     ```
-    For example: **Import -TpdFile E:\no_key_tpd_contosorms1key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $true -Verbose**
+    Példa: **Import -TpdFile E:\no_key_tpd_contosorms1key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Ha a rendszer kéri, adja meg a jelszót, amelyet korábban megadott, és győződjön meg arról, hogy szeretné-e a művelet végrehajtására.
 
-3.  When the command completes, repeat step 2 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command. For example: **Import -TpdFile E:\no_key_tpd_contosorms2key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $false -Verbose**
+3.  A parancs befejeződése után ismételje meg a 2. lépés minden fennmaradó .xml fájl, amelyet hozott létre a megbízható közzétételi tartomány exportálása. Állítsa be ezeket a fájlokat, de **-Active** a **false** az importálási parancs futtatásakor. Példa: **Import -TpdFile E:\no_key_tpd_contosorms2key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $false -Verbose**
 
-4.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+4.  Használja a [kapcsolat bontása-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) parancsmag le az Azure RMS szolgáltatás:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Most már készen váltson [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-### <a name="BKMK_Step3Migration"></a>Step 3. Activate your RMS tenant
-Instructions  for this step are fully covered in the [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) topic.
+### <a name="BKMK_Step3Migration"></a>3. lépés. Az RMS-bérlő aktiválása
+Ebben a lépésben utasításokat teljes foglalt a [Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md) témakör.
 
 > [!TIP]
-> If you have an Office 365 subscription, you can activate Azure RMS from the Office 365 admin center or the Azure classic portal. We recommend that you use the Azure classic portal because you will use this management portal to complete the next step.
+> Ha az Office 365-előfizetéssel rendelkezik, az Office 365 felügyeleti központban vagy a hagyományos Azure-portálon Azure RMS aktiválhatja. Javasoljuk, hogy a hagyományos Azure-portálon használja, mert ezen a felügyeleti portálon használni kívánt hajtsa végre a következő lépéssel.
 
-**What if your Azure RMS tenant is already activated?** If the Azure RMS service is already activated for your organization, users might have already used Azure RMS to protect content with an automatically generated tenant key (and the default templates) rather than your existing keys (and templates) from AD RMS. This is unlikely to happen on computers that are well-managed on your intranet, because they will be automatically configured for your AD RMS infrastructure. But it can happen on workgroup computers or computers that infrequently connect to your intranet. Unfortunately, it’s also difficult to identify these computers, which is why we recommend you do not activate the service before you import the configuration data from AD RMS.
+**Mi történik, ha az Azure RMS bérlői már aktiválva van?** Az Azure RMS szolgáltatás már aktiválva van a szervezet számára, ha felhasználók előfordulhat, hogy rendelkezik már használt Azure RMS egy automatikusan létrehozott bérlői kulcsot (és az alapértelmezett sablon) tartalom védelméhez helyett a meglévő kulcsokat (és a sablonokat) AD RMS-en. Ennek valószínű, hogy az intraneten gyakran felügyelt számítógépeken fordulhat elő, mert azok automatikusan megtörténik az AD RMS infrastruktúrát. De olyankor, munkacsoporthoz tartozó számítógépekre vagy a számítógépek, amelyek ritkán az intraneten kapcsolódnak. Sajnos is nehezen azonosíthatja ezeket a számítógépeket, amelyek van, ezért javasoljuk, hogy a felhasználó nem aktiválta a szolgáltatás a konfigurációs adatokat importál az AD RMS előtt.
 
-If your Azure RMS tenant is already activated and you can identify these computers, make sure that you run the CleanUpRMS_RUN_Elevated.cmd script on these computers, as described in Step 5. Running this script forces them to reinitialize the user environment, so that they download the updated tenant key and imported templates.
+Ha segítségével azonosíthatja ezeket a számítógépeket a Azure RMS bérlő már aktiválva van, győződjön meg arról, hogy ezeken a számítógépeken, a CleanUpRMS_RUN_Elevated.cmd parancsfájl futtatása, 5. lépésben leírtak szerint. A parancsfájl futtatása kényszerítése azokat a felhasználói környezet újrainicializálásához így letöltik a frissített bérlői kulcs és az importált sablont.
 
-### <a name="BKMK_Step4Migration"></a>Step 4. Configure imported templates
-Because the templates that you imported have a default state of **Archived**, you must change this state to be **Published** if you want users to be able to use these templates with Azure RMS.
+### <a name="BKMK_Step4Migration"></a>4. lépés. Importált sablonok konfigurálása
+Mivel az importált sablonok alapértelmezett állapotának **Archivált**, módosítania kell az ebben az állapotban kell lennie **közzétett** Ha azt szeretné, hogy a felhasználók Azure RMS Alkalmazást használja ezeket a sablonokat.
 
-In addition, if your templates in AD RMS used the **ANYONE** group, this group is automatically removed  when you import the templates to Azure RMS; you must manually add the equivalent group or users and the same rights to the imported templates. The equivalent group for Azure RMS is named **AllStaff-&lt;tenant_GUID&gt;@&lt;tenant_name&gt;.onmicrosoft.com**. For example, this group might look like the following for Contoso: **AllStaff-9c11c87a-ac8b-46a3-8d5c-f4d0b72ee29a@contoso.onmicrosoft.com**.
+Emellett ha az AD RMS-sablonok a **ANYONE** csoporthoz, ez a csoport automatikusan eltűnik a sablonok importálásakor az Azure RMS; manuálisan kell hozzáadni a egyenértékű csoport vagy felhasználók és az importált sablont ugyanazokat a jogokat. Az Azure RMS egyenértékű csoport neve **AllStaff-&lt;tenant_GUID&gt;@&lt;tenant_name&gt;.onmicrosoft.com**. Ez a csoport előfordulhat, hogy keresse meg például a következő, a Contoso: **AllStaff-9c11c87a-ac8b-46a3-8d5c-f4d0b72ee29a@contoso.onmicrosoft.com**.
 
-If  you're not sure whether your AD RMS templates include the ANYONE group, expand the  [Sample Windows PowerShell script to identify AD RMS templates that include the ANYONE group](#BKMK_ScriptForANYONE) section in this step to copy and use the sample PowerShell script to identify these templates. For more information about using Windows PowerShell with AD RMS, see  [Using Windows PowerShell to Administer AD RMS](https://technet.microsoft.com/library/ee221079%28v=ws.10%29.aspx).
+Ha nem biztos abban, hogy az AD RMS-sablonok tartalmazza BÁRKI csoporthoz, bontsa ki a  [PowerShell script to identify AD RMS templates that include the ANYONE group](#BKMK_ScriptForANYONE) szakasz ebben a lépésben másolja, és a minta PowerShell parancsfájl segítségével azonosíthatja ezeket a sablonokat. Windows PowerShell használatával az AD RMS-sel kapcsolatos további információkért lásd:  [Windows PowerShell használatával a rendszergazda az AD RMS](https://technet.microsoft.com/library/ee221079%28v=ws.10%29.aspx).
 
-You can see your organization's automatically created group if you copy one of the default rights policy templates in the Azure classic portal, and then identify the **USER NAME** on the **RIGHTS** page. However, you cannot use the classic portal to add this group to a template that was manually created or imported and instead must use one of the following Azure RMS PowerShell options:
+Megtekintheti a szervezet által automatikusan jönnek létre csoport másolja az alapértelmezett jogmegadási sablonok egyikét hagyományos Azure portálon, és azonosítsa a **felhasználónév** a a **jogok** lap. Azonban a hagyományos portál nem használható ehhez a csoporthoz hozzáadni a sablont, amely a manuálisan létrehozott vagy importált, és helyette kell használniuk az Azure RMS PowerShell alábbi lehetőségek közül:
 
--   Use the [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) PowerShell cmdlet to define the  "AllStaff" group and rights as a rights definition object, and run this command again for each of the other groups or users already granted rights in the original template in addition to the ANYONE group. Then add all these rights definition objects to the templates by using the  [Set-AadrmTemplateProperty](https://msdn.microsoft.com/en-us/library/azure/dn727076.aspx) cmdlet.
+-   Használja a [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) PowerShell-parancsmaggal a "AllStaff" csoport és a jogok megadása a jogok definíció objektumként, és futtassa a parancsot újból az egyes csoportok vagy felhasználók már jogokat a ANYONE csoport mellett az eredeti sablonnak. Majd adja hozzá ezeket jogok definíció objektumok a sablonok használatával a  [Set-AadrmTemplateProperty](https://msdn.microsoft.com/en-us/library/azure/dn727076.aspx) parancsmagot.
 
--   Use the [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet to export the template to a .XML file that you can edit to add the "AllStaff" group and rights to the existing groups and rights, and then use the [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet to import this change back into Azure RMS.
+-   Használja a [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) sablon exportálása parancsmag egy. XML-fájl, amely szerkesztése hozzáadása a "AllStaff" csoport és a meglévő csoportok és a jogok jogosultsággal, és használja a [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) Azure RMS térni parancsmaggal importálja ezt a módosítást.
 
 > [!NOTE]
-> This "AllStaff" equivalent group isn't exactly the same as the ANYONE group in AD RMS:  The "AllStaff" group includes all users in your Azure tenant, whereas the ANYONE group includes all authenticated users, who could be outside your organization.
+> A "AllStaff" egyenértékű csoport nem pontosan azonos a ANYONE csoport tagja az Active Directory tartalomvédelmi szolgáltatások:  A "AllStaff" csoport összes olyan felhasználót tartalmazza az Ön Azure-bérlőhöz, mivel az a személy csoport tartalmazza az összes hitelesített felhasználó, aki a szervezeten kívüli lehet.
 > 
-> Because of this difference between the two groups, you might need to also add external users in addition to the "AllStaff" group. External email addresses for groups are not currently supported.
+> Ez a különbség a két csoport miatt szükség lehet a külső felhasználók mellett a "AllStaff" csoport is hozzáadható. A csoportok külső e-mail címek jelenleg nem támogatott.
 
-Templates that you import from AD RMS look and behave just like custom templates that you can create in the Azure classic portal. To change imported templates to be published so that users can see them and select them from applications, or to make other changes to the templates, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+Importál az AD RMS-sablonok keresse meg és ugyanúgy viselkednek, a hagyományos Azure-portálon hozhat létre egyéni sablonokkal. Importált sablonok közzé kell tenni, így azok a felhasználók és jelölje ki azokat az alkalmazásokat, vagy más változtatásokat végezni az sablonok módosításához lásd [Az Azure Rights Management egyéni sablonok konfigurálása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
 > [!TIP]
-> For a more consistent experience for users during the migration process, do not make changes to the imported templates other than these two changes; and do not publish the two default templates that come with Azure RMS, or create new templates at this time. Instead, wait until the migration process is complete and you have decommissioned the AD RMS servers.
+> A egységesebb az áttelepítési folyamat során a felhasználók számára ne módosítsa az importált sablonok eltérő két módosítások; nem közzététele az Azure RMS két alapértelmezett sablont, és most új sablonokat hozhat létre. Ehelyett, várjon, amíg az áttelepítési folyamat befejeződött, és az AD RMS-kiszolgálók leszerelése.
 
-#### <a name="BKMK_ScriptForANYONE"></a>Sample Windows PowerShell script to identify AD RMS templates that include the ANYONE group
-This section contains the sample script to help you identify AD RMS templates that have the ANYONE group defined, as described in the preceding section.
+#### <a name="BKMK_ScriptForANYONE"></a>Minta Windows PowerShell-parancsfájl, amely tartalmazza a ANYONE csoportot AD RMS-sablonok azonosításához
+Ez a szakasz a minta parancsprogram azonosításához AD RMS-sablonok, amelyek a ANYONE csoport meghatározott, az előző szakaszban leírtak szerint.
 
-***Disclaimer:** This sample script is not supported under any Microsoft standard support program or service. This sample script is provided AS IS without warranty of any kind.*
+*&#42;&#42;Jogi nyilatkozatot:&#42;&#42; Ez a mintaparancsprogram bármilyen Microsoft támogatási normál program vagy a szolgáltatás nem támogatott. Ez a mintaparancsprogram van megadva, a IS biztosít, mindenféle jótállás nélkül.*
 
 ```
-import-module adrmsadmin 
-
-New-PSDrive -Name MyRmsAdmin -PsProvider AdRmsAdmin -Root https://localhost -Force 
-
-$ListofTemplates=dir MyRmsAdmin:\RightsPolicyTemplate
-
-foreach($Template in $ListofTemplates) 
-{ 
-                $templateID=$Template.id
-
-                $rights = dir MyRmsAdmin:\RightsPolicyTemplate\$Templateid\userright
-
-     $templateName=$Template.DefaultDisplayName 
-
-        if ($rights.usergroupname -eq "anyone")
-
-                         {
-                           $templateName = $Template.defaultdisplayname
-
-                           write-host "Template " -NoNewline
-
-                           write-host -NoNewline $templateName -ForegroundColor Red
-
-                           write-host " contains rights for " -NoNewline
-
-                           write-host ANYONE  -ForegroundColor Red
-                         }
- } 
-Remove-PSDrive MyRmsAdmin -force
+import-module adrmsadmin New-PSDrive -Name MyRmsAdmin -PsProvider AdRmsAdmin -Root https://localhost -Force $ListofTemplates=dir MyRmsAdmin:\RightsPolicyTemplate foreach($Template in $ListofTemplates) { $templateID=$Template.id $rights = dir MyRmsAdmin:\RightsPolicyTemplate\$Templateid\userright $templateName=$Template.DefaultDisplayName if ($rights.usergroupname -eq "anyone") { $templateName = $Template.defaultdisplayname write-host "Template " -NoNewline write-host -NoNewline $templateName -ForegroundColor Red write-host " contains rights for " -NoNewline write-host ANYONE  -ForegroundColor Red } } Remove-PSDrive MyRmsAdmin -force
 ```
 
-### <a name="BKMK_Step5Migration"></a>Step 5. Reconfigure clients to use Azure RMS
-For Windows clients:
+### <a name="BKMK_Step5Migration"></a>5. lépést. Konfigurálja újra az Azure RMS Alkalmazást használó ügyfelek
+A Windows rendszerű ügyfelek:
 
-1.  [Download the migration scripts](http://go.microsoft.com/fwlink/?LinkId=524619):
+1.  [Töltse le az áttelepítési parancsprogramok](http://go.microsoft.com/fwlink/?LinkId=524619):
 
     -   CleanUpRMS_RUN_Elevated.cmd
 
     -   Redirect_OnPrem.cmd
 
-    These scripts reset the configuration on Windows computers so that they will use the Azure RMS service rather than AD RMS.
+    Ezek a parancsfájlok állítsa vissza a Windows rendszerű számítógépeken a konfiguráció akkor fogják használni, az AD RMS helyett az Azure RMS szolgáltatás található.
 
-2.  Follow the instructions in the redirection script (Redirect_OnPrem.cmd) to modify the script to point to your new Azure RMS tenant.
+2.  Kövesse az utasításokat az átirányítás parancsfájl (Redirect_OnPrem.cmd) az új Azure RMS bérlői mutasson a parancsfájl módosításával.
 
-3.  On the Windows computers, run these scripts with elevated privileges in the user’s context.
+3.  A Windows rendszerű számítógépeken ezek a parancsfájlok futtatása emelt szintű engedélyekkel a felhasználó környezetében.
 
-For mobile device clients and Mac computers:
+A mobileszközök és Mac számítógépek:
 
--   Remove the DNS SRV records that you created when you deployed the [AD RMS mobile device extension](http://technet.microsoft.com/library/dn673574.aspx).
+-   Távolítsa el az üzembe helyezett létrehozott DNS SRV-rekordok a [AD RMS mobileszköz-bővítményének](http://technet.microsoft.com/library/dn673574.aspx).
 
-#### Changes made by the migration scripts
-This section documents the changes that the migration scripts make. You can use this information for reference purposes only, or for troubleshooting, or if you prefer to make these changes yourself.
+#### Az áttelepítési parancsprogramok által végrehajtott módosítások
+Ez a szakasz a dokumentumok az áttelepítési parancsprogramok a módosításokat. Kizárólag tájékoztatási célt, vagy hibaelhárításhoz használható ezt az információt, vagy ha szeretné módosítani ezeket átvált a saját maga.
 
 CleanUpRMS_RUN_Elevated.cmd:
 
--   Delete the contents of the %userprofile%\AppData\Local\Microsoft\DRM and %userprofile%\AppData\Local\Microsoft\MSIPC folders, including any subfolders and any files with long file names.
+-   Törölje a %userprofile%\AppData\Local\Microsoft\DRM és %userprofile%\AppData\Local\Microsoft\MSIPC mappákat, beleértve az almappákat, és a hosszú fájlnevekkel fájlokat tartalmát.
 
--   Delete the contents of the following registry keys:
+-   Törölje a tartalmát a következő beállításkulcsokat:
 
-    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_CURRENT_USER\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_CURRENT_USER\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
     -   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation
 
@@ -390,7 +361,7 @@ CleanUpRMS_RUN_Elevated.cmd:
 
     -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSDRM\ServiceLocation
 
--   Delete the following registry values:
+-   Törölje a következő beállításazonosítókat:
 
     -   HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Common\DRM\DefaultServerURL
 
@@ -398,137 +369,137 @@ CleanUpRMS_RUN_Elevated.cmd:
 
 Redirect_OnPrem.cmd:
 
--   Create the following registry values for each URL supplied as a parameter under each of the following locations:
+-   Hozzon létre minden egyes minden egyes, a következő helyek paraméterként megadott URL-cím a következő beállításazonosítókat:
 
-    -   HKEY_CURRENT_USER\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_CURRENT_USER\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
     -   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\LicensingRedirection
 
-    Each entry has a REG_SZ value of **https://OldRMSserverURL/_wmcs/licensing** with the data in the following format: **https://&lt;YourTenantURL&gt;/_wmcs/licensing**.
+    Minden bejegyzés értéke REG_SZ **https://OldRMSserverURL/_wmcs/licensing** az adatokat a következő formátumban: **https://&lt;YourTenantURL&gt;/_wmcs/licensing**.
 
     > [!NOTE]
-    > *&lt;YourTenantURL&gt;* has the following format: **{GUID}.rms.[Region].aadrm.com**.
+    > *&lt; YourTenantURL &gt;* formátuma a következő: **{GUID} .rms. [régió].aadrm.com**.
     > 
-    > For example:  5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com
+    > Példa:  5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com
     > 
-    > You can find this value by identifying the **RightsManagementServiceId** value when you run the [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet for Azure RMS.
+    > Ez az érték azonosításával megtalálhatja a **RightsManagementServiceId** értéke, ha futtatja a [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) parancsmag az Azure RMS.
 
-### <a name="BKMK_Step6Migration"></a>Step 6. Configure IRM integration for Exchange Online
-If you have previously imported your TDP from AD RMS to Exchange Online, you must remove this TDP to avoid conflicting templates and policies after you have migrated to Azure RMS. To do this, use the [Remove-RMSTrustedPublishingDomain](https://technet.microsoft.com/en-us/library/jj200720%28v=exchg.150%29.aspx) cmdlet from Exchange Online.
+### <a name="BKMK_Step6Migration"></a>6. lépés. Az Exchange Online IRM integráció konfigurálása
+Ha az Active Directory tartalomvédelmi szolgáltatások korábban importálta a TDP az Exchange online, el kell távolítania a TDP miután áttelepítette az Azure RMS ütköző sablonok és a házirendeket elkerülése érdekében. Ehhez használja a [Remove-RMSTrustedPublishingDomain](https://technet.microsoft.com/en-us/library/jj200720%28v=exchg.150%29.aspx) Exchange Online-parancsmagot.
 
-If you chose an Azure RMS tenant key topology of **Microsoft managed**:
+Ha úgy döntött, hogy az Azure RMS kulcs topológiája bérlői **felügyelt Microsoft**:
 
--   See the [Exchange Online: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) section in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic. This section includes typical commands to run that connects to the Exchange Online service, imports the tenant key from Azure RMS,  and enables IRM functionality for Exchange Online. After you complete these steps, you will have full RMS functionality with Exchange Online.
+-   Tekintse meg a [Az Exchange Online: A tartalomvédelmi szolgáltatás konfigurációja](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) szakasz a [Azure Rights Management alkalmazások konfigurálása](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) témakör. A szakasz tartalmazza azokat a tipikus parancsok futtatásához, amelyek az Exchange Online szolgáltatáshoz kapcsolódik, a bérlői kulcs importálja az Azure RMS és lehetővé teszi a Tartalomvédelmi szolgáltatás Exchange online-hoz. A lépések elvégzése után az Exchange Online funkciója RMS lesz.
 
-If you chose an Azure RMS tenant key topology of **customer-managed (BYOK)**:
+Ha úgy döntött, hogy az Azure RMS kulcs topológiája bérlői **(BYOK) az ügyfél által felügyelt**:
 
--   You will  have reduced RMS functionality with Exchange Online, as described in the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+-   Akkor lesz csökkentette RMS funkciót az Exchange Online leírtak szerint a [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) szakasz a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) témakör.
 
-### <a name="BKMK_Step7Migration"></a>Step 7. Deploy the RMS connector
-If you have used the Information Rights Management (IRM) functionality of Exchange Server or SharePoint Server with AD RMS, you must first disable IRM on these servers and remove AD RMS configuration. Then, deploy the Rights Management (RMS) connector, which acts as a communications interface (a relay) between the on-premises servers and Azure RMS.
+### <a name="BKMK_Step7Migration"></a>7. lépést. Az RMS-összekötő telepítése
+Ha Exchange Server vagy a SharePoint-kiszolgáló a tartalomvédelmi szolgáltatással (IRM) funkciókat az AD RMS szolgáltatással használt, kell először tiltsa le a tartalomvédelmi szolgáltatás ezeken a kiszolgálókon, és távolítsa el az AD RMS-beállításai. Ezután telepítse a Rights Management (RMS) összekötő, mely úgy működik, mint a helyszíni kiszolgálók és az Azure RMS közötti kommunikációs felületet (továbbító).
 
-Finally for this step, if you have imported multiple TPDs into Azure RMS that were used to protect email messages, you must manually edit the registry on the Exchange Server computers to redirect all TPDs URLs to the RMS connector.
+Végül az ezt a lépést, ha több eltávolítható importálta e-mailek védelméhez használt Azure RMS kell manuálisan a beállításjegyzék szerkesztése összes eltávolítható URL-címet átirányítja az RMS-összekötő az Exchange Server számítógépen.
 
 > [!NOTE]
-> Before you start, check the supported versions of the on-premises servers that the RMS connector supports in “On-premises servers that support Azure RMS” in the [Applications that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications) section of the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+> Megkezdése előtt ellenőrizze, hogy az RMS-összekötő "helyszíni támogató kiszolgálók Azure RMS" támogatja a helyszíni kiszolgálók támogatott verziói a [Alkalmazások, amelyek támogatják az Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications) szakasza a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) témakör.
 
-##### Disable IRM on Exchange Servers and remove AD RMS configuration
+##### Tiltsa le a tartalomvédelmi szolgáltatás Exchange-kiszolgálókon, és távolítsa el az AD RMS-beállításai
 
-1.  On each Exchange server, locate the following folder and delete all the entries in that folder: \ProgramData\Microsoft\DRM\Server\S-1-5-18
+1.  Minden egyes Exchange-kiszolgálón, keresse meg a következő mappát, és a mappában található összes bejegyzést törölni: \ProgramData\Microsoft\DRM\Server\S-1-5-18
 
-2.  From one of the Exchange servers, use the Exchange [Set_IRMConfiguration](http://technet.microsoft.com/library/dd979792.aspx) cmdlet to first disable IRM features for messages that are sent to internal recipients:
+2.  Az Exchange-kiszolgálók közül használni az Exchange [Set_IRMConfiguration](http://technet.microsoft.com/library/dd979792.aspx) parancsmag első letiltja a Tartalomvédelmi szolgáltatások belső címzettek küldött üzenetek:
 
     ```
     Set-IRMConfiguration -InternalLicensingEnabled $false
     ```
 
-3.  Then use the same cmdlet to disable IRM features for messages that are sent to external recipients:
+3.  Az azonos parancsmag segítségével külső címzetteknek küldött üzenetek a Tartalomvédelmi szolgáltatások letiltása:
 
     ```
     Set-IRMConfiguration -ExternalLicensingEnabled $false
     ```
 
-4.  Next, use the same cmdlet to disable IRM in Microsoft Office Outlook Web App and in Microsoft Exchange ActiveSync:
+4.  Ezután a azonos parancsmag segítségével a Microsoft Office Outlook Web Appjét és a Microsoft Exchange ActiveSync IRM letiltása:
 
     ```
     Set-IRMConfiguration -ClientAccessServerEnabled $false
     ```
 
-5.  Finally, use the same cmdlet to clear any cached certificates:
+5.  Végezetül a azonos parancsmag segítségével törölje a jelet a gyorsítótárban tárolt tanúsítványok:
 
     ```
     Set-IRMConfiguration -RefreshServerCertificates
     ```
 
-6.  On each Exchange Server, now reset IIS, for example, by running a command prompt as an administrator and typing **iisreset**.
+6.  Minden egyes Exchange-kiszolgálón most alaphelyzetbe állítja az IIS, például a parancssor futtatása rendszergazdaként, és beírja az **iisreset**.
 
-##### Disable IRM on SharePoint Servers and remove AD RMS configuration
+##### Tiltsa le a tartalomvédelmi szolgáltatás SharePoint-kiszolgálóra, és távolítsa el az AD RMS-beállításai
 
-1.  Make sure that there are no documents checked out from RMS-protected libraries. If there are, they will be become inaccessible at the end of this procedure.
+1.  Győződjön meg arról, hogy kiveszi a rendszerből származó RMS által védett dokumentumok. Ha nincsenek, kell válnak a jelen eljárás végén nem érhető el.
 
-2.  On the SharePoint Central Administration Web site, in the **Quick Launch** section, click **Security**.
+2.  A SharePoint központi felügyeleti webhely, az a **Gyorsindítás** részen kattintson **biztonsági**.
 
-3.  On the **Security** page, in the **Information Policy** section, click **Configure information rights management**.
+3.  Az a **biztonsági** lapra, és a **információk házirend** részen kattintson **tartalomvédelmi szolgáltatás beállítása**.
 
-4.  On the **Information Rights Management** page, in the **Information Rights Management** section, select **Do not use IRM on this server**, then click **OK**.
+4.  A a **tartalomvédelmi** lapra, és a **tartalomvédelmi** területen jelölje be **ezen a kiszolgálón ne használja a tartalomvédelmi szolgáltatás**, kattintson a **OK**.
 
-5.  On each of the SharePoint Server computers, delete the contents of the folder \ProgramData\Microsoft\MSIPC\Server\*&lt;SID of the account running SharePoint Server&gt;*.
+5.  A mappa \ProgramData\Microsoft\MSIPC\Server\ tartalmának törlése a SharePoint-kiszolgáló számítógépek minden*&lt; SharePoint Servert futtató fiók biztonsági azonosítója &gt;*.
 
-##### Install and configure the RMS connector
+##### Az RMS-összekötő telepítése és konfigurálása
 
--   Use the instructions in the [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) topic.
+-   Használja a következő témakör utasításait: a [Az Azure Rights Management összekötő telepítése](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) témakör.
 
-##### For Exchange only and multiple TPDs: Edit the registry
+##### Csak az Exchange és több eltávolítható: A beállításjegyzék szerkesztése
 
--   On each Exchange Server, manually add the following registry keys for each additional TPD that you imported, to redirect the TPD URLs to the RMS connector. These registry entries are specific to migration and are not added by the server configuration tool for Microsoft RMS connector.
+-   Minden egyes Exchange-kiszolgálón manuálisan adja hozzá a következő beállításkulcsokat a minden további TPD importált, az RMS-összekötő TPD URL-címek átirányítása. Ezek a bejegyzések adott áttelepítési, és nem adhatók hozzá a kiszolgálókonfigurációs eszköz Microsoft RMS-összekötőhöz.
 
-    When you make these registry edits, use the following instructions:
+    Ha ezeket a módosításokat, használja a következő útmutatás szerint:
 
-    -   Replace *ConnectorFQDN* with the name that you defined in DNS for the connector. For example, **rmsconnector.contoso.com**.
+    -   Csere *ConnectorFQDN* az összekötő a DNS-ben megadott néven. Például **rmsconnector.contoso.com**.
 
-    -   Use the HTTP or HTTPS prefix for the connector URL, depending on whether you have configured the connector to use HTTP or HTTPS to communicate with your on-premises servers.
+    -   A HTTP vagy HTTPS előtaggal összekötő URL-CÍMÉT, attól függően, hogy e konfigurálta az összekötő HTTP vagy HTTPS használatával kommunikálnak a helyszíni kiszolgálókkal használható.
 
-    **For Exchange 2013:**
+    **Az Exchange 2013:**
 
-    |Registry path|Type|Value|Data|
-    |-----------------|--------|---------|--------|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Intranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorFQDN&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Extranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorFQDN&gt;/_wmcs/licensing<br /><br />https://&lt;connectorFQDN&gt;/_wmcs/licensing|
-    **For Exchange Server 2010:**
+    |Beállításjegyzékbeli elérési utat|Típusa|Érték|Adatok|
+    |-------------------------------------|----------|---------|----------|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|REG_SZ|https://&lt;AD RMS intranetes licencelési URL-cím &gt;/_wmcs/licencelés|Attól függően, hogy a HTTP vagy HTTPS az Exchange server kiszolgálóról az RMS-összekötővel, a következők egyike:<br /><br />-   http://&lt;connectorFQDN&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|REG_SZ|https://&lt;AD RMS extranetes licencelési URL-cím &gt;/_wmcs/licencelés|Attól függően, hogy a HTTP vagy HTTPS az Exchange server kiszolgálóról az RMS-összekötővel, a következők egyike:<br /><br />-   http://&lt;connectorFQDN&gt;/_wmcs/Licensing<br />-   https://&lt;connectorFQDN&gt;/_wmcs/Licensing|
+    **Exchange Server 2010:**
 
-    |Registry path|Type|Value|Data|
-    |-----------------|--------|---------|--------|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Intranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorName&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Extranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorName&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
+    |Beállításjegyzékbeli elérési utat|Típusa|Érték|Adatok|
+    |-------------------------------------|----------|---------|----------|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|REG_SZ|https://&lt;AD RMS intranetes licencelési URL-cím &gt;/_wmcs/licencelés|Attól függően, hogy a HTTP vagy HTTPS az Exchange server kiszolgálóról az RMS-összekötővel, a következők egyike:<br /><br />-   http://&lt;connectorName&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|REG_SZ|https://&lt;AD RMS extranetes licencelési URL-cím &gt;/_wmcs/licencelés|Attól függően, hogy a HTTP vagy HTTPS az Exchange server kiszolgálóról az RMS-összekötővel, a következők egyike:<br /><br />-   http://&lt;connectorName&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
 
-After you have completed these procedures, be sure to read the **Next steps** section in the [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) topic.
+Miután végrehajtotta ezeket az eljárásokat, olvassa el a **További lépések** szakasz a [Az Azure Rights Management összekötő telepítése](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) témakör.
 
-### <a name="BKMK_Step8Migration"></a>Step 8. Decommission AD RMS
-Optional: Remove the Service Connection Point (SCP) from Active Directory to prevent computers from discovering your on-premises Rights Management infrastructure. This is optional because of the redirection that you configured in the registry (for example, by running the migration script). To remove the Service Connection Point, use the AD SCP Register tool from the [Rights Management Services Administration Toolkit](http://www.microsoft.com/download/details.aspx?id=1479).
+### <a name="BKMK_Step8Migration"></a>8. lépésével. Active Directory tartalomvédelmi szolgáltatások leszerelése
+Nem kötelező: Távolítsa el az Active Directory megakadályozza, hogy a számítógépek felderítésével infrastruktúráját helyszíni Rights Management szolgáltatás kapcsolódási pontja (SCP). Ez nem kötelező (például úgy, hogy az áttelepítés parancsprogram futtatása) beállított a beállításjegyzékben az átirányítás miatt. A szolgáltatáskapcsolódási pont eltávolításához használja az AD SCP regisztrálására eszközt a [Rights Management szolgáltatások felügyeleti eszközkészlet](http://www.microsoft.com/download/details.aspx?id=1479).
 
-Monitor your AD RMS servers for activity, for example, by checking the [requests in the System Health report](https://technet.microsoft.com/library/ee221012%28v=ws.10%29.aspx), the [ServiceRequest table](http://technet.microsoft.com/library/dd772686%28v=ws.10%29.aspx) or [auditing of user access to protected content](http://social.technet.microsoft.com/wiki/contents/articles/3440.ad-rms-frequently-asked-questions-faq.aspx). When you have confirmed that RMS clients are no longer communicating with these servers and that clients are successfully using Azure RMS, you can remove the AD RMS server role from these server. If you’re using dedicated servers, you might prefer the cautionary step of first shutting down the servers for a period of time to make sure that there are no reported problems that might require restarting these servers to ensure service continuity while you investigate why clients are not using Azure RMS.
+Az AD RMS-kiszolgálók tevékenység, például figyelése ellenőrzésével a [a rendszerállapot jelentés kérelmek](https://technet.microsoft.com/library/ee221012%28v=ws.10%29.aspx), a [ServiceRequest táblázat](http://technet.microsoft.com/library/dd772686%28v=ws.10%29.aspx) vagy [a felhasználói hozzáférés naplózásának védett tartalom](http://social.technet.microsoft.com/wiki/contents/articles/3440.ad-rms-frequently-asked-questions-faq.aspx). Ha meggyőződött RMS ügyfelek már nem folytatott kommunikáció ezeket a kiszolgálókat és, hogy az ügyfelek sikeresen használ Azure RMS, az Active Directory tartalomvédelmi szolgáltatások kiszolgálói szerepkör eltávolítása ezen a kiszolgálón. Dedikált kiszolgáló használata, inkább a figyelmeztető lépésének első leállítása a kiszolgálók egy időn belül, és győződjön meg arról, hogy nincsenek-e jelentett, a szolgáltatás folytonosságának biztosításához, az ügyfelek miért nem használ Azure RMS vizsgálata során ezek a kiszolgálók újraindítását igénylő problémák.
 
-After decommissioning your AD RMS servers, you might want to take the opportunity to review your templates in the Azure classic portal and consolidate them so that users have fewer to choose between, or reconfigure them, or even add new templates. This would be also a good time to publish the default templates. For more information, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+Után az AD RMS-kiszolgálók leállítására, előfordulhat, hogy ki szeretné lehetőség nyílik tekintse át a sablonok hagyományos Azure portálon konszolidálni őket, hogy a felhasználók kevesebb választhat, vagy konfigurálja újra azokat, vagy új sablonokat is hozzáadhat. Ez lehet is az alapértelmezett sablonok közzététele egy időben. További információ: [Az Azure Rights Management egyéni sablonok konfigurálása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
-### <a name="BKMK_Step9Migration"></a>Step 9. Re-key your Azure RMS tenant key
-This step is required when migration is complete if your AD RMS deployment was using RMS Cryptographic Mode 1, because re-keying creates a new tenant key that uses RMS Cryptographic Mode 2. Using Azure RMS with Cryptographic Mode 1 is supported only during the migration process.
+### <a name="BKMK_Step9Migration"></a>9. lépést. Az Azure RMS bérlői kulcs újbóli kulcs
+Ez a lépés áttelepítés befejeződik az AD RMS-telepítés volt használata az RMS titkosítási mód 1, mert újra kulcskezelő hoz létre egy új bérlő kulcsot használó RMS 2. kriptográfiai mód esetén szükséges. A titkosítási mód 1 Azure RMS segítségével csak az áttelepítési folyamat során támogatott.
 
-This step is optional but recommended when migration is complete even if you were running in RMS Cryptographic Mode 2, because it helps to secure your Azure RMS tenant key from potential security breaches to your AD RMS key. When you re-key your Azure RMS tenant key (also known as “rolling your key”), a new key is created and the original key is archived. However, because moving from one key to another doesn’t happen immediately but over a few weeks, do not wait until you suspect a breach to your original key but re-key your RMS tenant key as soon as the migration is complete.
+Ez a lépés nem kötelező azonban ajánlott az áttelepítés után akkor is, ha a futtatása során, az RMS titkosítási mód 2, mert az Azure RMS bérlői kulcs potenciális biztonsági résekkel szemben az AD RMS-kulcsot a biztonságossá segít. Újra kulcsát az Azure RMS bérlői kulcsot (más néven "működés közbeni a kulcs"), amikor létrejön egy új kulcsot, és az eredeti kulcsra archiválva legyen. Mivel áthelyezése egyik kulcs nem fordulhat elő, azonnal, de néhány hétben nem megvárni, az eredeti kulcs megsértése gyanús azonban az RMS bérlői kulcs újbóli kulcsot a, amint az az áttelepítés.
 
-To re-key your Azure RMS tenant key:
+Az újbóli kulcsát az Azure RMS bérlői kulcs:
 
--   If your RMS tenant key is managed by Microsoft: Call Microsoft Customer Support Services (CSS) and prove that you are the RMS tenant administrator.
+-   Ha a Microsoft felügyeli az RMS bérlői kulcs: Hívja a Microsoft ügyfélszolgálathoz (CSS), és igazolni, hogy-e az RMS Bérlői rendszergazda.
 
--   If your RMS tenant key is managed by you (BYOK): Repeat the BYOK procedure to generate and create a new key over the Internet or in person.
+-   Ha az RMS bérlői kulcs kezeli, (BYOK): Ismételje meg a BYOK eljárást előállításához és az interneten keresztül vagy a személy, hozzon létre egy új kulcsot.
 
-For more information about managing your RMS tenant key, see [Operations for Your Azure Rights Management Tenant Key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
+Az RMS bérlői kulcs kezelésével kapcsolatos további információkért lásd: [A Azure Rights Management bérlői kulcs műveletek](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

@@ -3,79 +3,78 @@ description: na
 keywords: na
 title: Protect a file that you share by email by using the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 4c1cd1d3-78dd-4f90-8b37-dcc9205a6736
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Protect a file that you share by email by using the Rights Management sharing application
-When you protect a file that you share by email, it creates a new version of the original file. The original file remains unprotected and the new version is protected and automatically attached to an email that you then send.
+# A Rights Management megoszt&#243;alkalmaz&#225;s haszn&#225;lat&#225;val e-mail megosztott f&#225;jl v&#233;delme
+Ha egy fájlt, amely megosztja által e-mailt, új verziója az eredeti fájlt hoz létre. Az eredeti fájl nem védett marad, és az új verzió védett, és automatikusan csatolva az e-mailt, majd küldeni.
 
-In some cases (for files that are created by Microsoft Word, Excel, and PowerPoint), the RMS sharing application creates two versions of the file that it attaches to the email message. The second version of the file has a **.ppdf** file name extension and it is a PDF shadow copy of the file. This version of the file ensures that recipients can always read the file, even if they don’t have the same application installed that you used to create it. This is often the case when people read their email on mobile devices, and want to view their email attachments. All they need to open the file, is the RMS sharing application. Then, they can read the attached file, but they won’t be able to change it until they open the other version of the file by using an application that supports RMS.
+Egyes esetekben (a Microsoft Word, az Excel és a PowerPoint által létrehozott fájlok) az RMS-megosztó alkalmazás hoz létre a fájlt, az e-mailt, csatlakozó két verziója. A fájl második verziója van egy **.ppdf** fájlnévkiterjesztést, és a PDF-árnyékmásolat-fájl. Ez a fájl verzióját biztosítja, hogy a címzett mindig lehet olvasni a fájlt, még akkor is, ha nem rendelkeznek a ugyanahhoz az alkalmazáshoz telepített létrehozásához használt. Ez gyakran a esetet Ha személyek, olvassa el az e-mailek, a mobil eszközök, és szeretné tekinteni a e-mail mellékletek. Megnyitni a fájlt, szükségük az RMS-megosztó alkalmazás. Ezt követően azokat a csatolt fájl olvasható, de azokat nem fogja tudni megváltoztatni, amíg a fájl más verzióját nyit meg, amely támogatja az RMS alkalmazás használatával.
 
-If your organization uses Azure RMS, you can keep track of the files that you protect by sharing:
+Ha a szervezet Azure RMS használ, akkor is a nyomon követésére, hogy a megosztás által védett fájlok:
 
--   Select an option to receive emails when somebody tries to open these protected attachments. Each time the file is accessed, you will be notified who tried to open the file and when, and whether they were successful (they were successfully authenticated) or not.
+-   Válassza ki a lehetőséget, és az e-maileket kapni, ha valaki megpróbálja megnyitni ezeket a védett mellékleteket. Minden alkalommal, amikor a fájl megnyitásakor, értesítést kap, akik a fájlt, és ha, és hogy sikeres volt-e ezek a megnyitni próbált (azok voltak sikeresen hitelesített) vagy sem.
 
--   Use the documentation tracking site. You can even stop sharing the file, by revoking access to it in the document tracking site. For more information, see [Track and revoke your documents when you use the RMS sharing application](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).
+-   Használja a webhely követési dokumentációját. A fájl megosztása hozzáférési jogosultsága a dokumentum követési helyen visszavonása még leállítása. További tudnivalókért tekintse meg a [Nyomon követése, és a dokumentumok visszavonni, az RMS-megosztó alkalmazás használata esetén](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).
 
-## Using Outlook: To protect a file that you share by email
+## Az Outlook használatával: E-mail megosztott fájl védelme
 
-1.  Create your email message and attach the file. Then, on the **Message** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+1.  Az e-mail üzenetet létrehozni, és a fájlt csatolni. Ezután a a **üzenet** lapon, a a **RMS** csoportjában kattintson **védett megosztás** és kattintson a **védett megosztás** újra:
 
     ![](../Image/ADRMS_MSRMSApp_SP_OutlookToolbar.png)
 
-    If you do not see this button, it’s likely that either the RMS sharing application is not installed on your computer, the latest version isn’t installed, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    Nem látja erre a gombra, ha valószínű, hogy az RMS-megosztó alkalmazás nincs telepítve a számítógépen, a legújabb verzióra nincs telepítve, vagy a telepítés befejezéséhez újra kell indítani a számítógépet. A megosztóalkalmazás telepítésével kapcsolatos további tudnivalókért tekintse meg a [Töltse le és telepítse a Rights Management megosztóalkalmazás](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Specify the options that you want for this file in the [share protected dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Send Now**.
+2.  Adja meg a beállításokat, ezt a fájlt a kívánt a [megosztani a védett párbeszédpanel](http://technet.microsoft.com/library/dn574738.aspx), és kattintson a **küldése most**.
 
-### Other ways to protect a file that you share by email
-In addition to sharing a protected file by using Outlook, you can also use these alternatives:
+### Más módon lehet védetté tenni a megosztott e-mail fájl
+Védett fájl megosztása az Outlook használatával, másik módszert is meg is használhatnak:
 
--   From File Explorer: This method works for all files.
+-   A fájl Explorer: Ez a módszer használható az összes fájl.
 
--   From an Office application: This method works for applications that the RMS sharing application supports by using the Office add-in so that you see the **RMS** group on the ribbon.
+-   Az Office alkalmazás: Ez a módszer használható az alkalmazások, amelyek az RMS-megosztó alkalmazás úgy, hogy az Office bővítmény használatával támogatja a **RMS** csoport a menüszalagon.
 
-##### Using File Explorer or an Office application: To protect a file that you share by email
+##### Fájl Intéző, vagy az Office alkalmazás használatával: E-mail megosztott fájl védelme
 
-1.  Use one of the following options:
+1.  Használja az alábbi lehetőségek közül:
 
-    -   For File Explorer: Right-click the file, select **Protect with RMS**, and then select **Share Protected**:
+    -   A fájl Explorer: Kattintson a jobb gombbal a fájlt, jelölje be **védelme az RMS**, majd válassza ki **védett megosztás**:
 
         ![](../Image/ADRMS_MSRMSApp_ShareProtectedMenu.png)
 
-    -   For the Office applications, Word, Excel, and PowerPoint: Make sure that you have saved the file first. Then, on the **Home** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+    -   Az Office alkalmazások, a Word, Excel és PowerPoint: Győződjön meg arról, hogy mentette a fájlt először. Ezután a a **kezdőlap** lapon, a a **RMS** csoportjában kattintson **védett megosztás** és kattintson a **védett megosztás** újra:
 
         ![](../Image/ADRMS_MSRMSApp_SP_OfficeToolbar.png)
 
-    If you do not see these options for protection, it’s likely that either the RMS sharing application is not installed on your computer, the latest version isn’t installed, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    Ha ezek a beállítások védelemre nem látja, valószínű, hogy az RMS-megosztó alkalmazás nincs telepítve a számítógépen, a legújabb verzióra nincs telepítve, vagy a telepítés befejezéséhez újra kell indítani a számítógépet. A megosztóalkalmazás telepítésével kapcsolatos további tudnivalókért tekintse meg a [Töltse le és telepítse a Rights Management megosztóalkalmazás](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Specify the options that you want for this file in the [share protected dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Send**.
+2.  Adja meg a beállításokat, ezt a fájlt a kívánt a [megosztani a védett párbeszédpanel](http://technet.microsoft.com/library/dn574738.aspx), és kattintson a **küldése**.
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and then you see an email message created for you that tells the recipients that the attachments are protected with Microsoft RMS, and that they must sign in. When they click the link to sign in, they see instructions and links to ensure that they can open your protected attachment.
+3.  Előfordulhat, hogy gyorsan párbeszédpanel jelenik meg, hogy a fájl védelmét, majd tekintse meg az e-mail üzenet létrehozott meg arról, hogy a címzett, hogy a mellékleteket a Microsoft RMS védett, és, hogy azok kell jelentkeznie a állapítható meg. Ha a hivatkozásra bejelentkezés, látják útmutatásért és hivatkozások, és győződjön meg arról, hogy tudják nyitni a védett melléklet.
 
-    Example:
+    Példa:
 
     ![](../Image/ADRMS_MSRMSApp_EmailMessage.PNG)
 
-    Are you wondering: [What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
+    Vannak az alábbiak tűnődik meg: [Mi az automatikusan létrehozott .ppdf fájlhoz?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
 
-4.  Optional: You can change anything that you want in this email message. For example, you can add to or change the subject or text in the message.
+4.  Nem kötelező: Bármi, amelyet meg szeretne e-mailt is módosítható. Például adja hozzá, vagy módosítsa a tulajdonos vagy az üzenet szövegét.
 
     > [!WARNING]
-    > Although you can add or remove people from this email message, this does not change the permissions for the attachment that you specified in the **share protected** dialog box. If you want to change those permissions, for example, give a new person permissions to open the file, close the email message without saving or sending it, and return to step 1.
+    > Bár hozzáadása, vagy távolítsa el a személyek az e-mailt, ez nem módosítja a megadott melléklet engedélyeit a **védett megosztás** párbeszédpanel megnyitásához. Ha módosítani szeretné az engedélyeket, például személynek egy új engedélyek nyissa meg a fájlt, zárja be az e-mailt a mentése vagy elküldése nélkül, és visszatérés az 1. lépés.
 
-5.  Send the email message.
+5.  Az e-mailt küldeni.
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

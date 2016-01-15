@@ -6,67 +6,66 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: 846f1895-1daf-4164-8cf6-e4a691384c41
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Revised Version 3: Microsoft Rights Management sharing application guide
-Use this guide for the Microsoft Rights Management (RMS) sharing application for Windows to help you keep important documents and pictures safe from people who should not see them, even if you email them or save them to another device. Similarly, this application lets you open and use files that other people have protected by using the same Rights Management technology.
+# 3., &#225;tdolgozott v&#225;ltozat: A Microsoft Rights Management megoszt&#243;alkalmaz&#225;s &#250;tmutat&#243;ja
+Ez az útmutató a Windowshoz készült Microsoft Rights Management (RMS) megosztóalkalmazás használatához nyújt segítséget, amellyel megakadályozhatja fontos dokumentumainak és képeinek jogosulatlan megtekintését, még akkor is, ha elküldi őket e-mailben, vagy egy másik eszközre menti. Az alkalmazás azt is lehetővé teszi, hogy megnyissa és használja azokat a fájlokat, amelyeket mások ugyanezzel a tartalomvédelmi technológiával tettek védetté.
 
-This sharing application provides this protection for your files in the following ways:
+A megosztó alkalmazás a következőképpen biztosítja fájljai védelmét:
 
--   It adds functionality to File Explorer (also known as Windows Explorer in Windows 7 and earlier versions) so that when you manage files in a folder, you can easily protect a single file, bulk-protect multiple files, or protect all files within a folder.
+-   Olyan funkciókkal bővíti a Fájlkezelőt (más néven Windows Intézőt a Windows 7 és korábbi verziókban), amelyek a mappákban lévő fájlok kezelésekor megkönnyítik egy adott fájl, egyszerre több fájl, vagy egy mappa összes fájljának védelmét.
 
--   It provides protection for all file types and has a built-in viewer for commonly used text and image file types.
+-   Minden fájltípushoz védelmet biztosít, és beépített megjelenítővel rendelkezik a gyakran használt szöveg- és képfájlokhoz.
 
--   It adds the **Share Protected** button to the Microsoft Office toolbar for Word, PowerPoint, and Excel.
+-   A Word, a PowerPoint és az Excel Microsoft Office eszköztárán elérhetővé teszi a **Védett megosztás** gombot.
 
-All you need is a computer that runs Windows 7 or Windows 8, and a local administrator account to install the RMS sharing application. Then download and install this free application from Microsoft.
+Az RMS megosztóalkalmazás telepítéséhez mindössze egy Windows 7 vagy Windows 8 rendszert futtató számítógépre és egy helyi rendszergazdai fiókra van szüksége. Ezt követően töltse le a Microsoft webhelyéről ezt az ingyenes alkalmazást, és telepítse.
 
-If you have questions that are not answered by this guide, see [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+Ha kérdéseire nem talált választ ebben az útmutatóban, tekintse meg [A Microsoft Rights Management megosztóalkalmazás Windows-változatával kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971) című témakört.
 
-## Examples for using the RMS sharing application
-Here are just some examples of how you might use the RMS sharing application, to help protect your files.
+## Példák az RMS megosztóalkalmazás használatára
+Íme néhány példa arra, hogy miként védheti meg fájljait az RMS megosztóalkalmazás használatával.
 
-|Scenario|Solution using the RMS sharing application|
-|------------|----------------------------------------------|
-|**I want to safely copy a company-confidential document to another device**<br /><br />You’re using your PC to work on a strategy paper that is company-confidential and you want to copy it to a USB thumb drive so that you can continue to work on it when you leave the office and do not have access to the company network.|You have the RMS sharing application installed on both your PC and your laptop. You use File Explorer on your PC to protect the file by using a template, so that it cannot be accessed by people outside your company. You then copy the file to your thumb drive, attach the thumb drive to you laptop and continue to work on the document. If you drop the thumb drive or your laptop is stolen, nobody outside your company can access the document.|
-|**I want to safely share financial information with somebody I trust who is outside my organization**<br /><br />You work with a partner company and want to email them an Excel spreadsheet that contains projected sales figures. You want them to be able to view the figures but not change them.|You use the **Share Protected** button on the ribbon in Excel, type the email addresses of the two people that you work with in the partner company, select **Viewer** on the slider, and click **Send**.<br /><br />When the email arrives at the partner company, only the recipients in the email can view the spreadsheet and they cannot save, edit, print, or forward it.|
-|**I need to safely send an engineering diagram by email to somebody who uses an iOS device**<br /><br />Your company uses a custom engineering application and you want to email a highly confidential diagram to a coworker, who you know, regularly checks email on their iOS device.|You use File Explorer to right-click the file, and select **Share Protected**. The RMS sharing application recognizes that the file extension is not from an application that natively supports RMS, so when it attaches the file to an email message, it automatically converts it to a generically protected file, and automatically selects the **Allow consumption on all devices** option.<br /><br />The recipient receives the email on their iOS device, clicks the link in the email that tells them how to download the RMS sharing application, installs the version for iOS devices, and then views the diagram.|
-|**My company doesn’t use Rights Management, but I’ve received an email message with an attachment that’s protected by RMS**<br /><br />The email sender is somebody who you trust because you’ve done business with them in the past and you suspect that they might be sending you information about a potential new business opportunity.|You click the link in the email that tells you how to download the RMS sharing application for your computer, install it, and then sign up for RMS for individuals. Microsoft confirms that your organization does not have a subscription to Office 365, sends you an email to complete the free signup process, and you sign in with your new account. You can then open the email attachment to read about the new business opportunity.|
+|Forgatókönyv|RMS megosztóalkalmazást használó megoldás|
+|----------------|---------------------------------------------|
+|**Egy bizalmas vállalati dokumentumot szeretnék biztonságosan egy másik eszközre másolni**<br /><br />A számítógépén egy stratégiai dokumentumon dolgozik, amely bizalmas vállalati dokumentum, és szeretné egy USB-meghajtóra másolni, hogy tovább dolgozhasson rajta, miután elhagyta az irodát és már nem fér hozzá a vállalati hálózathoz.|Az RMS megosztóalkalmazás telepítve van mind a számítógépén, mind a laptopján. A számítógépen lévő Fájlkezelőben egy sablon használatával védetté teszi a fájlt, hogy a vállalaton kívüli személyek ne férhessenek hozzá. A fájlt a hordozható meghajtóra másolja, csatlakoztatja a meghajtót a laptopjához, és folytatja a munkát a dokumentumon. Ha elveszti a hordozható meghajtót, vagy ellopják a laptopját, a vállalatán kívüli személyek nem férhetnek hozzá a dokumentumhoz.|
+|**Pénzügyi adatokat szeretnék biztonságosan megosztani valakivel, akiben megbízom, és nem a vállalatom alkalmazottja.**<br /><br />Egy partnervállalattal működik együtt, és e-mailben szeretne elküldeni nekik egy Excel-táblázatot, amely a tervezett értékesítések számait tartalmazza. Azt szeretné, hogy a számokat megtekinthessék, de megváltoztatni ne tudják.|Az Excel menüszalagján kattintson a **Védett megosztás** gombra, írja be annak a két személynek a nevét, akivel együttműködik a partnervállalatnál, válassza a **Megtekintő** lehetőséget a csúszkán, és kattintson a **Küldés** gombra.<br /><br />Amikor az e-mail megérkezik a partnervállalathoz, csak az e-mail címzettjei tekinthetik meg a táblázatot, de menteni, módosítani, kinyomtatni és továbbítani nem tudják.|
+|**Biztonságosan el kell küldenem e-mailben egy mérnöki diagramot valakinek, aki iOS-eszközt használ.**<br /><br />A vállalata egyéni mérnöki alkalmazást használ, és szeretne elküldeni egy szigorúan bizalmas diagramot a munkatársának, akiről tudja, hogy rendszeresen ellenőrzi az e-maileket iOS-eszközén.|A Fájlkezelőben kattintson a jobb gombbal a fájlra, majd válassza a **Védett megosztás** parancsot. Az RMS megosztóalkalmazás automatikusan felismeri, ha a fájlkiterjesztés az RMS-t natívan nem támogató alkalmazáshoz tartozik, és amikor a fájlt egy e-mailhez csatolja, akkor automatikusan általános védelemmel ellátott fájllá konvertálja, és szintén automatikusan kiválasztja a **Felhasználás engedélyezése minden eszközön** beállítást.<br /><br />A címzett megkapja az e-mailt az iOS-eszközén, az e-mailben lévő hivatkozásra kattintva letölti az RMS megosztóalkalmazást, telepíti az iOS-eszközökhöz készült verziót, majd megtekinti a diagramot.|
+|**A vállalatom nem használja a Rights Management szolgáltatást, de kaptam egy RMS-védelemmel ellátott mellékletet tartalmazó e-mailt**<br /><br />Az e-mail küldőjében megbízik, mert régebben együtt dolgoztak, és azt gyanítja, hogy valószínűleg egy kecsegtető új üzleti lehetőségre vonatkozó információt küldött Önnek.|Az RMS megosztóalkalmazás számítógépre történő letöltését ismertető hivatkozásra kattint az e-mailben, telepíti az alkalmazást, majd feliratkozik az egyéni felhasználók számára készült RMS szolgáltatásra. A Microsoft tudatja majd, hogy a vállalatának nincs előfizetése az Office 365 alkalmazáscsomagra, küld egy e-mailt, hogy hajtsa végre az ingyenes feliratkozást. Ezután lépjen be az új fiókjába. Ekkor megnyithatja az e-mail mellékletét, és elolvashatja az új üzleti lehetőséggel kapcsolatos információkat.|
 
-## <a name="BKMK_Install"></a>How to download and install the RMS sharing application
+## <a name="BKMK_Install"></a>Az RMS megosztóalkalmazás letöltése és telepítése
 > [!IMPORTANT]
-> You must have a local administrator account to install the RMS sharing application. If you do not log in as a local administrator, you can use the **Run as administrator** option when you run Setup.exe in step 3.
+> Az RMS megosztóalkalmazás telepítéséhez helyi rendszergazdai fiókkal kell rendelkeznie. Ha nem helyi rendszergazdaként jelentkezik be, akkor a 3. lépésben, a Setup.exe futtatásához használja a **Futtatás rendszergazdaként** lehetőséget.
 
-To install the RMS sharing application, follow these steps:
+Az RMS megosztóalkalmazás telepítéséhez kövesse az alábbi lépéseket:
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  A Microsoft webhelyén navigáljon a [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) oldalra.
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the Microsoft Rights Management sharing application installation package to your computer.
+2.  A **Számítógépek** szakaszban kattintson az **RMS alkalmazás Windows rendszerre** lehetőségre, és mentse el a Microsoft Rights Management megosztóalkalmazás telepítőcsomagját a számítógépére.
 
-3.  Double click the compressed file that was downloaded, and then double-click **setup.exe**. If you are prompted to continue, click **Yes**.
+3.  Kattintson duplán a letöltött tömörített fájlra, majd ismét kattintson duplán a **setup.exe** fájlra. Ha választania kell, hogy folytatja-e a telepítést, kattintson az **Igen** lehetőségre.
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  **A Microsoft RMS telepítése** lapon kattintson a **Tovább** gombra, majd várja meg, amíg a telepítés befejeződik.
 
-5.  When the installation finishes, click **Restart** to restart your computer and complete the installation. Or, click **Close** and restart your computer later to complete the installation.
+5.  Miután a telepítő végzett, kattintson az **Újraindítás** lehetőségre, hogy a számítógép újraindításával befejezze a telepítést. Vagy kattintson a **Bezárás** lehetőségre, és később a számítógép újraindításával fejezze be a telepítést.
 
-You’re now ready to start protecting your files or read files that others have protected.
+Most már készen áll, hogy védetté tegye fájljait, vagy elolvassa a mások által védelem alá helyezett fájlokat.
 
-## <a name="BKMK_UsingMSRMSApp"></a>What do you want to do?
-Use the following instructions to help you work with protected files.
+## <a name="BKMK_UsingMSRMSApp"></a>Mit kíván tenni?
+Az alábbi útmutatók segítséget nyújtanak a védett fájlokkal történő munkavégzéshez.
 
-### <a name="BKMK_CreatePTXT"></a>Create a protected text file
-You can convert a regular text (.txt) file into a protected file that then has a .ptxt file extension.
+### <a name="BKMK_CreatePTXT"></a>Védett szövegfájl létrehozása
+Egy szabályos szövegfájlt (.txt) átalakíthat .ptxt kiterjesztésű védett fájllá.
 
-##### To create a protected text (.ptxt) file
+##### Védett szövegfájl (.ptxt) létrehozása
 
-1.  In File Explorer, right-click in a folder, click **New**, and then click **Text Document**.
+1.  A Fájlkezelőben kattintson a jobb gombbal egy mappában, ezután kattintson az **Új**, majd a **Szöveges dokumentum** elemekre.
 
-2.  Rename the file (for example, Sample.txt).
+2.  Nevezze át a fájlt (például Minta.txt-re).
 
-3.  Double-click the file to open it in Notepad.
+3.  Kattintson duplán a fájlra, és nyissa meg a Jegyzettömbben.
 
-4.  In Notepad, add a few lines of text to the file, and then save it. You can use the following as your example text.
+4.  A Jegyzettömbben írjon be néhány sor szöveget a fájlba, majd mentse a fájlt. Példaszövegként használhatja a következőt.
 
     ```
     This is a sample text file.
@@ -77,114 +76,114 @@ You can convert a regular text (.txt) file into a protected file that then has a
     This is a sample text file.
     ```
 
-5.  Right-click the file, click **Protect in-place**, and select a template from the list. If this is the first time you have used the RMS sharing application, you will first need to select **Company- Protection**, which downloads the templates for your organization.
+5.  Kattintson a jobb gombbal a fájlra, majd a **Helyi védelem** lehetőségre, és válasszon ki egy sablont a listából. Ha első alkalommal véd meg egy fájlt ezen a számítógépen, akkor a vállalata által megadott sablonok letöltéséhez először ki kell választania a **A vállalat által megadott engedélyek** lehetőséget.
 
-6.  On the **Microsoft Rights Management sharing application** screen, confirm the policy you want to apply, click **Apply**, and after the file is protected, click **Close**.
+6.  A **Microsoft Rights Management megosztóalkalmazás** képernyőn erősítse meg az alkalmazni kívánt házirendet, kattintson az **Alkalmaz** gombra, majd miután a fájl védetté vált, a **Bezárás** gombra.
 
-### <a name="BKMK_ViewPTXT"></a>View a protected text file (.ptxt) or a protected image file
-To view a protected text (.ptxt) file, in File Explorer, double-click the file (for example, Sample.ptxt). You might be prompted for credentials. When the file opens, you’ll see the file’s protection policy at the top of the file.
+### <a name="BKMK_ViewPTXT"></a>Védett szövegfájl (.ptxt) vagy védett képfájl megtekintése
+Egy védett szövegfájl (.ptxt) megtekintéséhez a Fájlkezelőben kattintson duplán a fájlra (például a Minta.txt-re). Előfordulhat, hogy az alkalmazás kéri a hitelesítő adatok megadását. Amikor megnyílik a fájl, felül megjelenik a fájl védelmi házirendje.
 
-You view and open protected images in the same way.
+A védett képeket ugyanígy tekintheti és nyithatja meg.
 
-### <a name="BKMK_CreatePFILE"></a>Create a generic protected file
-Use the generic protection (.pfile) file format to offer a generic level of protection for file types that are not directly supported by the RMS sharing application or other applications that provide built-in RMS-type protection. You can use the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website to quickly check which applications support RMS built-in protection.
+### <a name="BKMK_CreatePFILE"></a>Általános védelemmel ellátott fájl létrehozása
+Az általános védelmi (.pfile) formátumot olyan fájltípusok általános szintű védelmére használja, amelyek az RMS megosztóalkalmazásban vagy más beépített RMS-típusú védelmet biztosító alkalmazásban közvetlenül nem támogatottak. A Microsoft webhely [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) oldalán gyorsan ellenőrizheti, hogy mely alkalmazások támogatják a beépített RMS-védelmet.
 
-For example, because Microsoft Visio does not currently support built-in protection for RMS, you can use generic protection for .vsd files that you create with Microsoft Visio.
+Például a Microsoft Visio például jelenleg nem támogatja beépített módon az RMS-védelmet, ezért a Microsoft Visio alkalmazással létrehozott .vsd fájlokhoz általános védelmet célszerű használni.
 
 > [!TIP]
-> What’s the difference between built-in (native) protection and generic protection?
+> Mi a különbség a beépített (natív) védelem és az általános védelem között?
 > 
-> -   When you generically protect a file, unauthorized people cannot open the file. But after authorized people open the file, they could then forward it unprotected to other people or save it in a location that others could access. They do, however, see a message at the top of the file that tells them  what permissions they have for the file, and they are asked to honor these, but this protection cannot be enforced. In addition, when you generically protect a file, you cannot restrict the permissions further than authorization. For example, if you use custom permissions, the slider in the RMS sharing application automatically selects **CO_OWNER** and you cannot change this for more restrictive permissions, such as **VIEWER** or **CO-AUTHOR**.
-> -   In comparison, when you use the built-in protection of RMS with applications that support this (for example, Office files), the protection applies to the file even if the file is then sent to somebody else or saved in another location. And, when you protect these files, you can use restrictive permissions such as read-only, or the permission to edit but not print or copy. For example, if you use custom permissions, the slider in the RMS sharing application automatically selects **REVIEWER** for the permissions, which you can then change to be more or less restrictive.
+> -   A általános védelemmel rendelkező fájlt a jogosulatlan személyek nem tudják megnyitni. Azonban az arra jogosult személyek a fájl megnyitása után védelem nélkül továbbíthatják azt másoknak, vagy elmenthetik egy mások által hozzáférhető helyre. A fájl felső részén azonban megjelenik egy üzenet, amely közli velük, hogy milyen engedélyeik vannak a fájllal kapcsolatban, és kéri ezek betartását, de ez a védelem nem kényszeríthető. Ezenfelül amikor általános védelemmel lát el egy fájlt, akkor a hitelesítésnél szigorúbban nem korlátozhatja az engedélyeket. Például ha egyéni engedélyeket használ, az RMS megosztóalkalmazás csúszkája automatikusan beáll a **TÁRSTULAJDONOS** beállításra, és ezt nem módosíthatja olyan több korlátozást tartalmazó engedélyekre, mint például a **MEGTEKINTŐ** vagy a **TÁRSSZERZŐ**.
+> -   Ha viszont olyan alkalmazásokkal használja a beépített RMS-védelmet, amelyek támogatják azt (például Office-fájlokkal), a fájl védelme akkor is megmarad, ha elküldi egy másik személynek, vagy egy másik helyre menti. Ráadásul az ilyen fájlok védelem alá helyezésekor korlátozó engedélyeket is használhat, hogy a fájl például csak olvasható legyen, vagy szerkeszthető legyen, de ne lehessen kinyomtatni vagy másolni. Például ha egyéni engedélyeket használ, az RMS megosztóalkalmazás csúszkája automatikusan beáll a **FELÜLVIZSGÁLÓ** beállításra, amelyet ezután átállíthat egy tetszőleges szigorúságú korlátozásra.
 
-##### Example: To create a generic protected file (.pfile) from a Visio drawing (.vsd) file
+##### Példa: Általános védelemmel ellátott fájl (.pfile) létrehozása Visio rajzfájlból (.vsd)
 
-1.  In File Explorer, right-click in a folder, click **New**, and then click **New Visio Document**.
+1.  A Fájlkezelőben kattintson a jobb gombbal egy mappában, ezután kattintson az **Új**, majd az **Új Visio dokumentum** elemekre.
 
-2.  Rename the file (for example, Sample.vsd).
+2.  Nevezze át a fájlt (például Minta.vsd-re).
 
-3.  Double-click the file to open it in Visio.
+3.  A fájlra duplán kattintva nyissa meg a Visióban.
 
-4.  In Visio, add elements to the drawing, and then save and close the file.
+4.  A Visióban adjon elemeket a rajzhoz, majd mentse és zárja be a fájlt.
 
-5.  Right-click the file, click **Protect in-place**, and select a policy template from the list. If this is the first time you have used the RMS sharing application, you will first need to select **Company- Protection**, which downloads the templates for your organization.
+5.  Kattintson a jobb gombbal a fájlra, majd a **Helyi védelem** lehetőségre, és válasszon ki egy házirendsablont a listából. Ha első alkalommal véd meg egy fájlt ezen a számítógépen, akkor a vállalata által megadott sablonok letöltéséhez először ki kell választania a **A vállalat által megadott engedélyek** lehetőséget.
 
-6.  On the **Microsoft Rights Management sharing application** screen, select the policy you want to apply, and then click **Apply**.
+6.  A **Microsoft Rights Management megosztóalkalmazás** képernyőn erősítse meg az alkalmazni kívánt házirendet, majd kattintson az **Alkalmaz** gombra.
 
-7.  A message states your protected file was saved as a .pfile file (for example, Sample.vsd.pfile). The original file is deleted.
+7.  Egy üzenet jelzi, hogy a védett fájl .pfile fájlként lett mentve (például: Minta.vsd.pfile). Az eredeti fájl törlődik.
 
-### <a name="BKMK_ViewPFILE"></a>View a generic protected (.pfile) file
-To view a generic protected (.pfile) file, in File Explorer, double-click the generic protected (.pfile) file (for example, Sample.vsd.pfile), and click **Open**.
+### <a name="BKMK_ViewPFILE"></a>Általános védelemmel ellátott fájl (.pfile) megtekintése
+Egy általános védelemmel ellátott fájl (.pfile) esetében a Fájlkezelőben kattintson duplán az általános védelemmel ellátott (.pfile) fájlra (például a Minta.vsd.pfile fájlra), majd kattintson a **Megnyitás** lehetőségre.
 
-### <a name="BKMK_Unprotect"></a>Remove protection from a file
-To remove protection from a file (that is, unprotect a file) that was previously protected, use the **Remove Protection** option:
+### <a name="BKMK_Unprotect"></a>Fájl védelmének megszüntetése
+Egy korábban védelem alá helyezett fájl védelmének eltávolításához (azaz a védelem feloldásához) használja a **Védelem eltávolítása** lehetőséget:
 
-1.  Right-click the file (for example, Sample.ptxt), click **Protect in-place**, and then click **Remove Protection**. You might be prompted for credentials.
+1.  Kattintson a jobb gombbal a fájlra (például a Minta.ptxt fájlra), majd kattintson a **Helyi védelem**, végül pedig a **Védelem eltávolítása** lehetőségekre. Előfordulhat, hogy az alkalmazás kéri a hitelesítő adatok megadását.
 
-2.  The original protected file is deleted (for example, Sample.ptxt) and replaced with a file that has the same name but with the unprotected file name extension (for example, Sample.txt).
+2.  A rendszer törli az eredeti védett fájlt (például a Minta.ptxt fájlt), és lecseréli egy ugyanolyan nevű, de nem védett fájlkiterjesztésű fájllal (például a Minta.txt fájllal).
 
-### <a name="BKMK_ProtectCustom"></a>Protect a file with your own custom permissions
-The easiest way to protect a file is to use templates but you can also specify your own permissions. This is called user-authored protection and it is useful for the following situations:
+### <a name="BKMK_ProtectCustom"></a>Fájl védelme saját egyéni engedélyekkel
+Egy fájlt legegyszerűbben sablonok használatával lehet védelemmel ellátni, de megadhatja a saját engedélyeit is. Ezt felhasználó által létrehozott védelemnek nevezzük, amely az alábbi helyzetekben bizonyulhat hasznosnak:
 
--   You want to limit file access to only a specific list of individual users that are identified by their email addresses.
+-   A fájlhoz való hozzáférést szeretné korlátozni meghatározott egyéni felhasználókra, akiket az e-mail címüket tartalmazó lista azonosít.
 
--   You want to limit the use of the file to only specific rights, such as read-only rights to a document.
+-   A fájl használatát meghatározott jogosultságokra szeretné korlátozni, például egy dokumentum esetében csak olvasási jogosultságra.
 
-To protect a file with user-authored permissions, right-click the file, click **Protect in-place**, and then click **Custom Permissions**. You will see the following screen:
+Ha egy fájlt a felhasználó által létrehozott engedélyekkel szeretne megvédeni, akkor kattintson a jobb gombbal a fájlra, majd kattintson a **Helyi védelem**, végül pedig az **Egyéni engedélyek** lehetőségekre. Ekkor az alábbi képernyő jelenik meg:
 
 ![](../Image/ADRMS_MSRMSApp_ProtectCustom.gif)
 
-Type the email addresses of the users, use the slider to select permissions for the file, and then click **Apply**.
+Adja meg a felhasználók e-mail címét, a csúszka segítségével válassza ki a fájlhoz a megfelelő engedélyeket, majd kattintson az **Alkalmaz** lehetőségre.
 
-### <a name="BKMK_UserDefined"></a>Use files that have custom protection
-Most protected files that you open will have been protected by applying templates. However, users can also protect files by using their own custom permissions, which is called user-authored protection.
+### <a name="BKMK_UserDefined"></a>Egyéni védelemmel ellátott fájlok használata
+A megnyitni kívánt védett fájlok többségét sablonok alkalmazásával tették védetté. A felhasználók azonban a saját egyéni engedélyeik használatával is védetté tehetik a fájlokat, amit felhasználó által létrehozott védelemnek nevezünk.
 
-For text and image file formats, this level of protection requires that any applications that you use to edit, save, or restrict these files have been designed to support RMS protection and that they implement the protection APIs that are provided in the AD RMS SDK.
+Szöveg- és képfájlformátumok esetén ehhez a védelmi szinthez az szükséges, hogy a fájlok szerkesztésére, mentésére és korlátozására használt alkalmazás támogassa az RMS-védelmet, és hogy végrehajtsa az AD RMS SDK-ban biztosított védelmi API-kat.
 
-When you view a protected text file that has user-authored protection, you will notice a slight difference in the permissions as they are displayed for the file as shown in the following example.
+Ha olyan védett szöveges fájlt tekint meg, amely felhasználó által létrehozott védelemmel van ellátva, némi különbséget fog tapasztalni a fájlhoz megjelenített engedélyekben, amint azt az alábbi példa szemlélteti.
 
-For files that are protected by using the generic protection (.pfile) file format, the specific rights or permissions that were specified by the user appears in the confirmation screen instead of the name of the template that was used to protect the file, as shown in the following picture.
+Az általános védelemmel ellátott fájlok (.pfile) esetében a felhasználó által megadott jogok vagy engedélyek jelennek meg a megerősítő képernyőn a fájl védetté tételére használt sablon neve helyett, az alábbi képen látható módon.
 
 ![](../Image/ADRMS_MSRMSApp_SP_ConsumePfile.gif)
 
-### <a name="BKMK_ShareProtected"></a>Protect content to share by email
-To protect content that you want to share by using an email message, right-click the file, and click **Share Protected**. You will see the following screen:
+### <a name="BKMK_ShareProtected"></a>E-mailben megosztott tartalom védelme
+Az e-mailben megosztani kívánt tartalom védelméhez kattintson a jobb gombbal a fájlra, majd a **Védett megosztás** lehetőségre. Ekkor az alábbi képernyő jelenik meg:
 
 ![](../Image/ADRMS_MSRMSAPP_SP_ShareProtected.gif)
 
-Type the email addresses of the list of users, use the slider to select permissions for the file, and click **Send**. Outlook then creates an email message for the recipients with a short message that you can change, and attaches the protected file attached. The original file is not protected.
+Adja meg a felhasználók e-mail címét, a csúszka segítségével válassza ki a fájlhoz a megfelelő engedélyeket, majd kattintson az **Küldés** lehetőségre. Az Outlook ekkor létrehoz egy rövid, módosítható e-mail üzenetet a címzettek számára, és csatolja a védett fájlt. Az eredeti fájl nem védett.
 
-To let people view protected files on non-Windows devices, click **Allow consumption on all devices**. Users might have to download the RMS sharing application for their device, and there is a link to do this in the email.
+Ha engedélyezni szeretné, hogy a fájlokat nem Windows rendszerű eszközökön is meg lehessen tekinteni, akkor kattintson a **Felhasználás engedélyezése minden eszközön** lehetőségre. Előfordulhat, hogy a felhasználóknak le kell tölteniük az eszközükhöz készült RMS megosztóalkalmazást. Az e-mail tartalmazza az ehhez szükséges hivatkozást.
 
-### <a name="BKMK_Multiple"></a>Apply protection to multiple files and folders
-You don’t have to apply protection to files one-by one when you use File Explorer. Instead, you can select multiple files, or all files in a folder if these files are not already protected.
+### <a name="BKMK_Multiple"></a>Védelem alkalmazása több fájlra és mappára
+Ha a Fájlkezelőt használja, nem kell egyenként védetté tennie a fájlokat. Ehelyett kijelölhet több fájlt vagy a mappa összes fájlját, ha ezek a fájlok még nem védettek.
 
-##### To protect multiple files or all files within a selected folder
+##### Több fájl vagy egy kiválasztott mappában található összes fájl védelme
 
-1.  In File Explorer, either select multiple files or select a folder that contains files to be protected.
+1.  A Fájlkezelőben jelöljön ki több fájlt, vagy jelölje ki a védendő fájlokat tartalmazó mappát.
 
-2.  Right-click the selected folder or files, click **Protect in-place**, and select a template from the list. If this is the first time you have used the RMS sharing application, you will first need to select **Company- Protection**, which downloads the templates for your organization.
+2.  Kattintson a jobb gombbal a kiválasztott mappára vagy fájlokra, majd a **Helyi védelem** lehetőségre, és válasszon ki egy sablont a listából. Ha első alkalommal véd meg egy fájlt ezen a számítógépen, akkor a vállalata által megadott sablonok letöltéséhez először ki kell választania a **A vállalat által megadott engedélyek** lehetőséget.
 
-3.  On the **Microsoft Rights Management sharing application** screen, confirm the files have been protected.
+3.  Nyissa meg a **Microsoft Rights Management megosztóalkalmazás** képernyőt, és győződjön meg róla, hogy a fájlok védettek.
 
 > [!TIP]
-> If you see any errors, refer to [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+> Ha bármilyen hibát észlel, tekintse meg [A Microsoft Rights Management megosztóalkalmazás Windows-változatával kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971) című témakört.
 
-### <a name="BKMK_OfficeToolbar"></a>Use the Office toolbar add-in
-You can protect and share files in Word, PowerPoint, and Excel  directly from within Microsoft Office by using the Office ribbon add-in for Microsoft Rights Management sharing application.
+### <a name="BKMK_OfficeToolbar"></a>Az Office-eszköztárbővítmény használata
+A fájlok Word, PowerPoint és Excel alkalmazásban történő védelmét és megosztását közvetlenül a Microsoft Office-ból, a Microsoft Rights Management megosztóalkalmazás Office-menüszalaghoz készült bővítményével is elvégezheti.
 
-In the **Protection** group, click **Share Protected** to start the Microsoft Rights Management sharing application.
+A Microsoft Rights Management megosztóalkalmazás megnyitásához a **Védelem** csoportban kattintson a **Védett megosztás** elemre.
 
 ![](../Image/ADRMS_MSRMSApp_SP_OfficeToolbar.png)
 
-### <a name="BKMK_AccessKeys"></a>Use keyboard shortcuts
-Press the **Alt** key to see the available access keys, and then press **Alt** + the access key to select an option.
+### <a name="BKMK_AccessKeys"></a>Billentyűparancsok használata
+Az **Alt** billentyű megnyomásával megtekintheti az elérhető hívóbetűket, majd az **Alt** + a hívóbetű kombinációjával kiválaszthatja a beállítást.
 
-For example, in the **share protected** dialog box, press **Alt** to see the access keys, and then press **Alt + u** to select the **Users must login every time they open this file** check box.
+Például a **védett megosztás** párbeszédpanelen az **Alt** billentyű lenyomásával megtekintheti a hívóbillentyűket, majd az **Alt + u** billentyűkombinációval bejelölheti az **A felhasználóknak be kell jelentkezniük minden alkalommal, amikor megnyitják a fájlt** lehetőség jelölőnégyzetét.
 
 ![](../Image/ADRMS_MSRMSApp_AccessKeys.png)
 
-## See Also
-[Microsoft Rights Management sharing application download](http://go.microsoft.com/fwlink/?LinkId=303970)
- [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971)
+## Lásd még
+[A Microsoft Rights Management megosztóalkalmazás letöltése](http://go.microsoft.com/fwlink/?LinkId=303970)
+ [A Windows Microsoft Rights Management megosztóalkalmazással kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971)
 

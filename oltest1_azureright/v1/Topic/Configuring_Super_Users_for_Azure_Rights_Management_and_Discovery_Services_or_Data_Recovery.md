@@ -3,59 +3,58 @@ description: na
 keywords: na
 title: Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: acb4c00b-d3a9-4d74-94fe-91eeb481f7e3
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery
-The super user feature of Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) ensures that authorized people and services can always read and inspect the data that Azure RMS protects for your organization. And if necessary, remove the protection or change the protection that was previously applied. A super user always has full owner rights for all use licenses that was granted by the organization’s RMS tenant. This ability is sometimes referred to as “reasoning over data” and is a crucial element in maintaining control of your organization’s data. For example, you would use this feature for any of the following scenarios:
+# Fő felhaszn&#225;l&#243;k konfigur&#225;l&#225;sa az Azure Rights Management &#233;s felder&#237;t&#233;si szolg&#225;ltat&#225;sokat vagy adatok helyre&#225;ll&#237;t&#225;sa
+A Microsoft felügyelő felhasználó szolgáltatása [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) biztosítja, hogy a meghatalmazott személyeket és szolgáltatásokat mindig képes-e olvasási és vizsgálja meg az adatokat, amelyek az Azure RMS védi a szervezetben. És ha szükséges, távolítsa el a védelmi, vagy módosítsa a korábban alkalmazott védelmét. Egy felügyelő felhasználó mindig a az összes használati licenceket, amely szerint a szervezete RMS-bérlői nyert a teljes tulajdonosi jogokkal rendelkezik. Ez a lehetőség van is nevezik "indoklást adatok felett", és karbantartása vezérelhetik a szervezet adatait a fontos eleme. Például használja ezt a funkciót az alábbi esetek bármelyike:
 
--   An employee leaves the organization and you need to read the files that they protected.
+-   A munkavállaló kilép a szervezet, és olvassa el a fájlokat, amely azokat a védett van szüksége.
 
--   An IT administrator needs to remove the current protection policy that was configured for files and apply a new protection policy.
+-   A rendszergazda eltávolítása az aktuális védelmi házirend fájlokat a konfigurált és egy új védelmi házirend alkalmazása a következőre.
 
--   Exchange Server needs to index mailboxes for search operations.
+-   Exchange Server index postaládával keresési műveletekhez szükséges.
 
--   You have existing IT services for data loss prevention (DLP) solutions, content encryption gateways (CEG), and anti-malware products that need to inspect files that are already protected.
+-   Az adatok adatvesztés megelőzése (DLP) megoldások, a tartalom titkosítási átjárók (CEG) és a kártevőirtó termékek, amelyeket már védett fájlokat vizsgálja meg a meglévő informatikai szolgáltatások rendelkezik.
 
--   You need to bulk decrypt files for auditing, legal, or other compliance reasons.
+-   Tömeges visszafejtése fájlok naplózás, jogi vagy más megfelelőség oka van szüksége.
 
-By default, the super user feature is not enabled, and no users are assigned this role. It is enabled for you automatically if you configure the Rights Management connector for Exchange, and it is not required for standard services that run Exchange Online, SharePoint Online, or SharePoint Server.
+Alapértelmezés szerint a felügyelő felhasználó funkció nincs engedélyezve, és a felhasználók nem kapnak ehhez a szerepkörhöz. Engedélyezve van, automatikusan, ha a Rights Management-összekötő az Exchange konfigurálását, és nem futó az Exchange Online, a SharePoint Online vagy a SharePoint Server standard szolgáltatások szükséges.
 
-If you need to manually enable the super user feature, use the Windows PowerShell cmdlet [Enable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629400.aspx), and then assign users (or service accounts) as needed by using the [Add-AadrmSuperUser](https://msdn.microsoft.com/library/azure/dn629411.aspx) cmdlet. You can have one or multiple super users for your organization, but you must add individual users; groups are not supported.
+Ha manuálisan a a felügyelő felhasználó funkció engedélyezéséhez van szüksége, használja a Windows PowerShell-parancsmag [engedélyezése-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629400.aspx), majd rendelheti a felhasználók (vagy szolgáltatásfiókok) használatával szükség esetén a [hozzáadása-AadrmSuperUser](https://msdn.microsoft.com/library/azure/dn629411.aspx) parancsmagot. Egy vagy több felügyelő felhasználók számára a szervezet akkor is, de a hozzá kell adnia az egyes felhasználók; csoportok nem támogatottak.
 
 > [!NOTE]
-> If you have not yet installed the Windows PowerShell module for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)], see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+> Ha Ön még nem telepítette a Windows PowerShell modul a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)], lásd: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-Security best practices for the super user feature:
+Biztonsági gyakorlati tanácsok az felügyelő felhasználó funkció:
 
--   Restrict and monitor the administrators who are assigned a global administrator for your Office 365 or Azure RMS tenant, or who are  assigned the GlobalAdministrator role by using the [Add-AadrmRoleBasedAdministrator](https://msdn.microsoft.com/library/azure/dn629417.aspx) cmdlet. These users can enable the super user feature and assign users (and themselves) as super users, and potentially decrypt all files that your organization protects.
+-   Korlátozza, és a figyelő a rendszergazdák számára, aki vannak hozzárendelve egy globális rendszergazda az Office 365 vagy az Azure RMS-bérlőben, vagy a akihez van rendelve a GlobalAdministrator szerepkör használatával a [hozzáadása-AadrmRoleBasedAdministrator](https://msdn.microsoft.com/library/azure/dn629417.aspx) parancsmagot. Ezek a felhasználók a felügyelő felhasználó funkció engedélyezéséhez és hozzárendelése a felhasználók (és a magukat) felügyelő felhasználóként, és potenciálisan visszafejteni az összes fájlt, amely a szervezet védi.
 
--   To see which users and service accounts are assigned as super users, use the [Get-AadrmSuperUser cmdlet](https://msdn.microsoft.com/library/azure/dn629408.aspx).  Like all administration actions, enabling or disabling the super feature, and adding or removing super users are logged and can be audited by using the [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) command. When super users decrypt files, this action is logged and can be audited with [usage logging](https://technet.microsoft.com/library/dn529121.aspx).
+-   Tekintse meg, hogy mely felhasználók és a szolgáltatásfiókok felügyelő felhasználók vannak hozzárendelve, használja a [Get-AadrmSuperUser parancsmag](https://msdn.microsoft.com/library/azure/dn629408.aspx).  Az összes felügyeleti műveletek, például a engedélyezése vagy letiltása a fő szolgáltatás és a felhasználók hozzáadása és eltávolítása felügyelő ki be vannak jelentkezve, és segítségével naplózható a [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) parancsot. Felügyelő felhasználók visszafejteni a fájlokat, amikor ez a művelet naplózva van-e, és a naplózható [a használat naplózása](https://technet.microsoft.com/library/dn529121.aspx).
 
--   If you do not need the super user feature for everyday services, enable the feature only when you need it, and disable it again by using the [Disable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629428.aspx) cmdlet.
+-   Ha nincs szükség a felügyelő felhasználó funkció mindennapi szolgáltatások, a funkció engedélyezéséhez csak akkor, ha szükséges, és tiltsa le ismét használatával a [Disable-AadrmSuperUserFeature](https://msdn.microsoft.com/library/azure/dn629428.aspx) parancsmagot.
 
-The following log extract shows some example entries from using the Get-AadrmAdminLog cmdlet . In this example, the administrator for Contoso Ltd confirms that the super user feature is disabled, adds Richard Simone as a super user, checks that Richard is the only super user configured for Azure RMS, and then enables the super user feature so that Richard can now decrypt some files that were protected by an employee who has now left the company.
+A következő napló kivonat néhány példa a Get-AadrmAdminLog parancsmaggal bejegyzéseit mutatja. Ebben a példában a rendszergazda a Contoso Ltd igazolja, hogy a felügyelő felhasználó szolgáltatás le van tiltva, Richard Simone hozzáadja a felügyelő felhasználó, ellenőrzi, hogy Richard-e a konfigurált Azure RMS csak felügyelő felhasználó, majd lehetővé teszi, hogy a felügyelő felhasználó szolgáltatást úgy, hogy a Richard most fejti vissza a néhány fájlt, amely egy alkalmazott, aki most már kilépett a vállalat által védettek.
 
 `2015-08-01T18:58:20	admin@contoso.com	GetSuperUserFeatureState	Passed	Disabled`
 `2015-08-01T18:59:44	admin@contoso.com	AddSuperUser -id rsimone@contoso.com	Passed	True`
 `2015-08-01T19:00:51	admin@contoso.com	GetSuperUser	Passed	rsimone@contoso.com`
 `2015-08-01T19:01:45	admin@contoso.com	SetSuperUserFeatureState -state Enabled	Passed	True`
 
-## <a name="BKMK_RMSProtectionModule"></a>Scripting options for super users
-Often, somebody who is assigned a super user for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] will need to remove protection from multiple files, in multiple locations. While it’s possible to do this manually, it’s more efficient (and often more reliable) to script this. To do so, [download the RMS Protection Tool](http://www.microsoft.com/en-us/download/details.aspx?id=47256). Then, use the  [Unprotect-RMSFile](https://msdn.microsoft.com/library/azure/mt433200.aspx) cmdlet, and [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx)   cmdlet as required.
+## <a name="BKMK_RMSProtectionModule"></a>Parancsprogram-beállítások felügyelő felhasználó
+Gyakran valaki, akinek ki lett osztva a felügyelő felhasználó [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] kell eltávolítani a védelmet a több helyen több fájlból. Lehetséges, ehhez manuálisan is, akkor hatékonyabb (és gyakran megbízhatóbb), ez a parancsfájl. Ehhez [Töltse le az RMS-védelmi eszközt](http://www.microsoft.com/en-us/download/details.aspx?id=47256). Ezután a  [védelem-RMSFile](https://msdn.microsoft.com/library/azure/mt433200.aspx) parancsmag, és [védelme-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx)   parancsmag szükség szerint.
 
 > [!IMPORTANT]
-> Although the RMS Protection tool is designed for super users to bulk unprotect files for recovery purposes, the current version of the tool does not support user authentication for Azure RMS. Until this limitation is resolved, you must use a service principal account to authenticate with Azure RMS before you can remove protection from files.  For more information and instructions, see [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/azure/mt433202.aspx).
+> Bár az RMS-védelmi eszközt felügyelő felhasználók tömeges tervezték a védelem megszüntetéséhez fájlok helyreállítási célokra, az eszköz aktuális verziója nem támogatja a felhasználó hitelesítése az Azure RMS. Ez a korlátozás megoldásáig egyszerű szolgáltatásfiók Azure RMS jelentkezniük protection fájlok eltávolítása előtt kell használnia.  További információkat és utasításokat [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/azure/mt433202.aspx).
 
-For more information about these cmdlets, see [RMS Protection Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+A parancsmagok használatával kapcsolatos további információkért tekintse meg a [RMS Protection parancsmagok](https://msdn.microsoft.com/library/azure/mt433195.aspx).
 
 > [!NOTE]
-> The RMSProtection Windows PowerShell module that ships with the RMS Protection Tool is different from and supplements the main [Windows PowerShell module for Azure Rights Management](https://technet.microsoft.com/library/jj585027.aspx). It supports both Azure RMS and AD RMS.
+> A RMSProtection a Windows PowerShell modul, amely az RMS-védelmi eszközzel alkalmazásáruházból eltér, és egészíti ki a fő [a Windows PowerShell modul Azure Rights Management](https://technet.microsoft.com/library/jj585027.aspx). Mind az Azure RMS, mind az Active Directory tartalomvédelmi szolgáltatások támogatja.
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

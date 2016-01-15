@@ -6,36 +6,35 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: ab7855fa-3cd2-4b64-98c8-387af23c0334
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Welcome to Microsoft RMS!
-You’re probably reading this because someone sent you a protected document and you clicked the sign in link in the email message, or your favorite search engine sent you here.
+# &#220;dv&#246;zli a Microsoft RMS!
+Ezt az útmutatót valószínűleg azért olvassa, mert valakitől egy védett dokumentumot kapott, és rákattintott az e-mailben szereplő bejelentkezési hivatkozásra, vagy esetleg kedvenc keresőmotorja hozta ide.
 
-Microsoft Rights Management (RMS) helps the sender of a document protect it from people who do not need to see it, or should not see it. The sender specifies who can access the document, and what they can do with it (for example, view only, print, etc).
+A Microsoft Rights Management (RMS) segít a küldőnek megvédeni a dokumentumát az illetéktelen személyek általi megtekintéstől. A küldő megadhatja, hogy ki férhet hozzá a dokumentumhoz, és mit tehet vele (például csak megnézheti, kinyomtathatja stb.).
 
-## Quick start
-To view a protected document, you must sign in and have a supported application:
+## Gyors kezdés
+Védett dokumentum megtekintéséhez be kell jelentkeznie, és rendelkeznie kell egy támogatott alkalmazással:
 
-1.  Sign in [here](https://portal.aadrm.com/) to get a free RMS account. If your company already has RMS, we’ll let you know.
+1.  Jelentkezzen be [itt](https://portal.aadrm.com/), és ingyenes RMS-fiókot kap. Tájékoztatjuk, ha vállalata már rendelkezik az RMS szolgáltatással.
 
-2.  Download the RMS application for your device by selecting the right icon on [this page](http://portal.aadrm.com/home/download). For Windows computers, you must be a local administrator (current limitation).
+2.  Töltse le az RMS-alkalmazást az eszközéhez; ehhez válassza a megfelelő ikont [ezen a lapon](http://portal.aadrm.com/home/download). Windows rendszerű számítógépek esetében szükséges, hogy Ön helyi rendszergazda legyen (jelenlegi korlátozás).
 
-That’s it. You’re now ready to open protected files. Just go back to the original email and open the attachment.
+Ennyi az egész. Ezután készen áll, hogy megnyissa a védett fájlokat. Csak térjen vissza az eredeti e-mailhez, és nyissa meg a mellékletet.
 
 > [!NOTE]
-> In your email, you might see two files of the same name. They are the same except that one of them is a protected PDF file (.ppdf file name extension) that you can open on all platforms when you use our free RMS sharing application. To open the protected Office file, you must use an application that supports RMS. Currently, this means Office 2013 or Office 2010 running on Windows. Future versions of Office on mobile platforms will support RMS. Keep informed about updates via [@TheRMSGuy](https://twitter.com/TheRMSGuy).
+> Az e-mailben két fájlt láthat ugyanazzal a névvel. A két fájl azonos, azzal a kivétellel, hogy a .ppdf fájlkiterjesztésű fájl egy védett PDF-fájl, amelyet ingyenes RMS-megosztó alkalmazásunkkal bármely platformon megnyithat. A védett Office-fájlt egy RMS-t támogató alkalmazással nyithatja meg. Jelenleg ez a Windows rendszeren futó Office 2013-at vagy Office 2010-et jelenti. Az Office mobilplatformokon futó későbbi verziói is támogatni fogják az RMS-t. Legyen naprakész, kövesse a [@TheRMSGuy](https://twitter.com/TheRMSGuy) hírcsatornát.
 
-## Want more help?
+## További segítségre van szüksége?
 
--   Our [desktop](http://technet.microsoft.com/dn467883) and [mobile](http://technet.microsoft.com/dn451248) application FAQs
+-   Lásd: gyakori kérdések és válaszok az [asztali alkalmazáshoz](http://technet.microsoft.com/en-us/dn467883) és a [mobilalkalmazáshoz](http://technet.microsoft.com/en-us/dn451248)
 
--   Our general web site: [www.microsoft.com/RMS](http://www.microsoft.com/RMS)
+-   Általános webhelyünk: [www.microsoft.com/RMS](http://www.microsoft.com/RMS)
 
--   Our blog site: [http://blogs.technet.com/b/rms](http://blogs.technet.com/b/rms)
+-   Blogwebhelyünk: [http://blogs.technet.com/b/rms](http://blogs.technet.com/b/rms)
 
--   Our Twitter feed: [https://twitter.com/TheRMSGuy](https://twitter.com/TheRMSGuy) (low volume, on-topic posts only)
+-   Twitter-hírcsatornánk: [https://twitter.com/TheRMSGuy](https://twitter.com/TheRMSGuy) (kevés, és kizárólag témába vágó tartalom)
 
-## Protecting your own documents
-Windows users can also send protected documents for free. It’s quite simple. To learn more, check out our [user guide](http://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx).
+## Saját dokumentumok védelme
+A Windows felhasználók is ingyenesen küldhetnek védett dokumentumokat. A használata rendkívül egyszerű. További tudnivalókért tekintse meg a [felhasználói útmutatónkat](http://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx).
 

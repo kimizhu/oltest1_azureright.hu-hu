@@ -3,51 +3,50 @@ description: na
 keywords: na
 title: Protect a file on a device (protect in-place) by using the Rights Management sharing application
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 33920329-5247-4f6c-8651-6227afb4a1fa
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Protect a file on a device (protect in-place) by using the Rights Management sharing application
-When you protect a file in-place, it replaces the original, unprotected file. You can then leave the file where it is, copy it to another folder or device, or share the folder that it is in and the file will remain protected. You could also attach the protected file to an email message, although the recommended way to share a protected file by email is directly from File Explorer or an Office application (see [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md)).
+# Az eszk&#246;z&#246;n a f&#225;jl v&#233;delme (helyi v&#233;delem) a Rights Management megoszt&#243;alkalmaz&#225;s haszn&#225;lat&#225;val
+Ha a fájl helyben, felülírja az eredeti, nem védett fájlt. Hagyja a fájlt, amennyiben, másolja azt egy másik mappába vagy eszköz, vagy a mappát, hogy van, és marad, hogy a fájl védett megosztás. Ön sikerült is csatolhat a védett fájlt egy e-mailt, bár az ajánlott lehet osztani a védett fájl e-mailek módja közvetlenül a fájl Explorer vagy az Office alkalmazás (lásd [A Rights Management megosztóalkalmazás használatával e-mail megosztott fájl védelme](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md)).
 
 > [!TIP]
-> If you see any errors when you try to protect files, refer to [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+> Ha a fájlok védelme hibákat jelennek, olvassa el [gyakran ismételt kérdések a Microsoft Rights Management megosztó alkalmazás for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
 
-## To protect a file on a device (protect in-place)
+## Az adott eszközön fájl védelme (helyi védelem)
 
-1.  In File Explorer, select a file to protect. Right-click, select **Protect with RMS**, and then select **Protect in-place**. For example:
+1.  A fájl Intéző válassza ki a egy fájlt lehet védetté tenni. Kattintson a jobb gombbal, válassza **védelme az RMS**, majd válassza ki **védelem**. Példa:
 
     ![](../Image/ADRMS_MSRMSApp_SP_CompanyDefined.png)
 
     > [!NOTE]
-    > If you do not see the **Protect with RMS** option, it’s likely that either the RMS sharing application is not installed on your computer, or your computer must be restarted to complete the installation. For more information about how to install the RMS sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    > Ha nem látja a **védelme az RMS** lehetőséget, valószínű, hogy az RMS-megosztó alkalmazás nincs telepítve a számítógépen, vagy a telepítés befejezéséhez újra kell indítani a számítógépet. Az RMS-megosztó alkalmazás telepítésével kapcsolatos további tudnivalókért tekintse meg a [Töltse le és telepítse a Rights Management megosztóalkalmazás](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Do one of the following:
+2.  A következők közül:
 
-    -   Select a policy template: These are predefined permissions that typically restrict access and usage to people in your organization. For example, if your organization name is "Contoso, Ltd", you might see **Contoso, Ltd - Confidential View Only**. If this is the first time you have protected a file on this computer, you will first need to select **Company-defined Protection** to download the templates.
+    -   Válasszon ki egy csoportházirend-sablon: Ezek az előre meghatározott engedélyeket, amelyek a hozzáférési és használati általában korlátozhatják a szervezet számára. Például, ha a szervezet neve "Contoso, Ltd", előfordulhat, hogy látható **Contoso, Ltd. - csak bizalmas nézet**. Ha ez az első alkalommal védelme a fájl ezen a számítógépen, először válassza ki a **vállalat által megadott engedélyek** a sablonok letöltéséhez.
 
-        The next time you click the **Protect in-place** option, you will see up to 10 templates to choose from. If there are more than 10 templates available and the one you want isn’t displayed, click **Company-defined Protection** to download and see all the templates.
+        Amikor legközelebb rákattint a **védelem** lehetőséget, látni fogja, válassza a legfeljebb 10 sablonok. Ha nincsenek elérhető legfeljebb 10 sablonokat, és a kívánt nem jelenik meg, kattintson a **vállalat által megadott engedélyek** letöltése, és tekintse meg az összes sablon.
 
-        When you select a policy template, you can also protect multiple files and a folder. When you select a folder, all the files in that folder are automatically selected for protection but new files that you create in that folder will not be automatically protected.
+        Amikor kiválaszt egy csoportházirend-sablon, védhető több fájl, és egy mappát. Amikor kiválaszt egy mappát, az összes adott mappában lévő fájlok automatikusan kijelölt védelmi, de abban a mappában létrehozott új fájlok nem lesz automatikusan védett.
 
-    -   Select **Custom Permissions**: Choose this option if the templates don’t provide the level of protection that you need  or you want to explicitly set the protection options yourself. Specify the options that you want for this file in the [add protection dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Apply**.
+    -   Válasszon **egyéni engedélyek**: Válassza ezt a lehetőséget, ha a sablonok nem a védelmet nyújtanak, amely van szüksége, vagy explicit módon adja meg a védelmi beállításokat saját maga kívánja. Adja meg a beállításokat, ezt a fájlt a kívánt a [hozzáadása párbeszédpanel védelmi](http://technet.microsoft.com/library/dn574738.aspx), és kattintson a **Alkalmaz**.
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and the focus then returns to File Explorer. The selected file or files are now protected. In some cases (when adding protection changes the file name extension), the original file in File Explorer is replaced with a new file that has the Rights Management protection lock icon. For example:
+3.  Előfordulhat, hogy gyorsan lásd a egy párbeszédpanel, annak megállapítása, hogy a fájl védelmét, és az aktuális fájl Explorer adja vissza. A kijelölt fájlt vagy fájlokat most már védett. Bizonyos esetekben (ha hozzáadása védelmi változik meg a fájl kiterjesztése) fájl Explorer az eredeti fájlt lecserél egy új fájlt, amelynek a Rights Management protection zárolás ikonra. Példa:
 
     ![](../Image/ADRMS_MSRMSApp_Pfile.png)
 
-If you later need to remove protection from a file, see [Remove protection from a file by using the Rights Management sharing application](../Topic/Remove_protection_from_a_file_by_using_the_Rights_Management_sharing_application.md).
+Ha később kell eltávolítani a fájl védelmét, tekintse meg a [A Rights Management megosztóalkalmazás használatával egy fájl védelmének megszüntetése](../Topic/Remove_protection_from_a_file_by_using_the_Rights_Management_sharing_application.md).
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

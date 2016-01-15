@@ -8,43 +8,42 @@ ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 751e5e05-fbe2-4769-a5df-1362c0db2108
-ms.author: f459630d47d34d12a44295cd5237dc68
 ---
-# Privacy Statement for Microsoft Rights Management in RMS-Enlightened Applications
-Applies To: Microsoft Rights Management functionality which is embedded in applications
+# A Microsoft Rights Management az RMS-Enlightened az alkalmaz&#225;sok adatv&#233;delmi szab&#225;lyzata
+A következőkre vonatkozik: A Microsoft Rights Management működését, ami a beágyazott alkalmazások
 
 > [!NOTE]
-> This privacy statement is available in additional languages from the [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=41668).
+> Ez az adatvédelmi nyilatkozat a további nyelvek érhető el a [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=41668).
 
-Microsoft is committed to protecting your privacy, while delivering software that brings you the performance, power, and convenience you desire in your personal computing. This privacy statement explains many of the data collection and use practices of the Microsoft Rights Management client software or service and any other Microsoft products or services that display or link to this notice.
+A Microsoft elkötelezett az Ön adatainak védelmében, miközben olyan szoftvereket a teljesítmény-, power, és kényelmet, amelyet a személyi számítógépek világában. Ez az adatvédelmi nyilatkozat ismerteti a Microsoft Rights Management kliens szoftver vagy szolgáltatás bármely más Microsoft termékek és szolgáltatások, amely a megjelenítése, illetve a közleményben csatolása adatgyűjtési és -felhasználási gyakorlatát.
 
-The Rights Management functionality is designed for client machines and mobile devices to help protect access to and usage of information flowing through enabled applications that use Microsoft Rights Management services, whether installed on premises or running in a Microsoft datacenter.
+A Rights Management funkció ügyfélszámítógépeknél és a mobil eszközök célja, hogy a hozzáférést és használati engedélyezett alkalmazások, amelyek a Microsoft Rights Management szolgáltatások, hogy-e telepítve a helyszínen, vagy a Microsoft datacenter futó keresztül áramló adatok védelme.
 
-## Processing Your Information On Behalf of Our Customer
-In order to access protected files, you will be asked to log in to Microsoft Rights Management and provide your user name and password (“Credentials”). Microsoft may collect Read Receipt Information and “Standard Device Information” which includes information such as your operating system version and hardware ID, which indicates the device manufacturer, device name, and version, and IP address.
+## Az ügyfél nevében adatainak feldolgozása
+Védett fájlokat eléréséhez meg kell adnia a Microsoft Rights Management bejelentkezés, és adja meg felhasználónevét és jelszavát ("hitelesítő adatok"). A Microsoft gyűjthet, beérkezési információk és a "Általános eszközadatok" Ez kiterjed az adatait, például az operációs rendszer verziójának és a Hardverazonosítót, amely az eszköz gyártóját, a eszköz neve, és a verzió és a IP-cím.
 
 > [!IMPORTANT]
-> We may disclose “Read Receipt Information” (such as email address, location, and timestamp associated with opening a file) and Standard Device Information to the person or company that protected the files.
+> Átadhatjuk "Olvasható beérkezési-információk" (például az e-mail cím, a helyét és a fájl megnyitása társított időbélyegző) és az általános eszközadatok a személy, vagy a vállalat, amely védett a fájlokat.
 
-## Microsoft’s Collection and Use of Your Information
-The Credentials and Standard Device Information we collect from you may also be used by Microsoft and its controlled subsidiaries and affiliates to enable the features you are using and provide additional service(s) or carry out the transaction(s) you have requested or authorized. Standard Device Information may also be used to analyze and improve Microsoft products and services.
+## Microsoft miként gyűjti és használja az Ön adatait
+A hitelesítő adatok és a gyűjtött általános eszközadatokat is használhatják a Microsoft, valamint ellenőrzése alatt álló leányvállalatai és társvállalatai Ön által használt funkciók lehetővé tétele, és további szolgáltatás(ok), vagy Ön által kért vagy engedélyezett tranzakció(k). Általános eszközadatokat is a elemzésére és a Microsoft termékeinek és szolgáltatásainak javítására használható.
 
-We will not disclose the Credentials, Read Receipt, and/or Standard Device Information we collect from you outside of Microsoft or its controlled subsidiaries and affiliates except as you direct, or as described in your agreement(s) or this privacy statement.
+A Microsoft nem fedi fel a hitelesítő adatokat, olvasási visszaigazolás, és/vagy általános eszközadatokat gyűjtött kívül a Microsoft vagy ellenőrzött leányvállalatai és társvállalatai, kivéve, ha közvetlen, vagy a szerződés vagy a jelen adatvédelmi nyilatkozatban leírtak szerint.
 
-We occasionally contract with other companies to provide services (such as customer support) on our behalf. We may provide these companies with access to your information where necessary for their engagement. These companies are required to maintain the confidentiality of your information and are prohibited from using it for any purpose other than that for which they are engaged by Microsoft.
+A Microsoft alkalomszerűen szerződést köt más vállalatokkal, hogy (például ügyfél-támogatási) szolgáltatásokat nyújtsanak a nevünkben. Megadhatjuk ezeknek a vállalatoknak adatainak hozzáférést, amennyiben az alkalmazásuk szükséges. Ezeknek a vállalatoknak szükségesek az Ön adatainak bizalmas kezelése mellett, és használni, amelynek folytatnak a Microsoft által kívül más célra nem használhatják fel.
 
-We will not disclose Credentials, Read Receipt, and/or Standard Device Information to a third party (including law enforcement, other government entity, or civil litigant; excluding our subcontractors) except as you direct, as described in this privacy statement, or unless required by law. Should a third party contact us with a demand for such information, we will attempt to redirect the third party to request it directly from you. As part of that, we may provide your basic contact information to the third party. If compelled to disclose your information to a third party, we will use commercially reasonable efforts to notify you in advance of a disclosure unless legally prohibited.
+Nem fedjük fel adnia hitelesítő adatait, olvasási visszaigazolás, illetve a harmadik félnek (ideértve a rendészeti szervet, más hatóságot vagy polgári peres felet; alvállalkozóink kivételével) kivéve, ha közvetlen, mint a jelen adatvédelmi nyilatkozatban ismertetett, vagy kivéve, ha a törvény által igényelt általános eszközadatokat is. Kell egy harmadik féltől származó lépjen kapcsolatba velünk az ilyen jellegű információk tőlünk, megpróbáljuk átirányítani, a harmadik féltől származó, hogy a kéréssel közvetlenül Önhöz. Ennek részeként a harmadik féltől származó megadhatjuk az alapvető elérhetőségi adatait. Ha a harmadik fél információk arra őket kényszeríteni, megteszünk minden üzleti szempontból ésszerű, hogy előre tájékoztassuk Önt nyilvánosságra hozásáról – amennyiben ezt a törvény nem tiltja.
 
-Information that is collected by or sent to Microsoft by Microsoft Rights Management enabled applications may be stored and processed in the United States or any other country in which Microsoft or its affiliates, subsidiaries, or service providers maintain facilities. Microsoft abides by the safe harbor framework as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of data from the European Union, the European Economic Area, and Switzerland.
+Által gyűjtött vagy a Microsoft által a Microsoft Rights Management, engedélyezett alkalmazások továbbított adatok tárolása és feldolgozása az Egyesült Államokban vagy bármely más országban, amelyben a Microsoft vagy annak társvállalatai, leányvállalatai vagy szolgáltatói létesítményeket üzemeltetnek történhet. A Microsoft által a safe harbor keretegyezménynek egy sor aláveti által hatályba az Amerikai Egyesült Államok Államok Kereskedelmi Minisztériuma a gyűjtemény, felhasználására és megőrzésére, az Európai Unióból, az Európai Gazdasági Térségből és a Svájcból származó adatok.
 
-## Microsoft Update
-When you use Microsoft Rights Management enabled applications with Windows, you may choose to participate in Microsoft Update. Microsoft Update (MU) is a service that provides updates for Microsoft software, including Microsoft Rights Management client for Windows. For details about what information is collected, how it is used and how to change your settings, see the [Update Services Privacy Statement](http://go.microsoft.com/fwlink/?linkid=50142) ([http://go.microsoft.com/fwlink/?linkid=50142](http://go.microsoft.com/fwlink/?linkid=50142)).
+## A Microsoft Update
+Ha engedélyezve van a Microsoft Rights Management alkalmazások Windows használja, választhatja, hogy részt a Microsoft Update. A Microsoft Update (MU) olyan szolgáltatás, amely frissítéseket kínál a Microsoft-szoftverek, például a Microsoft Rights Management ügyfél Windows. További tájékoztatás az összegyűjtött információkról, felhasználásukról és a beállítások módosítása: a [frissítési szolgáltatások adatvédelmi nyilatkozatában](http://go.microsoft.com/fwlink/?linkid=50142) ([http://go.microsoft.com/fwlink/?linkid=50142](http://go.microsoft.com/fwlink/?linkid=50142)).
 
-Choice/Control: For silent installation, Microsoft Rights Management enabled applications follow the same MU settings applied to the Windows desktop. For user installations, if MU is not turned on, you may receive a prompt during installation permitting you to turn on MU. If you choose to do so, these MU settings will apply across all Windows-based applications.
+Választás/döntés: Csendes telepítés esetén a Microsoft Rights Management MU ugyanazokat a beállításokat a Windows asztal alkalmazott alkalmazások kövesse engedélyezve van. A felhasználói telepítések Ha MU nincs bekapcsolva, jelenhet meg a kérdés lehetővé teszi, hogy MU bekapcsolása, a telepítés során. Ha úgy dönt, ehhez MU beállításokat az összes Windows-alapú alkalmazások alkalmazza a rendszer.
 
-## Security of your information
-Microsoft is committed to helping protect the security of your information. We use a variety of security technologies and procedures to help protect your information from unauthorized access, use, or disclosure. For example, we store the information you provide on computer systems with limited access, which are located in controlled facilities.
+## Az adatok biztonsága
+A Microsoft elkötelezte magát az Ön adatainak védelme. A különféle biztonsági technológiákat és eljárásokat Ön adatait megvédjük a jogosulatlan hozzáféréstől, a használatára és a nyilvánosságra használjuk. Például az Ön által megadott adatokat számítógéprendszerek korlátozott hozzáférésű felügyelt létesítményekben található tároljuk.
 
-## Changes to this privacy statement
-We will occasionally update this privacy statement to reflect changes in our products, services, and customer feedback. When we post changes, we will revise the "last updated" date at the top of this statement. If there are material changes to this statement or in how Microsoft will use your personal information, we will notify you either by posting a notice of such changes prior to implementing the change or by directly sending you a notification. We encourage you to periodically review this statement to be informed of how Microsoft is protecting your information.
+## Ez az adatvédelmi nyilatkozat módosításai
+Bizonyos időnként frissítjük a jelen adatvédelmi nyilatkozat a termékek, a szolgáltatások és a felhasználói visszajelzések változásainak követés érdekében. Amikor a közzétesszük módosításait, megváltoztatjuk a jelen nyilatkozat tetején a "utolsó frissítés" dátumot. Jelentősen módosul a nyilatkozat vagy a személyes adatok Microsoft általi felhasználásának, ha értesítjük ezek a változások hatályba lépése a változás előtt egy figyelmeztetés elhelyezésével vagy közvetlenül elküldött értesítéssel. Javasoljuk, hogy rendszeresen tekintse át a jelen nyilatkozat tájékoztatni kell hogyan védi a Microsoft az Ön adatait.
 

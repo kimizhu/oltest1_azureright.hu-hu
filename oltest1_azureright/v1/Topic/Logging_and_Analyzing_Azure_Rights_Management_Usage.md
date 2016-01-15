@@ -3,323 +3,311 @@ description: na
 keywords: na
 title: Logging and Analyzing Azure Rights Management Usage
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: a735f3f7-6eb2-4901-9084-8c3cd3a9087e
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Logging and Analyzing Azure Rights Management Usage
-Use the information in this topic to help you understand how you can use usage logging with Azure Rights Management (Azure RMS). The Azure Rights Management service can log every request that it makes for your organization, which includes requests from users, actions performed by Rights Management administrators in your organization, and actions performed by Microsoft operators to support your Azure Rights Management deployment.
+# Napl&#243;z&#225;s, &#233;s az Azure Rights Management haszn&#225;lati elemz&#233;se
+Ez a témakör információk segítségével megismerheti, hogyan használhatja a naplózást az Azure Rights Management (Azure RMS) használatát. Az Azure Rights Management szolgáltatás be tud jelentkezni minden kérelemnél, hogy a szervezet az Azure Rights Management központi telepítését támogatja a felhasználók, a Rights Management-rendszergazdák a szervezet által végrehajtott műveletek és a Microsoft által végrehajtott műveletek kérelmek teszi.
 
-You can then use these Azure Rights Management logs to support the following business scenarios:
+Ezeket a naplókat, Azure Rights Management támogatásához a következő üzleti helyzetekben használhatja:
 
--   Analyze for business insights.
+-   Az üzleti insights elemzése.
 
-    Azure Rights Management writes logs in W3C extended log format into an Azure storage account that you provide. You can then direct these logs into a repository of your choice (such as a database, an online analytical processing (OLAP) system, or a map-reduce system) to analyze the information and produce reports. As an example, you could identify who is accessing your RMS-protected data. You can determine what RMS-protected data people are accessing, and from what devices and from where. You can find out whether people can successfully read protected content. You can also identify which people have read an important document that was protected.
+    Azure Rights Management naplófájlba írja az Ön Azure-tárolás figyelembe naplók W3C bővített naplófájl formátumban. Ezek a naplók a kiválasztott tára történő majd irányíthatók (például egy adatbázis, az online analitikus feldolgozási (OLAP) rendszer vagy a rendszer térkép csökkentése) elemezheti az adatokat, illetve olyan jelentések elkészítését. Például akkor tudta azonosítani az RMS által védett adatokat használja. Megadhatja, milyen RMS által védett adat személyek érik el, és milyen eszközökről, és helyét. Alapján meggyőződhet arról, hogy személyek is sikeresen beolvasta a védett tartalomhoz. Kik elolvasta egy fontos dokumentum védett szintén azonosíthatja.
 
--   Monitor for abuse.
+-   Ez a figyelő a visszaélés.
 
-    Azure Rights Management logging information is available to you in near-real time, so that you can continuously monitor your company’s use of Rights Management . 99.9% of logs are available within 15 minutes of an RMS-initiated action.
+    Az Azure Rights Management-naplózási információkat érhető el az Ön közel valós időben, így folyamatosan figyelheti a vállalat használata a Rights Management. 99,9 naplók %-át egy RMS által kezdeményezett művelet 15 percen belül érhetők el.
 
-    For example, you might want to be alerted if there is a sudden increase of people reading RMS-protected data outside standard working hours, which could indicate that a malicious user is collecting information to sell to competitors. Or, if the same user apparently accesses data from two different IP addresses within a short time frame, which could indicate that a user account has been compromised.
+    Például előfordulhat, hogy szeretne értesítést, ha nincs olvasási RMS által védett adat utalhat, hogy egy rosszindulatú felhasználó versenytársakhoz értékesítheti információkat gyűjt, amelyek szabványos munkaidőn kívüli személyek hirtelen növekedését. Vagy, ha ugyanazon felhasználó látszólag éri el az adatokat rövid időn belül, amelyek jelezhetik, hogy két különböző IP-címet a felhasználói fiók feltörték-e.
 
--   Perform forensic analysis.
+-   Eseményeknél elemezhetjük.
 
-    If you have an information leak, you are likely to be asked who recently accessed specific documents and what information did a suspected person access recently. You can answer these type of questions when you use Azure Rights Management and logging because people who use protected content must always get a Rights Management license to open documents and pictures that are protected by Azure Rights Management, even if these files are moved by email or copied to USB drives or other storage devices. This means that you can use Azure Rights Management logs as a definitive source of information for forensic analysis when you protect your data by using Azure Rights Management.
-
-> [!NOTE]
-> If you are interested only in the logging of administrative tasks for Azure Rights Management, and do not want to track how users are using Rights Management, you can use the [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) Windows PowerShell cmdlet for Azure Rights Management.
-> 
-> You can also use the Azure classic portal for high-level usage reports that include **RMS usage**, **Most active RMS users**, **RMS device usage**, and **RMS enabled application usage**. To access these reports from the Azure classic portal, click **Active Directory**, select and open a directory, and then click **REPORTS**,
-
-Use the following sections for more information about Azure Rights Management usage logging.
-
--   [How to enable Azure Rights Management usage logging](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_EnableRMSLogging)
-
--   [How to access and use your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs)
-
--   [How to manage your Azure Rights Management log storage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_ManageStorage)
-
--   [How to delegate access to your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate)
-
--   [How to interpret your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret)
-
--   [Windows PowerShell reference](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_PowerShell)
-
-## <a name="BKMK_EnableRMSLogging"></a>How to enable Azure Rights Management usage logging
-Azure Rights Management usage logging is optional, so if you want to use it, you must take specific steps. When you use Azure Rights Management usage logging, there is no change in how  Rights Management works and the logging process itself is free. However, you must provide an Azure storage account for the logs and you will be charged for this storage.
-
-Before you begin, make sure that you meet the following prerequisites to use Azure Rights Management usage logging:
-
-|Requirement|More information|
-|---------------|--------------------|
-|An IT-managed subscription that includes Azure Rights Management|You must have a Microsoft Azure Rights Management subscription that is managed by your organization. Organizations that use RMS for individuals cannot use Azure Rights Management usage logging.<br /><br />If your organization has users who use RMS for individuals, Azure Rights Management usage logging provides a very compelling business reason to convert RMS for individuals into a Microsoft Azure Rights Management subscription.<br /><br />For more information about the subscriptions that include Azure RMS, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.<br /><br />For more information about RMS for individuals, see [RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
-|Azure subscription|You must have a subscription to Azure and sufficient storage on Azure for your Azure Rights Management logs.|
-|Windows PowerShell for Azure Rights Management|If you haven’t already done so, download and install the Windows PowerShell module for Azure Rights Management. You will use Windows PowerShell cmdlets to configure and manage your Azure Rights Management usage logs.<br /><br />For more information, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).|
-Use the following procedure to enable Azure Rights Management usage logging, which includes steps to create an Azure storage account and then configure Azure to use this storage account for your  Rights Management logs.
+    Ha az adatok memóriavesztés, akkor valószínűleg rákérdez, akik a legutóbb elért adott dokumentumok és milyen információkat adta a gyanús személy hozzáférési nemrég. Ezek a kérdések típus válaszolhat, Azure Rights Management és naplózását, mert a felhasználók védett tartalmat kell mindig a Rights Management licenc megszerzéséhez dokumentumokat és képeket, még akkor is, ha ezeket a fájlokat e-mailben áthelyezték vagy USB-meghajtók vagy egyéb tárolóeszközök másolni Azure Rights Management által védett megnyitásához. Ez azt jelenti, hogy használható Azure Rights Management naplók adatok végleges forrásaként eseményeknél analysis Azure Rights Management használatával az adatok védelme.
 
 > [!NOTE]
-> This procedure assumes that you have an Azure account. Azure Rights Management usage logging supports individual accounts but as a best practice, use work or school accounts. In addition, we recommend that you create a dedicated storage account for your Rights Management logs. You must share the storage access keys with Azure Rights Management, and potentially with other people if they will also use the log files.
+> Ha az Önt érdeklő csak az Azure Rights Management, és hajtsa végre a felügyeleti feladatok naplózását nem szeretne nyomon követni a felhasználók hogyan használják a Rights Management, használhatja a [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) Azure Rights Management Windows PowerShell-parancsmagot.
 > 
-> For more information about Azure storage, see the [Azure documentation for Storage](http://azure.microsoft.com/documentation/services/storage/).
+> A magas szintű használati jelentéseket tartalmazó is használhatja az Azure-portálon **RMS használati**, **RMS legaktívabb felhasználók**, **RMS eszköz használata**, és **RMS-kompatibilis alkalmazással való használat**. Ezek a jelentések eléréséhez az Azure portálról kattintson **Active Directory**, jelölje be és nyissa meg a könyvtárat, és kattintson **jelentések**,
 
-#### How to create your storage account and enable Azure Rights Management usage logging
+A következő részekben olvashat Azure Rights Management használat naplózása.
 
-1.  Sign in to the [Azure portal](https://portal.azure.com/).
+-   [Azure Rights Management használati naplózásának engedélyezése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_EnableRMSLogging)
 
-2.  On the Hub menu, select **New** -&gt; **Data + Storage** -&gt; **Storage account**.
+-   [Hozzáférés, és az Azure Rights Management használati naplók használata](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs)
+
+-   [Az Azure Rights Management napló tárolási kezelése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_ManageStorage)
+
+-   [Delegálja a hozzáférést az Azure Rights Management használati eseménynaplók](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate)
+
+-   [Az Azure Rights Management használati naplók értelmezése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret)
+
+-   [A Windows PowerShell-hivatkozás](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_PowerShell)
+
+## <a name="BKMK_EnableRMSLogging"></a>Azure Rights Management használati naplózásának engedélyezése
+Azure Rights Management használat naplózása nem kötelező, így szeretne használni, ha adott lépéseket kell végrehajtania. Azure Rights Management használat naplózása használatakor nincs változás a Rights Management működése, és a naplózási folyamat maga szabad. Azonban meg kell adnia egy Azure-tárfiókjába a naplókat, és a tárolás felszámított.
+
+Megkezdése előtt győződjön meg arról, hogy a használat naplózása Azure Rights Management használata a következő előfeltételek teljesüléséről:
+
+|Követelmény|További információ|
+|---------------|----------------------|
+|Az IT-felügyelt előfizetés, amely tartalmazza az Azure Rights Management|A szervezet által felügyelt Microsoft Azure Rights Management előfizetéssel kell rendelkeznie. RMS egyéni felhasználók számára használó szervezetek Azure Rights Management használat naplózása nem használható.<br /><br />Ha a szervezet használja az RMS egyéni felhasználók számára, akik, Azure Rights Management használat naplózása biztosít RMS egyéni felhasználók számára átalakítása előfizetéssé Microsoft Azure Rights Management nagyon fontos üzleti oka.<br /><br />Az előfizetések, amely tartalmazza az Azure RMS kapcsolatos további információkért tekintse meg a [Felhő előfizetések, amelyek támogatják az Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) szakasz a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) témakör.<br /><br />Az egyes személyek RMS kapcsolatos további információkért lásd: [RMS egyének és az Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
+|Azure-előfizetés|Azure Azure és elegendő tárterület egy előfizetést az Azure Rights Management naplók kell rendelkeznie.|
+|A Windows PowerShell Azure Rights Management|Még nem tette meg ezt, töltse le és telepítse a Windows PowerShell-modul Azure Rights Management. A Windows PowerShell-parancsmagok használandó konfigurálhatja és kezelheti az Azure Rights Management használati naplókat.<br /><br />További információ: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).|
+Az alábbi eljárás segítségével hozzon létre egy Azure storage-fiókot, és adja meg a tárolási fiók használatához a Rights Management naplók Azure lépéseivel Azure Rights Management használati naplózás engedélyezéséhez.
+
+> [!NOTE]
+> Ez az eljárás feltételezi, hogy rendelkezik-e az Azure-fiók. Azure Rights Management használat naplózása támogatja az egyes fiókokat, de ajánlott eljárásként használja a munkahelyi vagy iskolai fiókok. Ezenkívül javasoljuk, hogy a Rights Management naplók dedikált tárfiók létrehozása. A tároló elérési kulcsainak Azure Rights Management, és esetleg másokkal meg kell osztania, ha azok lesz a naplófájlokat is használhatja.
+> 
+> Az Azure tárolás kapcsolatos további információkért tekintse meg a [tárolási Azure dokumentációjában](http://azure.microsoft.com/documentation/services/storage/).
+
+#### A tárfiók létrehozása és az Azure Rights Management használati naplózásának engedélyezése
+
+1.  Jelentkezzen be a [Azure-portálon](https://manage.windowsazure.com/).
+
+2.  Válassza ki **tárolási**.
 
     > [!TIP]
-    > If you do not see this option, check that you have an Azure subscription in addition to your subscription for Rights Management.
+    > Ha ez a beállítás nem jelenik meg, ellenőrizze, hogy az Azure-előfizetés mellett a Rights Management előfizetéshez.
 
-3.  Keep the default deployment model of **Classic**, and then click **Create**.
+3.  Kattintson **tárolási fiók létrehozása** és a **URL-cím**, adjon meg egy egyedi nevet a tárolási fiók, és ha szükséges, módosítsa a **helye: AFFINITÁSCSOPORT** hogy az megfeleljen az adott régióban.
 
-    Specify the name for your storage account, and if necessary, change the selected options for the **Pricing tier**, **Resource Group**, **Subscription**, and whether to **Pin to dashboard**. and then click **CREATE**. Wait for the **Creating Storage Account** activity to complete.
+4.  Kattintson a **OK**, és várjon, amíg megjelenik a tároló neve, állapota **Online**.
 
-4.  Click the newly created storage account, and then click **Settings**.
+5.  Kattintson a **elérési kulcsainak kezelése**.
 
-5.  In the **Settings** blade, click the **Keys** icon.
+6.  Az a **elérési kulcsainak kezelése** párbeszédpanelt, amelyik az elsődleges és másodlagos elérési kulcsainak jeleníti meg az elsődleges hozzáférési kulcsot a vágólapra másolja, és zárja be a párbeszédpanelt.
 
-6.  In the **Manage keys** blade, copy the value of the  **PRIMARY ACCESS KEY** and close the blade.
-
-7.  Start Windows PowerShell with the **Run as administrator** option. Run the [Connect-AadrmService](https://msdn.microsoft.com/library/azure/dn629415.aspx) command to connect to the Azure Rights Management service:
+7.  Indítsa el a Windows PowerShell a **Futtatás rendszergazdaként** beállítást. Futtassa a [Connect-AadrmService](https://msdn.microsoft.com/library/azure/dn629415.aspx) parancs az Azure Rights Management szolgáltatáshoz való kapcsolódáshoz:
 
     ```
     Connect-AadrmService
     ```
 
-8.  Use the [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) command to specify where you want to keep your Azure Rights Management usage logs, replacing *&lt;Access_Key&gt;* with the primary access key that you copied in step 6 and *&lt;StorageAccount&gt;* with the name of the storage account that you created in step 3:
+8.  Használja a [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) parancsot adja meg, ha meg szeretné tartani az Azure Rights Management használati naplók cseréje *&lt; Access_Key &gt;* és az elsődleges hozzáférési kulcsot a 6. lépésben átmásolt és *&lt; StorageAccount &gt;* a 3. lépésében létrehozott tárfiók nevét:
 
     ```
-    $accesskey = convertto-securestring -asplaintext -force –string <Access_Key>
-    Set-AadrmUsageLogStorageAccount -AccessKey $accesskey -StorageAccount <StorageAccount>
+    $accesskey = convertto-securestring -asplaintext -force –string <Access_Key> Set-AadrmUsageLogStorageAccount -AccessKey $accesskey -StorageAccount <StorageAccount>
     ```
 
-9. Use the [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx) command to enable Azure Rights Management usage logging:
+9. Használja a [engedélyezése-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx) parancs Azure Rights Management használati naplózás engedélyezése:
 
     ```
     Enable-AadrmUsageLogFeature
     ```
-    You should see the message: **The usage log feature is enabled for the Rights management service.**
+    Megjelenik az üzenet: **A használati napló funkció engedélyezve van a tartalomvédelmi szolgáltatás.**
 
-Now that usage logging is enabled, Azure Rights Management starts to log all actions for your organization and saves this information to your storage account. Logging information is not available before this point.
+Most, hogy a használat naplózása engedélyezve van, az Azure Rights Management megkezdi a szervezet összes műveleteket, és menti ezt az információt a tárolási fiók. Mielőtt ezt a pontot ügyfélnaplózási információ nem érhető el.
 
-For more information about how to create storage accounts, see the  [Create a storage account](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) section from the [About Azure storage accounts](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) in the Azure documentation.
+## <a name="BKMK_AccesAndUseLogs"></a>Hozzáférés, és az Azure Rights Management használati naplók használata
+Azure Rights Management BLOB sorozataként naplók ír az Azure-tárfiókjába. Minden egyes blob tartalmaz egy vagy több naplórekordokat, W3C bővített naplófájl formátumban. A blob neve olyan számok, és a sorrendben, ahol azok létre lettek hozva. A [Az Azure Rights Management használati naplók értelmezése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret) a jelen dokumentum szakasz tartalmaz további információt a napló tartalmát, és a létrehozásukat.
 
-## <a name="BKMK_AccesAndUseLogs"></a>How to access and use your Azure Rights Management usage logs
-Azure Rights Management writes logs to your Azure storage account as a series of blobs. Each blob contains one or more log records, in W3C extended log format. The blob names are numbers, in the order in which they were created. The [How to interpret your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret) section later in this document contains more information about the log contents and their creation.
+Is telhet, amíg az Azure Rights Management művelet után jelennek meg a tárfiók-naplókat. A legtöbb naplók 15 percen belül jelenik meg.
 
-It can take a while for logs to appear in your storage account after an Azure Rights Management action. Most logs appear within 15 minutes.
+A tárolási fiók, amelyet az Azure Rights Management használati naplók hozott létre például egy postaláda és közvetlenül a tárolási fiók olvasását támogatja, de nincs optimalizálva, így használható. Ehelyett a lehető legjobb teljesítmény és a költségek csökkentése érdekében azt javasoljuk, hogy a naplók helyi tárolóra, például egy helyi mappába, adatbázis, töltse le, vagy a tárház térkép csökkentésére.
 
-The storage account that you created for your Azure Rights Management usage logs is like a mailbox and supports reading directly from the storage account, but it is not optimized to be used in this way. Instead, for best performance and to help reduce costs, we recommend that you download the logs to local storage, such as a local folder, a database, or a map-reduce repository.
+A használati naplók kétféle módon tölthető le:
 
-You can download your usage logs in two ways:
+-   A Windows PowerShell-parancsmag [Get-AadrmUsageLog](https://msdn.microsoft.com/library/azure/dn629401.aspx).
 
--   Use the Windows PowerShell cmdlet [Get-AadrmUsageLog](https://msdn.microsoft.com/library/azure/dn629401.aspx).
+    Ez a legegyszerűbb a használati naplók eléréséhez. Ez a parancsmag minden blob letöltése fájlként egy olyan helyre, akkor adja meg, a számítógép letölti a naplókat.
 
-    This is the simplest way to access your usage logs. This cmdlet downloads logs to your computer, downloading each blob as a file to a location that you specify.
+-   Használja a [Azure Storage szolgáltatás SDK](http://www.windowsazure.com/en-us/develop/net/) saját egyéni alkalmazás letöltéséhez a naplók írni.
 
--   Use the [Azure Storage SDK](http://www.windowsazure.com/en-us/develop/net/) to write your own custom application to download the logs.
+    Egyéni alkalmazás több, mint a Get-AadrmUsageLogs parancsmag rugalmasságot biztosítanak. Például előfordulhat, hogy szeretné a letöltés naplók átadhatja valaki vagy folyamat, amely nem használható az Azure Rights Management rendszergazdai hitelesítő adatokkal. Vagy kérdezze le a valós idejű naplók, mert helytelen a figyelni kívánt érdemes.
 
-    A custom application can provide more flexibility than the Get-AadrmUsageLogs cmdlet. For example, you might want to delegate the download of logs to somebody or a process that must not use your Azure Rights Management administrative credentials. Or, you might want to poll the logs in real time because you want to monitor for misuse.
+#### A használati naplók letöltése a PowerShell használatával
 
-#### To download your usage logs by using PowerShell
+-   Indítsa el a Windows PowerShell a **Futtatás rendszergazdaként** lehetőséget, majd futtassa **Get-AadrmUsageLog –Path &lt;location&gt;**. Például a nevű mappa létrehozása után **logs** E-meghajtón:
 
--   Start Windows PowerShell with the **Run as administrator** option and run **Get-AadrmUsageLog –Path &lt;location&gt;**. For example, after creating a folder named **logs** on your E drive:
+    -   Az összes elérhető naplók letöltése a E:\logs mappába: `Get-AadrmUsageLog -Path "e:\logs"`
 
-    -   To download all available logs to your E:\logs folder: `Get-AadrmUsageLog -Path "e:\logs"`
+    -   Egy adott porttartomány BLOB letöltése: `Get-AadrmUsageLog –Path "e:\logs" –FromCounter 1024 –ToCounter 2047`
 
-    -   To download a specific range of blobs: `Get-AadrmUsageLog –Path "e:\logs" –FromCounter 1024 –ToCounter 2047`
+Ezek a parancsmagok futtatásakor a Windows PowerShell letöltött utolsó blob nevét jeleníti meg. Rendelhet a név egy változó, amely lehetővé teszi, hogy futtassa a Get-AadrmUsageLog hurkot vagy egy feladat ütemezése, a növekményes naplók letöltése minden alkalommal.
 
-When you run these cmdlets, Windows PowerShell displays the name of the last blob that was downloaded. You can assign this name to a variable, which lets you run Get-AadrmUsageLog in a loop or a schedule job, downloading only the incremental logs each time.
+Példa:
 
-For example:
-
-**PS C:\&gt; $LastBlobName = Get-AadrmUsageLog –Path "e:\logs"**
+**PS C:\ &gt; $LastBlobName = Get-AadrmUsageLog – elérési út "e:\logs"**
 
 **1527**
 
-**PS C:\&gt; $LastBlobName**
+**PS C:\ &gt; $LastBlobName**
 
 **1527**
 
 > [!TIP]
-> You can aggregate all your downloaded log files into a CSV format by using [Microsoft’s Log Parser](http://www.microsoft.com/download/details.aspx?id=24659), which is a tool to convert between various well-known log formats. You can also use this tool to convert data to SYSLOG format, or import it into a database. After you have installed the tool, run **LogParser.exe /?** for help and information to use this tool. For example, you might run the following command to import all information into a .log file format: **logparser –i:w3c –o:csv “SELECT &#42; INTO AllLogs.csv FROM &#42;.log”**.
+> Is összesítheti összes letöltött naplófájl alkalmazásba CSV-formátum használatával [Microsoft napló elemző](http://www.microsoft.com/download/details.aspx?id=24659), amelynek célja, hogy a különböző jól ismert napló formátumok közötti átváltásra. Ezzel az eszközzel adatokat konvertálása SYSLOG formátumba, és importálja azt az adatbázis is. Az eszköz telepítése után futtassa **LogParser.exe /?** a Súgó és az adatokat ezzel az eszközzel. Például előfordulhat, hogy futtassa az alábbi parancs futtatásával importálja az összes információt a .log fájl formátumra: **logparser –i:w3c –o:csv “SELECT &#42; INTO AllLogs.csv FROM &#42;.log”**.
 
-You can suspend and resume usage logging. When you suspend logging, Azure Rights Management retains your storage account information, so that you can easily resume logging again.
+Felfüggesztése, és használati naplózás folytatásához. Naplózási felfüggesztésekor Azure Rights Management megőrzi a tárolási fiók adatait, így könnyen folytathatja naplózás újból.
 
-#### To suspend and resume usage logging
+#### Felfüggesztése és folytatása a használat naplózása
 
--   To suspend logging, use the following cmdlet: [Disable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
+-   Naplózási felfüggesztése, használja a következő parancsmagot: [Disable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
 
--   To resume logging, use the following cmdlet: [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
+-   A naplózás folytatásához használja az alábbi parancsmagot: [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
 
--   To check whether logging is enabled or disabled, use the following cmdlet: [Get-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629425.aspx)
+-   Ellenőrizze a naplózás engedélyezve vagy letiltva, használja a következő parancsmagot: [Get-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629425.aspx)
 
-    A value of **True** means that usage logging is enabled for Azure Rights Management and a value of **False** means that usage logging is disabled.
+    Érték **Igaz** azt jelenti, hogy az használati naplózás engedélyezve van-e az Azure Rights Management és érték **hamis** azt jelenti, hogy a használat naplózása le van tiltva.
 
-## <a name="BKMK_ManageStorage"></a>How to manage your Azure Rights Management log storage
-You are charged for the storage space that is used to keep your Azure Rights Management logs.
+## <a name="BKMK_ManageStorage"></a>Az Azure Rights Management napló tárolási kezelése
+A tárolóhely, amellyel az Azure Rights Management naplók tartsa felszámítani.
 
-Azure Rights Management does no automatic management of your usage log files. If you take no action, they will remain in your storage account. However, to conserve space and reduce storage costs, you might want to delete them after you have downloaded them. Or you can choose which files to delete. With one exception, Azure Rights Management does not use these log files, so there are no restrictions about when you can delete them.
+Az Azure Rights Management nincs automatikus felügyeleti a használati naplófájlok nem. Ha nincs a művelet a tárolási fiók megmaradnak. Azonban a helymegtakarítás, és csökkentheti a tárolási költségek csökkentését, előfordulhat, hogy szeretné törölni őket, miután letöltötte azokat. Vagy választhatja, hogy mely fájlok törléséhez. Egy kivétellel Azure Rights Management nem használja ezeket a naplófájlokat, így nincsenek korlátozások kapcsolatban, ha segítségével törölheti.
 
-The file that you must not delete (or modify) is named **metadata** that is in the **rms-metadata** container. Azure Rights Management uses this blob to keep track of the last blob number that it used. If this file is deleted, Azure Rights Management starts a new container for logs, with a blob number that starts from 1, and all future downloads that use the Get-AadrmUsageLog cmdlet use this new container to download log files. As a result, any logs in the original container are retained, but orphaned. The only way to download these orphaned logs is to use the Azure storage SDK.
+A fájl, amely akkor kell törölni (vagy módosítani) nevű **metaadatok** amely szerepel a **rms-metaadatok** tároló. Az Azure Rights Management a blob a használt utolsó blob számát nyomon követésére használ. Ha ez a fájl törlődik, Azure Rights Management naplókat, új tárolója kezdődik a blob-számnak 1-től kezdődő, és későbbi letöltések a Get-AadrmUsageLog parancsmaggal ebben a tárolóban követve töltheti le a naplófájlokat. Emiatt a naplók az eredeti tárolóban maradnak, de árva. Töltse le az árva naplók csak úgy az Azure tárolás SDK használatára.
 
 > [!TIP]
-> Instead of managing your Azure Rights Management log storage yourself, you can delegate this management function to another company by sharing your storage account name and access key. For more information, see the [How to delegate access to your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate) section later in this topic.
+> Helyett az Azure Rights Management napló tárolás kezelésére saját magát, a a fiók nevét és a hozzáférési kulcs megosztása delegálhatja a kezelési funkciót egy másik vállalat. További információ: a [Delegálja a hozzáférést az Azure Rights Management használati eseménynaplók](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate) később című szakaszában talál.
 
-In some circumstances, you might want to regenerate your storage access keys. For example:
+Bizonyos esetekben a kívánt előfordulhat, hogy a tároló elérési kulcsainak újragenerálása. Példa:
 
--   You change the company that manages your Azure Rights Management usage logs.
+-   A vállalat az Azure Rights Management használati naplók felügyelő módosítása
 
--   You suspect that your storage access key is compromised.
+-   Azt feltételezi, hogy a hozzáférési kulcs sérült integritású.
 
-If this happens to you, this is when you use the secondary access key (on the assumption that you were previously using the primary access key) to ensure service continuity. When you regenerate the access key that you were not previously using, you then configure Azure Rights Management to use the new key. Use the following procedure to regenerate the secondary access key and configure Azure Rights Management to use it:
+Ha ez történik, a rendszer használatakor a másodlagos hozzáférési kulcsot (az azt feltételezi, hogy az elsődleges hozzáférési kulcsot korábban a) a szolgáltatás folytonosságának biztosításához. Ha újragenerálni a hozzáférési kulcs, amely korábban nem használt, majd konfigurálnia Azure Rights Management használata az új kulccsal. Az alábbi eljárás segítségével generálni a másodlagos hozzáférési kulcsot, és konfigurálhatja az Azure Rights Management rá:
 
-#### To regenerate the secondary access key
+#### A másodlagos hozzáférési kulcs újragenerálása
 
-1.  Sign in to the [Azure  portal](https://portal.azure.com/).
+1.  Jelentkezzen be a [Azure-portálon](https://manage.windowsazure.com/).
 
-2.  Click **All Resources**, and search for your storage by typing the storage name in the text box..
+2.  Válassza ki **tárolási**.
 
-3.  Select your storage, and click **Settings**.
+3.  Kattintson a **elérési kulcsainak kezelése**.
 
-4.  Click the **Keys** icon.
+4.  A a **elérési kulcsainak kezelése** párbeszédpanelen kattintson a **újbóli** mellett a másodlagos hozzáférési kulcsot, és az új másodlagos hozzáférési kulcsot a vágólapra másolása.
 
-5.  In the **Manage  keys** section, click **Regenerate secondary key** click Yes to confirm that you want to regenerate secondary access key, and copy the new secondary access key to the clipboard.
-
-    Do not close the Azure portal.
-
-6.  Start Windows PowerShell with the **Run as administrator** option and use the [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) cmdlet to configure Azure Rights Management to use this new access key, replacing *&lt;StorageAccount&gt;* with the name of your storage account and *&lt;Access_Key&gt;* with the regenerated secondary access key that you just copied:
+5.  Indítsa el a Windows PowerShell és a a **Futtatás rendszergazdaként** lehetőséget, és használja a [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) konfigurálása az új hozzáférési kulcs használatához Azure Rights Management parancsmag cseréje *&lt; StorageAccount &gt;* a tárolási fiók nevével és *&lt; Access_Key &gt;* előbb másolt másodlagos rendszer újragenerálta a hozzáférési kulccsal rendelkező:
 
     ```
     Set-AadrmUsageLogStorageAccount -StorageAccount <StorageAccount>-AccessKey <Access_Key>
     ```
     > [!WARNING]
-    > Although you can switch to another storage account when you run this command, this action orphans your previous logs and they will no longer be accessible to the Set-AadrmUsageLogStorageAccount cmdlet or similar management commands and functions.
+    > Bár a parancs futtatásakor lehet váltani egy másik tárolási fiókot, ez a művelet orphans a korábbi naplókat, és többé nem lesznek elérhetők legyenek a Set-AadrmUsageLogStorageAccount parancsmag vagy hasonló felügyeleti parancsokat és funkciókat.
 
-7.  Back in the Azure portal, **Manage  Keys** section, regenerate your primary access key.
+6.  Vissza a **elérési kulcsainak kezelése** párbeszédpanel mezőbe generálni az elsődleges hozzáférési kulcsot.
 
-For more information about how to manage your storage access keys, see the  [Manage your storage access keys](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) section from the [About Azure storage accounts](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) in the Azure documentation.
+## <a name="BKMK_Delegate"></a>Delegálja a hozzáférést az Azure Rights Management használati eseménynaplók
+Hozzáférés a fiók nevét és a hozzáférési kulcs megosztása delegálhatja a RMS naplókat. Előfordulhat, hogy szeretne egy másik rendszergazda felhasználó, a fejlesztők saját a szervezeten belüli vagy egy független szoftverszállító (ISV) hozzáférési delegálása. Nem rendelkeznek a RMS rendszergazdai hitelesítő adatait, mert a Get-AardrmUsageLog parancsmag nem használhatják az RMS-naplók letöltése. Ehelyett a Windows Storage szolgáltatás SDK kell használják a naplók letöltése. Másik lehetőségként írják alkalmazás, olvassa el a naplók közvetlenül az Azure Storage szolgáltatásból.
 
-## <a name="BKMK_Delegate"></a>How to delegate access to your Azure Rights Management usage logs
-You can delegate access to your RMS logs by sharing your storage account name and access key. You might want to delegate access to another administrative user, to a developer within your own organization, or to an independent software vendor (ISV). Because they will not have your RMS administrator credentials, they cannot use the Get-AardrmUsageLog cmdlet to download the RMS logs. Instead, they must use the Windows Storage SDK to download the logs. Alternatively, they can write an application to read the logs directly from Azure Storage.
+Rendkívül biztonságos megosztása a fiók nevét és a hozzáférési kulcs ily módon, ha a tárolási fiók van hozzárendelve az RMS-naplók. Annak ellenére, hogy más felhasználók is a hozzáférési kulcsot, nem használhatják a más tárfiók eléréséhez vagy használatához az RMS bérlői fiókját.
 
-It is safe to share your storage account name and access key in this way when the storage account is dedicated to your RMS logs. Even though other people have your access key, they cannot use this to access any other storage account or use your RMS tenant account.
+## <a name="BKMK_Interpret"></a>Az Azure Rights Management használati naplók értelmezése
+Az alábbi információk segítségével az Azure Rights Management használati naplók értelmezni.
 
-## <a name="BKMK_Interpret"></a>How to interpret your Azure Rights Management usage  logs
-Use the following information to help you interpret the Azure Rights Management usage  logs.
+### A tárolási fiók elrendezés
+Az első alkalommal Azure Rights Management naplók ír a tárolási fiók létrehozza a következő két tárolókban:
 
-### The storage account layout
-The first time Azure Rights Management writes logs to your storage account, it creates the following two containers:
+-   **Rms-metaadatok**: Ebben a tárolóban Azure Rights Management számára van fenntartva. Nem módosítása vagy törlése a tárolóban.
 
--   **Rms-metadata**: This container is reserved for Azure Rights Management . Do not modify or delete this container.
+-   **Rms - naplók - &lt; guid &gt;**: Ebben a tárolóban, ahol Azure Rights Management hoz létre, és menti a naplókat. Az ebben a tárolóban lévő összes fájlt biztonságosan törölni, ha már nincs szüksége a naplózási adatok, amelyek tartalmazzák.
 
--   **Rms-logs-&lt;guid&gt;**: This container is where Azure Rights Management creates and saves the logs. You can safely delete any files in this container if you no longer want the logging information that they contain.
+Az idő múlásával Azure Rights Management lehet, hogy hozzon létre további **Rms - naplók - &lt; guid &gt;** tárolók. Például ha a **Rms-metaadatok** tároló megsérül vagy véletlenül törlődik, Azure Rights Management visszaállítja a tartalmát, és létrehoz egy új **Rms - naplók - &lt; guid &gt;** összes későbbi napló tárolója. A régi naplókat a régi tárolóban nem törlődnek, de árván marad.
 
-Over time, Azure Rights Management might create additional **Rms-logs-&lt;guid&gt;** containers. For example, if the **Rms-metadata** container becomes corrupted or it is accidentally deleted, Azure Rights Management resets its contents and creates a new **Rms-logs-&lt;guid&gt;** container for all future logs. The old logs in the old container are not deleted but are orphaned.
+### A naplófájl-sorozat
+Az Azure Rights Management BLOB sorozataként naplófájlba írja a naplókat. Minden egyes blob tartalmaz egy vagy több naplórekordokat, kiterjesztett W3C-napló formátumban.
 
-### The log sequence
-Azure Rights Management writes the logs as a series of blobs. Each blob contains one or more log records, in extended W3C log format.
-
-The name of each blob is a number. Within each log container the first blob is named 000000001. Each blob is named sequentially in the order in which it was created. Each blob contains one or more log records. Each log record has a UTC time stamp that indicates when the corresponding request was served by Azure Rights Management.
+Minden egyes blob neve az a szám. Az első blob belül minden naplózási tároló 000000001 neve. Minden egyes blob egymás után neve a sorrendet, amelyben létrehozták. Minden egyes blob tartalmaz egy vagy több naplófájl rögzíti. Minden egyes naplórekord rendelkezik UTC időbélyeggel, amely azt jelzi, ha a vonatkozó kérés Azure Rights Management által állítása és kiszolgálása között.
 
 > [!IMPORTANT]
-> The Azure Rights Management logging system is optimized to provide you with logs quickly, rather than in strict sequential order. The order of the blobs, as well as the order of log records within a blob, might be out of chronological sequence. The only reason the blobs are named sequentially is to enable you to efficiently download them incrementally.
+> Az Azure Rights Management naplózási rendszer biztosítanak a naplók gyorsan ahelyett, hogy szigorú sorrendben van optimalizálva. A BLOB sorrendjét, valamint egy blob lévő rekordok sorrendjét helytelen időrendi sorrendben lehet. A csak a BLOB egymás után elnevezése azért lehetővé teszik, hogy hatékonyan letölteni azokat növekményes.
 > 
-> Two examples of potential log sequence results:
+> Két lehetséges napló feladatütemezési eredmények példák:
 > 
-> -   The log records in blob 000000004 might overlap chronologically with the log records in blob 000000003. In an extreme case, all log records in blob 000000004 might have been generated before all log records in blob 000000003.
-> -   The second log record in a blob might have been generated before the first log record, but was written to storage in reverse order.
+> -   A naplófájl rögzíti a blob 000000004 időrendi sorrendben átfedést előfordulhat, hogy a naplófájl rögzíti a blob 000000003. Szélsőséges esetben az összes naplófájl rögzíti a blob 000000004 előfordulhat, hogy létrejöttek 000000003 blobban található rekordok napló előtt.
+> -   A blob második naplórekord első naplórekord előtt előfordulhat, hogy létrejöttek, de írt-tároló fordított sorrendben.
 
-Before you analyze your Azure Rights Management usage logs, we recommend that you download and import the log into a repository where you can sort the logs based on their timestamp. For more information about to download the logs, see the [How to access and use your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs) section in this topic.
+Előtt elemezni az Azure Rights Management használati naplókat, javasoljuk, hogy töltse le a napló importálása egy tárház, ahol a naplók a timestamp alapján rendezheti. A naplók letöltendő további információkért lásd: a [Hozzáférés, és az Azure Rights Management használati naplók használata](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs) című szakaszában talál.
 
-Because the logs are not necessarily chronological but the majority of them are written within 15 minutes of the request, when you identify the logs that you want by using their timestamp , add 15 minutes to the time that you are interested in. Then download these logs. This strategy should ensure that you get almost all logs.
+A naplók nem feltétlenül időrendi, de a legtöbb írt a kérelem 15 percen belül, a naplók a timestamp kívánt azonosításakor, mert hozzá az Önt érdeklő idő 15 perc. Ezek a naplók majd letölteni. Ezt a stratégiát követi biztosítania kell, hogy a naplók szinte minden beolvasása.
 
-One other thing to remember is that the timestamp on each log record is the local time of the Azure Rights Management service that processed the request. Because Azure Rights Management runs on multiple servers across multiple data center, sometimes the logs might seem to be out of sequence, even when they are sorted by their timestamp. However, the different is small and usually within a minute. In most cases, this is not an issue that would be a problem for log analysis.
+Ne feledje, hogy egy másik dolgot, hogy az egyes naplórekord időbélyegzőt-e a helyi idő az Azure Rights Management szolgáltatás, amely a kérelem feldolgozása. Azure Rights Management több kiszolgálón fut, több adatközpontban, mert egyes esetekben a naplók előfordulhat, hogy úgy tűnik, hogy helytelen sorrendben, akkor is, ha ezek a timestamp szerint rendezi. Azonban a különböző van, kis- és általában egy percen belül. A legtöbb esetben ez nem a problémát, amelynek a napló elemzés probléma lenne.
 
-### The blob format
-Each blob is in W3C extended log format. It starts with the following two lines:
+### A blob formátum
+Minden egyes blob W3C bővített naplófájl formátumban van. Az alábbi két sort kezdődik:
 
 **#Software: RMS**
 
 **#Version: 1.1**
 
-The first line identifies that these are Azure Rights Management logs. The second line identifies that the rest of the blob follows the version 1.1 specification. We recommend that any applications that parse these logs verify these two lines before continuing to parse the rest of the blob.
+Az első sor azonosítja, hogy ezek a naplók Azure Rights Management. A második sor azonosítja, hogy a blob többi követi a 1.1-es verziója megadását. Javasoljuk, hogy olyan alkalmazásokat, amelyek elemezni ezek a naplók két sort ellenőrizze a blob többi elemezni a folytatás előtt.
 
-The third line enumerates a list of field names that are separated by tabs:
+A harmadik sor enumerálása mezőnevek lapok elválasztott listáját:
 
-**#Fields: date            time            row-id        request-type           user-id       result          correlation-id          content-id                owner-email           issuer                     template-id             file-name                  date-published      c-info         c-ip**
+**#Fields: dátum szerinti idő sorazonosító kérelem-típus felhasználói azonosítót eredménye Korrelációazonosító tartalom-id tulajdonosa-e-mailek kibocsátó sablonazonosító fájlnév dátum közzétett c-info c ip-**
 
-Each of the subsequent lines is a log record. The values of the fields are in the same order as the preceding line, and are separated by tabs. Use the following table to interpret the fields.
+Az ezt követő sorok egy naplórekordot. A mező értékének ugyanabban a sorrendben, mint az előző sor kerül, és lapok el egymástól. Az alábbi táblázat segítségével értelmezni a mezőket.
 
-|Field name|W3C data type|Description|Example value|
-|--------------|-----------------|---------------|-----------------|
-|date|Date|UTC date when the request was served.<br /><br />The source is the local clock on the server that served the request.|2013-06-25|
-|time|Time|UTC time in 24-hour format when the request was served.<br /><br />The source is the local clock on the server that served the request.|21:59:28|
-|row-id|Text|Unique GUID for this log record.<br /><br />This value is useful when you aggregate logs or copy logs into another format.|1c3fe7a9-d9e0-4654-97b7-14fafa72ea63|
-|request-type|Name|Name of the RMS API that was requested.|AcquireLicense|
-|user-id|String|The user who made the request.<br /><br />The value is enclosed in single quotation marks. Some request types are anonymous, in which case the value is ”.|‘joe@contoso.com’|
-|result|String|‘Success’ if the request was served successful.<br /><br />The error type in single quotation marks if the request failed.|‘Success’|
-|correlation-id|Text|GUID that is common between the RMS client log and server log for a given request.<br /><br />This value can be useful to help troubleshooting client issues.|cab52088-8925-4371-be34-4b71a3112356|
-|content-id|Text|GUID, enclosed in curly braces that identifies the protected content (for example, a document).<br /><br />This field has a value only if request-type is AcquireLicense and is blank for all other request types.|{bb4af47b-cfed-4719-831d-71b98191a4f2}|
-|owner-email|String|Email address of the owner of the document.|alice@contoso.com|
-|issuer|String|Email address of the document issuer.|alice@contoso.com (or) FederatedEmail.4c1f4d-93bf-00a95fa1e042@contoso.onmicrosoft.com'|
-|Template-id|String|ID of the template used to protect the document.|{6d9371a6-4e2d-4e97-9a38-202233fed26e}|
-|File-name|String|File name of the document that was protected.|TopSecretDocument.docx|
-|Date-published|Date|Date when the document was protected.|2015-10-15T21:37:00|
-|c-info|String|Information about the client platform that is making the request.<br /><br />The specific string varies, depending on the application (for example, the operating system or the browser).|'MSIPC;version=1.0.623.47;AppName=WINWORD.EXE;AppVersion=15.0.4753.1000;AppArch=x86;OSName=Windows;OSVersion=6.1.7601;OSArch=amd64'|
-|c-ip|Address|IP address of the client that makes the request.|64.51.202.144|
+|Mező neve|W3C adattípus:|Leírás|Példa érték|
+|-------------|------------------|----------|---------------|
+|dátum|Dátum|UTC dátum, amikor a kérelem állítása és kiszolgálása között.<br /><br />A forrás, a helyi idő azon a kiszolgálón, a kérelem és kiszolgálása között.|2013-06-25|
+|idő|Idő|UTC idő 24 órás formátumban, amikor a kérelem állítása és kiszolgálása között.<br /><br />A forrás, a helyi idő azon a kiszolgálón, a kérelem és kiszolgálása között.|21:59:28|
+|sor-azonosító|Szöveg|A naplórekord egyedi GUID azonosítója.<br /><br />Ez az érték akkor hasznos, ha a naplók vagy naplók másolása egy másik formátumra összesíteni.|1c3fe7a9-d9e0-4654-97b7-14fafa72ea63|
+|kérés-típusa|Neve|Az RMS API-t, hogy a kért neve.|AcquireLicense|
+|felhasználó-azonosító|Karakterlánc|A felhasználó, aki a kérést.<br /><br />Az érték az egyetlen idézőjelek közé. Bizonyos kérelemtípusoknál fel a névtelen, ebben az esetben az értéke ".|"joe@contoso.com"|
+|eredmény|Karakterlánc|"Sikeres" Ha a kérelem sikeres volt kiszolgált.<br /><br />A hiba típusa egyetlen idézőjelek közé, ha a kérelem végrehajtása sikertelen.|"Sikeres"|
+|korrelációs-azonosító|Szöveg|Az RMS ügyfél és kiszolgáló napló egy adott kérelem esetén közötti közös GUID.<br /><br />Ez az érték lehet hasznos ügyfél problémák elhárítása érdekében.|cab52088-8925-4371-be34-4b71a3112356|
+|tartalom-azonosító|Szöveg|GUID, amely azonosítja a védett tartalom (például egy dokumentum) kapcsos zárójelek közé.<br /><br />Ez a mező értéke csak akkor, ha a kérelem-típus AcquireLicense, és az összes többi kérelem üres.|{bb4af47b-cfed-4719-831d-71b98191a4f2}|
+|tulajdonos-e-mailek|Karakterlánc|A dokumentum tulajdonosa e-mail címe.|Alice@contoso.com|
+|kibocsátó|Karakterlánc|A dokumentum kibocsátó e-mail címe.|Alice@contoso.com (vagy) FederatedEmail.4c1f4d-93bf-00a95fa1e042@contoso.onmicrosoft.com "|
+|Sablon-azonosító|Karakterlánc|A dokumentum védelmére használt sablon azonosítója.|{6d9371a6-4e2d-4e97-9a38-202233fed26e}|
+|Fájlnév|Karakterlánc|A dokumentum védett fájl nevét.|TopSecretDocument.docx|
+|Dátum közzétett|Dátum|Az dátum, amikor a dokumentum védett.|2015-10-15T21:37:00|
+|c-információ|Karakterlánc|A kérés ügyfél platformja adatait.<br /><br />A megadott karakterlánc (például az operációs rendszer vagy a böngésző) alkalmazástól függően változik.|"MSIPC; verzió = 1.0.623.47; Alkalmazásnév = WINWORD. EXE; AppVersion = 15.0.4753.1000; AppArch = x 86; OSName = Windows; OSVersion = 6.1.7601; OSArch = amd64 "|
+|az ip-c|Cím|IP-cím, az ügyfél, amely a kérelmet.|64.51.202.144|
 
-#### Exceptions for the user-id field
-Although the user-id field usually indicates the user who made the request, there are two exceptions where the value does not map to a real user:
+#### A felhasználói azonosítót mező kivételek
+A felhasználói azonosítót mező általában jelzi, hogy a felhasználó, aki a kérést, de van két kivétel ahol az érték nem felel meg a tényleges felhasználói:
 
--   The value **'microsoftrmsonline@&lt;YourTenantID&gt;.rms.&lt;region&gt;.aadrm.com'**.
+-   Az érték **"microsoftrmsonline @&lt; YourTenantID &gt;. &lt; régió &gt; hagyatkozni. aadrm.com"**.
 
-    This indicates an Office 365 service, such as Exchange Online or Sharepoint Online, is making the request. In the string, *&lt;YourTenantID&gt;* is the GUID for your tenant and *&lt;region&gt;* is the region where your tenant is registered. For example, **na** represents North America, **eu** represents Europe, and **ap** represents Asia.
+    Ez azt jelenti, hogy az Office 365 szolgáltatáshoz, például az Exchange online-hoz, vagy a Sharepoint Online lehetővé teszi a kérelmet. A karakterlánc *&lt; YourTenantID &gt;* van a GUID azonosító a bérlő és *&lt; régió &gt;* a régió, ahol a bérlő regisztrálva van-e. Például **na** jelöli az Észak-amerikai **EU-s** jelöli Európa, és **hozzáférési pont** ázsiai jelöli.
 
--   If you are using the RMS connector.
+-   Ha az RMS-összekötőt használja.
 
-    Requests from this connector are logged with the service principal name that RMS automatically generates when you install the RMS connector.
+    Ez az összekötő érkező kéréseket az egyszerű szolgáltatásnév RMS automatikusan állít elő, amikor telepíti az RMS-összekötő naplózza.
 
-#### Typical request types
-There are many request types for Azure Rights Management but the following table identifies some of the most typically used request types.
+#### Tipikus kérelem típusok
+Az Azure Rights Management többféle kérelmet, de a következő táblázat azokat a legtöbb általánosan használt kérelem valamelyikének.
 
-|Request type|Description|
-|----------------|---------------|
-|AcquireLicense|A client from a Windows based machine is requesting a license for RMS-protected content.|
-|AcquirePreLicense|A client, on behalf of the user, is requesting for a license for RMS-protected content.|
-|AcquireTemplates|A call was made to acquires templates based on template IDs|
-|AcquireTemplateInformation|A call was made to get the IDs of the template from the service.|
-|AddTemplate|A call is  made from the Azure classic portal to add a template.|
-|BECreateEndUserLicenseV1|A call is  made from a mobile device to create an end-user license.|
-|BEGetAllTemplatesV1|A call is  made from a mobile device (back-end) to get all the templates.|
-|Certify|The client is certifying the content for protection.|
-|Decrypt|The client is attempting to decrypt the RMS-protected content.|
-|DeleteTemplateById|A call is  made from the Azure classic portal, to delete a template by template  ID.|
-|ExportTemplateById|A call is  made from the Azure classic portal to export a template based on a template ID.|
-|FECreateEndUserLicenseV1|Similar to the AcquireLicense request but from mobile devices.|
-|FECreatePublishingLicenseV1|The same as Certify and GetClientLicensorCert combined, from mobile clients.|
-|FEGetAllTemplates|A call is  made, from a mobile device (front-end) to get the templates.|
-|GetAllTemplates|A call is  made from the Azure classic portal, to get all the templates.|
-|GetClientLicensorCert|The client is requesting a publishing certificate (that is later used to protect content) from a Windows-based computer.|
-|GetConfiguration|An Azure PowerShell cmdlet is called to get the configuration of the Azure RMS tenant.|
-|GetConnectorAuthorizations|A call  is made from the RMS connectors to get their configuration from the cloud.|
-|GetTenantFunctionalState|The Azure classic portal is checking whether Azure RMS is activated.|
-|GetTemplateById|A call is  made from the Azure classic portal to get a template by specifying a template ID.|
-|ExportTemplateById|A call is being made from the Azure classic portal to export a template by specifying a template ID.|
-|FindServiceLocationsForUser|A call is made to query for URLs, which is used to call Certify or AcquireLicense.|
-|ImportTemplate|A call is  made from the Azure classic portal to import a template.|
-|ServerCertify|A call is  made from an RMS-enabled client (such as SharePoint) to certify the server.|
-|SetUsageLogFeatureState|A call is  made to enable usage logging.|
-|SetUsageLogStorageAccount|A call is  made to specify the location of the Azure RMS logs.|
-|SignDigest|A call is made when a key is used for signing purposes. This is called typically once per AcquireLicence (or FECreateEndUserLicenseV1), Certify, and GetClientLicensorCert (or FECreatePublishingLicenseV1).|
-|UpdateTemplate|A call is  made from the Azure classic portal to update an existing template.|
+|Kérés típusa|Leírás|
+|----------------|----------|
+|AcquireLicense|ügyfél Windows-alapú számítógépről RMS által védett tartalom licencet kér.|
+|AcquirePreLicense|egy ügyfelet, a felhasználó nevében kér RMS által védett tartalom licenccel.|
+|AcquireTemplates|hívás érkezett beolvasások sablonok azonosítók sablon alapján történő|
+|AcquireTemplateInformation|hívás érkezett az azonosítók a sablon lekérni a szolgáltatásból.|
+|AddTemplate|hívás történik az Azure portálról vegyen fel egy sablont.|
+|BECreateEndUserLicenseV1|egy hívását mobileszközről hozzon létre egy végfelhasználói licencszerződés.|
+|BEGetAllTemplatesV1|hívás mobileszközről (háttér) történik az összes sablon beszerzéséhez.|
+|Hitelesítés|az ügyfél a tartalom védelemre van tanúsító.|
+|Visszafejtése|az ügyfél megpróbál a RMS által védett tartalom visszafejtéséhez.|
+|DeleteTemplateById|törölni egy sablon által sablon. hívás történik az Azure portálról|
+|ExportTemplateById|hívás történik, az Azure portálról azonosító sablon alapján történő sablon exportálása|
+|FECreateEndUserLicenseV1|hasonló a AcquireLicense kérelmet, de a mobileszközökről.|
+|FECreatePublishingLicenseV1|megegyeznek a mobil ügyfelek hitelesítés és GetClientLicensorCert kombinált.|
+|FEGetAllTemplates|hívás történik, (előtér-) mobileszközről lekérni a sablonokat.|
+|GetAllTemplates|beolvasni az összes sablon hívás történik az Azure portálról.|
+|GetClientLicensorCert|az ügyfél Windows-alapú számítógépről egy közzétételi (később használt tanúsítvány tartalom védelméhez) kér.|
+|GetConfiguration|az Azure PowerShell-parancsmag neve megszerezni az Azure RMS bérlői konfigurációját.|
+|GetConnectorAuthorizations|hívás történik, az az RMS-összekötők beolvasni a konfigurációt a felhőből.|
+|GetTenantFunctionalState|az Azure portálon, ellenőrzi, hogy aktiválva van-e az Azure RMS.|
+|GetTemplateById|hívás történik az Azure portálról adja meg a sablon azonosítója. szerezzen egy sablon|
+|ExportTemplateById|hívás sablon exportálása azonosító sablon megadásával történik az Azure portálról|
+|FindServiceLocationsForUser|egy hívását lekérdezni URL-címek, a hitelesítés vagy AcquireLicense hívásához használt.|
+|ImportTemplate|hívás sablon importálása az Azure portálról történik.|
+|ServerCertify|hívás a kiszolgáló hitelesítésére az RMS-kompatibilis ügyfél (például SharePoint) történik.|
+|SetUsageLogFeatureState|egy hívás a használati naplózás engedélyezéséhez.|
+|SetUsageLogStorageAccount|hívás történik az Azure RMS naplók elérési útja.|
+|SignDigest|egy hívás egy kulcs az aláíráshoz célokra használatakor. Ezt nevezik általában egyszer AcquireLicence (vagy FECreateEndUserLicenseV1) hitelesítés, és GetClientLicensorCert (vagy FECreatePublishingLicenseV1).|
+|UpdateTemplate|hívás történik az Azure portálról frissítse a meglévő sablon.|
 
-## <a name="BKMK_PowerShell"></a>Windows PowerShell reference
-Use the following Windows PowerShell cmdlets to help you configure and use Azure Rights Management usage logging:
+## <a name="BKMK_PowerShell"></a>A Windows PowerShell-hivatkozás
+A következő Windows PowerShell-parancsmagok segítségével könnyebben konfigurálható és használható Azure Rights Management használat naplózása:
 
 -   [Disable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
 
@@ -335,8 +323,8 @@ Use the following Windows PowerShell cmdlets to help you configure and use Azure
 
 -   [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx)
 
-For more information about using Windows PowerShell for Azure Rights Management, see [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
+További információ a Windows PowerShell használatával az Azure Rights Management: [Az Azure Rights Management felügyelete a Windows PowerShell használatával](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md)
 

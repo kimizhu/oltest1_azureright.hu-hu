@@ -3,103 +3,102 @@ description: na
 keywords: na
 title: Helping Users to Protect Files by Using Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 58f9a6ff-4121-4c8c-9865-1bb290604ad2
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Helping Users to Protect Files by Using Azure Rights Management
-After you have deployed and configured Azure Rights Management (Azure RMS) for your organization, provide help and guidance for users, administrators, and your help desk:
+# A felhaszn&#225;l&#243;k f&#225;jlok Azure Rights Management haszn&#225;lat&#225;val seg&#237;ti.
+Miután rendszerbe, és a szervezet Azure Rights Management (Azure RMS) konfigurált, adjon meg útmutató és súgó a felhasználók, a rendszergazdák és a segélyszolgálat:
 
--   **End-user information:**
+-   **Végfelhasználói információk:**
 
-    Let users know how and when to protect documents and emails that contain sensitive information. Whenever possible, provide this information for  their existing work flows so that they can incorporate the additional steps to an already-familiar process rather than introducing completely new processes . Be sure to let them know the benefits (and the risks) that are specific to your business, as well as providing guidance for when they should protect files and emails. If you have configured [custom templates](http://technet.microsoft.com/library/dn642472.aspx), provide instructions about which one to select if the template name and description is not sufficient for them to choose the correct one.
+    Megadása esetén a felhasználók tudja, hogy mikor és hogyan lehet védetté tenni, dokumentumok és a bizalmas információkat tartalmazó e-maileket. Ha lehetséges, adja meg ezeket az adatokat a meglévő munkafolyamatok, hogy a további lépéseket teljesen új folyamatok bemutatása helyett egy már megszokott folyamat is tartalmazza. Ügyeljen arra, hogy a értesítheti előnyeit (és a kockázatok), amelyek az üzleti, valamint amikor azok kell védeni fájlok és az e-maileket útmutatást nyújtó jellemző. Ha a konfigurált [egyéni sablonok](http://technet.microsoft.com/library/dn642472.aspx), válassza ki, ha a sablon nevét és leírását nem elegendő, válassza ki a megfelelő, hogy melyiket kapcsolatos útmutatást.
 
     > [!TIP]
-    > Example videos for end users:
+    > A végfelhasználók számára videók példa:
     > 
-    > -   [Azure RMS user experience](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-user-experience)
-    > -   [Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
+    > -   [Azure RMS felhasználói élmény](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-user-experience)
+    > -   [Azure RMS-dokumentum követési és visszavonása](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
 
--   **Administrator information:**
+-   **Rendszergazda információk:**
 
-    Some applications automatically apply information protection, by using policies and settings that administrators configure. For these applications, you might need to provide instructions for other administrators who manage these applications and services. For more information, see [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) and [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+    Egyes alkalmazások automatikusan információk védelme érdekében alkalmazásához használja a házirendek és a rendszergazdák konfiguráló beállításokat tartalmaz. Ezeket az alkalmazásokat előfordulhat, hogy kell más kezelő rendszergazdák számára az alkalmazások és a szolgáltatások útmutatást. További tudnivalókért tekintse meg a [Hogyan alkalmazások támogatják a Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) és [Azure Rights Management alkalmazások konfigurálása](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
 
--   **Help desk information:**
+-   **Súgó a segélyszolgálati információk:**
 
-    One of the most useful tools for the help desk is the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437).   Help desk operators can run it with the Azure RMS administrator option, and they can ask users to run it with the Azure RMS user option. This tool can not only help identify problems, but also fix problems that it finds, and if still not fixed, record trace logs.
+    A segélyszolgálat a leghasznosabb eszközök egyik a [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437).   Súgó a segélyszolgálati operátorok futtatható az Azure RMS-rendszergazda kapcsolóval, és kérhetnek a felhasználók az Azure RMS felhasználói kapcsolóval futtatásához. Ez az eszköz nem csak problémák azonosításához, de is hárítsa el a problémákat, hogy megtalálja, és még nem oldódik meg, ha a rekord nyomkövetési naplók.
 
-    If there are legitimate requests to have full rights access to protected documents, for example a request by the legal department or a manager after an employee has left the organization, make sure the help desk has processes to request this by using the Azure RMS [super user feature](https://technet.microsoft.com/en-us/library/mt147272.aspx).
+    Védett dokumentumok teljes jogosultsággal eléréséhez törvényes kérések esetén, például a jogi részleg vagy egy manager után egy alkalmazott kilépett a szervezet, egy kérelem ellenőrizze, hogy a segélyszolgálat rendelkezik kéréséhez ezt az Azure RMS használatával folyamatok [felügyelő felhasználó funkció](https://technet.microsoft.com/en-us/library/mt147272.aspx).
 
-    In  addition, these are some of the typical problems that users might report:
+    Ezenkívül ezek a jellemző problémák, amelyek a jelentés előfordulhat, hogy a felhasználók:
 
-    -   **Sign in help:**
+    -   **Bejelentkezés a Súgó:**
 
-        Users might be prompted for credentials when Azure RMS needs to authenticate a user and cannot use cached credentials. This will be the user’s work or school account and password that is associated with your Office 365 tenant or Azure Active Directory tenant. It will not be a Microsoft account (formerly Microsoft Live ID) or their personal email account, because these are not currently supported by Azure RMS. Provide users and your help desk with instructions about which account to use when users are prompted for credentials when they use these applications with Azure RMS.
+        Felhasználók kérheti a hitelesítő adatokat, ha Azure RMS kell hitelesíteni a felhasználót, és nem használhatja a gyorsítótárazott hitelesítő adatokat. Ennek az lehet, a felhasználó munka vagy iskolai fiók és az Office 365 szolgáltatáshoz nevű program vagy az Azure Active Directory-bérlő tartozik társított jelszó. Nem lesz a Microsoft-fiók (korábbi nevén Microsoft Live ID azonosító) vagy a személyes e-mail fiókjába, mivel ezek jelenleg nem támogatottak Azure RMS által. Adja meg a felhasználók és a segélyszolgálat használni, amikor a felhasználók felszólítást kapnak hitelesítő adatok ezek az alkalmazások használata az Azure RMS mely fiókjára vonatkozó utasításokat.
 
-    -   **Problems protecting or consuming content:**
+    -   **Problémák védelme vagy a tartalom fel:**
 
-        Make sure that users have the appropriate instructions for the applications that they use, and are using applications and devices that are supported by Azure RMS. For more information about supported applications and devices, see [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+        Győződjön meg arról, hogy a felhasználó rendelkezik a megfelelő utasításokat az alkalmazások, hogy azokat használni, és használ, alkalmazások és eszközök Azure RMS által támogatott. Támogatott alkalmazások és eszközök kapcsolatos további információkért tekintse meg a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md).
 
-        If users see an error when trying to protect or consume content, ask them to run the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) as an Azure RMS user.
+        Ha a felhasználók hibaüzenet jelenik meg, közben védelem, vagy a tartalmakat, kérje meg futtatni a [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) Azure RMS felhasználóként.
 
-        If users report that they can open protected content but don't have the rights that they need, ask them to run the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) as an Azure RMS user and download and view the templates. This will confirm that they have successfully downloaded the templates and what rights the templates provide. The problem might be that the user is not in the correct group that's configured for the template, or that the template needs reconfiguring for the user.
+        Ha a felhasználók jelentést, hogy azok is megnyithatja a védett tartalom, de nem rendelkezik a szükséges jogosultságokkal, kérje meg futtatni a [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) Azure RMS felhasználóként töltse le és a sablonok megtekintéséhez. Ez akkor győződjön meg arról, hogy azok sikeresen letöltött a sablonok, és milyen jogosultságokkal, hogy a sablonok adja meg. Lehet, hogy a probléma, hogy a felhasználó nem szerepel a megfelelő csoport, amely a sablon van beállítva, vagy az, hogy a sablont kell-e a újrakonfigurálásához szükséges, a felhasználó számára.
 
-Use the following sections for application-specific information to help users protect sensitive documents and emails.
+Az alkalmazás-specifikus adatokat az alábbi szakaszok segítségével a felhasználók bizalmas dokumentumok és az e-maileket védelme.
 
-## Using information protection with the Rights Management sharing application
-The Rights Management (RMS) sharing application is required for users to protect and consume protected content if they use Office 2010, but also recommended for all computers and mobile devices that support Azure RMS.
+## A Rights Management megosztóalkalmazás használata a információk védelme
+A Rights Management (RMS) megosztó alkalmazás a felhasználók számára védelmét, és helyet igényelne a védett tartalom, ha az Office 2010 használata szükséges, de az összes számítógép és a mobil eszközök, amely támogatja az Azure RMS is ajánlott.
 
-In addition to making it easier for users to protect important documents, the RMS sharing application lets users track the documents that they have protected, and if necessary, revoke access to them.
+Kívül megkönnyíti a felhasználók fontos dokumentumok, az RMS-megosztó alkalmazás lehetővé teszi, hogy a felhasználók nyomon követheti a dokumentum, amely azokat a védelme, és ha szükséges, visszavonni az őket a hozzáférést.
 
-For instructions to use this application for Windows computers, see the [Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx).
+Az alkalmazás használata a Windows rendszerű számítógép tudnivalókat lásd: a [a Rights Management megosztási alkalmazás felhasználói útmutató](http://technet.microsoft.com/library/dn339006.aspx).
 
-For mobile devices, see the [FAQ for Microsoft Rights Management Sharing Application for Mobile Platforms](http://technet.microsoft.com/dn451248).
-
-> [!TIP]
-> For a high-level example scenario with screenshots, see the [Users safely share attachments with mobile users](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp) section in the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) topic.
-
-## Using information protection with Office 365, Office 2016, or Office 2013
-If you are using Azure RMS and have not installed the Rights Management sharing application, users will not see the **Share Protected** button on the ribbon or **Protect in-place** from File Explorer that makes it easier for them to protect files. For these users, they must follow instructions similar to these.
+Mobil eszközök, tekintse meg a [gyakran ismételt kérdések a Microsoft Rights Management Mobile platformok megosztó alkalmazás](http://technet.microsoft.com/dn451248).
 
 > [!TIP]
-> To find application-specific help and instructions for using information protection with these applications, search for **IRM** and the application name and version.
+> A magas szintű példa forgatókönyv képernyőképek, tekintse meg a [Az utazó felhasználók biztonságos megosztása mellékletek felhasználók](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp) szakasz a [Mi az Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) című témakört.
 
-#### To protect a document in Word 2013
+## Office 365, az Office 2016 vagy az Office 2013 információk védelméről használata
+Ha az Azure RMS használ, és nem telepítette a Rights Management megosztóalkalmazás, a felhasználók nem látják a **védett megosztás** gombra a menüszalagon vagy **védelem** megkönnyíti a fájlok védelme, hogy a fájl-Explorer programból. Ezek a felhasználók számára azok ezek hasonló utasításokat kell követnie.
 
-1.  Within Microsoft Word, create a new document.
+> [!TIP]
+> Annak érdekében, hogy az alkalmazás-specifikus Súgó és a vonatkozó információk védelméről használata ezeket az alkalmazásokat utasítások megkereséséhez keressen **IRM** alkalmazás neve és verziója.
 
-2.  From the **File** menu, click **Info**, click **Protect Document**, click **Restrict Access**, and then choose a template to quickly apply the appropriate usage rights, or select **Restrict Access** and select the usage rights yourself.
+#### A dokumentum Word 2013 védelme
+
+1.  Microsoft Word hozzon létre egy új dokumentumot.
+
+2.  A a **fájl** menü kattintson **információ**, kattintson a **dokumentum védelme**, kattintson **hozzáférés korlátozása**, és válassza a sablont gyorsan alkalmazása a megfelelő használati jogok, vagy válassza a **hozzáférés korlátozása** és válassza ki azt a használati jogok, saját maga.
 
     > [!NOTE]
-    > If this is the first time that you have used Rights Management, you will contact the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service and will be prompted for credentials to configure the Office IRM client.
+    > Ha ez a Rights Management használt először, akkor forduljon a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] szolgáltatás, és a rendszer bekéri az Office Tartalomvédelmi ügyfél konfigurálása a hitelesítő adatok.
 
-3.  Save the document.
+3.  Mentse a dokumentumot.
 
-When others open the document, they are first authenticated. If they are not authorized to open the document, the document does not open. If they are authorized to open the document, it opens with the restricted usage rights that were specified for that user. For example, a usage right of View-only does not allow the user to edit or save the document, even if it is first copied to another location. The usage rights are displayed at the top of the document by using a restriction banner. The banner might display the permissions that are applied to the document, or it might provide a link to display them.
+Mások megnyitni a dokumentumot, ha azok először hitelesíteni. A dokumentum megnyitása nem engedélyezett, ha a dokumentum nem nyitható meg. Nyissa meg a dokumentumot jogosultak, ha megnyitja a használata korlátozott jogok érvényesek, hogy a felhasználó számára megadott. Például egy felhasználásának jobbra megtekintési, hogy a felhasználó szerkesztése, vagy mentse a dokumentumot, még akkor is, ha először egy másik helyre másolja. A használati jogok korlátozás fejléc használatával a dokumentum tetején jelennek meg. A szalagcím jeleníthet meg az engedélyeket, amelyek a dokumentum, vagy azt előfordulhat, hogy adjon meg egy hivatkozás megjeleníteni azokat.
 
-#### To protect an email message using Outlook 2013 and Exchange Online
+#### Az Outlook 2013 és az Exchange Online e-mailt védelme
 
-1.  Within Outlook, create a new mail message addressed to a recipient within your organization.
+1.  Belül az Outlook hozzon létre egy új üzenetet a címzett a szervezeten belül intézett.
 
-2.  From the **OPTIONS** tab,  click **Permission**, and then select an option. For example: **Do Not Forward**, **&lt;Company Name&gt; - Confidential** or **&lt;Company Name&gt; - Confidential View Only**.
+2.  Az a **Beállítások** fülre, kattintson a **engedély**, majd válassza ki a beállítást. Példa: **Nem továbbít**, **&lt; cég neve &gt; - bizalmas** vagy **&lt; cég neve &gt; – csak a bizalmas nézet**.
 
-3.  Send the message.
+3.  Az üzenet elküldése.
 
-Similarly to viewing a protected document, when the recipients receive the email message, they are first authenticated. If they are authorized to see the email message, it opens with the restricted usage rights that were specified for that user. For example, if you selected **Do Not Forward**, the Forward button on the ribbon is not available.
+Hasonló módon a védett dokumentum megjelenítése, ha az e-mail üzenetet kapja meg a címzett először hitelesítik. Jogosultak az e-mail üzenet jelenik meg, ha megnyitja a használata korlátozott jogok érvényesek, hogy a felhasználó számára megadott. Ha például a kiválasztott **nem továbbítandó**, az előre gomb a menüszalagon nem érhető el.
 
-#### To protect an email message using the Outlook Web App
+#### Az Outlook Web alkalmazással e-mail üzenet védelme
 
-1.  Within the Outlook Web App, create a new mail message addressed to a recipient within your organization.
+1.  Az Outlook Web alkalmazásban hozzon létre egy új levelek intézett egy címzett a szervezeten belül.
 
-2.  Click  **…**,  click **set permission**, and then select an option. For example: **Do Not Forward**, **Do Not Reply All**, **&lt;Company Name&gt; - Confidential** or **&lt;Company Name&gt; - Confidential View Only**.
+2.  Kattintson a  **...**,  kattintson a **engedélyek beállítása**, majd válassza ki a beállítást. Példa: **Nem továbbít**, **ne válaszoljon az összes**, **&lt; cég neve &gt; - bizalmas** vagy **&lt; cég neve &gt; – csak a bizalmas nézet**.
 
-3.  Send the message.
+3.  Az üzenet elküldése.
 
-Similarly to viewing a protected document, when the recipients receive the email message, they are first authenticated. If they are authorized to see the email message, it opens with the restricted usage rights that were specified for that user. For example, if you selected **Do Not Reply All**, the **REPLY ALL** option in the message window is not available.
+Hasonló módon a védett dokumentum megjelenítése, ha az e-mail üzenetet kapja meg a címzett először hitelesítik. Jogosultak az e-mail üzenet jelenik meg, ha megnyitja a használata korlátozott jogok érvényesek, hogy a felhasználó számára megadott. Például, ha a kiválasztott **el nem válasz mindenkinek**, a **Válasz mindenkinek** az üzenet ablakában lehetőség nem érhető el.
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md)
 

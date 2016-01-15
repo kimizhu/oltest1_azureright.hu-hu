@@ -3,160 +3,159 @@ description: na
 keywords: na
 title: Operations for Your Azure Rights Management Tenant Key
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1284d0ee-0a72-45ba-a64c-3dcb25846c3d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Operations for Your Azure Rights Management Tenant Key
-Depending on your tenant key topology (Microsoft-managed or customer-managed), you have different levels of control and responsibility for your Microsoft Azure Rights Management (Azure RMS) tenant key after it is implemented.
+# A Azure Rights Management b&#233;rlői kulcs műveletek
+Attól függően, hogy a bérlői kulcs topológia (a Microsoft által felügyelt, vagy az ügyfél által felügyelt), amelyeknek eltérő szintű irányítási és a Microsoft Azure Rights Management (Azure RMS) bérlői kulcs felelősséget annak végrehajtását követően.
 
-When you manage your own tenant key, this is often referred to as bring your own key (BYOK). For more information about this scenario and how to choose between the two tenant key topologies, see [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
+A saját bérlői kulcs kezelésekor Ez gyakran hivatkozik, amely szerint hozása a saját kulcsot (BYOK). Ezt a helyzetet, és a két bérlői kulcs topológiát közötti kiválasztásáról további tájékoztatásért lásd: [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
 
-The following table identifies which operations you can do, depending on the topology that you’ve chosen for your Azure RMS tenant key.
+A következő táblázat milyen megteheti, attól függően, hogy a topológia, amelyek az Azure RMS-bérlői kulcs kiválasztotta műveleteket azonosítja.
 
-|Lifecycle operation|Microsoft-managed (default)|Customer-managed (BYOK)|
-|-----------------------|-------------------------------|---------------------------|
-|Revoke your tenant key|No (automatic)|No (automatic)|
-|Re-key your tenant key|Yes|Yes|
-|Backup and recover your tenant key|No|Yes|
-|Export your tenant key|Yes|No|
-|Respond to a breach|Yes|Yes|
-After you have identified which topology you have implemented, use one of the following sections for more information about these operations for your Azure RMS tenant key.
+|Életciklusra vonatkozó művelet|A Microsoft által felügyelt (alapértelmezett)|Az ügyfél által felügyelt (BYOK)|
+|----------------------------------|-------------------------------------------------|------------------------------------|
+|A bérlő kulcs visszavonása|Nincs (automatikus)|Nincs (automatikus)|
+|Ismételt kulcs a bérlői kulcs|Igen|Igen|
+|Készítsen biztonsági másolatot, és a bérlői kulcs helyreállítása|Nem|Igen|
+|A bérlő kulcs exportálása|Igen|Nem|
+|Megsértése válaszolni.|Igen|Igen|
+Miután meghatározta, hogy mely topológia megvalósított, ezek a műveletek az Azure RMS-bérlői kulcs további információt a következő szakaszok egyikével.
 
-## <a name="BKMK_MSManagedOperations"></a>Microsoft-managed: Tenant key lifecycle operations
-If Microsoft manages your tenant key for Azure Rights Management (the default), use the following sections for more information about the lifecycle operations that are relevant to this topology:
+## <a name="BKMK_MSManagedOperations"></a>A Microsoft által felügyelt: A bérlő kulcs életciklusra vonatkozó műveletek
+A Microsoft Azure Rights Management (alapértelmezett) a bérlői kulcs kezeli, használja az alábbi szakaszok a életciklusra vonatkozó műveleteket, amelyek a topológia vonatkozó további információ:
 
--   [Revoke your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRevoke)
+-   [A bérlő kulcs visszavonása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRevoke)
 
--   [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey)
+-   [Ismételt kulcs a bérlői kulcs](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey)
 
--   [Backup and recover your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBackup)
+-   [Készítsen biztonsági másolatot, és a bérlői kulcs helyreállítása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBackup)
 
--   [Export your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSExport)
+-   [A bérlő kulcs exportálása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSExport)
 
--   [Respond to a breach](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBreach)
+-   [Megsértése válaszolni.](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBreach)
 
-### <a name="BKMK_MSRevoke"></a>Revoke your tenant key
-When you unsubscribe from Azure RMS, Azure RMS stops using your tenant key and no action is needed from you.
+### <a name="BKMK_MSRevoke"></a>A bérlő kulcs visszavonása
+Lemondani az Azure RMS, amikor Azure RMS leállítja a bérlői kulccsal, és nincs szükség műveletre Öntől.
 
-### <a name="BKMK_MSRekey"></a>Re-key your tenant key
-Re-keying is also known as rolling your key. Do not re-key your tenant key unless it’s really necessary. Older clients, such as Office 2010, were not designed to handle key changes gracefully. In this scenario, you must clear the RMS state on computers by using Group Policy or an equivalent mechanism. However, there are some legitimate events that may force you to re-key your tenant key. For example:
+### <a name="BKMK_MSRekey"></a>Ismételt kulcs a bérlői kulcs
+Ismételt kulcskezelő is nevezik működés közbeni a kulcsot. Nem újra kulcs a bérlői kulcs nem valóban szükséges. Régebbi ügyfelek, például az Office 2010, nem tervezték, hogy a kulcs módosítások biztonságosan kezelni. Ebben az esetben törölnie kell az azokon a számítógépeken az RMS-állapot csoportházirend vagy egy egyenértékű mechanizmus használatával. Vannak azonban néhány törvényes az eseményeket, amelyek újra kulcs a bérlői kulcs lehet kényszeríteni. Példa:
 
--   Your company has split into two or more companies. When you re-key your tenant key, the new company will not have access to new content that your employees publish. They can access the old content if they have a copy of the old tenant key.
+-   A vállalati meg van felosztása két vagy több vállalat. Újra a a bérlői key kulcs, ha a az új vállalat nem rendelkezik, amely az alkalmazottak közzététele új tartalom elérése. A régi tartalom hozzáféréssel rendelkeznek a régi bérlői kulcs egy példányát.
 
--   You believe the master copy of your tenant key (the copy in your possession) was compromised.
+-   Úgy véli, hogy a bérlői kulcsot (az Ön birtokában példány) fő példányát jutott.
 
-You can re-key your tenant key by calling Microsoft Customer Support Services (CSS) and proving that you are the tenant administrator.
+A bérlő kulcs újra meghívja a Microsoft ügyfélszolgálathoz (CSS), és amely igazolja, hogy-e a bérlői rendszergazda is kulcs.
 
-When you re-key your tenant key, new content is protected by using the new tenant key. This happens in a phased manner, so for a period of time, some new content will continue to be protected with the old tenant key. Previously protected content stays protected to your old tenant key. To support this scenario, Azure RMS retains your old tenant key so that it can issue licenses for old content.
+Ha újra a a bérlői key kulcs – új által védett az új bérlői kulccsal. Ez a szakaszolt módon történik, egy adott időn belül az egyes új tartalom továbbra is lehet védetté tenni, a régi bérlői kulccsal. Korábban a védett tartalom marad a régi bérlői kulcs védett. Támogatja ezt a helyzetet, hogy Azure RMS, hogy azt a régi tartalom licenceinek adhat megtartja a korábbi bérlői kulcsot.
 
-### <a name="BKMK_MSBackup"></a>Backup and recover your tenant key
-Microsoft is responsible for backing up your tenant key and no action is required from you.
+### <a name="BKMK_MSBackup"></a>Készítsen biztonsági másolatot, és a bérlői kulcs helyreállítása
+A Microsoft a bérlői kulcs biztonsági másolatának felelős, és nincs teendője, mint az Ön.
 
-### <a name="BKMK_MSExport"></a>Export your tenant key
-You can export your Azure RMS configuration and tenant key by following the instructions in these three steps:
+### <a name="BKMK_MSExport"></a>A bérlő kulcs exportálása
+Az Azure RMS-beállításai, és a bérlői kulcs exportálása, ezeket a lépéseket utasításait követve:
 
-##### Step 1: Initiate export
+##### 1. lépés: Kezdeményezze a exportálása
 
--   To do this, contact Microsoft Customer Service Support (CSS). You must prove you are an administrator for your Azure RMS tenant.
+-   Ehhez hajtsa végre a, forduljon a Microsoft ügyfélszolgálathoz szolgáltatás (CSS). Meg kell igazolja, hogy a rendszergazda az Azure RMS-bérlőben.
 
-##### Step 2: Wait for verification
+##### 2. lépés: Várjon, amíg a ellenőrzése
 
--   Microsoft verifies that your request to release your RMS tenant key is legitimate. This process can take up to 3 weeks.
+-   A Microsoft azt ellenőrzi, hogy az RMS-bérlői kulcs kiadási vonatkozó kérését törvényes. A folyamat akár 3 hét is eltarthat.
 
-##### Step 3: Receive key instructions from CSS
+##### 3. lépés: Kulcs utasításokat fogadásához CSS
 
--   Microsoft Customer Support Services (CSS) will send you your Azure RMS configuration and tenant key as encrypted in a password-protected file that has a .tpd file name extension. To do this, CSS first sends you (as the person who initiated the export) a tool by email. You must run the tool from a command prompt as follows:
+-   Microsoft ügyfélszolgálathoz (CSS) fog küldeni a Azure RMS-beállításai, és a bérlői kulcsnak titkosítva egy .tpd kiterjesztésű jelszóval védett fájlban. Ehhez CSS először küld Önnek (mint az személy, aki az Exportálás kezdeményezése) egy eszköz által e-mailt. Futtatnia kell az eszközt a parancssorba a következő:
 
     ```
     AadrmTpd.exe -createkey
     ```
-    This generates an RSA key pair and saves the public and private halves as files in the current folder. For example: **PublicKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt** and **PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt**.
+    Ez egy RSA kulcspár állít elő, és a nyilvános és titkos fele fájlként menti az aktuális mappában. Például: **PublicKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt** és **PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt**.
 
-    Respond to the email from CSS, attaching the file that has a name that starts with **PublicKey**. CSS will next send you a TPD file as an .xml file that is encrypted with your RSA key. Copy this file to the same folder as you ran the AadrmTpd tool originally, and run the tool again, using your file that starts with **PrivateKey** and the file from CSS. For example:
+    Válaszolni az e-mailt a CSS, a fájl, amely kezdetű névvel rendelkezik csatolása **PublicKey**. CSS tovább küld TPD fájl egy .xml fájlként titkosított RSA-kulcs. A fájl másolása ugyanabban a mappában, mivel eredetileg futtatta a AadrmTpd eszköz, és futtassa ismét az eszközt, a fájl, amely kezdete használatával **PrivateKey** és az CSS-fájl. Példa:
 
     ```
     AadrmTpd.exe -key PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt -target TPD-77172C7B-8E21-48B7-9854-7A4CEAC474D0.xml
     ```
-    The output of this command should be two files: One contains the plaintext password for the password-protected TPD, and the other is the password-protected TPD itself. For cross-referencing purposes, both should have the same GUID as the public and private key files from when you ran the AadrmTpd.exe -createkey command:
+    Ez a parancs kimenetét kell két fájlt: Az egyszerű szöveges jelszavát egy tartalmazza a jelszóval védett TPD, és az egyéb a jelszóval védett TPD saját magát. A kereszthivatkozást célokra, mindkét ugyanaz a GUID a nyilvános és titkos kulcs fájlokat, ha futtatta a AadrmTpd.exe - createkey parancs kell lennie:
 
     -   Password-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt
 
     -   ExportedTPD-FA29D0FE-5049-4C8E-931B-96C6152B0441.xml
 
-    Backup these files and store them safely to ensure that you can continue to decrypt content that is protected with this tenant key. In addition, if you are migrating to AD RMS, you can import this TPD file (the file that starts with **ExportedTDP**) to your AD RMS server.
+    Biztonsági mentés ezeket a fájlokat, és tárolják azokat biztonságosan, győződjön meg arról, hogy továbbra is visszafejteni a bérlői kulccsal védett tartalom. Továbbá, ha az Active Directory tartalomvédelmi szolgáltatások, importálhatja a TPD fájl (kezdődő fájl **ExportedTDP**) az Active Directory tartalomvédelmi szolgáltatások kiszolgálóhoz.
 
-##### Step 4: Ongoing: Protect your tenant key
+##### 4. lépés: Folyamatban lévő: A bérlő kulcs védelme
 
--   After you receive your tenant key, keep it well-guarded, because if somebody gets access to it, they can decrypt all documents that are protected by using that key.
+-   A bérlői kulcs megérkezése után jutottak jól védett, mert valaki kap hozzáférést, ha azok is visszafejteni az összes kulcs használatával védett dokumentumok.
 
-    If the reason for exporting your tenant key is because you no longer want to use Azure RMS, as a best practice, now deactivate your RMS tenant. Do not delay doing this after you receive your tenant key because this precaution will help to minimize the consequences if your tenant key is accessed by somebody who should not have it. For instructions, see [Decommissioning and Deactivating Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md).
+    A bérlő kulcs exportálása azért, mert már nem szeretné használni az Azure RMS, a legjobb, ha most kapcsolja ki az RMS-bérlőben. Nem késleltetés ezzel után a bérlői kulcs, mert ez okokból segít csökkentheti minimálisra a következmények, ha a bérlői kulcs által valaki, akik nem kell azt. További tudnivalókért tekintse meg a [Leállítására, és az Azure Rights Management inaktiválásáról](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md).
 
-### <a name="BKMK_MSBreach"></a>Respond to a breach
-No security system, no matter how strong, is complete without a breach response process. Your tenant key might be compromised or stolen. Even when it’s well protected well, vulnerabilities might be found in current generation HSM technology or current key lengths and algorithms.
+### <a name="BKMK_MSBreach"></a>Megsértése válaszolni.
+Nincs biztonsági, függetlenül attól, hogy hogyan erős, a rendszer teljes válasz folyamat megsértése nélkül. A bérlő kulcs előfordulhat, hogy módon sérült, vagy ellopásakor. Akkor is, ha az jól védett jól, biztonsági rések előfordulhat, hogy található aktuális generációs HSM technológia vagy aktuális kulcshossza és algoritmust.
 
-Microsoft has a dedicated team to respond to security incidents in its products and services. As soon as there is a credible report of an incident, this team engages to investigate the scope, root cause, and mitigations. If this incident affects your assets, then Microsoft will notify your Azure RMS tenant administrators by email by using the address that you supplied when you subscribed.
+A Microsoft termékei és szolgáltatásai a biztonsági események válaszolni dedikált csoport rendelkezik. Nincs incidens hiteles jelentést, amint ez a csoport végez, a vizsgálja meg a hatókör, a kiváltó ok és a megoldásokkal kapcsolatban. Incidens érint, az eszközök, majd a Microsoft értesíti az Azure RMS bérlői rendszergazdák e-mail címmel, amely az Ön által megadott, amikor Ön feliratkozott.
 
-If you have a breach, the best action that you or Microsoft can take depends on the scope of the breach; Microsoft will work with you through this process. The following table shows some typical situations and the likely response, although the exact response will depend on all the information that is revealed during the investigation.
+Ha megsértése, a legjobb elvégezhető művelet, amelyek átvehetik vagy a Microsoft függ-e a hatókör jogsértés; Ez a folyamat a Microsoft az Ön fog működni. A következő táblázat néhány tipikus helyzetekben és a legvalószínűbb válasz Bár a pontos válasz minden olyan információt, amely a vizsgálat során látszik függ.
 
-|Incident description|Likely response|
-|------------------------|-------------------|
-|Your tenant key is leaked.|Re-key your tenant key. See the [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey) section in this topic.|
-|An unauthorized individual or malware got rights to use your tenant key but the key itself did not leak.|Re-keying your tenant key does not help here and requires root-cause analysis. If a process or software bug was responsible for the unauthorized individual to get access, that situation must be resolved.|
-|Vulnerability discovered in the RSA algorithm, or key length, or brute-force attacks become computationally feasible.|Microsoft must update the Azure RMS to support new algorithms and longer key lengths that are resilient, and instruct all customers to renew their tenant keys.|
+|Esemény leírása|Legvalószínűbb válasz|
+|-------------------|-------------------------|
+|A bérlő kulcs kiszivárogtatott van.|Újból a kulcsot a bérlői kulcs. Tekintse meg a [Ismételt kulcs a bérlői kulcs](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey) szakaszban, a jelen témakörben található.|
+|A illetéktelen személy vagy a kártevő szoftverek kapta meg a bérlői kulcs használati jogát, de a saját magát kulcs nem adta-e előfordulhat.|Ismételt kulcskezelő a bérlői kulcs nem ide súgó, és kiváltó okának elemzése szükséges. Ha egy folyamatot, vagy a szoftver hiba volt a jogosulatlan személy hozzáférjen a felelős, ez a helyzet kell oldható fel.|
+|A RSA algoritmus, vagy a kulcs hossza vagy a próbálkozásos támadások felderített Vulnerability válik számítástechnikai megvalósítható.|Microsoft kell frissíteni az Azure RMS új algoritmusokat és hosszabb kulcshossza, amelyek rugalmas támogatásához, és kérje az ügyfeleknek, hogy azok a bérlő kulcsok megújítása.|
 
-## <a name="BKMK_BYOKManagedOperations"></a>Customer-managed: Tenant key lifecycle operations
-If you manage your tenant key for Azure Rights Management (the bring your own key, or BYOK, scenario), use the following sections for more information about the lifecycle operations that are relevant to this topology:
+## <a name="BKMK_BYOKManagedOperations"></a>Az ügyfél által felügyelt: A bérlő kulcs életciklusra vonatkozó műveletek
+Ha a bérlői kulcsot az Azure Rights Management kezelése (a hozás saját kulcs, vagy a BYOK, a helyzetet), a következő szakaszok használja a életciklusra vonatkozó műveleteket, amelyek a topológia vonatkozó további információ:
 
--   [Revoke your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRevoke)
+-   [A bérlő kulcs visszavonása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRevoke)
 
--   [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey)
+-   [Ismételt kulcs a bérlői kulcs](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey)
 
--   [Backup and recover your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBackup)
+-   [Készítsen biztonsági másolatot, és a bérlői kulcs helyreállítása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBackup)
 
--   [Export your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKExport)
+-   [A bérlő kulcs exportálása](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKExport)
 
--   [Respond to a breach](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBreach)
+-   [Megsértése válaszolni.](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBreach)
 
-### <a name="BKMK_BYOKRevoke"></a>Revoke your tenant key
-When you unsubscribe from Azure RMS, Azure RMS stops using your tenant key and no action is needed from you.
+### <a name="BKMK_BYOKRevoke"></a>A bérlő kulcs visszavonása
+Lemondani az Azure RMS, amikor Azure RMS leállítja a bérlői kulccsal, és nincs szükség műveletre Öntől.
 
-### <a name="BKMK_BYOKRekey"></a>Re-key your tenant key
-Re-keying is also known as rolling your key. Do not re-key your tenant key unless it’s really necessary. Older clients, such as Office 2010, were not designed to handle key changes gracefully. In this scenario, you must clear the RMS state on computers by using Group Policy or an equivalent mechanism. However, there are some legitimate events that may force you to re-key your tenant key. For example:
+### <a name="BKMK_BYOKRekey"></a>Ismételt kulcs a bérlői kulcs
+Ismételt kulcskezelő is nevezik működés közbeni a kulcsot. Nem újra kulcs a bérlői kulcs nem valóban szükséges. Régebbi ügyfelek, például az Office 2010, nem tervezték, hogy a kulcs módosítások biztonságosan kezelni. Ebben az esetben törölnie kell az azokon a számítógépeken az RMS-állapot csoportházirend vagy egy egyenértékű mechanizmus használatával. Vannak azonban néhány törvényes az eseményeket, amelyek újra kulcs a bérlői kulcs lehet kényszeríteni. Példa:
 
--   Your company has split into two or more companies. When you re-key your tenant key, the new company will not have access to new content that your employees publish. They can access the old content if they have a copy of the old tenant key.
+-   A vállalati meg van felosztása két vagy több vállalat. Újra a a bérlői key kulcs, ha a az új vállalat nem rendelkezik, amely az alkalmazottak közzététele új tartalom elérése. A régi tartalom hozzáféréssel rendelkeznek a régi bérlői kulcs egy példányát.
 
--   You believe the master copy of your tenant key (the copy in your possession) was compromised.
+-   Úgy véli, hogy a bérlői kulcsot (az Ön birtokában példány) fő példányát jutott.
 
-When you re-key your tenant key, new content is protected by using the new tenant key. This happens in a phased manner, so for a period of time, some new content will continue to be protected with the old tenant key. Previously protected content stays protected to your old tenant key. To support this scenario, Azure RMS retains your old tenant key so that it can issue licenses for old content.
+Ha újra a a bérlői key kulcs – új által védett az új bérlői kulccsal. Ez a szakaszolt módon történik, egy adott időn belül az egyes új tartalom továbbra is lehet védetté tenni, a régi bérlői kulccsal. Korábban a védett tartalom marad a régi bérlői kulcs védett. Támogatja ezt a helyzetet, hogy Azure RMS, hogy azt a régi tartalom licenceinek adhat megtartja a korábbi bérlői kulcsot.
 
-To re-key your tenant key, generate and create a new key over the Internet or in person, by using the procedures in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section from the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+Újra kulcs a bérlői kulcs, létrehozni, és az interneten keresztül, vagy az személy, hozzon létre egy új kulcsot bemutatott eljárások használatával a [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) a szakasz az [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) című témakört.
 
-### <a name="BKMK_BYOKBackup"></a>Backup and recover your tenant key
-You are responsible for backing up your tenant key. If you generated your tenant key in a Thales HSM, to back up the key, just back up the Tokenized Key file, the World file, and the Administrator Cards.
+### <a name="BKMK_BYOKBackup"></a>Készítsen biztonsági másolatot, és a bérlői kulcs helyreállítása
+A bérlő kulcs biztonsági másolatának Ön felelősséggel. A bérlő kulcsot a az egy Thales HSM jönnek létre, ha biztonsági másolatot a kulcsot, egyszerűen csak készítsen biztonsági másolatot a lexikális elemekké alakítva kulcs fájl, a globális fájl és a rendszergazda kártyák.
 
-If you transferred your key by following the procedures in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section from the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic, Azure RMS will persist the Tokenized Key File, to protect against failure of any Azure RMS nodes. However, do not consider this to be a full backup. For example, if you ever need a plaintext copy of your key to use outside a Thales HSM, Azure RMS will not be able to retrieve it for you because it only has a non-recoverable copy.
+Ha a kulcs kerüljenek-e a eljárásokat követve a [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) a szakasz a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) témakör, az Azure RMS lexikális elemekké alakítva kulcsfájl elleni bármely Azure RMS csomópontok hiba áll fenn. Azonban nem javasoljuk, hogy ez egy teljes biztonsági mentés legyen. Például ha a kulcsot egy Thales HSM kívül egyszerű szöveges másolatát, Azure RMS nem lesz tudja beolvasni meg, mert csak egy nem lesznek helyreállíthatók másolatot.
 
-### <a name="BKMK_BYOKExport"></a>Export your tenant key
-If you use BYOK, you cannot export your tenant key from Azure RMS. The copy in Azure RMS is non-recoverable. If you want to delete this key so it can no longer be used, contact Microsoft Customer Service Support (CSS).
+### <a name="BKMK_BYOKExport"></a>A bérlő kulcs exportálása
+BYOK használata esetén a bérlői kulcsot az Azure RMS nem lehet exportálni. A az Azure RMS-példány nem állíthatók helyre. Ha azt szeretné, törölje ezt a kulcsot, így már nem használható, forduljon a Microsoft ügyfélszolgálathoz szolgáltatás (CSS).
 
-### <a name="BKMK_BYOKBreach"></a>Respond to a breach
-No security system, no matter how strong, is complete without a breach response process. Your tenant key might be compromised or stolen. Even when it’s well protected well, vulnerabilities might be found in current generation HSM technology or current key lengths and algorithms.
+### <a name="BKMK_BYOKBreach"></a>Megsértése válaszolni.
+Nincs biztonsági, függetlenül attól, hogy hogyan erős, a rendszer teljes válasz folyamat megsértése nélkül. A bérlő kulcs előfordulhat, hogy módon sérült, vagy ellopásakor. Akkor is, ha az jól védett jól, biztonsági rések előfordulhat, hogy található aktuális generációs HSM technológia vagy aktuális kulcshossza és algoritmust.
 
-Microsoft has a dedicated team to respond to security incidents in its products and services. As soon as there is a credible report of an incident, this team engages to investigate the scope, root cause, and mitigations. If this incident affects your assets, then Microsoft will notify your Azure RMS tenant administrators by email by using the address that you supplied when you subscribed.
+A Microsoft termékei és szolgáltatásai a biztonsági események válaszolni dedikált csoport rendelkezik. Nincs incidens hiteles jelentést, amint ez a csoport végez, a vizsgálja meg a hatókör, a kiváltó ok és a megoldásokkal kapcsolatban. Incidens érint, az eszközök, majd a Microsoft értesíti az Azure RMS bérlői rendszergazdák e-mail címmel, amely az Ön által megadott, amikor Ön feliratkozott.
 
-If you have a breach, the best action that you or Microsoft can take  depends on the scope of the breach; Microsoft will work with you through this process. The following table shows some typical situations and the likely response, although the exact response will depend on all the information that is revealed during the investigation.
+Ha megsértése, a legjobb elvégezhető művelet, amelyek átvehetik vagy a Microsoft függ-e a hatókör jogsértés; Ez a folyamat a Microsoft az Ön fog működni. A következő táblázat néhány tipikus helyzetekben és a legvalószínűbb válasz Bár a pontos válasz minden olyan információt, amely a vizsgálat során látszik függ.
 
-|Incident description|Likely response|
-|------------------------|-------------------|
-|Your tenant key is leaked.|Re-key your tenant key. See the [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey) section in this topic.|
-|An unauthorized individual or malware got rights to use your tenant key but the key itself did not leak.|Re-keying your tenant key does not help here and requires root-cause analysis. If a process or software bug was responsible for the unauthorized individual to get access, that situation must be resolved.|
-|Vulnerability discovered in the current-generation HSM technology.|Microsoft must update the HSMs. If there is reason to believe that the vulnerability exposed keys, then Microsoft will instruct all customers to renew their tenant keys.|
-|Vulnerability discovered in the RSA algorithm, or key length, or brute-force attacks become computationally feasible.|Microsoft must update the Azure RMS to support new algorithms and longer key lengths that are resilient, and instruct all customers to renew their tenant keys.|
+|Esemény leírása|Legvalószínűbb válasz|
+|-------------------|-------------------------|
+|A bérlő kulcs kiszivárogtatott van.|Újból a kulcsot a bérlői kulcs. Tekintse meg a [Ismételt kulcs a bérlői kulcs](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey) szakaszban, a jelen témakörben található.|
+|A illetéktelen személy vagy a kártevő szoftverek kapta meg a bérlői kulcs használati jogát, de a saját magát kulcs nem adta-e előfordulhat.|Ismételt kulcskezelő a bérlői kulcs nem ide súgó, és kiváltó okának elemzése szükséges. Ha egy folyamatot, vagy a szoftver hiba volt a jogosulatlan személy hozzáférjen a felelős, ez a helyzet kell oldható fel.|
+|A biztonsági az a jelenlegi generációs HSM technológia felderített.|A Microsoft frissítenie kell a HSMs. Ha feltételezi, hogy a biztonsági elérhető-e a kulcsok OK, a Microsoft utasítsa ügyfeleknek, hogy azok a bérlő kulcsok megújítása.|
+|A RSA algoritmus, vagy a kulcs hossza vagy a próbálkozásos támadások felderített Vulnerability válik számítástechnikai megvalósítható.|Microsoft kell frissíteni az Azure RMS új algoritmusokat és hosszabb kulcshossza, amelyek rugalmas támogatásához, és kérje az ügyfeleknek, hogy azok a bérlő kulcsok megújítása.|
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md)
 

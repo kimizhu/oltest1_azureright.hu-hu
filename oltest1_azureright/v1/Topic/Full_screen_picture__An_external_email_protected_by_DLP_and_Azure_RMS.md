@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: An external email protected by DLP and Azure RMS
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 59e3b68e-4bed-4962-bb1e-e82d82f8000a
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: An external email protected by DLP and Azure RMS
+# Teljes k&#233;pernyős k&#233;p: K&#252;lső e-mailt DLP &#233;s az Azure RMS &#225;ltal v&#233;dett
 ![](../Image/AzRMS_DLPProtectedEmail.png)
 
-Back to [Azure RMS in action: Automatically protecting emails with Exchange Online and data loss prevention policies](http://technet.microsoft.com/library/jj585026.aspx)
+Vissza a [művelet az Azure RMS: Automatikus védelme az e-maileket az Exchange Online és az adatok adatvesztés megelőzése házirendek](http://technet.microsoft.com/library/jj585026.aspx)
 

@@ -3,56 +3,55 @@ description: na
 keywords: na
 title: Azure Rights Management Deployment Roadmap
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 086600c2-c5d8-47ec-a4c0-c782e1797486
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Azure Rights Management Deployment Roadmap
-Use the following steps to prepare for, implement, and manage Azure Rights Management (Azure RMS) for your organization.
+# Azure Rights Management – &#252;zembehelyez&#233;si menetrend
+Az alábbi lépések segítségével előkészítése valósítja meg és kezelheti a szervezet Azure Rights Management (Azure RMS).
 
-However, if you just want to quickly try Azure RMS for yourself, rather than roll it out in a production environment, see [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
+Azonban csak kívánt gyorsan próbálja meg az Azure RMS saját magának, ha inkább, mint az időtúllépés összegző éles környezetben, lásd: [Rövidített oktatóprogram Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
 
 > [!IMPORTANT]
-> Before you do the following steps, make sure that you have reviewed [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+> A következő lépések végrehajtása előtt meg kell vizsgálni [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md).
 
-## Step 1: Confirm that you have a subscription that includes Azure Rights Management
-There is more than one type of subscription that includes [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. See the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic, and check that your subscription includes the functionality that you want to use in your organization by referring to the table in [Comparison of Rights Management Services (RMS) Offerings](https://technet.microsoft.com/dn858608).
+## 1. lépés: Győződjön meg arról, hogy rendelkezik-e, amely tartalmazza az Azure Rights Management-előfizetéssel
+Előfizetés tartalmazó egynél több típus [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. Tekintse meg a [Felhő előfizetések, amelyek támogatják az Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) szakasz a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) című témakört, és ellenőrizze, hogy az előfizetés tartalmaz, amely a használni kívánt a szervezet által a táblára hivatkozó funkcióját [Rights Management szolgáltatások (RMS) összehasonlítás ajánlatok](https://technet.microsoft.com/dn858608).
 
-## Step 2: Prepare your tenant account to use Rights Management
-Before you begin using [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], do the following preparation:
+## 2. lépés: A bérlő fiók használata a Rights Management előkészítése
+Mielőtt elkezdené használni [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], hajtsa végre a következő előkészítése:
 
-1.  Make sure that your Azure or Office 365 tenant contains the user accounts and groups that will be used by Azure RMS to authenticate users from your organization. If necessary, create these account and groups, or synchronize them from your on-premises directory. For more information, see [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
+1.  Győződjön meg arról, hogy Azure vagy az Office 365-bérlőben tartalmazza-e a felhasználói fiókokat, és a csoportokat, amelyek hitelesíti a felhasználókat a szervezet az Azure RMS által használt. Ha szükséges, ezek fiók és a csoportok létrehozása, vagy szinkronizálhatók a helyszíni Directory. További tudnivalókért tekintse meg a [Azure Rights Management előkészítése](../Topic/Preparing_for_Azure_Rights_Management.md).
 
-2.  Decide whether you want Microsoft to manage your tenant key (the default), or generate and manage your tenant key yourself (known as bring your own key, or BYOK). Note that currently, you cannot use BYOK if you use Exchange Online. For more information, see [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
+2.  Dönthet úgy, hogy szeretne-e a Microsoft kezelése a bérlői kulcs (alapértelmezett), vagy létrehozása és kezelése a bérlői kulcs magát (a, a saját kulcs, vagy a BYOK előbbre néven ismert). Vegye figyelembe, hogy jelenleg nem használható BYOK használatakor az Exchange Online. További tudnivalókért tekintse meg a [Tervezés és végrehajtási a Azure Rights Management bérlői kulcs](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
 
-3.  Install the Windows PowerShell module for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] on at least one computer that has Internet access. You can do this step now, or later. For more information, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+3.  Telepítse a Windows PowerShell modul a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] legalább egy számítógépen, amelyen a csatlakozik az internethez. Ez a lépés most, vagy később teheti meg. További tudnivalókért tekintse meg a [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-4.  If you are currently using on-premises Rights Management services: Perform a migration to move the keys, templates, and URLs to the cloud. For more information, see [Migrating from AD RMS to Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md).
+4.  Ha a jelenleg a helyszíni Rights Management szolgáltatások használata esetén: Áthelyezés a felhőbe a kulcsok, sablonok és URL-cím az áttelepítés végrehajtásához. További tudnivalókért tekintse meg a [Áttelepítés Active Directory tartalomvédelmi szolgáltatások az Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md).
 
-5.  Activate Rights Management so that you can begin to use the service. If a phased deployment is required, configure user onboarding controls to restrict usage to specific users. For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+5.  A Rights Management aktiválása, úgy, hogy a szolgáltatás használatának is elindítható. A szakaszolt központi telepítésének szükség, ha a felhasználó bevezetési vezérlők használat korlátozása az egyes felhasználóknak konfigurálása. További tudnivalókért tekintse meg a [Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md).
 
-Optionally, consider configuring the following:
+Szükség esetén fontolja meg, hogy a következők:
 
--   Custom templates if the default rights policy templates are not sufficient for your organization. You can do this step now, or later. For more information, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+-   Egyéni sablonok, ha az alapértelmezett tartalomvédelmi házirend-sablonok nem megfelelőek a szervezetben. Ez a lépés most, vagy később teheti meg. További tudnivalókért tekintse meg a [Az Azure Rights Management egyéni sablonok konfigurálása](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
--   Usage logging so that you can monitor how your organization is using Rights Management. You can do this step now, or later. For more information, see [Logging and Analyzing Azure Rights Management Usage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
+-   A naplózás, hogy a szervezet hogyan használja a Rights Management figyelheti használatát. Ez a lépés most, vagy később teheti meg. További tudnivalókért tekintse meg a [Naplózás, és az Azure Rights Management használati elemzése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
 
-## Step 3: Configure your applications and services for Rights Management
-Configuring your applications can include installing the Rights Management sharing application and enabling support for information rights management (IRM) features in SharePoint Online or Exchange Online. For more information, see [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+## 3. lépés: Az alkalmazások és a Rights Management szolgáltatások konfigurálása
+Az alkalmazások konfigurálása a Rights Management megosztóalkalmazás, és a tartalomvédelmi (szolgáltatás IRM) szolgáltatásokat a SharePoint Online vagy az Exchange Online támogatásának engedélyezése telepítése tartalmazhat. További tudnivalókért tekintse meg a [Azure Rights Management alkalmazások konfigurálása](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
 
-If you have existing IT services that need to inspect files that Azure RMS will protect—such as data leak prevention (DLP) solutions, content encryption gateways (CEG), and anti-malware products—configure the service accounts to be super users for Azure RMS. For more information, see [Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery](../Topic/Configuring_Super_Users_for_Azure_Rights_Management_and_Discovery_Services_or_Data_Recovery.md).
+Ha a fájlok, amelyek az Azure RMS megvédi folyamatokhoz igénylő meglévő IT-szolgáltatások – adatok fejlesztő megelőzése (DLP) megoldások, például a tartalom titkosítási átjárók (CEG), és a kártevőirtó termékek – kell az Azure RMS felügyelő felhasználó szolgáltatásfiókok konfigurálása. További tudnivalókért tekintse meg a [Fő felhasználók konfigurálása az Azure Rights Management és felderítési szolgáltatásokat vagy adatok helyreállítása](../Topic/Configuring_Super_Users_for_Azure_Rights_Management_and_Discovery_Services_or_Data_Recovery.md).
 
-If you have on-premises services that you want to use with Azure Rights Management, install and configure the Rights Management connector. For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+Ha a helyszíni szolgáltatások Azure Rights Management szolgáltatással használni kívánt, telepítse, és a Rights Management-összekötő konfigurálását. További tudnivalókért tekintse meg a [Az Azure Rights Management összekötő telepítése](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
-## Step 4: Publish and consume rights-protected content
-You’re now ready to publish and consume protected content, and log how your company is using Rights Management. For more information, see [Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md).
+## 4. lépés: Közzététele, és a védett tartalmakat
+Most készen közzététele, és a védett tartalmakat, és jelentkezzen be a vállalata hogyan használja a Rights Management. További tudnivalókért tekintse meg a [Azure Rights Management használata](../Topic/Using_Azure_Rights_Management.md).
 
-## Step 5: Administer Rights Management for your tenant account as needed
-As you begin to use [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], you might find the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] module for Windows PowerShell useful to help script or automate administrative changes. For more information, see [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
+## 5. lépés: Szükség esetén a Rights Management felügyelete bérlői fiókja
+Használandó megkezdése előtt [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], előfordulhat, hogy a Keresés a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] modul a Windows PowerShell-parancsfájl segítségével, vagy a felügyeleti módosítások automatizálására hasznos. További tudnivalókért tekintse meg a [Az Azure Rights Management felügyelete a Windows PowerShell használatával](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 
