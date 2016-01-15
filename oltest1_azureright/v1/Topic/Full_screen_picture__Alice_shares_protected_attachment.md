@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Alice shares protected attachment
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: feeef78d-3c2e-432b-817d-d06f784be226
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Alice shares protected attachment
+# Teljes k&#233;pernyős k&#233;p: Aliz megosztja v&#233;dett mell&#233;klet
 ![](../Image/AzRMS_StoryboardEmaill1.PNG)
 
-Back to [Azure RMS in action: Safely share attachments with mobile users](http://technet.microsoft.com/library/jj585026.aspx).
+Vissza a [művelet az Azure RMS: Mellékletek biztonságosan megosztja mobil felhasználók](http://technet.microsoft.com/library/jj585026.aspx).
 

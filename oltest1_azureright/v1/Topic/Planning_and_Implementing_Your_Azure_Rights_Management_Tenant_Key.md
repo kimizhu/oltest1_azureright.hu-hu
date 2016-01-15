@@ -3,29 +3,28 @@ description: na
 keywords: na
 title: Planning and Implementing Your Azure Rights Management Tenant Key
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: f0d33c5f-a6a6-44a1-bdec-5be1bc8e1e14
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Planning and Implementing Your Azure Rights Management Tenant Key
-Use the information in this topic to help you plan for and manage your Rights Management service (RMS) tenant key for Azure RMS. For example, instead of Microsoft managing your tenant key (the default), you might want to manage your own tenant key to comply with specific regulations that apply to your organization.  Managing your own tenant key is also referred to as bring your own key, or BYOK.
+# Tervez&#233;s &#233;s v&#233;grehajt&#225;si a Azure Rights Management b&#233;rlői kulcs
+A jelen témakörben található információk segítségével segítenek tervezéséhez, és a tartalomvédelmi szolgáltatás (RMS) bérlői kulcs kezelheti az Azure RMS. Például helyett a Microsoft kezelése a bérlői kulcs (alapértelmezett), előfordulhat, hogy kezelni kívánt saját bérlői kulcsot adott szabályoknak, a szervezetre.  A saját bérlői kulcs kezelése is hivatkozik, a saját kulcs, vagy a BYOK állapotba.
 
 > [!NOTE]
-> The RMS tenant key is also known as the Server Licensor Certificate (SLC) key. Azure RMS maintains one or more keys for each organization that subscribes to Azure RMS. Whenever a key is used for RMS within an organization (such as user keys, computer keys, document encryption keys), they cryptographically chain to your RMS tenant key.
+> Az RMS-bérlői kulcs a kiszolgáló ügyféllicenc tanúsítvány Kiszolgálólicenc kulcs is nevezik. Azure RMS minden-szervezetektől, amelyek az Azure RMS van feliratkozva egy vagy több kulcsokat tartja karban. Amikor egy kulcsot (például a felhasználói kulcsok, a számítógép-kulcsok, a dokumentum titkosítási kulcsok) a szervezeten belül az RMS szolgáltatást használ, azok kriptográfiai lánc az RMS-bérlői kulcsot.
 
-**At a glance:** Use the following table as a quick guide to your recommended tenant key topology. Then, use the additional sections for more information.
+**Gyors áttekintése:** Használja a következő táblázat az ajánlott bérlői kulcs topológiát gyors útmutatóját. Ezután használja a további szakaszokat további információt.
 
-If you deploy Azure RMS by using a tenant key that is managed by Microsoft, you can change to BYOK later. However, you cannot currently change your Azure RMS tenant key from BYOK to managed by Microsoft.
+Ha a Microsoft által felügyelt bérlői kulcs használatával telepít az Azure RMS, módosíthatja a BYOK később. A Microsoft felügyeli a BYOK azonban az Azure RMS bérlői kulcs jelenleg módosítható.
 
-|Business requirement|Recommended tenant key topology|
-|------------------------|-----------------------------------|
-|Deploy Azure RMS quickly and without requiring special hardware|Managed by Microsoft|
-|Need full IRM functionality in Exchange Online with Azure RMS|Managed by Microsoft|
-|Your keys are created by you and protected in a hardware security module (HSM)|BYOK<br /><br />Currently, this configuration will result in reduced IRM functionality in Exchange Online. For more information, see the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section.|
-Use the following sections to help you choose which tenant key topology to use, understand the tenant key lifecycle, how to implement bring your own key (BYOK), and what steps to take next:
+|Üzleti követelmény|A bérlő ajánlott kulcs topológia|
+|----------------------|------------------------------------|
+|Gyorsan és a speciális hardver azon anélkül, hogy a Azure RMS központi telepítése|A Microsoft által felügyelt|
+|Teljes Tartalomvédelmi szolgáltatás az Exchange Online, az Azure RMS kell|A Microsoft által felügyelt|
+|A kulcsokat az Ön által létrehozott, és a védett hardveres biztonsági modult (HSM)|BYOK<br /><br />Jelenleg a konfiguráció eredményezi csökkentett Tartalomvédelmi az Exchange Online. További tudnivalókért tekintse meg a [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) szakaszban.|
+A következő szakaszok segítségével, akkor válassza ki, melyik bérlői kulcs használatához topológia megértenie a bérlői kulcs életciklusra vonatkozó, implementálása hozása saját kulcs (BYOK), és mi végezze el a következő lépéseket:
 
 -   [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey)
 
@@ -35,76 +34,76 @@ Use the following sections to help you choose which tenant key topology to use, 
 
 -   [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps)
 
-## <a name="BKMK_ChooseTenantKey"></a>Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)
-Decide which tenant key topology is best for your organization. By default, Azure RMS generates your tenant key and manages most aspects of the tenant key lifecycle. This is the simplest option with the lowest administrative overheads. In most cases, you do not even need to know that you have a tenant key. You just sign up for Azure RMS and the rest of the key management process is handled by Microsoft.
+## <a name="BKMK_ChooseTenantKey"></a>Válassza ki az Ön bérlőjében kulcs topológia: (Alapértelmezett) a Microsoft által felügyelt, vagy az Ön (BYOK) által felügyelt
+Dönthet úgy, hogy mely bérlői kulcs topológia ideális a szervezet. Alapértelmezés szerint a Azure RMS a bérlői kulcsot hoz létre, és a legtöbb vonatkozásai a bérlői kulcs életciklusra vonatkozó kezeli. Ez a beállítás a legegyszerűbb, a legkisebb adminisztratív kiadások. A legtöbb esetben meg nem is kell tudja, hogy van-e a bérlői kulcs. Egyszerűen csak regisztrál Azure RMS, és a többi a kulcskezelés folyamat a Microsoft kezeli.
 
-Alternatively, you might want complete control over your tenant key, which involves creating your tenant key and keeping the master copy on your premises. This scenario is often referred to as bring your own key (BYOK). With this option, the following happens:
+Másik lehetőségként érdemes lehet a bérlői kulcs, amely magában foglalja a bérlői kulcs létrehozása és a fő példányt a a helyszínen tartja feletti irányítást. Ezt a helyzetet gyakran továbbiakban hozása saját kulcsot (BYOK). Ezt a lehetőséget választja a következők történnek:
 
-1.  You generate your tenant key on your premises, in line with your IT policies.
+1.  A bérlő kulcs hoz létre a a helyszínen, összhangban az informatikai házirendek.
 
-2.  You securely transfer the tenant key from a Hardware Security Module (HSM) in your possession to HSMs that are owned and managed by Microsoft. Throughout this process, your tenant key never leaves the hardware protection boundary.
+2.  Akkor biztonságosan át a bérlői kulcs egy hardver biztonsági modul (HSM) az Ön birtokában tulajdonában lévő és a Microsoft által kezelt HSMs. Ez a folyamat során a bérlői kulcs soha nem elhagyja a hardver protection határ.
 
-3.  When you transfer your tenant key to Microsoft, it stays protected by Thales HSMs. Microsoft has worked with Thales to ensure that your tenant key cannot be extracted from Microsoft’s HSMs.
+3.  A bérlő kulcs átvitele a Microsoft, amikor marad a Thales HSMs által védett. A Microsoft dolgozott, és annak biztosítására, hogy a bérlői kulcsot nem sikerült beolvasni a Microsoft HSMs Thales.
 
-Although it’s optional, you will also probably want to use the near real-time usage logs from Azure RMS to see exactly how and when your tenant key is being used.
+Bár a nem kötelező, akkor is, valószínűleg használni kívánt közel valós idejű használatát naplók az Azure RMS meg, hogy mikor és hogyan pontosan a bérlői kulcs használatban van-e.
 
 > [!NOTE]
-> As an additional protection measure, Azure RMS uses separate security worlds for its data centers in North America, EMEA (Europe, Middle East and Africa), and Asia. When you manage your own tenant key, it is tied to the security world of the region in which your RMS tenant is registered. For example, a tenant key from a European customer cannot be used in data centers in North America or Asia.
+> Egy további védelmi mértékként Azure RMS különálló biztonsági világot használ az adatközpontokban Észak-Amerika, a EMEA (Európa, Közel-Kelet és Afrika) és a Ázsiában. A saját bérlői kulcs kezelésekor azt a régióban, amelyben az RMS-bérlőben regisztrálva van a biztonsági globális van kötve. Például az Európai ügyfél bérlői kulcs nem használható Észak-Amerika vagy ázsiai adatközpontokban.
 
-## <a name="BKMK_OverviewLifecycle"></a>The tenant key lifecycle
-If you decide that Microsoft should manage your tenant key, Microsoft handles most of the key lifecycle operations. However, if you decide to manage your tenant key, you are responsible for many of the key lifecycle operations and some additional procedures.
+## <a name="BKMK_OverviewLifecycle"></a>A bérlő kulcs életciklusra vonatkozó
+Ha úgy dönt, hogy a Microsoft kezelje a bérlői kulcsot, a Microsoft kezeli a kulcs életciklusra vonatkozó műveletek többsége. Azonban ha úgy dönt, a bérlői kulcs kezeléséhez, Ön felelősséggel számos a kulcs életciklusra vonatkozó műveletek és néhány további eljárásokat.
 
-The following diagrams show and compares these two options. The first diagram shows how little administrator overheads there are for you in the default configuration when Microsoft manages the tenant key.
+Az alábbi ábrák megjelenítése, és összehasonlítja a két pontot. Az első diagramon jeleníti meg, hogyan kevés rendszergazda általános költségek nincsenek meg az alapértelmezett beállítás, ha a Microsoft kezeli a bérlői kulcs.
 
 ![](../Image/RMS_BYOK_cloud.png)
 
-The second diagram shows the additional steps required when you manage your own tenant key.
+A második ábrán a további lépéseket, akkor szükséges, ha az Ön által kezelt saját bérlői kulcsot.
 
 ![](../Image/RMS_BYOK_onprem.png)
 
-If you decide to let Microsoft manage your tenant key, no further action is required for you to generate the key and you can skip the following sections and go straight to [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
+Ha úgy dönt, hogy jelezze a Microsoftnak a bérlői kulcs kezelése, nincs további műveletre szükség a kulcs létrehozása és a következő szakaszok kihagyása, és nyissa meg a egyenes [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
 
-If you decide to manage your tenant key yourself, read the following sections for more information.
+Ha úgy dönt, hogy a saját maga a bérlői kulcs kezelése, olvassa el a további információk a következő szakaszok szolgálnak.
 
-### More information about Thales HSMs and Microsoft additions
-Azure RMS uses Thales HSMs to protect your keys.
+### További információ a Thales HSMs és a Microsoft kiegészítése
+Azure RMS Thales HSMs használja a kulcsok védelmét.
 
-Thales e-Security is a leading global provider of data encryption and cyber security solutions to the financial services, high technology, manufacturing, government, and technology sectors. With a 40-year track record of protecting corporate and government information, Thales solutions are used by four of the five largest energy and aerospace companies, 22 NATO countries, and secure more than 80 per cent of worldwide payment transactions.
+A Thales e-biztonsági az adatok titkosítása és a számítógépes biztonsági megoldásokat a pénzügyi szolgáltatások, a magas technológiai, a gyártási, a kormányzat és a technológia szektorok vezető globális szolgáltató. Az az év 40 nyomon követése rekord védelmének vállalati és kormánya információkat a Thales megoldások négy öt legnagyobb energia és űrtechnikai vállalatok, 22 NATO országban, használja, és több mint 80 százalékát világszerte fizetési tranzakciók biztonságos.
 
-Microsoft has collaborated with Thales to enhance the state of art for HSMs. These enhancements enable you to get the typical benefits of hosted services without relinquishing control over your keys. Specifically, these enhancements let Microsoft manage the HSMs so that you do not have to. As a cloud service, Azure RMS scales up at short notice to meet your organization’s usage spikes. At the same time, your key is protected inside Microsoft’s HSMs: You retain control over the key lifecycle because you generate the key and transfer it to Microsoft’s HSMs.
+A Microsoft Thales fejlesztésére szolgáló a kép állapotát a HSMs, közvetlenül az rendelkezik. Ezek a bővítések lehetővé teszik a központi szolgáltatások lemondana szabályozhatják, a kulcsok nélkül jellemző előnyét. Pontosabban a bővítések lehetővé teszik, a HSMs kezelése, így Ön nem rendelkezik a Microsoft. A felhő szolgáltatásként Azure RMS méretezés során a szervezet használati futócipő teljesítéséhez rövid időn belül. A kulcs egyszerre, a Microsoft HSMs belül védett: A kulcs életciklusra vonatkozó szabályozhatják, meg kell őrizni, mert a kulcs létrehozása, és átvitele a Microsoft HSMs.
 
-For more information, see [Thales HSMs and Azure RMS](http://www.thales-esecurity.com/msrms/cloud) on the Thales web site.
+További tudnivalókért tekintse meg a [Thales HSMs és az Azure RMS](http://www.thales-esecurity.com/msrms/cloud) a Thales webhelyen.
 
-## <a name="BKMK_Pricing"></a>BYOK pricing and restrictions
-Organization that have an IT-managed Azure subscription can use BYOK and log its usage at no extra charge. Organizations that use RMS for individuals cannot use BYOK and logging because they do not have a tenant administrator to configure these features.
+## <a name="BKMK_Pricing"></a>BYOK árazási és korlátozások
+Szervezet, amely az IT-felügyelt Azure előfizetés BYOK használhatnak, és jelentkezzen a használatát, nem kell külön fizetni. RMS egyének használó szervezetek nem használható, BYOK és a naplózás, mert ezeket a szolgáltatásokat konfigurálása a bérlői rendszergazda nem rendelkeznek.
 
 > [!NOTE]
-> For more information about RMS for individuals, see [RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md).
+> Az egyes személyek RMS kapcsolatos további információkért tekintse meg a [RMS egyének és az Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md).
 
 ![](../Image/RMS_BYOK_noExchange.png)
 
-BYOK and logging work seamlessly with every application that integrates with Azure RMS. This includes cloud services such as SharePoint Online, on-premises servers that run Exchange and SharePoint that work with Azure RMS by using the RMS connector, and client applications such as Office 2013. You will get key usage logs regardless of which application makes requests of Azure RMS.
+BYOK és a naplózás minden integrálódik az Azure RMS alkalmazás használata integrációjával biztosítja. Ez magába foglalja a felhőszolgáltatások, például a SharePoint Online, a helyszíni futtató kiszolgálókat Exchange és a SharePoint, amelyek az Azure RMS által az RMS-összekötő, és az ügyfélalkalmazások számára, például az Office 2013 használata. Kulcshasználat naplókat, függetlenül az alkalmazás a kérelmek Azure RMS által fog kapni.
 
-There is one exception: Currently, **Azure RMS BYOK is not compatible with Exchange Online**.  If you want to use Exchange Online, we recommend that you deploy Azure RMS in the default key management mode now, where Microsoft generates and manages your key. You have the option to move to BYOK later, for example, when Exchange Online does support Azure RMS BYOK. However, if you cannot wait, another option is to deploy Azure RMS with BYOK now, with reduced RMS functionality for Exchange Online (unprotected emails and unprotected attachments remain fully functional):
+Egy kivétel van: Jelenleg **Azure RMS BYOK metódus nem kompatibilis az Exchange Online**.  Ha módosítani szeretné használni az Exchange Online, javasoljuk, központi telepítését Azure RMS módban az alapértelmezett kulcskezelés most, ahol a Microsoft állít elő, és a kulcs kezeli. Lehetősége van áthelyezése BYOK később, például, ha az Exchange Online Azure RMS BYOK támogatja. Azonban nem várja, ha egy másik lehetőséget, hogy a központi telepítés most, Azure RMS BYOK Exchange Online (a védelem nélküli e-mailek és a védelem nélküli mellékletek maradnak teljesen működnek) csökkentett RMS:
 
--   Protected emails or protected attachments in Outlook Web Access cannot be displayed.
+-   Védett e-maileket vagy a védett mellékletek az Outlook Web Access nem jeleníthető meg.
 
--   Protected emails on mobile devices that use Exchange ActiveSync IRM cannot be displayed.
+-   Védett e-maileket az Exchange ActiveSync Tartalomvédelmi használó mobil eszközök nem jeleníthető meg.
 
--   Transport decryption (for example, to scan for malware) and journal  decryption is not possible, so protected emails and protected attachments will be skipped.
+-   Szállítási visszafejtési (például a kártevő szoftverek vizsgálatára) és napló visszafejtési nem lehetséges, így a védett e-mailek és a védett mellékletek kimarad.
 
--   Transport protection rules and data loss prevention (DLP) that enforce IRM policies is not possible, so RMS protection cannot be applied by using these methods.
+-   Szállítási védelmi szabályok és az adatok adatvesztés megelőzése (DLP), amely a tartalomvédelmi szolgáltatás házirendek kényszerítése nem lehetséges, így az RMS-védelmi nem alkalmazható e módszerekkel.
 
--   Server-based search for protected emails, so protected emails will be skipped.
+-   Védett e-mailek, így a védett e-maileket a rendszer kihagyta Server-alapú keresése.
 
-When you use Azure RMS BYOK with reduced RMS functionality for Exchange Online, RMS will work with email clients in Outlook on Windows and Mac, and on other email clients that don't use Exchange ActiveSync IRM.
+Amikor az Azure RMS BYOK csökkentett RMS használja az Exchange Online, az RMS e-mail ügyfelek számára az Outlook, a Windows és a Mac, és ne használja az Exchange ActiveSync IRM más e-mail ügyfeleken fog működni.
 
-If you are migrating to Azure RMS from AD RMS, you might have imported your key as a trusted publishing domain (TPD) to Exchange Online (also called BYOK in Exchange terminology, which is separate from Azure RMS BYOK). In this scenario, you must remove the TPD from Exchange Online to avoid conflicting templates and policies. For more information, see [Remove-RMSTrustedPublishingDomain](https://technet.microsoft.com/library/jj200720%28v=exchg.150%29.aspx) from the Exchange Online cmdlets library.
+Ha az Active Directory tartalomvédelmi szolgáltatások az Azure RMS áttelepítése, előfordulhat, hogy importálta a kulcs megbízható közzétételi tartomány (TPD), Exchange Online (más néven BYOK Exchange kifejezésekkel, amely elkülönül Azure RMS BYOK). Ebben az esetben el kell távolítani a TPD Exchange Online, sablonok és a házirendek ütköző elkerülése érdekében. További tudnivalókért tekintse meg a [eltávolítása-RMSTrustedPublishingDomain](https://technet.microsoft.com/library/jj200720%28v=exchg.150%29.aspx) az Exchange Online parancsmagok könyvtárából.
 
-Sometimes, the Azure RMS BYOK  exception for Exchange Online is not a problem in practice. For example, organizations that need BYOK and logging run their data applications (Exchange, SharePoint, Office) on-premises, and use Azure RMS for functionality that is not easily available with on-premises AD RMS (for example, collaboration with other companies and access from mobile clients). Both BYOK and logging work well in this scenario and allow the organization to have full control over their Azure RMS subscription.
+Egyes esetekben az Azure RMS BYOK kivétel az Exchange Online nem gyakorlatban probléma lép fel. Például a BYOK és a naplózás igénylő szervezetek futtassa az adatok alkalmazások (Exchange, SharePoint, az Office) a helyszíni, és -felhasználási funkciója, amely nem érhető el könnyen, az Azure RMS helyszíni AD RMS (például együttműködve más vállalatok, és a mobil ügyfelektől érkező hozzáférési). BYOK és a naplózás munka csakúgy ebben az esetben, és lehetővé teszik a szervezet Azure RMS előfizetésének teljes hozzáféréssel rendelkeznek.
 
-## <a name="BKMK_ImplementBYOK"></a>Implementing bring your own key (BYOK)
-Use the information and procedures in this section if you have decided to generate and manage your tenant key; the bring your own key (BYOK) scenario:
+## <a name="BKMK_ImplementBYOK"></a>Végrehajtási hozása saját kulcsot (BYOK)
+Használja az információk és eljárások ebben a részben található Ha úgy döntött, létrehozása és kezelése a bérlői kulcsot. a hozás saját kulcs (BYOK) forgatókönyv:
 
 -   [Prerequisites for BYOK](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Preqs)
 
@@ -113,43 +112,43 @@ Use the information and procedures in this section if you have decided to genera
 -   [Generate and transfer your tenant key – in person](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOK_InPerson)
 
 > [!IMPORTANT]
-> If you have already started to use [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (the service is activated) and you have users who run Office 2010, contact Microsoft Customer Support Services (CSS) before you run these procedures. Depending on your scenario and requirements, you can still use BYOK but with some limitations or additional steps.
+> Ha már indítottak használandó [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (a szolgáltatás aktiválva) és a felhasználók számára az Office 2010 futtatni, forduljon a Microsoft ügyfélszolgálathoz (CSS), ezek az eljárások futtatása előtt. A esetet és a követelmények függően továbbra is használhatja BYOK, de néhány korlátozások vagy a további lépéseket.
 > 
-> Also contact CSS if your organization has specific policies for handling keys.
+> CSS is megkereshetjük, ha a szervezetben meghatározott házirendeket a kulcsok kezelése.
 
-### <a name="BKMK_Preqs"></a>Prerequisites for BYOK
-See the following table for a list of prerequisites for bring your own key (BYOK).
+### <a name="BKMK_Preqs"></a>BYOK előfeltételei
+Tekintse meg az alábbi táblázat a saját kulcsot (BYOK) hozása előfeltételei listáját.
 
-|Requirement|More information|
-|---------------|--------------------|
-|A subscription that supports Azure RMS.|For more information about the available subscriptions, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.|
-|You do not use RMS for individuals or Exchange Online. Or, if you use Exchange Online, you understand and accept the limitations of using BYOK with this configuration.|For more information about the restrictions and current limitations for BYOK, see the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in this topic.<br /><br />**Important**: Currently, BYOK is not compatible with Exchange Online.|
-|Thales HSM, smartcards, and support software.<br /><br />**Note**: If you are migrating from AD RMS to Azure RMS by using software key to hardware key, you must have a minimum version of 11.62 for the Thales drivers.|You must have access to a Thales Hardware Security Module and basic operational knowledge of Thales HSMs. See [Thales Hardware Security Module](http://www.thales-esecurity.com/msrms/buy) for the list of compatible models, or to purchase an HSM if you do not have one.|
-|If you want to transfer your tenant key over the Internet rather than physically be present in Redmond, USA. there are 3 requirements:<br /><br />Requirement 1: An offline x64 workstation with a minimum Windows operation system of Windows 7 and Thales nShield software that is at least version 11.62.<br /><br />If this workstation runs Windows 7, you must [install Microsoft .NET Framework 4.5](http://go.microsoft.com/fwlink/?LinkId=225702).<br /><br />Requirement 2: A workstation that is connected to the Internet and has a minimum Windows operation system of Windows 7.<br /><br />Requirement 2: A USB drive or other portable storage device that has at least 16 MB free space.|These prerequisites are not required if you travel to Redmond and transfer your tenant key in person.<br /><br />For security reasons, we recommend that the first workstation is not connected to a network. However, this is not programmatically enforced.<br /><br />Note: In the instructions that follow, this first workstation is referred to as the **disconnected workstation**.<br /><br />In addition, if your tenant key is for a production network, we recommend that you use a second, separate workstation to download the toolset and upload the tenant key. But for testing purposes, you can use the same workstation as the first one.<br /><br />Note: In the instructions that follow, this second workstation is referred to as the **Internet-connected workstation**.|
-|Optional: Azure subscription.|If you want to log your tenant key usage (and Rights Management usage), you must have a subscription to Azure and sufficient storage on Azure to store your logs.|
-The procedures to generate and use your own tenant key depend on whether you want to do this over the Internet or in person:
+|Követelmény|További információ|
+|---------------|----------------------|
+|Egy előfizetést, amely támogatja az Azure RMS|A rendelkezésre álló előfizetések kapcsolatos további információkért tekintse meg a [Felhő előfizetések, amelyek támogatják az Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) szakasz a [Az Azure Rights Management követelményei](../Topic/Requirements_for_Azure_Rights_Management.md) című témakört.|
+|RMS egyének vagy az Exchange Online nem használja. Vagy használatakor az Exchange Online, el és fogadja el a korlátozások BYOK használja ezt a konfigurációt.|A korlátozások és a jelenlegi korlátai BYOK kapcsolatos további tudnivalókért tekintse meg a [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) szakaszban, a jelen témakörben található. **Important:** Jelenleg nem kompatibilis az Exchange Online BYOK.|
+|A Thales HSM, a kártyák és a támogatási szoftver<br /><br />Ha az Active Directory tartalomvédelmi szolgáltatások az Azure RMS szoftver kulccsal hardver kulcsot, rendelkeznie kell egy 11.62 Thales illesztőprogramok minimális verziója.|Rendelkeznie kell egy Thales hardveres biztonsági modult és Thales HSMs működési alapismeretek elérését. További tudnivalók: [Thales hardveres biztonsági modult](http://www.thales-esecurity.com/msrms/buy) kompatibilis modellek, vagy hogy megvásárolja a Hardvermodult, ha nem rendelkezik egy listájában.|
+|Ha módosítani szeretné a bérlői kulcs transfer az interneten keresztül fizikailag szerepeljen Redmond Amerikai Egyesült Államok helyett:<br /><br />1.  Kapcsolat nélküli x 64 munkaállomáson, Windows 7 és Thales nShield szoftver, amely legalább minimális Windows operációs rendszer verziója 11.62.<br />    Ha a munkaállomás fut a Windows 7, akkor kell [telepítse a Microsoft .NET-keretrendszer 4.5](http://go.microsoft.com/fwlink/?LinkId=225702).<br />2.  A munkaállomás, amely csatlakozik az internethez, és a Windows 7 minimális Windows operációs rendszer.<br />3.  Egy USB-meghajtóra vagy más hordozható tárolóeszköz, amely kisebb, mint 16 MB szabad hely van.|Az előfeltételek nem szükségesek, ha áramlását Redmond, és a transfer az a személy bérlői kulcsot.<br /><br />Biztonsági okokból azt javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez nem programozottan érvényesíti. **Note:** Kövesse az utasításokat az ennek a munkaállomásnak hivatkozik a leválasztott munkaállomáson.<br />Továbbá ha a bérlői kulcs hálózat, ajánlott használni, hogy egy második, külön munkaállomás töltse le a toolset, és a bérlői kulcs feltöltése. De a tesztelési célú is használhatja ugyanazt a munkaállomás az elsőt. **Note:** A kövesse az utasításokat a második munkaállomás hivatkozik az internethez csatlakozó munkaállomáson.|
+|Nem kötelező: Azure-előfizetés|Ha azt szeretné, be kell jelentkeznie a bérlői kulcshasználat (és a Rights Management használata), rendelkeznie kell egy előfizetést Azure és a megfelelő tárolási Azure a naplók tárolására.|
+Az eljárások létrehozása és használata a saját bérlői kulcs attól függ, hogy szeretné ezt az interneten keresztül, vagy az személy:
 
--   **Over the Internet:** This requires some extra configuration steps, such as downloading and using a toolset and Windows PowerShell cmdlets. However, you do not have to physically be in a Microsoft facility to transfer your tenant key. Security is maintained by the following methods:
+-   **Az interneten:** Ez megköveteli, hogy néhány további konfigurációs lépések: töltsön le, és egy toolset és a Windows PowerShell parancsmagok használatával. Azonban nem rendelkezik a Microsoft konstrukció a bérlői kulcs átvitelére fizikailag lehet. Az alábbi módszerekkel biztonsági tartja karban:
 
-    -   You generate the tenant key from an offline workstation, which reduces the attack surface.
+    -   A bérlő kulcs elő, egy a kapcsolat nélküli, csökkenti a támadások felületet munkaállomáson.
 
-    -   The tenant key is encrypted with a Key Exchange Key (KEK), which stays encrypted until it is transferred to the Azure RMS HSMs. Only the encrypted version of your tenant key leaves the original workstation.
+    -   A bérlő kulcs titkosítva van, egy kulcs Exchange kulcs (KEK), amely a titkosított marad, amíg az Azure RMS HSMs átkerül. A bérlő kulcs csak a titkosított verzióját hagyja az eredeti munkaállomás.
 
-    -   A tool sets properties on your tenant key that binds your tenant key to the Azure RMS security world. So after the Azure RMS HSMs receive and decrypt your tenant key, only these HSMs can use it. Your tenant key cannot be exported. This binding is enforced by the Thales HSMs.
+    -   Egy eszköz tulajdonságait adja meg a bérlői kulcs, amely a bérlői kulcsot az Azure RMS biztonsági globális van kötve. Így után az Azure RMS HSMs kap, és a bérlői kulcs visszafejtéséhez, csak ezek HSMs is használható. A bérlő kulcs nem exportálható. Ez a kötés kényszeríti a Thales HSMs.
 
-    -   The Key Exchange Key (KEK) that is used to encrypt your tenant key is generated inside the Azure RMS HSMs and is not exportable. The HSMs enforce that there can be no clear version of the KEK outside the HSMs. In addition, the toolset includes attestation from Thales that the KEK is not exportable and was generated inside a genuine HSM that was manufactured by Thales.
+    -   A kulcs Exchange kulcs (KEK) a bérlői kulcs titkosításához használt belül az Azure RMS HSMs jön létre, és nem exportálható. A HSMs kényszerítése, hogy az a HSMs kívül a KEK változata nem egyértelmű lehet. Ezenkívül a a toolset Thales, hogy a KEK nem exportálható, és a valódi HSM által Thales volt-e előállított belül lett létrehozva a tanúsítványt tartalmaz.
 
-    -   The toolset includes attestation from Thales that the Azure RMS security world was also generated on a genuine HSM manufactured by Thales. This proves to you that Microsoft is using genuine hardware.
+    -   A toolset az, hogy az Azure RMS biztonsági globális is jött létre a Thales által előállított, a valódi HSM Thales tanúsítványt tartalmaz. Ez kiderül, hogy meg, hogy a Microsoft a valódi hardver használja-e.
 
-    -   Microsoft uses separate KEKs as well as separate Security Worlds in each geographical region, which ensures that your tenant key can be used only in data centers in the region in which you encrypted it. For example, a tenant key from a European customer cannot be used in data centers in North American or Asia.
+    -   A Microsoft külön KEKs használ, valamint a biztonsági világot minden földrajzi régióban, amely biztosítja, hogy a bérlői kulcs használható csak a régióban, amelyben titkosított azt adatközpontokban elválasztásához. Például az Európai ügyfél bérlői kulcs nem használható Észak-amerikai vagy ázsiai adatközpontokban.
 
     > [!NOTE]
-    > Your tenant key can safely move through untrusted computers and networks because it is encrypted and secured with access control level permissions, which makes it usable only within your HSMs and Microsoft’s HSMs for Azure RMS. You can use the scripts that are provided in the toolset to verify the security measures and read more information about how this works from Thales: [Hardware Key management in the RMS Cloud](https://www.thales-esecurity.com/knowledge-base/white-papers/hardware-key-management-in-the-rms-cloud).
+    > A bérlő kulcs keresztül nem megbízható számítógépek és hálózatok biztonságosan is áthelyezni, mert a titkosított, és által védett hozzáférési szintű engedélyek, amely lehetővé teszi, hogy csak a HSMs és a Microsoft HSMs belül az Azure RMS szolgáltatást. A parancsfájlok, ellenőrizze a biztonsági intézkedéseket, és ez működésével kapcsolatos további információkat a Thales olvasni a toolset kapott használható: [Hardver kulcskezelő az RMS-felhő](https://www.thales-esecurity.com/knowledge-base/white-papers/hardware-key-management-in-the-rms-cloud).
 
--   **In person:** This requires that you contact Microsoft Customer Support Services (CSS) to schedule a key transfer appointment for Azure RMS. You must travel to a Microsoft office in Redmond, Washington, United States of America to transfer your tenant key to the Azure RMS security world.
+-   **Az személy:** Ehhez a forduljon a Microsoft ügyfélszolgálathoz (CSS), kulcs átvitel találkozó ütemezése az Azure RMS. Kell utazik a Microsoft Office a Redmond, Washington, Amerikai Egyesült Államok a bérlői kulcsot az Azure RMS biztonsági globális átadni.
 
-### <a name="BKMK_BYOK_Internet"></a>Generate and transfer your tenant key – over the Internet
-Use the following procedures if you want to transfer your tenant key over the Internet rather than travel to a Microsoft facility to transfer the tenant key in person:
+### <a name="BKMK_BYOK_Internet"></a>Létrehozása és a bérlői kulcs – transfer az interneten keresztül
+Használja a következő eljárásokat, ha azt szeretné, hogy a Microsoft konstrukció a bérlői kulcs személyesen átvitelére áramlását helyett a bérlői kulcs transfer az interneten keresztül:
 
 -   [Prepare your Internet-connected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareWorkstation)
 
@@ -161,8 +160,8 @@ Use the following procedures if you want to transfer your tenant key over the In
 
 -   [Transfer your tenant key to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer)
 
-#### <a name="BKMK_InternetPrepareWorkstation"></a>Prepare your Internet-connected workstation
-To prepare your workstation that is connected to the Internet, follow these 3 steps:
+#### <a name="BKMK_InternetPrepareWorkstation"></a>Az internethez csatlakozó munkaállomás előkészítése
+A munkaállomás, amely csatlakozik az internethez előkészítése, kövesse az alábbi 3 lépéseket:
 
 -   [Step 1: Install Windows PowerShell for Azure Rights Management](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation1)
 
@@ -170,89 +169,89 @@ To prepare your workstation that is connected to the Internet, follow these 3 st
 
 -   [Step 3: Download the BYOK toolset](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation3)
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation1"></a>Step 1: Install Windows PowerShell for Azure Rights Management
-From the Internet-connected workstation, download and install the Windows PowerShell module for Azure Rights Management.
+##### <a name="BKMK_PrepareInternetConnectedWorkstation1"></a>1. lépés: Telepítse a Windows PowerShell Azure Rights Management
+A internetkapcsolattal munkaállomáson töltse le, és a Windows PowerShell modul telepítése a Azure Rights Management.
 
 > [!NOTE]
-> If you have previously downloaded this Windows PowerShell module, run the following command to check that your version number is at least 2.1.0.0: `(Get-Module aadrm -ListAvailable).Version`
+> Ha ez a Windows PowerShell modul korábban letöltötte, a következő parancsot ellenőrizze, hogy a verziószáma kisebb, mint a 2.1.0.0: `(Get-Module aadrm -ListAvailable).Version`
 
-For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+Telepítési tudnivalókat lásd: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation2"></a>Step 2: Get your Azure Active Directory tenant ID
-Start Windows PowerShell with the **Run as administrator** option, and then run the following commands:
+##### <a name="BKMK_PrepareInternetConnectedWorkstation2"></a>2. lépés: Az Azure Active Directory-bérlő azonosító lekérése
+Indítsa el a Windows PowerShell a **Futtatás rendszergazdaként** lehetőséget, és futtassa újra a következő parancsokat:
 
--   Use the [Connect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629415.aspx) cmdlet to connect to the Azure RMS service:
+-   Használja a [Connect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629415.aspx) parancsmag csatlakozni az Azure RMS szolgáltatást:
 
     ```
     Connect-AadrmService
     ```
-    When prompted, enter your [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] tenant administrator credentials (typically, you will use an account that is a global administrator for Azure Active Directory or Office 365).
+    Amikor a rendszer kéri, adja meg a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] Bérlői rendszergazda hitelesítő adatok (általában akkor érdemes használni egy olyan fiókhoz, amely egy globális rendszergazda az Azure Active Directoryban, vagy az Office 365).
 
--   Use the [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet to display the configuration of your tenant:
+-   Használja a [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) parancsmag megjelenítéséhez az Ön bérlőjében konfigurálása:
 
     ```
     Get-AadrmConfiguration
     ```
-    From the output, save the GUID from the first line (BPOSId). This is your Azure Active Directory tenant ID, which you will need later when you prepare your tenant key for upload.
+    A kimeneti az első sor (BPOSId) a Mentés a globálisan egyedi Azonosítót. Ez az a bérlői szüksége lesz később a bérlői kulcsát feltöltési előkészítésekor Azure Active Directory Azonosítóját.
 
--   Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service until you are ready to upload your key:
+-   Használja a [kapcsolat bontása-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) parancsmag le az Azure RMS szolgáltatást, addig, amíg a kulcs feltöltése készen áll:
 
     ```
     Disconnect-AadrmService
     ```
 
-Do not close the Windows PowerShell window.
+Ne zárja be a Windows PowerShell ablakot.
 
-##### <a name="BKMK_PrepareInternetConnectedWorkstation3"></a>Step 3: Download the BYOK toolset
-Go to the Microsoft Download Center and [download the BYOK toolset](http://go.microsoft.com/fwlink/?LinkId=335781) for your region:
+##### <a name="BKMK_PrepareInternetConnectedWorkstation3"></a>3. lépés: A BYOK toolset letöltése
+Nyissa meg a Microsoft Download Center és [Töltse le a BYOK toolset](http://go.microsoft.com/fwlink/?LinkId=335781) a terület:
 
-|Region|Package name|
-|----------|----------------|
-|North America|AzureRMS-BYOK-tools-UnitedStates.zip|
-|Europe|AzureRMS-BYOK-tools-Europe.zip|
-|Asia|AzureRMS-BYOK-tools-AsiaPacific.zip|
-The toolset includes the following :
+|Régió|Csomag neve|
+|---------|---------------|
+|Észak-Amerika|AzureRMS-BYOK-eszközök – Egyesült States.zip|
+|Európa|AzureRMS-BYOK-eszközök – Europe.zip|
+|Ázsia|AzureRMS-BYOK-eszközök – AsiaPacific.zip|
+A toolset többek között a következők:
 
--   A Key Exchange Key (KEK) package that has a name beginning with **BYOK-KEK-pkg-**.
+-   A kulcs Exchange kulcs (KEK) csomag, amelynek neve kezdődő **BYOK-KEK-pkg -**.
 
--   A Security World package that has a name beginning with **BYOK-SecurityWorld-pkg-**.
+-   A biztonsági globális csomag, amelynek neve kezdődő **BYOK-SecurityWorld-pkg -**.
 
--   A python script named **verifykeypackage.py**.
+-   Nevű python parancsfájl **verifykeypackage.py**.
 
--   A command-line executable file named **KeyTransferRemote.exe**, a metadata file named **KeyTransferRemote.exe.config**, and associated DLLs.
+-   Nevű parancssori végrehajtható fájl **KeyTransferRemote.exe**, a metaadatfájl nevű **KeyTransferRemote.exe.config**, és a kapcsolódó DLLs.
 
--   A Visual C++ Redistributable Package, named **vcredist_x64.exe**.
+-   A Visual C++ újraterjeszthető csomagot, nevű **vcredist_x64.exe**.
 
-Copy the package to a USB drive or other portable storage.
+Másolja át a csomagot egy USB-meghajtóra vagy más hordozható adattároló.
 
-#### <a name="BKMK_DisconnectedPrepareWorkstation"></a>Prepare your disconnected workstation
-To prepare your workstation that is not connected to a network (either the Internet or your internal network), follow these 2 steps:
+#### <a name="BKMK_DisconnectedPrepareWorkstation"></a>A kapcsolat nélküli munkaállomás előkészítése
+A munkaállomás, amely nem kapcsolódik egy hálózati (az interneten vagy belső hálózaton) előkészítése, kövesse az alábbi 2 lépéseket:
 
 -   [Step 1: Prepare the disconnected workstation with Thales HSM](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation1)
 
 -   [Step 2: Install the BYOK toolset on the disconnected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareDisconnectedWorkstation2)
 
-##### <a name="BKMK_PrepareDisconnectedWorkstation1"></a>Step 1: Prepare the disconnected workstation with Thales HSM
-On the disconnected workstation, install the nCipher (Thales) support software on a Windows computer, and then attach a Thales HSM to that computer.
+##### <a name="BKMK_PrepareDisconnectedWorkstation1"></a>1. lépés: A kapcsolat nélküli munkaállomás rendelkező Thales HSM előkészítése
+A kapcsolat nélküli munkaállomáson a nCipher (Thales) támogatási szoftver telepítése a Windows-számítógép, majd egy Thales HSM csatolása az adott számítógép.
 
-Ensure that the Thales tools are in your path **(%nfast_home%\bin** and **%nfast_home%\python\bin**). For example, type the following:
+Győződjön meg arról, hogy a Thales eszközök az elérési út **(%nfast_home%\bin** és **%nfast_home%\python\bin**). Írja be például a következők:
 
 ```
 set PATH=%PATH%;”%nfast_home%\bin”;”%nfast_home%\python\bin”
 ```
-For more information, see the user guide included with the Thales HSM, or visit the Thales website for Azure RMS at [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
+További információ a útmutatója Thales működnek együtt, vagy keresse fel a a Thales webhely az Azure RMS, [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
 
-##### <a name="BKMK_PrepareDisconnectedWorkstation2"></a>Step 2: Install the BYOK toolset on the disconnected workstation
-Copy the BYOK toolset package from the USB drive or other portable storage, and then do the following:
+##### <a name="BKMK_PrepareDisconnectedWorkstation2"></a>2. lépés: A BYOK toolset telepítése a kapcsolat nélküli munkaállomáson
+A BYOK toolset csomag másolása az USB-meghajtóra vagy más hordozható adattároló, majd tegye a következőket:
 
-1.  Extract the files from the downloaded package into any folder.
+1.  Bontsa ki a fájlokat a letöltött csomag bármelyik mappába.
 
-2.  From that folder, run vcredist_x64.exe.
+2.  A mappából, futtassa a vcredist_x64.exe.
 
-3.  Follow the instructions to the install the Visual C++ runtime components for Visual Studio 2012.
+3.  Kövesse az utasításokat a telepítés a Visual C++ futásidejű összetevők a Visual Studio 2012.
 
-#### <a name="BKMK_InternetGenerate"></a>Generate your tenant key
-On the disconnected workstation, following these 3 steps to generate your own tenant key:
+#### <a name="BKMK_InternetGenerate"></a>A bérlő kulcs létrehozása
+A kapcsolat nélküli munkaállomáson, a következő 3 lépéseket a saját bérlői kulcs létrehozása:
 
 -   [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1)
 
@@ -260,107 +259,107 @@ On the disconnected workstation, following these 3 steps to generate your own te
 
 -   [Step 3: Create a new key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate3)
 
-##### <a name="BKMK_InternetGenerate1"></a>Step 1: Create a security world
-Start a command prompt and run the Thales new-world program.
+##### <a name="BKMK_InternetGenerate1"></a>1. lépés: A biztonsági globális létrehozása
+Indítsa el a parancssorba, és futtassa a Thales új globális programot.
 
 ```
 new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 ```
-This program creates a **Security World** file at %NFAST_KMDATA%\local\world, which corresponds to the C:\ProgramData\nCipher\Key Management Data\local folder. You can use different values for the quorum but in our example, you’re prompted to enter three blank cards and pins for each one. Then, any two cards will be required to have administrative access to the security world (your specified quorum).  These cards become the **Administrator Card Set** for the new security world. At this stage, you can specify the password or PIN for each ACS card, or add it later with a command.
+A program létrehoz egy **biztonsági globális** fájl: % NFAST_KMDATA%\local\world, amely megfelel a C:\ProgramData\nCipher\Key felügyeleti Settings\User mappába. Különböző értékek használata a kvórum, de ebben a példában, adja meg a három üres kártyák és PIN mindegyik egy felszólítást. Ezt követően minden két kártyák kötelező rendszergazdai hozzáféréssel rendelkezik a biztonsági világ (a megadott kvórum).  Ezeket a kártyákat válnak a **rendszergazda kártya beállítása** az új biztonsági globális számára. Ebben a szakaszban adja meg a jelszó vagy PIN-kód minden ACS kártya, vagy később hozzáadása paranccsal.
 
 > [!TIP]
-> You can verify the current configuration status of your HSM by using the `nkminfo` command.
+> Az aktuális konfigurációs állapotát a HSM segítségével ellenőrizheti a `nkminfo` parancsot.
 
-Then do the following:
+Tegye a következőket:
 
-1.  Install the Thales CNG provider as described in the Thales documentation, and configure it to use the new security world.
+1.  Telepítse a Thales CNG szolgáltató, a Thales dokumentációjában leírt, és állítja be, hogy az új biztonsági globális használja.
 
-2.  Back up the world file in **%nfast_kmdata%\local**. Secure and protect the world file, the Administrator Cards, and their pins, and make sure that no single person has access to more than one card.
+2.  Készítsen biztonsági másolatot a globális fájlt **%nfast_kmdata%\local**. Biztonságos és a globális fájl, a rendszergazda kártyák és saját PIN védelme, és győződjön meg arról, hogy nincs egyetlen személynek egynél több kártya hozzáférése van-e.
 
-##### <a name="BKMK_InternetGenerate2"></a>Step 2: Validate the downloaded package
-This step is optional but recommended so that you can validate the following:
+##### <a name="BKMK_InternetGenerate2"></a>2. lépés: A letöltött csomag ellenőrzése
+Ez a lépés nem kötelező de javasolt, hogy a ellenőrizheti, hogy a következők:
 
--   The Key Exchange Key that is included in the toolset has been generated from a genuine Thales HSM.
+-   A kulcs cserekulcs, amely a toolset szerepel a az eredeti Thales-HSM létrehozva.
 
--   The hash of the Azure RMS Security World that is included in the toolset has been generated in a genuine Thales HSM.
+-   Az Azure RMS biztonsági globális, amely a toolset szerepel a kivonatát az eredeti Thales-HSM létrehozva.
 
--   The Key Exchange Key is non-exportable.
+-   A kulcs Exchange kulcsa nem exportálható.
 
 > [!NOTE]
-> To validate the downloaded package, the HSM must be connected, powered on, and must have a security world on it (such as the one you’ve just created).
+> A letöltött csomag ellenőrzése, működnek kell kapcsolni, kapcsolva, és rendelkeznie kell egy biztonsági globális rajta (például az újonnan létrehozott egy).
 
-###### To validate the downloaded package
+###### A letöltött csomag ellenőrzése
 
-1.  Run the verifykeypackage.py script by tying one of the following, depending on your region:
+1.  A parancsfájl futtatásához a verifykeypackage.py által kapcsoló a következő, attól függően, hogy az adott régióban:
 
-    -   For North America:
+    -   Észak-Amerika: a
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
         ```
 
-    -   For Europe:
+    -   Európai:
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-EU-1 -w BYOK-SecurityWorld-pkg-EU-1
         ```
 
-    -   For Asia:
+    -   Az ázsiai:
 
         ```
         python verifykeypackage.py -k BYOK-KEK-pkg-AP-1 -w BYOK-SecurityWorld-pkg-AP-1
         ```
 
     > [!TIP]
-    > The Thales software includes a Python interpreter at %NFAST_HOME%\python\bin
+    > A Thales szoftver tartalmaz egy Python értelmezési %NFAST_HOME%\python\bin:
 
-2.  Confirm that you see the following, which indicates successful validation: **Result:  SUCCESS**
+2.  Győződjön meg arról, hogy megjelenik-e a következő, amely azt jelzi, a sikeres érvényesítést: **Eredménye:  SIKERES**
 
-This script validates the signer chain up to the Thales root key. The hash of this root key is embedded in the script and its value should be **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. You can also confirm this value separately by visiting the [Thales website](http://www.thalesesec.com/).
+Ez a parancsfájl a aláíró lánc, hogy a Thales gyökérkulcs érvényesíti. A gyökérkulcs kivonatát beágyazott parancsfájl, és az értéket kell **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Ellenőrizheti ezt az értéket külön-külön szintjéről a [Thales webhely](http://www.thalesesec.com/).
 
-You’re now ready to create a new key that will be your RMS tenant key.
+Most készen áll, amelyet az RMS-bérlői kulcs új kulcs létrehozásához.
 
-##### <a name="BKMK_InternetGenerate3"></a>Step 3: Create a new key
-Generate a CNG key by using the Thales **generatekey** and **cngimport** programs.
+##### <a name="BKMK_InternetGenerate3"></a>3. lépés: Hozzon létre egy új kulcsot.
+A CNG kulcs készítése a Thales használatával **generatekey** és **cngimport** programok.
 
-Run the following command to generate the key:
+Futtassa a kulcs létrehozása a következő parancsot:
 
 ```
 generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 ```
-When you run this command, use these instructions:
+Ez a parancs futtatásakor járjon el:
 
--   For the key size, we recommend 2048 but also support 1024-bit RSA keys for existing AD RMS customers who have such keys and are migrating to Azure RMS.
+-   A kulcs méretét azt javasoljuk a 2048, de is támogatja a meglévő Active Directory tartalomvédelmi szolgáltatások ügyfeleknek, akik ilyen kulcsok és az Azure RMS áttelepíteni a 1024 bites RSA-kulcsok.
 
--   Replace the value of *contosokey* for the **ident** and **plainname** with any string value. To minimize administrative overheads and reduce the risk of errors, we recommend that you use the same value for both, and use all lower case characters.
+-   Értékének cseréjét *contosokey* számára a **ident** és **plainname** bármely karakterlánc-értékkel. Kis méret adminisztratív kiadások, és hibák kockázatának csökkentése, javasoljuk, hogy mindkét használja ugyanazt az értéket, és az összes kisbetű karaktereket.
 
--   The pubexp is left blank (default) in this example, but you can specify specific values. For more information, see the Thales documentation.
+-   A pubexp ebben a példában marad üres (alapértelmezett), de megadhat egyedi értékeket. További információt a Thales dokumentációjában olvasható.
 
-Then run the following command to import the key to CNG:
+Futtassa a CNG importálja a kulcsot a következő parancsot:
 
 ```
 cngimport --import -M --key=contosokey --appname=simple contosokey
 ```
-When you run this command, use these instructions:
+Ez a parancs futtatásakor járjon el:
 
--   Replace *contosokey* with the same value that you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+-   Cserélje ki *contosokey* megadott értékű [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) az a *készítése a bérlői kulcs* szakaszban.
 
--   Use the **-M** option so that the key is suitable for this scenario. Without this, the resultant key will be a user-specific key for the current user.
+-   Használja a **- M** lehetőséget, hogy a kulcs ezt a helyzetet alkalmas. Nélkül, az ebből eredő kulcs lesz a felhasználóspecifikus kulcs az aktuális felhasználó számára.
 
-This command creates a Tokenized Key file in your %NFAST_KMDATA%\local folder with a name starting with **key_caping_** followed by a SID. For example: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. This file contains an encrypted key.
+Ez a parancs fájlt hoz létre lexikális elemekké alakítva kulcs egy neve kezdve a %NFAST_KMDATA%\local mappában **key_caping_** követi a SID-AZONOSÍTÓVAL. Például: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. Ez a fájl egy titkosított kulcs tartalmazza.
 
 > [!TIP]
-> You can see the current configuration status of your keys by using the `nkminfo –k` command.
+> A jelenlegi konfigurációs állapot a kulcsok a használatával megtekintheti a `nkminfo –k` parancsot.
 
-Back up this Tokenized Key File in a safe location.
+Készítsen biztonsági másolatot a lexikális elemekké alakítva kulcs fájlt biztonságos helyre.
 
 > [!IMPORTANT]
-> When you later transfer your key to Azure RMS, Microsoft cannot export this key back to you so it becomes extremely important that you back up your key and security world safely. Contact Thales for guidance and best practices for backing up your key.
+> Ha később átvitele a kulcsot az Azure RMS, a Microsoft nem exportálható Ez a kulcs vissza, különösen fontos biztonsági másolatot a kulcsot, és a biztonsági globális biztonságosan válik. Lépjen kapcsolatba a Thales útmutatókat és a gyakorlati tanácsok a kulcs biztonsági másolatának.
 
-You are now ready to transfer your tenant key to Azure RMS.
+Most készen áll a bérlői kulcs átvitele az Azure RMS.
 
-#### <a name="BKMK_InternetPrepareTransfer"></a>Prepare your tenant key for transfer
-On the disconnected workstation, following these 4 steps to prepare your own tenant key:
+#### <a name="BKMK_InternetPrepareTransfer"></a>A bérlő kulcsát átvitel előkészítése
+A kapcsolat nélküli munkaállomáson, a következő saját bérlői kulcsot előkészítése 4 lépéseket:
 
 -   [Step 1: Create a copy of your key with reduced permissions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer1)
 
@@ -370,39 +369,39 @@ On the disconnected workstation, following these 4 steps to prepare your own ten
 
 -   [Step 4: Copy your key transfer package to the Internet-connected workstation](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetPrepareTransfer4)
 
-##### <a name="BKMK_InternetPrepareTransfer1"></a>Step 1: Create a copy of your key with reduced permissions
-To reduce the permissions on your tenant key, do the following:
+##### <a name="BKMK_InternetPrepareTransfer1"></a>1. lépés: Másolat készítése a kulcs korlátozott engedélyekkel rendelkező
+A bérlő kulcs engedélyeit csökkentéséhez tegye a következőket:
 
--   From a command prompt, run one of the following, depending on your region:
+-   A parancssorba futtassa a következő, attól függően, hogy az adott régióban:
 
-    -   For North America:
+    -   Észak-Amerika: a
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1
         ```
 
-    -   For Europe:
+    -   Európai:
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1
         ```
 
-    -   For Asia:
+    -   Az ázsiai:
 
         ```
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1
         ```
 
-When you run this command, replace *contosokey* with the same value you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+Ez a parancs futtatásakor lecserélni *contosokey* ugyanazzal a tulajdonság értéke a megadott [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) származó a *készítése a bérlői kulcs* szakaszban.
 
-You will be asked to plug in your security world ACS cards, and if specified, their password or PIN..
+Meg kell adnia a beépülő modul biztonsági globális ACS kártyák, és ha meg van adva, a jelszó vagy PIN-kód létrehozása...
 
-When the command completes, you will see **Result: SUCCESS** and the copy of your tenant key with reduced permissions will be in the file named key_xferacId_*&lt;contosokey&gt;*.
+A parancs befejezésekor, látni fogja **eredménye: Sikeres** és a bérlői kulcsot a korlátozott engedélyekkel rendelkező példányát lesz a key_xferacId_ nevű fájl*&lt; contosokey &gt;*.
 
-##### <a name="BKMK_InternetPrepareTransfer2"></a>Step 2: Inspect the new copy of the key
-Optionally, run the Thales utilities to confirm the minimal permissions on the new tenant key:
+##### <a name="BKMK_InternetPrepareTransfer2"></a>2. lépés: Vizsgálja meg a kulcs új másolatát.
+Szükség esetén futtassa a Thales segédprogramok a minimális engedélyekkel, az új bérlői kulcs megerősítése:
 
--   aclprint.py:
+-   aclprint.PY:
 
     ```
     "%nfast_home%\bin\preload.exe" -m 1 -A xferacld -K contosokey "%nfast_home%\python\bin\python" "%nfast_home%\python\examples\aclprint.py"
@@ -414,47 +413,47 @@ Optionally, run the Thales utilities to confirm the minimal permissions on the n
     "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
     ```
 
-When you run these command, replace *contosokey* with the same value you specified in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+Ezek a parancs futtatásakor lecserélni *contosokey* ugyanazzal a tulajdonság értéke a megadott [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) a a *készítése a bérlői kulcs* szakaszban.
 
-##### <a name="BKMK_InternetPrepareTransfer3"></a>Step 3: Encrypt your key by using Microsoft’s Key Exchange Key
-Run one of the following commands, depending on your region:
+##### <a name="BKMK_InternetPrepareTransfer3"></a>3. lépés: A kulcs titkosításához a Microsoft kulcs cserekulcs használatával
+Attól függően, hogy az adott régióban futtassa a következő parancsok egyikét:
 
--   For North America:
+-   Észak-Amerika: a
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
--   For Europe:
+-   Európai:
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
--   For Asia:
+-   Az ázsiai:
 
     ```
     KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1 -TenantBposId GUID -KeyFriendlyName ContosoFirstkey
     ```
 
-When you run this command, use these instructions:
+Ez a parancs futtatásakor járjon el:
 
--   Replace *contosokey* with the identifier that you used to generate the key in [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) from the *Generate your tenant key* section.
+-   Cserélje ki *contosokey* a kulcsot a létrehozásához használt azonosítóval [Step 1: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetGenerate1) származó a *készítése a bérlői kulcs* szakaszban.
 
--   Replace *GUID* with your Azure Active Directory tenant ID that you retrieved in [Step 2: Get your Azure Active Directory tenant ID](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2) from the *Prepare your Internet-connected workstation* section.
+-   Cserélje ki *GUID* az Azure Active Directoryban a bérlői azonosító, amely akkor olvassa be a [Step 2: Get your Azure Active Directory tenant ID](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_PrepareInternetConnectedWorkstation2) származó a *internetkapcsolattal munkaállomáson előkészítése* szakaszban.
 
--   Replace *ContosoFirstKey* with a label that will be used for your output file name.
+-   Cserélje ki *ContosoFirstKey* amely jelzi a kimeneti fájl neve a címkével ellátott.
 
-When this completes successfully it displays **Result: SUCCESS** and there will be a new file in the current folder that has the following name: TransferPackage-*ContosoFirstkey*.byok
+Ha ez sikeresen befejeződik, jeleníti meg **eredménye: Sikeres** és a rendszer kell egy új fájlt az aktuális mappa, amely a következő név: TransferPackage -*ContosoFirstkey*.byok
 
-##### <a name="BKMK_InternetPrepareTransfer4"></a>Step 4: Copy your key transfer package to the Internet-connected workstation
-Use a USB drive or other portable storage to copy the output file from the previous step (KeyTransferPackage-*ContosoFirstkey*.byok) to your Internet-connected workstation.
+##### <a name="BKMK_InternetPrepareTransfer4"></a>4. lépés: A kulcs átvitel csomagot az internethez csatlakozó munkaállomás másolása
+A kimeneti fájl másolása az előző lépésben egy USB-meghajtóra vagy más hordozható adattároló segítségével (KeyTransferPackage -*ContosoFirstkey*.byok) a internetkapcsolattal munkaállomásra.
 
 > [!NOTE]
-> Use security practices to protect the file because it includes your private key.
+> Biztonsági gyakorlata segítségével a fájl védelmét, mert a titkos kulcs tartalmaz.
 
-#### <a name="BKMK_InternetTransfer"></a>Transfer your tenant key to Azure RMS
-On the Internet-connected workstation,  follow these 3 steps To transfer your new tenant key to Azure RMS, :
+#### <a name="BKMK_InternetTransfer"></a>A bérlő kulcs átvitele az Azure RMS
+A munkaállomáson internetkapcsolattal a bérlői kulcsnak átvitele az Azure RMS, 3 lépések végrehajtásával:
 
 -   [Step 1: Connect to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer1)
 
@@ -462,53 +461,53 @@ On the Internet-connected workstation,  follow these 3 steps To transfer your ne
 
 -   [Step 3: Enumerate your tenant keys – as needed](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_InternetTransfer3)
 
-##### <a name="BKMK_InternetTransfer1"></a>Step 1: Connect to Azure RMS
-Return to the Windows PowerShell window and type the following:
+##### <a name="BKMK_InternetTransfer1"></a>1. lépés: Kapcsolódás Azure RMS
+Térjen vissza a Windows PowerShell ablakot, és írja be a következőt:
 
-1.  Reconnect to the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service:
+1.  Csatlakozzon újra a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] szolgáltatás:
 
     ```
     Connect-AadrmService
     ```
 
-2.  Use the [Get-AadrmKeys](http://msdn.microsoft.com/library/windowsazure/dn629420.aspx) cmdlet to see your current tenant key configuration:
+2.  Használja a [Get-AadrmKeys](http://msdn.microsoft.com/library/windowsazure/dn629420.aspx) parancsmag tekintse meg az aktuális bérlői-konfiguráció:
 
     ```
     Get-AadrmKeys
     ```
 
-##### <a name="BKMK_InternetTransfer2"></a>Step 2: Upload the key package
-Use the [Add-AadrmKey](http://msdn.microsoft.com/library/windowsazure/dn629418.aspx) cmdlet to upload the key transfer package that you copied from the disconnected workstation:
+##### <a name="BKMK_InternetTransfer2"></a>2. lépés: A kulcs csomag feltöltése
+Használja a [hozzáadása-AadrmKey](http://msdn.microsoft.com/library/windowsazure/dn629418.aspx) parancsmag feltölteni a kulcs átvitel csomag a kapcsolat nélküli munkaállomáson másolt:
 
 ```
 Add-AadrmKey –KeyFile <PathToPackageFile> -Verbose
 ```
 > [!WARNING]
-> You are prompted to confirm this action. It’s important to understand that this action cannot be undone. When you upload a tenant key, it automatically becomes your organization’s primary tenant key and users will start to use this tenant key when they protect documents and files.
+> Ez a művelet megerősítését kéri. Fontos, hogy megtudja, hogy ez a művelet nem vonható vissza. Bérlői kulcs feltöltésekor automatikusan lesz a szervezet a bérlő elsődleges kulcs, és a felhasználók megkezdődik a bérlői kulcs használni, ha védetté tenni a dokumentumok és fájlok.
 
-If the upload is successful, you will see the following message: **The Rights management service successfully added the key.**
+Ha a feltöltési művelet sikeres, a következő üzenet jelenik meg: **A Rights management szolgáltatás sikeresen hozzáadva a kulcsot.**
 
-Expect a replication delay for the change to propagate to all [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] data centers.
+A replikációs késleltetés a változás terjesztése az összes várt [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] adatközpontokban.
 
-##### <a name="BKMK_InternetTransfer3"></a>Step 3: Enumerate your tenant keys – as needed
-Use the Get-AadrmKeys cmdlet again to see the change in your tenant key, and whenever you want to see a list of your tenant keys. The tenant keys displayed include the initial tenant key that Microsoft generated for you, and any tenant keys that you added:
+##### <a name="BKMK_InternetTransfer3"></a>3. lépés: A bérlő kulcsok – számbavétele, szükség szerint
+A Get-AadrmKeys parancsmag újra segítségével jelenik meg a bérlői kulcsot, és tetszés szerinti a bérlői kulcsok megtekintéséhez. A bérlő kulcsok jelenik meg a következők: a kezdeti bérlői kulcs, amely a Microsoft jönnek létre, meg, és bármely bérlői kulcsok hozzáadott:
 
 ```
 Get-AadrmKeys
 ```
-The tenant key that is marked **Active** is the one that your organization is currently using to protect documents and files.
+A bérlő kulcs megjelölt **aktív** van, amely a szervezet dokumentumok és fájlok védelme érdekében jelenleg használ.
 
-You have now completed all the steps required for bring your own key over the Internet and can go to [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
+Most már befejeződött, a szükséges lépéseket a saját kulcs hozása az interneten keresztül, és nyissa meg az összes [Next steps](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_NextSteps).
 
-### <a name="BKMK_BYOK_InPerson"></a>Generate and transfer your tenant key – in person
-Use the following procedures if you do not want to transfer your tenant key over the Internet, but instead, transfer your tenant key in person.
+### <a name="BKMK_BYOK_InPerson"></a>Létrehozása és a bérlői kulcs – az személy átvitele
+Az alábbi eljárásokkal, ha nem szeretne a bérlői kulcs transfer az interneten keresztül, de ehelyett transfer az a személy bérlői kulcsot.
 
 -   [Generate your tenant key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateKey)
 
 -   [Transfer your tenant key to Azure RMS](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Transfer)
 
-#### <a name="BKMK_GenerateKey"></a>Generate your tenant key
-To generate your own tenant key, follow these 3 steps:
+#### <a name="BKMK_GenerateKey"></a>A bérlő kulcs létrehozása
+A saját bérlői kulcs létrehozása, kövesse az alábbi 3 lépéseket:
 
 -   [Step 1: Prepare a workstation with Thales HSM](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey1)
 
@@ -516,63 +515,63 @@ To generate your own tenant key, follow these 3 steps:
 
 -   [Step 3: Create a new key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey3)
 
-##### <a name="BKMK_GenerateYourKey1"></a>Step 1: Prepare a workstation with Thales HSM
-Install the nCipher (Thales) support software on a Windows computer. Attach a Thales HSM to that computer. Ensure the Thales tools are in your path. For more information, see the user guide included with the Thales HSM, or visit the Thales website for Azure RMS at [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
+##### <a name="BKMK_GenerateYourKey1"></a>1. lépés: A Thales HSM a munkaállomás előkészítése
+A Windows-számítógép a nCipher (Thales) szoftver telepítésére. Csatolás egy Thales HSM arra a számítógépre. Győződjön meg arról a Thales eszközök a elérési útját. További információ a útmutatója Thales működnek együtt, vagy keresse fel a a Thales webhely az Azure RMS, [http://www.thales-esecurity.com/msrms/cloud](http://www.thales-esecurity.com/msrms/cloud).
 
-##### <a name="BKMK_GenerateYourKey2"></a>Step 2: Create a security world
-Start a command prompt and run the Thales new-world program.
+##### <a name="BKMK_GenerateYourKey2"></a>2. lépés: A biztonsági globális létrehozása
+Indítsa el a parancssorba, és futtassa a Thales új globális programot.
 
 ```
 new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 ```
-This program creates a **Security World** file at %NFAST_KMDATA%\local\world, which corresponds to the C:\ProgramData\nCipher\Key Management Data\local folder. You can use different values for the quorum but in our example, you’re prompted to enter three blank cards and pins for each one. Then, any two cards will give full access to the security world.  These cards become the **Administrator Card Set** for the new security world.
+A program létrehoz egy **biztonsági globális** fájl: % NFAST_KMDATA%\local\world, amely megfelel a C:\ProgramData\nCipher\Key felügyeleti Settings\User mappába. Különböző értékek használata a kvórum, de ebben a példában, adja meg a három üres kártyák és PIN mindegyik egy felszólítást. Ezt követően bármely két kártyák fog teljes hozzáférést adnak a biztonsági világ.  Ezeket a kártyákat válnak a **rendszergazda kártya beállítása** az új biztonsági globális számára.
 
-Then do the following:
+Tegye a következőket:
 
-1.  Install the Thales CNG provider as described in the Thales documentation, and configure it to use the new security world.
+1.  Telepítse a Thales CNG szolgáltató, a Thales dokumentációjában leírt, és állítja be, hogy az új biztonsági globális használja.
 
-2.  Back up the world file. Secure and protect the world file, the Administrator Cards, and their pins, and make sure that no single person has access to more than one card.
+2.  Készítsen biztonsági másolatot a globális fájlt. Biztonságos és a globális fájl, a rendszergazda kártyák és saját PIN védelme, és győződjön meg arról, hogy nincs egyetlen személynek egynél több kártya hozzáférése van-e.
 
-You’re now ready to create a new key that will be your RMS tenant key.
+Most készen áll, amelyet az RMS-bérlői kulcs új kulcs létrehozásához.
 
-##### <a name="BKMK_GenerateYourKey3"></a>Step 3: Create a new key
-Generate a CNG key by using the Thales **generatekey** and **cngimport** programs.
+##### <a name="BKMK_GenerateYourKey3"></a>3. lépés: Hozzon létre egy új kulcsot.
+A CNG kulcs készítése a Thales használatával **generatekey** és **cngimport** programok.
 
-Run the following command to generate the key:
+Futtassa a kulcs létrehozása a következő parancsot:
 
 ```
 generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 ```
-When you run this command, use these instructions:
+Ez a parancs futtatásakor járjon el:
 
--   For the key size, we recommend 2048 but also support 1024-bit RSA keys for existing AD RMS customers who have such keys and are migrating to Azure RMS.
+-   A kulcs méretét azt javasoljuk a 2048, de is támogatja a meglévő Active Directory tartalomvédelmi szolgáltatások ügyfeleknek, akik ilyen kulcsok és az Azure RMS áttelepíteni a 1024 bites RSA-kulcsok.
 
--   Replace the value of *contosokey* for the **ident** and **plainname** with any string value. To minimize administrative overheads and reduce the risk of errors, we recommend that you use the same value for both, and use all lower case characters.
+-   Értékének cseréjét *contosokey* számára a **ident** és **plainname** bármely karakterlánc-értékkel. Kis méret adminisztratív kiadások, és hibák kockázatának csökkentése, javasoljuk, hogy mindkét használja ugyanazt az értéket, és az összes kisbetű karaktereket.
 
--   The pubexp is left blank (default) in this example, but you can specify specific values. For more information, see the Thales documentation.
+-   A pubexp ebben a példában marad üres (alapértelmezett), de megadhat egyedi értékeket. További információt a Thales dokumentációjában olvasható.
 
-Then run the following command to import the key to CNG:
+Futtassa a CNG importálja a kulcsot a következő parancsot:
 
 ```
 cngimport --import –M --key=contosokey --appname=simple contosokey
 ```
-When you run this command, use these instructions:
+Ez a parancs futtatásakor járjon el:
 
--   Replace *contosokey* with the same value that you specified in Step 1.
+-   Cserélje ki *contosokey* 1. lépés megadott értékkel.
 
--   Use the **-M** option so that the key is suitable for this scenario. Without this, the resultant key will be a user-specific key for the current user.
+-   Használja a **- M** lehetőséget, hogy a kulcs ezt a helyzetet alkalmas. Nélkül, az ebből eredő kulcs lesz a felhasználóspecifikus kulcs az aktuális felhasználó számára.
 
-This command creates a Tokenized Key file in your %NFAST_KMDATA%\local folder with a name starting with **key_caping_** followed by a SID. For example: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. This file contains an encrypted key.
+Ez a parancs fájlt hoz létre lexikális elemekké alakítva kulcs egy neve kezdve a %NFAST_KMDATA%\local mappában **key_caping_** követi a SID-AZONOSÍTÓVAL. Például: **key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**. Ez a fájl egy titkosított kulcs tartalmazza.
 
-Back up this Tokenized Key File in a safe location.
+Készítsen biztonsági másolatot a lexikális elemekké alakítva kulcs fájlt biztonságos helyre.
 
 > [!IMPORTANT]
-> When you later transfer your key to Azure RMS, Microsoft will have a non-recoverable copy of your key. This means that nobody can retrieve your key from the HSMs at Microsoft. This allows you to retain exclusive control over your tenant key. Therefore it becomes extremely important that you back up your key and security world safely. Contact Thales for guidance and best practices for backing up your key.
+> Ha később átvitele a kulcsot az Azure RMS, a Microsoft lesz a kulcs nem lesznek helyreállíthatók másolatát. Ez azt jelenti, hogy senki nem lehet beolvasni a kulcsot a Microsoft HSMs. Ez lehetővé teszi, hogy a bérlői kulcs kizárólagos szabályozhatják megőrzése. Ezért válik különösen fontos biztonsági másolatot a kulcsot, és a biztonsági globális biztonságosan. Lépjen kapcsolatba a Thales útmutatókat és a gyakorlati tanácsok a kulcs biztonsági másolatának.
 
-You are now ready to transfer your tenant key to Azure RMS.
+Most készen áll a bérlői kulcs átvitele az Azure RMS.
 
-#### <a name="BKMK_Transfer"></a>Transfer your tenant key to Azure RMS
-After you have generated your own key, you must transfer it to Azure RMS before you use it. For the highest level of security, this transfer is a manual process that requires you to fly to the Microsoft office in Redmond, Washington, United States of America. To complete this process, follow these 3 steps:
+#### <a name="BKMK_Transfer"></a>A bérlő kulcs átvitele az Azure RMS
+A generálása a saját kulcs után azt kell át az Azure RMS használat előtt. A legmagasabb szint, biztonsági az átvitel, amely megköveteli, hogy a Microsoft Office a Redmond, Washington, Amerikai Egyesült Államok hajózni kézi folyamat. Ez a folyamat befejezéséhez kövesse az alábbi 3 lépéseket:
 
 -   [Step 1: Bring your key to Microsoft](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey1)
 
@@ -580,70 +579,70 @@ After you have generated your own key, you must transfer it to Azure RMS before 
 
 -   [Step 3: Closing procedures](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_TransferYourKey3)
 
-###### Step 1: Bring your key to Microsoft
+###### 1. lépés: A kulcs hozása a Microsoftnak
 
--   Contact Microsoft Customer Support Services (CSS) to schedule a key transfer appointment for Azure RMS. Bring the following to Microsoft in Redmond:
+-   Forduljon a Microsoft ügyfélszolgálathoz (CSS), kulcs átvitel találkozó ütemezése az Azure RMS. A következő hozása Redmond Microsoftnak:
 
-    -   A quorum of your Administrative Cards. If you followed the previous instructions in [Step 2: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2), these are any two of your three cards.
+    -   A felügyeleti kártyák egy kvórum. Ha a korábbi utasításait követtük [Step 2: Create a security world](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_GenerateYourKey2), bármely kettő három kártya.
 
-    -   Personnel authorized to carry your Administrative Cards and pins, typically two (one for each card).
+    -   A személyzet jogosult végrehajtani a felügyeleti kártyák és PIN, általában két (egy, az egyes kártya).
 
-    -   Your Security World file (%NFAST_KMDATA%\local\world) on a USB drive.
+    -   A biztonsági globális fájl (% NFAST_KMDATA%\local\world) USB-meghajtóra.
 
-    -   Your Tokenized Key File on a USB drive.
+    -   A lexikális elemekké alakítva kulcsfájl USB-meghajtóra.
 
-###### Step 2: Transfer your key to the Window Azure RMS security world
+###### 2. lépés: A kulcs átvitele a Windows Azure RMS biztonsági globális
 
-1.  When you arrive at Microsoft to transfer your key, the following happens:
+1.  A Microsoft a kulcs átvitelére érkezésekor a következők történnek:
 
-    -   Microsoft provides you with an offline workstation that has a Thales HSM attached, Thales software installed, and a Azure RMS Security World file pre-loaded into the folder C:\Temp\Destination.
+    -   A Microsoft biztosít egy kapcsolat nélküli munkaállomás, amely egy csatolt Thales HSM, Thales szoftver telepítve és előre betöltött Azure RMS biztonsági globális fájl C:\Temp\Destination mappába.
 
-    -   On this workstation, you load your Security World file and Tokenized Key File from your USB drive into the C:\Temp\Source folder.
+    -   Ennek a munkaállomásnak meg betölteni a biztonsági globális és lexikális elemekké alakítva kulcs fájlt a USB-meghajtóról, a C:\Temp\Source mappába.
 
-    -   Azure RMS operators securely transfer your key to the Azure RMS security world by using Thales utilities.
+    -   Azure RMS operátorok biztonságosan átvitele a kulcsot az Azure RMS biztonsági globális Thales segédprogramok használatával.
 
-    This process will look similar to the following, where the last parameter of key-xfer-im in this example is replaced by your Tokenized Key File name:
+    Ez a folyamat fog megjelenni hasonló a következő, ahol kulcs-xfer-im ebben a példában az utolsó paraméterének helyébe a lexikális elemekké alakítva kulcs neve:
 
-    **C:\&gt; mk-reprogram.exe --owner c:\Temp\Destination add c:\Temp\Source**
+    **C:\ &gt; mk-reprogram.exe--tulajdonos c:\Temp\Destination hozzáadása c:\Temp\Source**
 
-    **C:\&gt; key-xfer-im.exe c:\Temp\Source c:\Temp\Destination --module c:\Temp\Source\key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**
+    **C:\ &gt; kulcs-xfer-im.exe c:\Temp\Source c:\Temp\Destination--modul c:\Temp\Source\key_caping_machine--801c1a878c925fd9df4d62ba001b94701c039e2fb**
 
-2.  Mk-reprogram will ask you and the Azure RMS operators to plug in their respective Administrator cards and pins. These commands output a Tokenized Key File in C:\Temp\Destination that contains your key protected by Azure RMS security world.
+2.  MK újraprogramozza a rendszer kéri, és az Azure RMS operátorok PIN, valamint a megfelelő rendszergazda kártyák csatlakoztatni. Ezek a parancsok kimeneti C:\Temp\Destination, amely tartalmazza a kulcs biztonsági a globális Azure RMS által védett lexikális elemekké alakítva kulcs egy fájlt.
 
-###### Step 3: Closing procedures
+###### 3. lépés: A záró eljárások
 
--   In your presence, Azure RMS operators do the following:
+-   A jelenlét, az Azure RMS operátorok tegye a következőket:
 
-    -   Run a tool that Microsoft developed in collaboration with Thales that removes two permissions: The permission to recover the key, and the permission to change permissions. After this is done, this copy of your key is locked to the Azure RMS security world. Thales HSMs will not allow Azure RMs operators with their Administrator cards to recover the plaintext copy of your key.
+    -   Futtassa a egy eszköz, amely a Microsoft azért fejlesztette ki, amely eltávolítja a két engedélyek Thales együttműködve: A engedélye a kulcs helyreállítása, és az engedély engedélyek módosítása. Ennek elvégzése után a ezt a példányt, a kulcs az Azure RMS biztonsági világ le van zárva. A rendszergazda kártyákkal, az egyszerű szöveg másolása a kulcs helyreállítása Thales HSMs Azure RMs operátorok nem teszik lehetővé.
 
-    -   Copy the resulting key file to a USB drive to later upload to the Azure RMS service.
+    -   Másolja az eredményül kapott kulcs egy USB-meghajtóra később feltölteni az Azure RMS szolgáltatást.
 
-    -   Factory-reset the HSM, and wipe the workstation clean.
+    -   Alaphelyzetbe állítás gyári működnek, és a munkaállomás tiszta törléséhez.
 
-You have now completed all the steps required for bring your own key in person and can return to your organization for the next steps.
+Az összes szükséges lépéseket a saját kulcs hozása az a személy, és az alábbi lépéseket az Ön szervezete visszatérhet most már befejeződött.
 
-## <a name="BKMK_NextSteps"></a>Next steps
+## <a name="BKMK_NextSteps"></a>További lépések
 
-1.  Start to use your tenant key:
+1.  Indítsa el a bérlői kulcs használata:
 
-    -   If you haven’t already done so, you must now activate Rights Management so that your organization can start to use RMS. Users immediately start to use your tenant key (managed by Microsoft or managed by you).
+    -   Ha még nem tette meg, most aktiválnia kell a Rights Management, hogy a szervezet elindíthatja az RMS használatához. A felhasználók a bérlői kulcsot (Microsoft kezeli, vagy az Ön által kezelt) indításához.
 
-        For more information about activation, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+        Az aktiválás kapcsolatos további információkért tekintse meg a [Az Azure Rights Management aktiválása](../Topic/Activating_Azure_Rights_Management.md).
 
-    -   If you had already activated Rights Management and then decided to manage your own tenant key, users gradually transition from the old tenant key to the new tenant key, and this staggered transition can take a few weeks to complete. Documents and files that were protected with the old tenant key remains accessible to authorized users.
+    -   Ha már a Rights Management aktiválva volt, és majd úgy döntött, hogy a saját bérlői kulcs kezelése, a felhasználók fokozatosan áttérés a régi bérlői kulcsból az új bérlői kulcs, és ez elosztani közbenső is eltarthat néhány héttel befejezéséhez. Dokumentumok és fájlok, amelyek a régi kulccsal bérlői védettek továbbra is engedélyezett felhasználók érhetik el.
 
-2.  Consider enabling usage logging, which logs every transaction that RMS performs.
+2.  Érdemes megfontolni a használat naplózása, amely naplóz minden tranzakció, amely az RMS-hajt végre.
 
-    If you decided to manage your own tenant key, logging includes information about using your tenant key. See the following example of a log file displayed in Excel where the **Decrypt** and **SignDigest** Request Types show that the tenant key is being used.
+    Ha Ön a úgy döntött, hogy a saját bérlői kulcs kezelése, a naplózás a bérlői kulcs használatával kapcsolatos információkat tartalmaz. Tekintse meg a következő példában a naplófájl, az Excel programban jelenik meg, ahol a **visszafejteni** és **SignDigest** kérelem típusok megjelenítése, hogy a bérlői kulcs használatos.
 
     ![](../Image/RMS_Logging.gif)
 
-    For more information about usage logging, see [Logging and Analyzing Azure Rights Management Usage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
+    A használat naplózása kapcsolatos további információkért tekintse meg a [Naplózás, és az Azure Rights Management használati elemzése](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
 
-3.  Maintain your tenant key.
+3.  A bérlő kulcs karbantartása.
 
-    For more information, see [Operations for Your Azure Rights Management Tenant Key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
+    További tudnivalókért tekintse meg a [A Azure Rights Management bérlői kulcs műveletek](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

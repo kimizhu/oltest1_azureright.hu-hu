@@ -3,118 +3,117 @@ description: na
 keywords: na
 title: Information and Support for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 7cc73d92-27d6-49ff-a8ab-2fae73519b4b
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Information and Support for Azure Rights Management
-Use the following resources for additional information about Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS).
+# Inform&#225;ci&#243;k &#233;s t&#225;mogat&#225;s a Azure Rights Management
+A következő erőforrások használatára vonatkozó további információk a Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS).
 
-|To do this …|.. do this:|
-|----------------|---------------|
-|… read the most current [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] product documentation →|Use the TechNet documentation library for  [Azure Rights Management](../Topic/Azure_Rights_Management.md)|
-|… provide feedback about the documentation or ask a question about the documentation →|Email [askipteam](mailto:%20askipteam@microsoft.com?subject=Documentation%20feedback)|
-|… receive tweets about Rights Management and announcements about documentation updates from the product group →|Follow Dan Plastina, who helps lead the Microsoft Rights Management Team. See [Dan Plastina @TheRMSGuy](https://twitter.com/TheRMSGuy)|
-|… get a trial version of [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] →|[Sign up for free 30-day trial](https://portal.microsoftonline.com/Signup/MainSignUp15.aspx?&amp;OfferId=A43415D3-404C-4df3-B31B-AAD28118A778&amp;dl=RIGHTSMANAGEMENT&amp;ali=1)|
-The following sections provide additional information about [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]:
+|Ehhez...|.. tegye a következőket:|
+|------------|----------------------------|
+|… az a legfrissebb olvasható [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] termék dokumentációja →|A dokumentációjából TechNet számára  [Azure Rights Management](../Topic/Azure_Rights_Management.md)|
+|… Adja meg a dokumentációs visszajelzést, vagy kérdezze meg egy kérdést a dokumentáció →|E-mailek [askipteam](mailto:%20askipteam@microsoft.com?subject=Documentation%20feedback)|
+|… a Rights Management kapcsolatos tweets és a közlemények dokumentáció frissítésekről fogadni a termék csoport →|Kövesse a Dan Plastina, aki segít a Microsoft Rights Management csapata vezethet. Tekintse meg a [Dan Plastina @TheRMSGuy](https://twitter.com/TheRMSGuy)|
+|… Szerezze be a próbaverzióját [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] →|[A szabad 30 napos próbaváltozatát feliratkozás](https://portal.microsoftonline.com/Signup/MainSignUp15.aspx?&amp;OfferId=A43415D3-404C-4df3-B31B-AAD28118A778&amp;dl=RIGHTSMANAGEMENT&amp;ali=1)|
+A következő szakaszok további információkat nyújtanak [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]:
 
--   [Search the documentation library](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SearchTips)
+-   [Keresés a dokumentációban könyvtárban](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SearchTips)
 
--   [Downloadable documentation](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_Download)
+-   [Letölthető dokumentáció](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_Download)
 
--   [The Rights Management product group blog](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_ProductGroupBlog)
+-   [A Rights Management termék-csoport blogja](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_ProductGroupBlog)
 
--   [Support options and community resources](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SupportOptions)
+-   [Támogatási lehetőségek és a közösségi erőforrások](../Topic/Information_and_Support_for_Azure_Rights_Management.md#BKMK_SupportOptions)
 
-## <a name="BKMK_SearchTips"></a>Search the documentation library
-[Use this scoped search query](http://www.bing.com/search?q=%28"Rights%20Management"%29%20site:technet.microsoft.com/library%20meta:search.MSCategory%28jj619159%29) to find documentation in the TechNet Library that is scoped to [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] only.
+## <a name="BKMK_SearchTips"></a>Keresés a dokumentációban könyvtárban
+[a célzott keresést lekérdezéssel](http://www.bing.com/search?q=%28"Rights%20Management"%29%20site:technet.microsoft.com/library%20meta:search.MSCategory%28jj619159%29) találhatja meg dokumentációját a TechNet könyvtárban hatókörű [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] csak.
 
-The search results for that query do not include results about Active Directory Rights Management Services (AD RMS) or Windows Rights Management, or community resources. You can narrow the search results further by replacing the string, “Rights Management,” in the URL with your own search string.
+A keresési eredmények ehhez a lekérdezéshez tartalmazza az Active Directory tartalomvédelmi szolgáltatások (AD RMS) vagy a Windows Rights Management, vagy a közösségi erőforrások kapcsolatos találatokat. Leszűkítheti a keresési eredmények további azáltal, hogy a karakterlánc, a "Rights Management," a saját keresési karakterláncot az URL-címét.
 
-### Example searches
-[Use this search query](http://www.bing.com/search?q=%28"Rights%20Management"%29%20site:technet.microsoft.com/library%20meta:search.MSCategory%28jj619159%29) and then customize the search by using the following examples.
+### Példa keresések
+[Használja a keresési lekérdezés](http://www.bing.com/search?q=%28"Rights%20Management"%29%20site:technet.microsoft.com/library%20meta:search.MSCategory%28jj619159%29) és a keresés testreszabását a következő példák használatával.
 
--   Single search string: To search for topics that contain the search string **RMS connector**, replace **“Rights Management”** with **“RMS connector”**:
+-   Egyetlen keresési karakterlánc: A keresési karakterláncot tartalmazó témakörök kereséséhez **RMS-összekötő**, cserélje ki **“Rights Management”** rendelkező **“RMS connector”**:
 
     ```
     ("RMS connector") site:technet.microsoft.com/library meta:search.MSCategory(jj619159)
     ```
 
--   Combining search strings: To search for topics that contain the search strings **Exchange** and **SharePoint**, use the **AND** operator:
+-   Egyidejű keresési kifejezéseket: A keresési karakterláncot tartalmazó témakörök kereséséhez **Exchange** és **SharePoint**, használja a **AND** operátor:
 
     ```
     ("Exchange") AND ("SharePoint") site:technet.microsoft.com/library meta:search.MSCategory(jj619159)
     ```
 
--   Alternative search strings: To search for topics that contain the search string **Exchange** or **SharePoint**, use the **OR** operator:
+-   Alternatív keresési kifejezéseket: A keresési karakterláncot tartalmazó témakörök kereséséhez **Exchange** vagy **SharePoint**, használja a **OR** operátor:
 
     ```
     ("Exchange" OR "SharePoint") site:technet.microsoft.com/library meta:search.MSCategory(jj619159)
     ```
 
--   Exclude search strings: To search for topics that contain the search string **Exchange** and exclude topics about **SharePoint**, use the **NOT** operator:
+-   Kizárása a keresési kifejezéseket: A keresési karakterláncot tartalmazó témakörök kereséséhez **Exchange** és kizárása a témakörök kapcsolatos **SharePoint**, használja a **NOT** operátor:
 
     ```
     ("Exchange)" NOT ("SharePoint") site:technet.microsoft.com/library meta:search.MSCategory(jj619159)
     ```
 
-### Search tips
-Use the following search tips to help you find the information that you need:
+### Keresési tippek
+A következő keresési tippek segítségével megtalálhatja a szükséges információkat tartalmazza:
 
--   When you are searching for official documentation, use search terms that match those that you see in the user interface (UI) and TechNet documentation, rather than unofficial terms or abbreviations that you might see in community content. For example, search for "Azure Rights Management" rather than "AADRMS" or other unofficial abbreviations for this cloud service. Although you might often hear and see “RMS”, the full name is Rights Management service, so try searching for “rights management” rather than RMS when you are looking for official documentation. You can use the [Terminology for Azure Rights Management](../Topic/Terminology_for_Azure_Rights_Management.md) to help identify official terms that are specific to [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+-   Hivatalos dokumentumához keres, ha használja a keresési kifejezéseket, amelyek megfelelnek azokat, tekintse meg, ha a felhasználói felület (UI) és a TechNet dokumentációjának, ahelyett, nem hivatalos feltételek vagy rövidítése, előfordulhat, hogy közösségi tartalom látható. Például keresse meg a "Azure Rights Management" "AADRMS" vagy más nem hivatalos rövidítése, a felhőszolgáltatás helyett. Bár előfordulhat, hogy gyakran hallhassa, és tekintse meg a "RMS", a teljes név a Rights Management szolgáltatást, így próbálja megkeresni "rights management" RMS helyett, ha az Ön által keresett hivatalos dokumentumához. Használhatja a [Az Azure Rights Management kifejezésekkel](../Topic/Terminology_for_Azure_Rights_Management.md) azonosításához hivatalos feltételeket, amelyek az adott [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
 
--   When you search on a page in TechNet (press Ctrl-F, and enter search terms in the **Find** box), the results exclude text that is in collapsed sections. To search for text in collapsed sections, expand the sections before you search the page. To do this, you can click the **Expand All** button at the top of the page, or double-click any collapsed section. When all sections are expanded, a search of the page will then search all sections on that page.
+-   Ha keresés a TechNet lap (Ctrl-f megnyomásával, és adja meg a keresési feltételeket a **található** mezőben), az eredmények kizárása a szöveg, amelyet összecsukott szakaszban van. Összecsukott szakaszokban szöveg keresése, bontsa ki a szakaszok előtt kereshet az oldalon. Ehhez kattintson a **bontsa ki az összes** gombra, majd a lap tetején, vagy kattintson duplán a bármely összecsukott szakaszban. Minden szakasz kibontásakor a Keresés az oldal majd keresés minden szakaszt adott oldalon.
 
--   Whenever possible, use the TechNet library online rather than downloaded documentation. TechNet Library online contains the most up-to-date information, and the information that you are searching for might not be in the downloaded documentation or there might be corrections or additional information online.
+-   Ha lehetséges, használja a TechNet könyvtár online, hanem letöltött dokumentációját. TechNet Library online tartalmaz naprakész információkat, és az információkat, amely a keresett lehet, hogy a letöltött dokumentációjában vagy lehet javításokat, vagy további információ online érhető el.
 
--   If you find it easier and faster to search documentation when it is stored locally, you can select multiple topics on TechNet and save them locally. For more information, see the next section.
+-   Ha megtalálta könnyebben és gyorsabban keresés a dokumentációban, ha a helyben tárolódnak, jelölje be a több témakörei a TechNet webhelyén, és helyben mentse. További tudnivalókért tekintse meg a következő szakaszban.
 
-## <a name="BKMK_Download"></a>Downloadable documentation
-You can download pages from TechNet and save them locally —for example, save them to a PDF file to read on your laptop, tablet, or phone when you don’t have Internet connectivity. Or, annotate them yourself and print the information. Using this method, you can effectively create your own white papers or project documentation by grouping together the topics that you need for a specific set of tasks, or for an end-to-end scenario.
+## <a name="BKMK_Download"></a>Letölthető dokumentáció
+Oldalak letölteni a TechNet, és mentse azokat helyileg – például hordozható számítógépen, tábla, vagy telefon olvasni, amikor nincs internetkapcsolat PDF-fájl mentéséhez. Vagy a jegyzet őket magát, és az adatok nyomtatása. Ezzel a módszerrel hatékonyan létrehozhatja a saját tanulmányok, vagy a projekt dokumentációját beállított kell egy adott feladatok, vagy egy végpont forgatókönyv témakörök csoportosításával.
 
-This method works for all documentation libraries on TechNet, not just [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+Ez a módszer használható az összes dokumentáció könyvtárak a TechNet webhelyen, nem csak [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
 
-#### To download the docs from TechNet:
+#### A dokumentumok le a TechNet:
 
-1.  Sign in to TechNet.
+1.  Jelentkezzen be a TechNet.
 
-2.  On the top of the page that you want to save locally, click **Export** (next to **Print**).
+2.  Kattintson a helyileg menti a lap tetején található **exportálása** (melletti **nyomtatási**).
 
-    You then see the **Export multiple sets of pages** banner that lets you add and remove pages that you want to save.
+    Majd tekintse meg a **több oldalcsoport exportálása** amely lehetővé teszi a hozzáadása és eltávolítása, amely menti oldalak szalagcím.
 
-3.  Click **Manage pages** to export them.
+3.  Kattintson a **Oldalak kezelése** exportálása őket.
 
-For more information, click **Help** on the banner.
+További tudnivalókért kattintson a **Súgó** meg a szalagcím.
 
 > [!NOTE]
-> Information on TechNet is frequently updated, so use the online version whenever possible to ensure that you have the latest information.
+> Gyakran frissül az információkat a TechNet webhelyen, ezért az online verzióját, ha lehetséges, és győződjön meg arról, hogy rendelkezik-e a legfrissebb információkat.
 > 
-> You can use the monthly documentation announcements on the [Microsoft Rights Management (RMS) Team Blog and the docs tag](http://blogs.technet.com/b/rms/archive/tags/docs/) to check whether topics that you have previously downloaded for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] are now revised, and what changes were made.
+> Is használhatja a havi dokumentáció közlemények a [Microsoft Rights Management (RMS) csoport blogja, és a dokumentumok címke](http://blogs.technet.com/b/rms/archive/tags/docs/) ellenőrizze, hogy e témakörök korábban letöltött [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] most módosított és milyen módosítások történtek.
 
-## <a name="BKMK_ProductGroupBlog"></a>The Rights Management product group blog
-The Rights Management product group uses the [Microsoft Rights Management (RMS) Team Blog](http://blogs.technet.com/b/rms/) to provide you with technical information and other news about [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)], AD RMS, and related technologies. These blog posts supplement the product documentation and support information.
+## <a name="BKMK_ProductGroupBlog"></a>A Rights Management termék-csoport blogja
+A Rights Management termékcsoport használja a [a Microsoft Rights Management (RMS) csoport blogja](http://blogs.technet.com/b/rms/) megadnia technikai információkat és más hírolvasó kapcsolatos [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)], Active Directory tartalomvédelmi szolgáltatások és a kapcsolódó technológiák. Ezek a blogbejegyzésekhez kiegészítik a termék dokumentációja és a támogatási információkat.
 
 > [!TIP]
-> If you are developing applications for Azure RMS or AD RMS, you might also be interested in the [Active Directory Rights Management Services (AD RMS) Developer's Corner Blog](http://blogs.msdn.com/b/rms/).
+> Ha az Azure RMS vagy az Active Directory tartalomvédelmi szolgáltatások alkalmazások fejlesztéséhez, ha is sikerült érdekli a [Active Directory tartalomvédelmi szolgáltatások (AD RMS) fejlesztői sarkában Blog](http://blogs.msdn.com/b/rms/).
 
-## <a name="BKMK_SupportOptions"></a>Support options and community resources
-The following links provide information about support and troubleshooting options, and community resources:
+## <a name="BKMK_SupportOptions"></a>Támogatási lehetőségek és a közösségi erőforrások
+Az alábbi hivatkozások nyújtanak a támogatási és a hibaelhárítási beállításokat, és a közösségi erőforrások információt:
 
--   [RMS Analyzer tool](http://www.microsoft.com/en-us/download/details.aspx?id=46437)
+-   [RMS Analyzer eszközt](http://www.microsoft.com/en-us/download/details.aspx?id=46437)
 
--   [Yammer: Microsoft Rights Management (RMS)](http://www.yammer.com/AskIPTeam)
+-   [Yammer: A Microsoft Rights Management (RMS)](http://www.yammer.com/AskIPTeam)
 
--   [Forum: Microsoft RMS (Cloud)](https://social.technet.microsoft.com/Forums/en-US/home?forum=rmscloud)
+-   [Fórum: A Microsoft RMS (felhő)](https://social.technet.microsoft.com/Forums/en-US/home?forum=rmscloud)
 
--   [Forum: RMS for Users (applications)](https://social.technet.microsoft.com/Forums/en-US/home?forum=rmsapps)
+-   [Fórum: RMS felhasználók (alkalmazások)](https://social.technet.microsoft.com/Forums/en-US/home?forum=rmsapps)
 
--   [Microsoft Help and Support](http://go.microsoft.com/fwlink/?LinkId=243064)
+-   [Microsoft Súgó és támogatás](http://go.microsoft.com/fwlink/?LinkId=243064)
 
-In addition, visit the [Microsoft Rights Management services portal](http://www.microsoft.com/rms) to find other supporting resources for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+Ezenkívül, látogasson el a [Microsoft Rights Management services portál](http://www.microsoft.com/rms) található más támogató erőforrásait [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
 
-## See Also
+## Lásd még
 [Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

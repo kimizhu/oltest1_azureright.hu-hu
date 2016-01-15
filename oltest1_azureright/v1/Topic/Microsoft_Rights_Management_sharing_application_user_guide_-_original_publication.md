@@ -6,11 +6,10 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: 350b6869-084d-4e8a-a4d3-df44a40fa13b
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Microsoft Rights Management sharing application user guide - original publication
-This user guide for Microsoft Rights Management sharing application for Windows includes the following sections:
+# A Microsoft Rights Management megoszt&#243;alkalmaz&#225;s felhaszn&#225;l&#243;i &#250;tmutat&#243;ja – eredeti kiadv&#225;ny
+A Windows Microsoft Rights Management megosztóalkalmazás felhasználói útmutatója a következő részekből áll:
 
 -   [Evaluating and Installing Microsoft Rights Management sharing application](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_Eval)
 
@@ -22,10 +21,10 @@ This user guide for Microsoft Rights Management sharing application for Windows 
 
 -   [Administrator’s guidance for Microsoft Rights Management sharing application](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_AdminGuide)
 
-For frequently asked questions and troubleshooting information, see [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+A gyakori kérdéseket és a hibaelhárítási tudnivalókat itt találja: [A Windows Microsoft Rights Management megosztóalkalmazással kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971).
 
-## <a name="BKMK_Eval"></a>Evaluating and Installing Microsoft Rights Management sharing application
-This section explains what Microsoft Rights Management sharing application is and how to install it:
+## <a name="BKMK_Eval"></a>A Microsoft Rights Management megosztóalkalmazás kiértékelése és telepítése
+Ez a szakasz ismerteti a Microsoft Rights Management megosztóalkalmazás funkcióját és telepítésének módját:
 
 -   [What is the Microsoft Rights Management sharing application?](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_WhatIs)
 
@@ -33,35 +32,35 @@ This section explains what Microsoft Rights Management sharing application is an
 
 -   [Installing the Microsoft Rights Management sharing application](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_Install)
 
-### <a name="BKMK_WhatIs"></a>What is the Microsoft Rights Management sharing application?
-Microsoft Rights Management sharing application is an optional downloadable application for Microsoft Windows that provides the following:
+### <a name="BKMK_WhatIs"></a>Mi a Microsoft Rights Management megosztóalkalmazás?
+A Microsoft Rights Management megosztóalkalmazás a Microsoft Windowshoz opcionálisan letölthető alkalmazás, amely a következő funkciókkal rendelkezik:
 
--   Enhances File Explorer (also known as Windows Explorer in Windows 7 and earlier versions) to allow you to protect a single file, or bulk protect multiple files as well as all files within a selected folder.
+-   A Windows 7 és annak korábbi verzióiban Windows Explorerként is ismert Fájlkezelőben lehetővé teszi egy fájl különálló,vagy több fájl együttes védelmét, valamint egy kiválasztott mappa fájljainak védelmét is.
 
--   Adds support for protection of any type of file and a built-in viewer for commonly used text and image file types.
+-   Támogatást nyújt bármely fájltípus védelméhez, valamint beépített nézőkét biztosít a leggyakrabban használt szöveg- és képfájltípusokhoz.
 
--   Adds new buttons to the Microsoft Office toolbar for Word, PowerPoint, and Excel.
+-   Új gombokkal bővíti ki a Word, PowerPoint és Excel programban megtalálható Microsoft Office-eszköztárat.
 
-### <a name="BKMK_Reqs"></a>Requirements for Microsoft Rights Management sharing application
-To use the Microsoft Rights Management sharing application, your computer must be running Windows 8.1, Windows 8, or Windows 7.
+### <a name="BKMK_Reqs"></a>A Microsoft Rights Management megosztóalkalmazás követelményei
+A Microsoft Rights Management megosztóalkalmazást csak Windows 8.1-et, Windows 8-at, vagy Windows 7-et futtató számítógépen használhatja.
 
-The Microsoft Rights Management sharing application requires the AD RMS Client 2.1, which is installed as part of the installation package. The Microsoft Rights Management sharing application will only work with this version of the AD RMS client.
+A Microsoft Rights Management megosztóalkalmazás csak a telepítőcsomag részeként telepített AD RMS-ügyfél 2.1-es verziójával működik. A Microsoft Rights Management megosztóalkalmazás csak az AD RMS-ügyfél ezen verziójával működik.
 
-### <a name="BKMK_Install"></a>Installing the Microsoft Rights Management sharing application
-To install the Microsoft Rights Management sharing application, do the following:
+### <a name="BKMK_Install"></a>A Microsoft Rights Management megosztóalkalmazás telepítése
+A Microsoft Rights Management megosztóalkalmazást a következőképpen telepítheti:
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  Nyissa meg a [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) lapot a Microsoft webhelyén.
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the Microsoft Rights Management sharing application installation package to your computer.
+2.  A **Számítógépek** szakaszban kattintson az **RMS alkalmazás Windows rendszerhez** ikonra, és mentse le a Microsoft Rights Management megosztóalkalmazás telepítőcsomagját a számítógépére.
 
-3.  Double click the compressed file that was downloaded, and then double-click **setup.exe**. If you are prompted to continue, click **Yes**.
+3.  Kattintson duplán a letöltött tömörített fájlra, majd kattintson duplán a **setup.exe** fájlra. Ha a telepítő az engedélyét kéri a folytatáshoz, kattintson az **Igen** gombra.
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  A **Microsoft RMS telepítése** lapon kattintson a **Tovább** lehetőségre, és várja meg, amíg a telepítés befejeződik.
 
-5.  When the installation finishes, click **Restart** to restart your computer and complete the installation. Or, click **Close** and restart your computer later to complete the installation.
+5.  A telepítés befejeztével kattintson az **Újraindítás** gombra a számítógép újraindításához és a telepítés befejezéséhez. Vagy kattintson a **Bezárás** gombra, és a telepítés befejezéséhez később indítsa újra számítógépét.
 
-## <a name="BKMK_UsingMSRMSApp"></a>Using Microsoft Rights Management sharing application
-This section covers different ways to use Microsoft Rights Management sharing application:
+## <a name="BKMK_UsingMSRMSApp"></a>A Microsoft Rights Management megosztóalkalmazás használata
+Ebben a szakaszban a Microsoft Rights Management megosztóalkalmazás különböző felhasználási módjait ismerheti meg:
 
 -   [Creating a protected text (.ptxt) file](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_CreatePTXT)
 
@@ -73,18 +72,18 @@ This section covers different ways to use Microsoft Rights Management sharing ap
 
 -   [Removing protection from a file](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_Unprotect)
 
-### <a name="BKMK_CreatePTXT"></a>Creating a protected text (.ptxt) file
-Microsoft Rights Management sharing application can be used to convert a regular text (.txt) file into a protected (.ptxt) file.
+### <a name="BKMK_CreatePTXT"></a>Védett szövegfájl (.ptxt) létrehozása
+A Microsoft Rights Management megosztóalkalmazással egy hagyományos szövegfájlt (.txt) átalakíthat védett szövegfájllá (.ptxt).
 
-##### To create a protected text (.ptxt) file
+##### Védett szövegfájl (.ptxt) létrehozása
 
-1.  In File Explorer, right-click in a folder, point to **New**, and then click **Text Document**.
+1.  A Fájlkezelőben kattintson a jobb gombbal egy mappában, kattintson az **Új** pontra, majd kattintson a **Szöveges dokumentum** parancsra.
 
-2.  Rename the file (for example, Sample.txt).
+2.  Nevezze át a fájlt (például Minta.txt-re).
 
-3.  Double-click the file to open it in Notepad.
+3.  Kattintson duplán a fájlra, és nyissa meg a Jegyzettömbben.
 
-4.  In Notepad, add a few lines of text to the file, such as the following, and then save it:
+4.  A Jegyzettömbben az alábbi módon írjon pár sor szöveget a fájlba, majd mentse el:
 
     ```
     This is a sample text file.
@@ -95,53 +94,53 @@ Microsoft Rights Management sharing application can be used to convert a regular
     This is a sample text file.
     ```
 
-5.  Right-click the file, point to **Protect in-place**, and select a template from the list. (Note that if this is the first time you have used the tool, you will need to select **Company- Protection** to initiate download of the templates for your organization.)
+5.  Kattintson a jobb gombbal a fájlra, majd a **Helyi védelem** lehetőségre, és válasszon egy sablont a listából. (Ne feledje, hogy ha első alkalommal használja az eszközt, akkor **A vállalat által megadott engedélyek** lehetőségre kattintva indíthatja el szervezete saját sablonjainak letöltését.)
 
-6.  On the **Microsoft Rights Management sharing application** screen, confirm the policy you want to apply, click **Apply**, and after the file is protected, click **Close**.
+6.  A **Microsoft Rights Management megosztóalkalmazás** képernyőn erősítse meg az alkalmazni kívánt házirendet, kattintson az **Alkalmaz** gombra, majd miután a fájl védetté vált, kattintson a **Bezárás** gombra.
 
-### <a name="BKMK_ViewPTXT"></a>Viewing a protected text (.ptxt) or a protected image file
-To view a protected text (.ptxt) file, in File Explorer, double-click the file (for example, Sample.ptxt). You may be prompted to authorize the application to obtain rights. The protection policy appears at the top of the file.
+### <a name="BKMK_ViewPTXT"></a>Védett szövegfájl (.ptxt) vagy védett képfájl megtekintése
+Egy védett szövegfájl (.ptxt) megtekintéséhez a Fájlkezelőben kattintson duplán a fájlra (például a Minta.txt-re). Előfordulhat, hogy a jogok megszerzéséhez hitelesítenie kell az alkalmazást. A védelmi házirend a fájl elején jelenik meg.
 
-Protected images can be similarly opened and viewed.
+A védett képeket hasonló módon nyithatja és tekintheti meg.
 
-### <a name="BKMK_CreatePFILE"></a>Creating a generic protected (.pfile) file
-The generic protection (.pfile) file format can be used to offer a generic level of protection for file types that are not directly supported by Microsoft Rights Management sharing application or other applications that provide built-in RMS-type protection.
+### <a name="BKMK_CreatePFILE"></a>Általános védelemmel ellátott fájl (.pfile) létrehozása
+Az általános védelemmel ellátott (.pfile) fájlformátummal a Microsoft Rights Management megosztóalkalmazás vagy más, RMS-típusú beépített védelmet kínáló alkalmazások által nem támogatott fájltípusokat is általános védelemmel láthatjuk el.
 
-For example, the generic protection file format can protect .vsd files made using Microsoft Visio (which does not currently support built-in protection).
+Az általános védelemmel ellátott fájlformátummal például a beépített védelmet jelenleg még nem támogató Microsoft Visióval létrehozott .vsd fájlokat is megvédhetjük.
 
 > [!NOTE]
-> Files that use general protection are secured only for authentication. A user who is authorized to use the protected file (.pfile) will be authenticated and the user’s rights and permissions are displayed but cannot be enforced once the file is opened in its original format (for example, once the .vsd file is opened in Visio). A user who is not authorized or cannot be authenticated will not be able to open the protected file.
+> Az általános védelemmel ellátott fájlok csak hitelesítéshez biztonságosak. A program hitelesíti a védett fájl (.pfile) használatára jogosult felhasználót, megjeleníti a felhasználó jogait és engedélyeit, azonban ezek érvényüket vesztik, ha a fájlt megnyitják az eredeti formátumában (például ha a .vsd fájlt megnyitják a Visióban). A jogosultsággal nem rendelkező, nem hitelesíthető felhasználók nem nyithatják meg a védett fájlt.
 
-##### To create a generic protected file (.pfile) from a Visio drawing (.vsd) file
+##### Általános védelemmel ellátott fájl (.pfile) létrehozása Visio rajzfájlból (.vsd)
 
-1.  In File Explorer, right-click in a folder, point to **New**, and then click **New Visio Document**.
+1.  A Fájlkezelőben kattintson a jobb gombbal egy mappában, kattintson az **Új** pontra, majd kattintson az **Új Visio dokumentum** parancsra.
 
-2.  Rename the file (for example, Sample.vsd).
+2.  Nevezze át a fájlt (például Minta.txt-re).
 
-3.  Double-click the file to open it in Visio.
+3.  A fájlra duplán kattintva nyissa meg a Visióban.
 
-4.  In Visio, add elements to the drawing, and then save and close the file.
+4.  A Visióban adjon elemeket a rajzhoz, majd mentse és zárja be a fájlt.
 
-5.  Right-click the file, point to **Protect in-place**, and select a policy template from the list. (Note that if this is the first time you have used the tool, you will need to select **Company- Protection** to initiate download of the templates for your organization.)
+5.  Kattintson a jobb gombbal a fájlra, majd a **Helyi védelem** lehetőségre, és válasszon egy házirendsablont a listából. (Ne feledje, hogy ha első alkalommal használja az eszközt, akkor **A vállalat által megadott engedélyek** lehetőségre kattintva indíthatja el szervezete saját sablonjainak letöltését.)
 
-6.  On the **Microsoft Rights Management sharing application** screen, select the policy you want to apply, and then click **Apply**.
+6.  A **Microsoft Rights Management megosztóalkalmazás** képernyőn válassza ki az alkalmazni kívánt házirendet, majd kattintson az **Alkalmaz** gombra.
 
-7.  A message states your protected file was saved as Sample.vsd.pfile (the original file is deleted).
+7.  Egy üzenet jelzi, hogy a védett fájl Minta.vsd.pfile néven lett mentve (az eredeti fájl törlődik).
 
-### <a name="BKMK_ViewPFILE"></a>Viewing a generic protected (.pfile) file
-To view a generic protected (.pfile) file, in File Explorer, double-click the generic protected (.pfile) file (for example, Sample.vsd.pfile), and click **Open**.
+### <a name="BKMK_ViewPFILE"></a>Általános védelemmel ellátott fájl (.pfile) megtekintése
+Általános védelemmel ellátott fájlok (.pfile) megtekintéséhez a Fájlkezelőben kattintson duplán az általános védelemmel ellátott (.pfile) fájlra (például a Minta.vsd.pfile fájlra), majd kattintson a **Megnyitás** lehetőségre.
 
-### <a name="BKMK_Unprotect"></a>Removing protection from a file
-Microsoft Rights Management sharing application gives you the option to remove protection from files that you have previously protected.
+### <a name="BKMK_Unprotect"></a>Fájl védelmének eltávolítása
+A Microsoft Rights Management megosztóalkalmazással eltávolíthatja az előzőleg védelem alá helyezett fájlok védelmét.
 
-To remove protection (that is, unprotect) a file previously protected, you apply the **Remove Protection** option, as follows:
+Egy előzőleg védelem alá helyezett fájl védelmének eltávolításához (azaz a védelem megszüntetéséhez) az alábbiak szerint alkalmazza a **Védelem eltávolítása** lehetőséget:
 
-1.  Right-click **Sample.ptxt**, point to **Protect in-place**, and click **Remove Protection**. You may be prompted to authorize the application to obtain rights.
+1.  Kattintson a jobb gombbal a **Minta.ptxt** fájlra, mutasson a **Helyi védelem** pontra, és válassza a **Védelem eltávolítása** parancsot. Előfordulhat, hogy a jogok megszerzéséhez hitelesítenie kell az alkalmazást.
 
-2.  Sample.ptxt will be deleted, and replaced with Sample.txt.
+2.  A Minta.ptxt törlődik, helyére a Minta.txt fájl kerül.
 
-## <a name="BKMK_Custom"></a>Using User-Authored Permissions and Sharing Protected Content
-This section covers how to protect and consume a file using user-authored permissions, how to share protected content, and how to protect multiple files:
+## <a name="BKMK_Custom"></a>A felhasználó által létrehozott engedélyek felhasználása és védett tartalmak megosztása
+Ebből a szakaszból megtudhatja, hogyan tehet védetté és használhat egy fájlt a felhasználó által létrehozott engedélyekkel, hogyan oszthat meg védett tartalmakat, és hogyan tehet védetté egyszerre több fájlt:
 
 -   [Protecting a file with user-authored permissions](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_ProtectCustom)
 
@@ -153,70 +152,70 @@ This section covers how to protect and consume a file using user-authored permis
 
 -   [Applying protection to multiple files and folders](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_Multiple)
 
-### <a name="BKMK_ProtectCustom"></a>Protecting a file with user-authored permissions
-User-authored protection can be used to achieve the following:
+### <a name="BKMK_ProtectCustom"></a>Fájl védelme a felhasználó által létrehozott engedélyekkel
+A felhasználó által létrehozott védelem a következő célokra használható:
 
--   To limit file access to only a specific list of individual users identified by their email addresses.
+-   Fájlhozzáférés korlátozása, hogy csak az e-mail címmel azonosított egyéni felhasználók adott csoportja férhessen hozzá a fájlhoz.
 
--   To limit the use of the file to only specific rights, such as read-only rights to a document.
+-   Fájlhasználat korlátozása, hogy csak adott jogok érvényesüljenek (például egy dokumentum csak olvasható legyen).
 
-To protect a file with user-authored permissions, right-click the file, click **Protect in-place** and click **Custom Permissions**. The following screen will launch:
+Ha egy fájl védelmét felhasználó által létrehozott engedélyekkel szeretné biztosítani, kattintson a jobb gombbal a fájlra, mutasson a **Helyi védelem** pontra, és kattintson az **Egyéni engedélyek** parancsra. A következő képernyő fog megjelenni:
 
 ![](../Image/ADRMS_MSRMSApp_ProtectCustom.gif)
 
-Type the email addresses of the list of users, use the slider to select permissions for the file, and click **Apply**.
+Adja meg a kiválasztott felhasználók e-mail címét, a csúszka segítségével válassza ki a kívánt engedélyeket, majd kattintson az **Alkalmaz** gombra.
 
-### <a name="BKMK_UserDefined"></a>Consuming files that have user-authored protection
-Most protected files that are handled by Microsoft Rights Management sharing application will have been protected by applying template-based levels of protection. It is possible, however, for Microsoft Rights Management sharing application to also support files that have been given a user-authored level of protection.
+### <a name="BKMK_UserDefined"></a>A felhasználó által létrehozott védelemmel ellátott fájlok felhasználása
+A Microsoft Rights Management megosztóalkalmazás által kezelt védett fájlok többségénél sablonalapú védelmi szintek alkalmazása biztosítja majd a védelmet. Azonban lehetséges, hogy a Microsoft Rights Management megosztóalkalmazás a felhasználó által létrehozott védelemmel rendelkező fájlokat is támogatja.
 
-User-authored protection can be used to achieve the following types of protection for a file:
+A felhasználó által létrehozott védelemmel a következő módokon védhető meg egy fájl:
 
--   To limit file access to only a very specific list of individual users identified by their email addresses.
+-   Fájlhozzáférés korlátozása, hogy csak az e-mail címmel azonosított egyéni felhasználók erősen korlátozott csoportja férhessen hozzá a fájlhoz.
 
--   To limit the use of the file to only a single specific right such as print-only rights to the document.
+-   Fájlhasználat korlátozása, hogy csak egyetlen engedély érvényesüljön (például egy dokumentum csak nyomtatható legyen).
 
-For text and image file formats, this level of protection requires that any applications that are used to edit, save or restrict text or image files have been designed to support RMS protection and implement the protection APIs provided in the AD RMS SDK.
+A szöveg- és képfájlok esetében az ilyen szintű védelemhez szükséges, hogy a szöveg- és képfájlok szerkesztéséhez, mentéséhez vagy korlátozásához használt alkalmazások támogassák az RMS-védelmet, valamint képesek legyenek az AD RMS szoftverfejlesztői készletben található védelmi API-k végrehajtására.
 
-When viewing a protected text file that has had user- protection applied to it, you will notice a slight difference in the permissions as they are displayed for the file as shown in the following sample.
+A felhasználó által létrehozott védelemmel ellátott fájlok megtekintésénél az engedélyek némileg eltérőek lesznek; az alábbi mintában látható módon jelennek meg a fájlnál.
 
-For files that are protected using the generic protection (.pfile) file format, the specific rights or permissions that were  by the user appear in the confirmation screen instead of the name of the template that was used to protect the file, as shown in the following figure.
+Az általános védelemmel ellátott, .pfile formátumú fájlok esetében a felhasználó által létrehozott jogok és engedélyek a fájl védelméhez felhasznált sablon neve helyett a megerősítő képernyőn jelennek meg (a következő ábrán látható módon).
 
 ![](../Image/ADRMS_MSRMSApp_SP_ConsumePfile.gif)
 
-### <a name="BKMK_ShareProtected"></a>Sharing protected content
-To protect and share content, right-click the file, and click **Share Protected**. The following screen will launch:
+### <a name="BKMK_ShareProtected"></a>Védett tartalom megosztása
+Tartalom védelméhez és megosztásához kattintson a jobb gombbal a fájlra, majd a **Védett megosztás** parancsra. A következő képernyő fog megjelenni:
 
 ![](../Image/ADRMS_MSRMSAPP_SP_ShareProtected.gif)
 
-Type the email addresses of the list of users, use the slider to select permissions for the file, and click **Send**. The application will launch Outlook with a pre- email, with the protected file attached. The original file will not be protected.
+Adja meg a kiválasztott felhasználók e-mail címét, a csúszka segítségével válassza ki a kívánt engedélyeket, majd kattintson a **Küldés** gombra. Az alkalmazás elindítja az Outlookot, amelyben egy előzetes levélhez csatolva megjelenik a védett fájl. Az eredeti fájl nem lesz védett.
 
-To enable users to view protected files on non-Windows devices, click **Allow consumption on all devices**. Users will need to [download the Microsoft Rights Management sharing application](http://go.microsoft.com/fwlink/?LinkId=303970) for their device.
+A védett fájlok nem Windowst futtató eszközökön való megtekintését a **Felhasználás engedélyezése minden eszközön** választógombbal engedélyezheti. A felhasználóknak [le kell tölteniük a Microsoft Rights Management megosztóalkalmazást](http://go.microsoft.com/fwlink/?LinkId=303970) az eszközükre.
 
-### <a name="BKMK_AccessKeys"></a>Using keyboard shortcuts
-Press the **Alt** key to see the available access keys. Press **Alt** + the access key to select an option. For example, on the **Share Protected** dialog, press **Alt** to see the access keys and press **Alt + u** to select **Users must login every time they open this file**.
+### <a name="BKMK_AccessKeys"></a>Billentyűparancsok használata
+Az **Alt** billentyűt megnyomva megtekintheti az elérhető hívóbetűket. Az **Alt** + hívóbetű kombináció megnyomásával kiválaszthat egy opciót. Például a **Védett megosztás** párbeszédpanelen a hívóbetűk megjelenítéséhez nyomja meg az **Alt** billentyűt, majd nyomja meg az **Alt + E** kombinációt az **E-mailt kérek a dokumentum megnyitási kísérleteiről** lehetőség kiválasztásához.
 
 ![](../Image/ADRMS_MSRMSApp_AccessKeys.png)
 
-### <a name="BKMK_Multiple"></a>Applying protection to multiple files and folders
-Microsoft Rights Management sharing application can also be used to apply protection to more than a single file, such as by selecting multiple files or a folder that contains unprotected files in File Explorer.
+### <a name="BKMK_Multiple"></a>Több fájl és mappa együttes védelme
+A Microsoft Rights Management megosztóalkalmazással egyszerre több fájl is védelem alá helyezhető, például több fájl vagy egy nem védett fájlokat tartalmazó mappa kiválasztásával a Fájlkezelőben.
 
-##### To protect multiple files or all files within a selected folder
+##### Több fájl vagy egy kiválasztott mappában található összes fájl védelme
 
-1.  In File Explorer, either select multiple files or select a folder containing multiple files to be protected.
+1.  A Fájlkezelőben válasszon ki több fájlt, vagy egy védeni kívánt fájlokat tartalmazó mappát.
 
-2.  Right-click the selected folder or files, point to **Protect in-place**, and select a template from the list. (Note that if this is the first time you have used the tool, you will need to select **Company- Protection** to initiate download of the templates for your organization.)
+2.  Kattintson a jobb gombbal a kijelölt mappára vagy fájlokra, mutasson a **Helyi védelem** pontra, és válasszon egy sablont a listából. (Ne feledje, hogy ha első alkalommal használja az eszközt, akkor **A vállalat által megadott engedélyek** lehetőségre kattintva indíthatja el szervezete saját sablonjainak letöltését.)
 
-3.  On the **Microsoft Rights Management sharing application** screen, confirm the files have been protected.
+3.  A **Microsoft Rights Management megosztóalkalmazás** képernyőn ellenőrizze, hogy a fájlok védetté váltak-e.
 
-If you have errors, refer to [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+Ha hibákat észlel, tekintse át [A Windows Microsoft Rights Management megosztóalkalmazással kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971) című cikket.
 
-## <a name="BKMK_OfficeToolbar"></a>Using the Office Toolbar Add-in
-You can protect and share Word, PowerPoint, Excel files right from within Microsoft Office by using the Office ribbon add-in for Microsoft Rights Management sharing application. Click **Share Protected** on the ribbon to start the Microsoft Rights Management sharing application.
+## <a name="BKMK_OfficeToolbar"></a>Az Office-eszköztárbővítmény használata
+A Microsoft Rights Management megosztóalkalmazás Office-menüszalagba beépülő moduljával közvetlenül a Microsoft Office-ból is védelem alá helyezhet és oszthat meg Word-, PowerPoint- és Excel-fájlokat. A Microsoft Rights Management megosztóalkalmazás indításához kattintson a menüszalagon a **Védett megosztás** lehetőségre.
 
 ![](../Image/ADRMS_MSRMSApp_SP_OfficeToolbar.png)
 
-## <a name="BKMK_AdminGuide"></a>Administrator’s guidance for Microsoft Rights Management sharing application
-The Administrator's Guide for Microsoft Rights Management sharing application includes the following sections:
+## <a name="BKMK_AdminGuide"></a>Rendszergazdai útmutató a Microsoft Rights Management megosztóalkalmazáshoz
+A Microsoft Rights Management megosztóalkalmazás rendszergazdai útmutatója a következő részekből áll:
 
 -   [Microsoft Rights Management sharing application Technical Overview](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_AdminOverview)
 
@@ -224,417 +223,417 @@ The Administrator's Guide for Microsoft Rights Management sharing application in
 
 -   [Automatic deployment for the Microsoft Rights Management sharing application](../Topic/Microsoft_Rights_Management_sharing_application_user_guide_-_original_publication.md#BKMK_ScriptedInstall)
 
-### <a name="BKMK_AdminOverview"></a>Microsoft Rights Management sharing application Technical Overview
-The Microsoft Rights Management sharing application is an optional downloadable application for Microsoft Windows and other platforms that provides the following:
+### <a name="BKMK_AdminOverview"></a>Technikai tudnivalók a Microsoft Rights Management megosztóalkalmazásról
+A Microsoft Rights Management megosztóalkalmazás a Microsoft Windows rendszerre és más platformokra opcionálisan letölthető alkalmazás, amely a következő funkciókkal rendelkezik:
 
--   Protection of a single file or bulk protection of multiple files as well as all files within a selected folder.
+-   Egyetlen fájl vagy több fájl csoportos védelme, valamint egy kiválasztott mappában található összes fájl védelme.
 
--   Full support for protection of any type of file and a built-in viewer for commonly used text and image file types.
+-   Teljes támogatást nyújt bármely fájltípus védelméhez, valamint beépített nézőkét biztosít a leggyakrabban használt szöveg- és képfájltípusokhoz.
 
--   Generic protection for files that do not support RMS protection.
+-   Az RMS-védelmet nem támogató fájlok általános védelme.
 
--   Full interoperability with files protected using Office Information Rights Management (IRM)
+-   Teljes együttműködés az Office Tartalomvédelmi szolgáltatásával (IRM-mel) védett fájlokkal.
 
--   Full interoperability with PDF files protected using SharePoint, FCI, and supported PDF authoring tools
+-   Teljes együttműködés a SharePoint, az FCI és a támogatott PDF-szerkesztői eszközök segítségével védett PDF-fájlokkal.
 
-The Microsoft Rights Management sharing application uses the new [AD RMS Client 2.1 runtime](http://www.microsoft.com/download/details.aspx?id=38396). It provides users the ability to protect content using pre-defined or user-defined templates that you can customize and deploy for your organization. By using the functionality of AD RMS 2.1, the Microsoft Rights Management sharing application provides end users a simple protection and consumption experience.
+A Microsoft Rights Management megosztóalkalmazás az új [AD RMS-ügyfél 2.1 futtatókörnyezetben](http://www.microsoft.com/download/details.aspx?id=38396) fut. Segítségével a felhasználók védelem alá helyezhetik a tartalmakat előre meghatározott, vagy a felhasználó által készített sablonokkal. A vállalati szinten üzembe helyezhető sablonok a vállalat igényei szerint személyre szabhatók. Az AD RMS 2.1 adottságait kihasználó Microsoft Rights Management megosztóalkalmazás egyszerű védelmet és fogyasztói élményt biztosít a végfelhasználóknak.
 
-With the October 2013 release of Windows Azure AD RMS, you can natively protect documents by using Office 2010 and send them to people in another company, who can then consume them by using Windows Azure AD RMS. In addition, with this release, if you use AD RMS in Cryptographic Mode 2, you can use RMS for individuals and consume content from people in another company that uses Windows Azure AD RMS. For more information about Cryptographic Mode 2, see [AD RMS Cryptographic Modes](http://technet.microsoft.com/library/hh867439%28v=ws.10%29.aspx).
+A Windows Azure AD RMS 2013. októberi kiadása óta az Office 2010-ben alapértelmezett módon védheti és oszthatja meg dokumentumait egy másik vállalat alkalmazottaival, akik a Windows Azure AD RMS segítségével tudják felhasználni azokat. Továbbá, ha a jelen kiadással 2. kriptográfiai módban használja az AD RMS-t, akkor az RMS segítségével elérheti egy másik, Windows Azure AD RMS-t használó vállalat alkalmazotti tartalmait is. További információ a 2. kriptográfiai módról: [Az AD RMS kriptográfiai módjai](http://technet.microsoft.com/library/hh867439%28v=ws.10%29.aspx).
 
-To download Microsoft Rights Management sharing application, do the following:
+A Microsoft Rights Management megosztóalkalmazást a következőképpen töltheti le:
 
-1.  Sign in to [Microsoft Connect](http://connect.microsoft.com/) with your Microsoft Account (formerly known as Live ID).
+1.  Microsoft-fiókjával (korábban Live ID) jelentkezzen be a [Microsoft Connect](http://connect.microsoft.com/) webhelyre.
 
-2.  On the **Home** page, search for **Rights Management Services** and join the group.
+2.  A **Kezdőlap** lapon keressen rá a **Rights Management Services** kifejezésre, és csatlakozzon a csoporthoz.
 
-3.  Click **Downloads**, and then click **Microsoft Rights Management sharing application**.
+3.  Válassza a **Letöltések** lehetőséget, és kattintson a **Microsoft Rights Management megosztóalkalmazás** lehetőségre.
 
-4.  On the **Download Details** page, select **Microsoft Rights Management sharing application.zip** and click **Download**.
+4.  A **Letöltés részletei** lapon válassza a **Microsoft Rights Management sharing application.zip** elemet, és kattintson a **Letöltés** gombra.
 
-5.  If necessary, install Microsoft File Transfer Manager and complete the steps to download Microsoft Rights Management sharing application.
+5.  Ha szükséges, telepítse a Microsoft File Transfer Manager alkalmazást, és a lépéseket követve töltse le a Microsoft Rights Management megosztóalkalmazást.
 
-#### Levels of Protection Supported by Microsoft Rights Management sharing application
-Microsoft Rights Management sharing application supports protection at two different levels, as described in the following table.
+#### A Microsoft Rights Management megosztóalkalmazás által támogatott védelmi szintek
+A Microsoft Rights Management megosztóalkalmazás két különböző szintű védelmet támogat, amelyek részleteit az alábbi táblázat tartalmazza.
 
 ||||
 |-|-|-|
-|Type of protection|Native|Generic|
-|Description|For text, image, Microsoft Office (Word, Excel, PowerPoint) files, .pdf files, and other application file types that support AD RMS, native protection provides a strong level of protection that includes both encryption and enforcement of rights (permissions).|For all other applications and file types, generic protection provides a level of protection that includes both file encapsulation using the .pfile file type and authentication to verify if a user is authorized to open the file.|
-|Protection|Files are fully encrypted and protection is enforced in the following ways:<br /><br />-   Before protected content is rendered, successful authentication must occur for those who receive the file through email or are given access to it through file or share permissions.<br />-   Additionally, usage rights and policy set by the content owner when files are protected are fully enforced when the content is rendered in either IP Viewer (for protected text and image files) or the associated application (for all other supported file types).|File protection is enforced in the following ways:<br /><br />-   Before protected content is rendered, successful authentication must occur for those who are authorized to open the file and given access to it. If authorization fails, the file does not open.<br />-   Usage rights and policy set by the content owner are displayed to inform authorized users of the intended usage policy.<br />-   Audit logging of authorized users opening and accessing files occurs, however, no usage rights are enforced by non-supporting applications.|
-|Default for file types|This is the default level of protection for the following file types:<br /><br />-   Text and image files<br />-   Microsoft Office (Word, Excel, PowerPoint) files<br />-   Portable document format (.pdf)<br /><br />For more information, see Supported File Types.|This is the default protection for all other file types (such as .vsdx, .rtf, and so on) not supported through full protection.|
+|Védelem típusa|Natív|Általános|
+|Leírás|A szöveg- és képfájlok, a Microsoft Office- (Word, Excel, PowerPoint) fájlok, a .pdf fájlok és az egyéb, AD RMS-t támogató fájltípusok esetében a natív védelem erős szintű védelmet biztosít, amelybe beletartozik a titkosítás és a jogok (engedélyek) érvényesítése is.|Minden más alkalmazás és fájltípus esetében általános szintű védelem biztosított, ami magában foglalja a .pfile típusú fájlbeágyazást, valamint a hitelesítést, amellyel ellenőrizhető, hogy egy felhasználó jogosult-e a fájl megnyitására.|
+|Védelem|A fájlok teljesen titkosítottak, a védelem pedig a következő módokon érvényesül:<br /><br />-   A fájlt e-mailben megkapó, vagy a fájlhoz fájl- vagy megosztóengedélyekkel hozzáférő felhasználóknak sikeresen hitelesíteniük kell magukat a védett fájl megtekintése előtt.<br />-   Ezenkívül ha a tartalom egy IP megtekintőben (a védett szöveg- és képfájlok esetében) vagy egy társított alkalmazásban (minden más támogatott fájltípus esetében) kerül megjelenítésre, a fájl védelem alá helyezésekor a tartalom tulajdonosa által beállított használati engedélyek és házirend is érvényesítésre kerül.|A fájlvédelem a következő módokon érvényesül:<br /><br />-   A fájl megnyitásához szükséges engedéllyel és hozzáféréssel rendelkező ügyfeleknek sikeresen hitelesíteniük kell magukat a védett fájl megtekintése előtt. Ha a hitelesítés sikertelen, a fájl nem nyitható meg.<br />-   Megjelennek a fájl védelem alá helyezésekor a tartalom tulajdonosa által beállított használati engedélyek és a házirend, amelyekből a hitelesített felhasználók megismerhetik az alkalmazni kívánt használati házirendet.<br />-   Naplózásra kerül minden alkalom, amikor a hitelesített felhasználók megnyitnak vagy elérnek egy fájlt, azonban a támogatást nem biztosító alkalmazások nem érvényesítenek használati jogokat.|
+|Fájltípusonkénti alapértelmezés|A következő fájltípusokhoz tartozó alapértelmezett szintű védelem:<br /><br />-   Szöveg- és képfájlok<br />-   Microsoft Office-fájlok (Word, Excel, PowerPoint)<br />-   Portable document format (.pdf)<br /><br />További információt a Támogatott fájltípusok szakaszban talál.|Ez az alapértelmezett védelem minden egyéb, a teljes védelem által nem támogatott fájltípus esetén (mint például .vsdx, .rtf stb.).|
 
-### <a name="BKMK_SupportFileTypes"></a>Supported File Types
-The following table lists file types that are supported by Microsoft Rights Management sharing application.
+### <a name="BKMK_SupportFileTypes"></a>Támogatott fájltípusok
+A következő táblázat a Microsoft Rights Management megosztóalkalmazás által támogatott fájltípusokat tartalmazza.
 
-|File extension|Description|Original file extension|
-|------------------|---------------|---------------------------|
-|.ptxt|Protected Text file|.txt|
-|.pxml|Protected XML file|.xml|
-|.pjpg|Protected JPG image file|.jpg|
-|.pjpeg|Protected JPEG image file|.jpeg|
-|.ppng|Protected PNG image file|.png|
-|.ptiff|Protected TIFF image file|.tiff|
-|.pbmp|Protected Windows Bitmap file|.bmp|
-|.pgif|Protected GIF image file|.gif|
-|.pgiff|Protected GIFF image file|.giff|
-|.pjpe|Protected JPE image file|.jpe|
-|.pjfif|Protected JFIF image file|.jfif|
-|.pjif|Protected JIF image file|.jif|
-The following table lists the file types that are supported by Microsoft Office 2013, Office 2010, and Office 2007. There are two protector types: MsoIrmProtector and the OpcIrmProtector. For more information about these protector types, see [Microsoft Office File Format Protectors](http://archive.msdn.microsoft.com/OfficeProtectors).
+|Fájlkiterjesztés|Leírás|Eredeti fájlkiterjesztés|
+|--------------------|----------|----------------------------|
+|.ptxt|Védett szövegfájl|.txt|
+|.pxml|Védett XML-fájl|.xml|
+|.pjpg|Védett JPG képfájl|.jpg|
+|.pjpeg|Védett JPEG képfájl|.jpeg|
+|.ppng|Védett PNG képfájl|.png|
+|.ptiff|Védett TIFF képfájl|.tiff|
+|.pbmp|Védett Windows bitkép fájl|.bmp|
+|.pgif|Védett GIF képfájl|.gif|
+|.pgiff|Védett GIFF képfájl|.giff|
+|.pjpe|Védett JPE képfájl|.jpe|
+|.pjfif|Védett JFIF képfájl|.jfif|
+|.pjif|Védett JIF képfájl|.jif|
+A következő táblázat a Microsoft Office 2013, Office 2010 és Office 2007 által támogatott fájltípusokat tartalmazza. Két védőelemtípus létezik: az MsoIrmProtector és az OpcIrmProtector. További információ a védőelemtípusokról: [A Microsoft Office fájlformátumvédő elemei](http://archive.msdn.microsoft.com/OfficeProtectors).
 
 |||
 |-|-|
-|MsoIrmProtector supports the following file types:<br /><br />-   doc<br />-   dot<br />-   xla<br />-   xls<br />-   xlt<br />-   pps<br />-   ppt|OpcIrmProtector supports the following file types:<br /><br />-   docm<br />-   docx<br />-   dotm<br />-   dotx<br />-   xlam<br />-   xlsb<br />-   xlsm<br />-   xlsx<br />-   xltm<br />-   xltx<br />-   xps<br />-   potm<br />-   potx<br />-   ppsx<br />-   ppsm<br />-   pptm<br />-   pptx<br />-   thmx|
+|Az MsoIrmProtector védőelem a következő fájltípusokat támogatja:<br /><br />-   doc<br />-   dot<br />-   xla<br />-   xls<br />-   xlt<br />-   pps<br />-   ppt|Az OpcIrmProtector védőelem a következő fájltípusokat támogatja:<br /><br />-   docm<br />-   docx<br />-   dotm<br />-   dotx<br />-   xlam<br />-   xlsb<br />-   xlsm<br />-   xlsx<br />-   xltm<br />-   xltx<br />-   xps<br />-   potm<br />-   potx<br />-   ppsx<br />-   ppsm<br />-   pptm<br />-   pptx<br />-   thmx|
 
-### <a name="BKMK_ScriptedInstall"></a>Automatic deployment for the Microsoft Rights Management sharing application
-The Windows version of the RMS sharing application supports a scripted installation, which makes it suitable for enterprise deployments.
+### <a name="BKMK_ScriptedInstall"></a>A Microsoft Rights Management megosztóalkalmazás automatikus központi telepítése
+Az RMS-megosztó alkalmazás Windows-verziója támogatja a parancsfájlból történő telepítést, épp ezért kiválóan alkalmas a vállalati központi telepítéshez.
 
-##### To download the RMS sharing application for automatic deployment
+##### Az RMS-megosztó alkalmazás letöltése automatikus központi telepítéshez
 
-1.  Go to the [Microsoft Rights Management sharing application for Windows](http://www.microsoft.com/download/details.aspx?id=40857) page in the Microsoft Download Center, and click **Download**.
+1.  Nyissa meg a Microsoft letöltőközpontjában a [Microsoft Windows Rights Management megosztóalkalmazás lapját](http://www.microsoft.com/en-us/download/details.aspx?id=40857), és kattintson a **Letöltés** gombra.
 
-2.  Select and download the files that you need. There are two client installation packages: one for Windows 64-bit (Microsoft Rights Management sharing application x64.zip), and another for Windows 32-bit (Microsoft Rights Management sharing application x86.zip).
+2.  Válassza ki és töltse le a szükséges fájlokat. Két ügyféltelepítő csomag létezik: egy a 64 bites Windowshoz (Microsoft Rights Management sharing application x64.zip), és egy másik a 32 bites Windowshoz (Microsoft Rights Management sharing application x86.zip).
 
-3.  Extract the files from the compressed installation packages, for example, by double-clicking them. Then copy the extracted files to a network location that client computers can access.
+3.  Bontsa ki a fájlokat a tömörített telepítőcsomagokból (ezt például a fájlokra duplán kattintva teheti meg). Ezután a kibontott fájlokat másolja fel egy olyan hálózati helyre, amely az ügyfélszámítógépek számára is hozzáférhető.
 
-The setup packages for the RMS sharing application supports different deployment scenarios and includes the following:
+Az RMS-megosztó alkalmazás telepítőcsomagja különböző központi telepítési forgatókönyveket támogat, és a következőket tartalmazza:
 
-|Description|Deployment scenario|
-|---------------|-----------------------|
-|Microsoft Online Sign-In Assistant|Required for the following:<br /><br />-   Office 2010 and Windows Azure RMS|
-|Hotfix for Office (KB 2596501)|Required for the following:<br /><br />-   Office 2010 and Windows Azure RMS|
-|Hotfix for Cryptographic Mode 2 (KB 2627273)|Required for the following:<br /><br />-   Office 2010 and Windows Azure RMS|
-|AD RMS Client and the RMS sharing application|Required for the following:<br /><br />-   Office 2013 and Windows Azure RMS<br />-   Office 2010 and Windows Azure RMS<br />-   Office 2013 and Active Directory RMS<br />-   Office 2010 and Active Directory RMS<br />-   Upgrade of the RMS sharing application|
-|Office add-in for the ribbon|Required for the following:<br /><br />-   Office 2013 and Windows Azure RMS<br />-   Office 2013 and Active Directory RMS<br />-   Office 2010 and Active Directory RMS<br />-   Upgrade of the RMS sharing application|
-|Windows Azure Active Directory Rights Management preparation tool|Required for the following:<br /><br />-   Office 2010 and Windows Azure RMS|
+|Leírás|Központi telepítési forgatókönyv|
+|----------|------------------------------------|
+|Microsoft Online bejelentkezési segéd|A következőkhöz szükséges:<br /><br />-   Office 2010 és Windows Azure RMS|
+|Az Office gyorsjavítása (KB 2596501)|A következőkhöz szükséges:<br /><br />-   Office 2010 és Windows Azure RMS|
+|A 2. kriptográfiai mód gyorsjavítása (KB 2627273)|A következőkhöz szükséges:<br /><br />-   Office 2010 és Windows Azure RMS|
+|Az AD RMS-ügyfél és az RMS-megosztó alkalmazás|A következőkhöz szükséges:<br /><br />-   Office 2013 és Windows Azure RMS<br />-   Office 2010 és Windows Azure RMS<br />-   Office 2013 és Active Directory RMS<br />-   Office 2010 és Active Directory RMS<br />-   Az RMS-megosztó alkalmazás frissítése|
+|Office-menüszalagbővítmény|A következőkhöz szükséges:<br /><br />-   Office 2013 és Windows Azure RMS<br />-   Office 2013 és Active Directory RMS<br />-   Office 2010 és Active Directory RMS<br />-   Az RMS-megosztó alkalmazás frissítése|
+|Windows Azure Active Directory tartalomvédelmi előkészítő eszköz|A következőkhöz szükséges:<br /><br />-   Office 2010 és Windows Azure RMS|
 > [!NOTE]
-> For the **Office 2010 and Windows Azure RMS** scenario, you might be using Windows Azure RMS, or you might be using Active Directory RMS but want to securely send documents to people in another company who use Windows Azure RMS.
+> Az **Office 2010 és Windows Azure RMS** forgatókönyvnél lehetséges, hogy a Windows Azure RMS-t vagy az Active Directory RMS-t használja, de szeretne biztonságosan dokumentumokat küldeni egy Windows Azure RMS-t használó vállalatnak.
 > 
-> When you install and run the Windows Azure Active Directory Rights Management preparation tool to support Office 2010, it does two things:
+> Ha az Office 2010 támogatásához telepíti a Windows Azure Active Directory tartalomvédelmi előkészítő eszközt, ez két dolgot eredményez:
 > 
-> -   It edits the registry to support the RMS sharing application.
-> -   It “bootstraps” the user, which means the computer contacts the AD RMS server or Windows Azure RMS and obtains the certificates that the computer and user need to use RMS.
+> -   A beállításjegyzéket úgy módosítja, hogy az támogassa az RMS-megosztó alkalmazást.
+> -   Csatlakoztatja a felhasználót, ami azt jelenti, hogy a számítógép kapcsolatba lép az AD RMS kiszolgálóval vagy a Windows Azure RMS-sel, és beszerzi a számítógép és a felhasználó számára az RMS használatához szükséges tanúsítványokat.
 
-Use the following procedures to identify the commands required to deploy the RMS sharing application for these deployment scenarios:
+Az alábbi eljárásokkal a következő központi telepítési forgatókönyvek esetén beazonosíthatja az RMS-megosztó alkalmazás központi telepítéséhez szükséges parancsokat:
 
--   Office 2013 and Windows Azure RMS
+-   Office 2013 és Windows Azure RMS
 
--   Office 2010 and Windows Azure RMS
+-   Office 2010 és Windows Azure RMS
 
--   Office 2013 or Office 2010 and Active Directory RMS
+-   Office 2013 vagy Office 2010 és Active Directory RMS
 
--   Upgrade the RMS sharing application
+-   Az RMS-megosztó alkalmazás frissítése
 
-The examples in the commands assume that you have copied the downloaded and extracted files to a network share that client computers access by using **\\server5\apps\rms** and that the client computers already have a folder named **C:\Log files** where you store application installation log files. For each installation, you choose the name of the installation log file, but it must have a .log file extension.
+A parancsokban szereplő példák feltételezik, hogy a letöltött és kibontott fájlokat felmásolta egy hálózati megosztóhelyre, amelyhez az ügyfélszámítógépek a **\\server5\apps\rms** elérési úton férhetnek hozzá, valamint hogy az ügyfélszámítógépeken már létezik egy **C:\Log files** nevű mappa, ahol az alkalmazástelepítési naplófájlokat tárolja. Minden telepítésnél kiválaszthatja a telepítési naplófájl nevét, de a fájl .log kiterjesztésű kell legyen.
 
 > [!IMPORTANT]
-> Before you deploy the RMS sharing application, you must package the required commands in these procedures so that they can install in the machine context for all users, and install with local administrator privileges. You can then deploy the package to computers by using your standard application deployment mechanism, such as Group Policy, or System Center Configuration Manager.
+> Az RMS-megosztó alkalmazás központi telepítése előtt az eljárások során elő kell készítenie a szükséges parancsokat, hogy azok a számítógép környezetében minden felhasználó számára helyi rendszergazdai jogosultságokkal települjenek. A csomagot ezután bármely megszokott alkalmazástelepítési mechanizmussal (Csoportházirenddel vagy a System Center Configuration Managerrel) telepítheti a számítógépekre.
 > 
-> The exception is the Windows Azure Active Directory Rights Management preparation tool: This must run once for each user on the computer, and the tool must run with elevated privileges to successfully edit the registry. There are different ways to achieve this, including asking users to run the command (for example, a link in an email message or a link on the help desk portal) or you can add it to their logon script. If you cannot use the runas command because users do not have a local administrator account, there are deployment tools that can automatically elevate a command, according to rules that you specify.
+> Ez alól kivétel a Windows Azure Active Directory tartalomvédelmi előkészítő eszköz, ugyanis ezt a számítógép minden felhasználójánál le kell futtatni egyszer, és a beállításjegyzék sikeres módosításához a futtatást magasabb szintű rendszerjogosultságokkal kell végrehajtani. Ez többféleképpen is megvalósítható, többek között a felhasználókat meg lehet kérni a parancs futtatására (például egy e-mailben elküldött vagy az ügyfélszolgálat portálján elhelyezett hivatkozással), vagy a parancsot egyszerűen hozzáadhatja a bejelentkezési parancsfájlhoz. Ha a felhasználók nem rendelkeznek helyi rendszergazdai fiókkal, és ezért nem tudja használni a runas parancsot, léteznek olyan telepítési eszközök, amelyek az Ön által megadott szabályok szerint automatikusan jogosultságszintre emelnek egy parancsot.
 
-##### To deploy the RMS sharing application for Office 2013 and Windows Azure RMS
+##### Az RMS-megosztó alkalmazás telepítése Office 2013 és Windows Azure RMS alá
 
-1.  Install the AD RMS Client and the RMS sharing application by using the following commands:
+1.  A következő parancsokkal telepítheti az AD RMS-ügyfelet és az RMS-megosztó alkalmazást:
 
-    -   For 64-bit Windows: x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "&lt;log file path and name&gt;"
+    -   64 bites Windows esetén: x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "&lt;a naplófájl elérési útja és neve&gt;"
 
         ```
         x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         X86\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
+    Például: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
 
-2.  Install the Office add-in by using the following commands:
+2.  A következő parancsokkal telepítheti az Office-beépülőmodult:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "<log file path and name>"
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x86\Setup.msi" /L*v "<log file path and name>"
         ```
 
     > [!NOTE]
-    > To complete the installation, the computer must restart. You can initiate an automatic restart by using a command such as shutdown /i.
+    > A telepítés befejezéséhez indítsa újra a számítógépet. A shutdown /i paranccsal például automatikus újraindítást kezdeményezhet.
 
-    For example: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsoffice.log"`
+    Például: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsoffice.log"`
 
-##### To deploy the RMS sharing application for Office 2010 and Windows Azure RMS
+##### Az RMS-megosztó alkalmazás telepítése Office 2010 és Windows Azure RMS alá
 
-1.  Install the Microsoft Online Sign-In Assistant by using the following commands:
+1.  A következő parancsokkal telepítheti a Microsoft Online bejelentkezési segédet:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\msoidcli_64bit.msi" /L*v "<log file path and name >"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\msoidcli_64bit.msi" /L*v "<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\msoidcli_64bit.msi" /L*v "C:\Log files\assistant.log"`
+    Például: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\msoidcli_64bit.msi" /L*v "C:\Log files\assistant.log"`
 
-2.  Install the Office hotfix by using the following commands:
+2.  A következő parancsokkal telepítheti az Office-gyorsjavítást:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         x64\office2010-kb2596501-fullfile-x64-glb.exe /norestart /quiet /log:"<log file path and name >"
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         x86\office2010-kb2596501-fullfile-x86-glb.exe /norestart /quiet /log:"<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\x64\office2010-kb2596501-fullfile-x64-glb.exe /norestart /quiet /log:"C:\Log files\kb2596501install.log"`
+    Például: `\\server5\apps\rms\x64\office2010-kb2596501-fullfile-x64-glb.exe /norestart /quiet /log:"C:\Log files\kb2596501install.log"`
 
-3.  Install the Cryptographic Mode 2 hotfix by using the following commands:
+3.  A következő parancsokkal telepítheti az 2. kriptográfiai mód gyorsjavítását:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         wusa.exe /norestart /quiet "x64\Windows6.1-KB2627273-v4-x64.msu" /log:"<log file path and name >"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         wusa.exe /norestart /quiet "x86\Windows6.1-KB2627273-v4-x86.msu" /log:"<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\wusa.exe /norestart /quiet "x64\Windows6.1-KB2627273-v4-x64.msu" /log:"C:\Log files\kb267273.log"`
+    Például: `\\server5\apps\rms\wusa.exe /norestart /quiet "x64\Windows6.1-KB2627273-v4-x64.msu" /log:"C:\Log files\kb267273.log"`
 
-4.  Install the AD RMS Client and the RMS sharing application by using the following command:
+4.  A következő paranccsal telepítheti az AD RMS-ügyfelet és az RMS-megosztó alkalmazást:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name >"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         X86\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
+    Például: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
 
-5.  Install the Office add-in by using the following commands:
+5.  A következő parancsokkal telepítheti az Office-beépülőmodult:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "<log file path and name>"
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x86\Setup.msi" /L*v "<log file path and name>"
         ```
 
     > [!NOTE]
-    > To complete the installation, the computer must restart. You can initiate an automatic restart by using a command such as shutdown /i.
+    > A telepítés befejezéséhez indítsa újra a számítógépet. A shutdown /i paranccsal például automatikus újraindítást kezdeményezhet.
 
-    For example: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsoffice.log"`
+    Például: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsoffice.log"`
 
-6.  Install the Windows Azure Active Directory Rights Management preparation tool by adding the following command to logon scripts:
+6.  A Windows Azure Active Directory tartalomvédelmi előkészítő eszköz telepítése a következő parancs bejelentkezési parancsfájlokhoz való hozzáadásával:
 
     > [!IMPORTANT]
-    > To run this command successfully, users must have local administrator privileges.
+    > A parancs sikeres futtatásához a felhasználónak helyi rendszergazdai jogosultságokkal kell rendelkeznie.
 
-    -   For Windows 8, 64-bit:
+    -   64 bites Windows 8 esetén:
 
         ```
         x64\aadrmprep.exe /initiateMe /logfile "<log file path and name>"
         ```
 
-    -   For Windows 8, 32-bit:
+    -   32 bites Windows 8 esetén:
 
         ```
         X86\aadrmprep.exe /initiateMe /logfile "<log file path and name>"
         ```
 
-    -   For Windows 7, 64-bit:
+    -   64 bites Windows 7 esetén:
 
         ```
         x64\win7\aadrmprep.exe /initiateMe /logfile "<log file path and name>"
         ```
 
-    -   For Windows 7, 32-bit:
+    -   32 bites Windows 7 esetén:
 
         ```
         X86\win7\aadrmprep.exe /initiateMe /logfile "<log file path and name>"
         ```
 
     > [!NOTE]
-    > This command might prompt the user to enter their Windows Azure credentials. If the computer is not joined to a domain, the user will be prompted. If the computer is joined to a domain, the tool might be able to use cached credentials.
+    > Lehetséges, hogy a parancs a Windows Azure hitelesítő adatai megadására kéri a felhasználót. Ha a számítógép egyetlen tartománynak sem tagja, mindenképpen meg kell adni az adatokat. Ha a számítógép egy tartomány tagja, akkor lehetséges, hogy az eszköz fel tudja használni a gyorsítótárazott hitelesítő adatokat.
 
-    For example: `\\server5\apps\rms\x64\aadrmprep.exe /initiateMe /logfile "C:\Log files\aadrmprepinstall.log"`
+    Például: `\\server5\apps\rms\x64\aadrmprep.exe /initiateMe /logfile "C:\Log files\aadrmprepinstall.log"`
 
-##### To deploy the RMS sharing application for Office 2013 or Office 2010 and Active Directory RMS
+##### Az RMS-megosztó alkalmazás telepítése Office 2013 vagy Office 2010 és Windows Azure RMS alá
 
-1.  Install the AD RMS Client and the RMS sharing application by using the following commands:
+1.  A következő parancsokkal telepítheti az AD RMS-ügyfelet és az RMS-megosztó alkalmazást:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         X86\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
+    Például: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
 
-2.  Install the Office add-in by using the following commands:
+2.  A következő parancsokkal telepítheti az Office-beépülőmodult:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "<log file path and name>"
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x86\Setup.msi" /L*v "<log file path and name>"
         ```
 
     > [!NOTE]
-    > To complete the installation, the computer must restart. You can initiate an automatic restart by using a command such as shutdown /i.
+    > A telepítés befejezéséhez indítsa újra a számítógépet. A shutdown /i paranccsal például automatikus újraindítást kezdeményezhet.
 
-    For example: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsofficeinstall.log"`
+    Például: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsofficeinstall.log"`
 
-##### To upgrade the RMS sharing application
+##### Az RMS-megosztó alkalmazás frissítése
 
-1.  Install the AD RMS Client and the RMS sharing application by using the following command:
+1.  A következő paranccsal telepítheti az AD RMS-ügyfelet és az RMS-megosztó alkalmazást:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         X86\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "<log file path and name>"
         ```
 
-    For example: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
+    Például: `\\server5\apps\rms\x64\setup_ipviewer.exe /norestart /quiet /msicl "MSIRESTARTMANAGERCONTROL=Disable" /log "C:\Log files\ipviewerinstall.log"`
 
-2.  Install the Office add-in by using the following commands:
+2.  A következő parancsokkal telepítheti az Office-beépülőmodult:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "<log file path and name>"
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x86\Setup.msi" /L*v "<log file path and name>"
         ```
 
     > [!NOTE]
-    > To complete the installation, the computer must restart. You can initiate an automatic restart by using a command such as shutdown /i.
+    > A telepítés befejezéséhez indítsa újra a számítógépet. A shutdown /i paranccsal például automatikus újraindítást kezdeményezhet.
 
-    For example: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsofficeinstall.log"`
+    Például: `\\server5\apps\rms\msiexec.exe /norestart /quiet MSIRESTARTMANAGERCONTROL=Disable /i "x64\Setup64.msi" /L*v "C:\Log files\rmsofficeinstall.log"`
 
-#### <a name="BKMK_verifyscripted"></a>Verifying installation success
-You can use the installation log files to verify a successful installation.
+#### <a name="BKMK_verifyscripted"></a>A telepítés sikerességének ellenőrzése
+A telepítési naplófájlokban ellenőrizheti egy telepítés sikerességét.
 
-###### To verify installation success for the Microsoft Online Sign-In Assistant
+###### A Microsoft Online bejelentkezési segéd sikeres telepítésének ellenőrzése
 
--   To verify success, search for the following text in the installation log file: **Installation success or error status: 0**
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveget a telepítési naplófájlban: **Installation success or error status: 0**
 
-    Example lines from a successful installation:
+    Egy sikeres telepítésből származó példasorok:
 
     **MSI (s) (9C:88) [18:49:04:007]: Product: Microsoft RMS Office Addins -- Installation completed successfully.**
 
     **MSI (s) (9C:88) [18:49:04:007]: Windows Installer installed the product. Product Name: Microsoft RMS Office Addins. Product Version: 1.0.7. Product Language: 1033. Manufacturer: Microsoft. Installation success or error status: 0.**
 
-###### To verify installation success for the hotfix for Office
+###### Az Office-gyorsjavítás sikeres telepítésének ellenőrzése
 
--   To verify success, search for either of the following text strings in the installation log file:
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveges karakterláncok bármelyikét a telepítési naplófájlban:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         -   **office2010-kb2596501-fullfile-x64-glb.exe exited with status SUCCESS**
 
         -   **office2010-kb2596501-fullfile-x64-glb.exe exited with status NOTAPPLICABLE**
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         -   **office2010-kb2596501-fullfile-x86-glb.exe exited with status SUCCESS**
 
         -   **office2010-kb2596501-fullfile-x86-glb.exe exited with status NOTAPPLICABLE**
 
-###### To verify installation success for the hotfix for Cryptographic Mode 2
+###### A 2. kriptográfiai módhoz tartozó gyorsjavítás sikeres telepítésének ellenőrzése
 
--   To verify success, search for either of the following text strings in the installation log file:
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveges karakterláncok bármelyikét a telepítési naplófájlban:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         -   **Windows6.1-KB2627273-v4-x64.msu exited with status SUCCESS**
 
         -   **Windows6.1-KB2627273-v4-x64.msu exited with status NOTAPPLICABLE**
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         -   **Windows6.1-KB2627273-v4-x86.msu exited with status SUCCESS**
 
         -   **Windows6.1-KB2627273-v4-x86.msu exited with status NOTAPPLICABLE**
 
-###### To verify installation success for the AD RMS Client and the RMS sharing application
+###### Az AD RMS-ügyfél és az RMS-megosztó alkalmazás sikeres telepítésének ellenőrzése
 
--   To verify success, search for the following text in the installation log file: **Installation success or error status: 0**
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveget a telepítési naplófájlban: **Installation success or error status: 0**
 
-    Example lines from a successful installation:
+    Egy sikeres telepítésből származó példasorok:
 
     **MSI (s) (F0:B8) [14:19:57:854]: Product: Active Directory Rights Management Services Client 2.1 -- Installation completed successfully.**
 
     **MSI (s) (F0:B8) [14:19:57:854]: Windows Installer installed the product. Product Name: Active Directory Rights Management Services Client 2.1. Product Version: 1.0.1179.1. Product Language: 1033. Manufacturer: Microsoft Corporation. Installation success or error status: 0.**
 
-###### To verify installation success for the Office add-in
+###### Az Office beépülő modul sikeres telepítésének ellenőrzése
 
--   To verify success, search for the following text in the installation log file: **Installation success or error status: 0**
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveget a telepítési naplófájlban: **Installation success or error status: 0**
 
-    Example lines from a successful installation:
+    Egy sikeres telepítésből származó példasorok:
 
     **MSI (s) (9C:88) [18:49:04:007]: Product: Microsoft RMS Office Addins -- Installation completed successfully.**
 
     **MSI (s) (9C:88) [18:49:04:007]: Windows Installer installed the product. Product Name: Microsoft RMS Office Addins. Product Version: 1.0.7. Product Language: 1033. Manufacturer: Microsoft. Installation success or error status: 0.**
 
-###### To verify installation success for the Windows Azure Active Directory Rights Management preparation tool
+###### A Windows Azure Active Directory tartalomvédelmi előkészítő eszköz sikeres telepítésének ellenőrzése
 
--   To verify success, search for the following text in the installation log file: **aadrmprep.exe exited with status SUCCESS**
+-   A telepítés sikerességének ellenőrzéséhez keresse meg a következő szöveget a telepítési naplófájlban: **aadrmprep.exe exited with status SUCCESS**
 
     > [!NOTE]
-    > Sometimes, this installation can run twice; the first occurrence fails and the second is successful.
+    > Egyes esetekben a telepítés kétszer is lefuthat, ekkor az első alkalommal sikertelen, a második alkalommal pedig sikeres lesz.
 
-If you want to manually check the registry changes that this tool makes, they are as follows:
+A következő parancsokkal ellenőrizheti manuálisan az eszköz által végrehajtott beállításjegyzék-módosításokat:
 
 -   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDRM\Federation]
 
@@ -646,48 +645,48 @@ If you want to manually check the registry changes that this tool makes, they ar
 
 -   [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSDRM\ServiceLocation\Activation]
 
-    @="&lt;certification url&gt;"
+    @="&lt;tanúsítási URL-cím&gt;"
 
 -   [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\Common\DRM]
 
-    DefaultUser="&lt;default_user&gt;"
+    DefaultUser="&lt;alapértelmezett_felhasználó&gt;"
 
-#### <a name="BKMK_uninstallscripted"></a>Uninstall commands
-Not all of the installation commands that are required for these deployments support an uninstallation command. You can uninstall the AD RMS client and the sharing application, and you can uninstall the Office add-in. Use the following commands to uninstall these elements.
+#### <a name="BKMK_uninstallscripted"></a>Eltávolítási parancsok
+Az üzembe helyezéshez szükséges telepítési parancsok közül nem mindegyik támogatja az eltávolítási parancsokat. Az alábbi parancsokkal a következő elemeket távolíthatja el: az AD RMS-ügyfelet és a megosztóalkalmazást, valamint az Office beépülő modult.
 
-###### To uninstall the AD RMS Client and the RMS sharing application
+###### Az AD RMS-ügyfél és az RMS-megosztó alkalmazás eltávolítása
 
--   Use the following commands:
+-   Az alábbi parancsokat használja:
 
-    -   For 64-bit Windows:
+    -   64 bites Windows esetén:
 
         ```
         x64\setup_ipviewer.exe /uninstall /quiet
         ```
 
-    -   For 32-bit Windows:
+    -   32 bites Windows esetén:
 
         ```
         x86\setup_ipviewer.exe /uninstall /quiet
         ```
 
-###### To uninstall the Office add-in
+###### Az Office beépülő modul eltávolítása
 
--   Use the following commands:
+-   Az alábbi parancsokat használja:
 
-    -   For 64-bit version of Office:
+    -   Az Office 64 bites verziója esetén:
 
         ```
         msiexec /x \x64\Setup[64].msi /quiet
         ```
 
-    -   For 32-bit version of Office:
+    -   Az Office 32 bites verziója esetén:
 
         ```
         msiexec /x \x86\Setup.msi /quiet
         ```
 
-## See Also
-[Microsoft Rights Management sharing application download (http://go.microsoft.com/fwlink/?LinkId=303970)](http://go.microsoft.com/fwlink/?LinkId=303970)
- [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971)
+## Lásd még
+[Microsoft Rights Management megosztóalkalmazás letöltése (http://go.microsoft.com/fwlink/?LinkId=303970)](http://go.microsoft.com/fwlink/?LinkId=303970)
+ [A Windows Microsoft Rights Management megosztóalkalmazással kapcsolatos gyakori kérdések](http://go.microsoft.com/fwlink/?LinkId=303971)
 

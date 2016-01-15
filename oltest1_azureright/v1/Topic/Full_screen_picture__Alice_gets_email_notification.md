@@ -3,15 +3,14 @@ description: na
 keywords: na
 title: Full screen picture: Alice gets email notification
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 9f642a2e-58ad-44ab-9f81-f890d15380f9
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: nofollow
 ---
-# Full screen picture: Alice gets email notification
+# Teljes k&#233;pernyős k&#233;p: Aliz beolvassa az &#233;rtes&#237;tő e-mailek
 ![](../Image/AzRMS_StoryboardEmaill4.PNG)
 
-Back to [Azure RMS in action: Safely share attachments with mobile users](http://technet.microsoft.com/library/jj585026.aspx).
+Vissza a [művelet az Azure RMS: Mellékletek biztonságosan megosztja mobil felhasználók](http://technet.microsoft.com/library/jj585026.aspx).
 

@@ -3,59 +3,58 @@ description: na
 keywords: na
 title: Configuring Usage Rights for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 97ddde38-b91b-42a5-8eb4-3ce6ce15393d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Usage Rights for Azure Rights Management
-When you set protection on files or emails by using Azure Rights Management (Azure RMS) and you do not use a template, you must configure the usage rights yourself. In addition, when you configure custom templates for Azure RMS, you select the usage rights that will then be automatically applied when the template is selected by users, administrators, or configured services. For example, in the Azure  classic portal you can select roles that configure a logical grouping of usage rights, or you can configure the individual rights.
+# Haszn&#225;lati jogok konfigur&#225;l&#225;sa az Azure Rights Management
+Védelem a fájlokat, vagy az e-maileket Azure Rights Management (Azure RMS) használatával és nem használhatja a sablont, konfigurálnia kell a használati jogok saját maga. Ezenkívül az Azure RMS egyéni sablonok konfigurálásakor választhat a használati jogok, a rendszer ezután automatikusan alkalmazza a sablon a felhasználók, a rendszergazdák által kiválasztásakor, vagy a szolgáltatások konfigurált. Például az Azure portál közül választhat szerepkörökbe, konfigurálja a használati jogok logikai csoportja, vagy úgy is konfigurálhatja a egyéni jogait.
 
-Use this topic to help you configure the usage rights you want for the application you’re using and understand how these rights are interpreted by applications.
+Ez a témakör segítségével konfigurálja a használati jogok azt szeretné, hogy az alkalmazás használata, és megtudja, hogyan ezeknek a jogosultságoknak alkalmazások értelmezi.
 
-## Usage Rights and Descriptions
-The following table lists and describes the usage rights that Rights Management supports, and how they are used and interpreted. In this table, the **Common name** is typically how you might see the usage right displayed or referenced, as a more friendly version of the single-word value that is used in the code (the **Encoding in policy** value). The **API Constant or Value** is the SDK name for an MSIPC API call, used when you write an RMS-enlightened application that checks for a usage right, or adds a usage right to a policy.
+## Használati jogok és leírása
+A következő táblázat felsorolja és ismerteti a használati jogok, amely támogatja a Rights Management, és hogyan vannak használt, és úgy értelmezhető. Ebben a táblázatban a **köznapi név** általában van, előfordulhat, hogy hogyan megtekintheti a használat jobbra jelenik meg, vagy a hivatkozott, mint egy több felhasználóbarát egyszavas érték, amely a kódot a használt verziója (a **házirendjében kódolás** érték). A **API állandó vagy érték** MSIPC API-hívásban, használja az RMS-enlightened alkalmazás, amely a jobb oldali használatát, vagy a használat jobbra házirendet ad hozzá írásakor SDK neve.
 
-|Common name|Encoding in policy|Description|Implementation in Office custom rights|Name in the Azure  classic portal|Name in AD RMS templates|API constant or value|Additional information|
-|---------------|----------------------|---------------|------------------------------------------|-------------------------------------|----------------------------|-------------------------|--------------------------|
-|Edit Content, Edit|DOCEDIT|Allows the user to modify, rearrange, format or filter the content inside the application. It does not grant the right to save the edited copy.|As part of the **Change** and **Full Control** options.|**Edit Content**|**Edit**|Not applicable|In Office applications, this right also allows the user to save the document.|
-|Save|EDIT|Allows the user to save the document in its current location.|As part of the **Change** and **Full Control** options.|**Save File**|**Save**|IPC_GENERIC_WRITEL"EDIT"|In Office applications, this right also allows the user to modify the document.|
-|Comment|COMMENT|Enables the option to add annotations or comments to the content.|Not implemented|Not implemented|Not implemented|IPC_GENERIC_COMMENTL"COMMENT"|This right is available in the SDK, is available as an ad-hoc policy in the RMS Protection module for Windows PowerShell, and has been implemented in some software vendor applications. However, it is not widely used and is not currently supported by Office applications.|
-|Save As, Export|EXPORT|Enables the option to save the content to a different file name (Save As). Depending on the application, the file might be saved without protection.|As part of the **Change** and **Full Control** options.|**Export Content (Save As)**|**Export (Save As)**|IPC_GENERIC_EXPORTL"EXPORT"|This right also allows the user to perform other export options in applications, such as **Send to OneNote**.|
-|Forward|FORWARD|Enables the option to forward an email message and to add recipients to the **To** and **Cc** lines.|Denied when using the **Do Not Forward** standard policy.|**Forward**|**Forward**|IPC_EMAIL_FORWARDL"FORWARD"|Does not allow the forwarder to grant rights to other users as part of the forward action.|
-|Full Control|OWNER|Grants all rights to the document and all available actions can be performed.|As the **Full Control** custom option.|**Full Control**|**Full Control**|IPC_GENERIC_ALLL"OWNER"|Includes the ability to remove protection.|
-|Print|PRINT|Enables the options to print the content.|As the **Print Content** option in custom permissions. Not a per-recipient setting.|**Print**|**Print**|IPC_GENERIC_PRINTL"PRINT|No additional information|
-|Reply|REPLY|Enables the Reply option in an email client, without allowing changes in the **To** or **Cc** lines.|Not applicable|**Reply**|**Reply**|IPC_EMAIL_REPLY|No additional information|
-|Reply All|REPLYALL|Enables the **Reply All** option in an email client, but doesn’t allow the user to add recipients to the **To** or **Cc** lines.|Not applicable|**Reply All**|**Reply All**|IPC_EMAIL_REPLYALLL"REPLYALL"|No additional information|
-|View, Open, Read|VIEW|Allows the user to open the document and see the content.|As the **Read** custom policy, **View** option.|**View Content**|**View**|IPC_GENERIC_READL"VIEW"|No additional information|
-|Copy|EXTRACT|Enables options to copy data from the document into the same or another document.|As the **Allow users with Read access to copy content** custom policy option.|**Copy and Extract content**|**Extract**|IPC_GENERIC_EXTRACTL"EXTRACT"|In some applications it also allows the whole document to be saved in unprotected form.|
-|View Rights|VIEWRIGHTSDATA|Allows the user to see the policy that is applied to the document.|Not implemented|**View Assigned Rights**|**View Rights**|IPC_READ_RIGHTSL"VIEWRIGHTSDATA"|Ignored by some applications.|
-|Change Rights|EDITRIGHTSDATA|Allows the user to change the policy that is applied to the document. Includes including removing protection.|Not implemented|**Change Rights**|**Edit Rights**|IPC_WRITE_RIGHTSL"EDITRIGHTSDATA"|No additional information|
-|Allow Macros|OBJMODEL|Enables the option to run macros or perform other programmatic or remote access to the content in a document.|As the **Allow Programmatic Access** custom policy option. Not a per-recipient setting.|**Allow Macros**|**Allow Macros**|Not applicable|No additional information|
+|Köznapi név|A házirend-kódoláshoz|Leírása|Az Office egyéni jogok végrehajtása|Az Azure portál neve|Active Directory tartalomvédelmi szolgáltatások sablon neve|API állandó vagy érték|További információk|
+|---------------|-------------------------|-----------|---------------------------------------|------------------------|---------------------------------------------------------------|--------------------------|-----------------------|
+|Szerkesztés tartalom szerkesztése|DOCEDIT|Lehetővé teszi a felhasználó módosításához átrendezése, formázása vagy szűrje a tartalmat, az alkalmazás belül. Nem biztosít a jogot arra, hogy a mentse a módosított példányt.|Részeként a **módosítása** és **teljes hozzáférés** beállítások.|**Tartalom szerkesztése**|**Szerkesztése**|Nem alkalmazható|Az Office alkalmazások a jobb oldali is lehetővé teszi a felhasználó menteni a dokumentumot.|
+|Mentés|SZERKESZTÉSE|Lehetővé teszi a felhasználó számára, hogy a dokumentum mentése a jelenlegi helyéről.|Részeként a **módosítása** és **teljes hozzáférés** beállítások.|**Fájl mentése**|**Mentés**|IPC_GENERIC_WRITEL "SZERKESZTÉS"|Az Office alkalmazások a jobb oldali is lehetővé teszi a felhasználó a dokumentum módosításához.|
+|Megjegyzés|MEGJEGYZÉS|Lehetővé teszi, hogy a széljegyzeteket, vagy a Megjegyzések hozzáadása a tartalom lehetőséget.|Nincs megvalósítva|Nincs megvalósítva|Nincs megvalósítva|IPC_GENERIC_COMMENTL "MEGJEGYZÉS"|A jobb oldali érhető el a SDK érhető el, mint egy alkalmi házirend az RMS-védelmi modul a Windows PowerShell és néhány szoftver gyártójától alkalmazás valósított. Azonban nem széles körben használja, és Office alkalmazások által jelenleg nem támogatott.|
+|Mentés másként exportálása|EXPORTÁLÁSA|Lehetővé teszi, hogy a tartalom mentéséhez egy másik fájl nevét (Mentés másként) lehetőséget. Attól függően, hogy az alkalmazást a fájl előfordulhat, hogy menti a védelem nélkül.|Részeként a **módosítása** és **teljes hozzáférés** beállítások.|**Tartalom (Mentés másként) exportálása**|**Exportálás (Mentés másként)**|IPC_GENERIC_EXPORTL "EXPORT"|A jobb oldali is lehetővé teszi, hogy a felhasználó végrehajtásához más exportálási beállítások az alkalmazások, például az **küld a OneNote**.|
+|Előre|ELŐRE|Lehetővé teszi, hogy a lehetőséget, e-mail üzenetet továbbít, és a hozzá címzetteket, hogy a **a** és **másolat** sorokat.|A rendszer megtagadta a használata esetén a **nem továbbítandó** normál házirend.|**Előre**|**Előre**|"ELŐRE" IPC_EMAIL_FORWARDL.|A továbbító való továbbítani részeként más felhasználók jogot nem teszi lehetővé.|
+|Teljes hozzáférés|TULAJDONOS|A dokumentum összes jogokat, és az összes elérhető műveletek végezhetők.|Mint a **teljes hozzáférés** egyéni lehetőséget.|**Teljes hozzáférés**|**Teljes hozzáférés**|IPC_GENERIC_ALLL "TULAJDONOS"|A segítségnyújtó lehet eltávolítani a védelmet.|
+|Nyomtatás|NYOMTATÁS|Lehetővé teszi, hogy a beállítások, a tartalom nyomtatása.|Mint a **nyomtatási tartalom** az egyéni engedélyek lehetőséget. Címzett-beállítás.|**Nyomtatás**|**Nyomtatás**|IPC_GENERIC_PRINTL "NYOMTATÁS|Nincs további információ|
+|Válasz|VÁLASZ|Lehetővé teszi, hogy a válasz egy e-mail ügyfél parancsa a módosításokat a **a** vagy **másolat** sorokat.|Nem alkalmazható|**Válasz**|**Válasz**|IPC_EMAIL_REPLY|Nincs további információ|
+|Válasz mindenkinek|REPLYALL|Lehetővé teszi, hogy a **Válasz mindenkinek** beállítás az e-mailek Client, de a felhasználó hozzáadása a címzett nem teszi lehetővé a **a** vagy **másolat** sorok.|Nem alkalmazható|**Válasz mindenkinek**|**Válasz mindenkinek**|IPC_EMAIL_REPLYALLL "REPLYALL"|Nincs további információ|
+|A nézet, a Megnyitás, Olvasás|A NÉZET|Lehetővé teszi, hogy a felhasználó, nyissa meg a dokumentumot, és tekintse meg a tartalmat.|Mint a **olvasható** egyéni házirend, **Nézet** lehetőséget.|**Tartalom megtekintése**|**A nézet**|IPC_GENERIC_READL "NÉZET"|Nincs további információ|
+|Másolás|KIVONAT|Lehetővé teszi, hogy a beállítások adatok másolása a dokumentum ugyanabba vagy egy másik dokumentumot.|Mint a **olvasási hozzáféréssel rendelkező felhasználók másolása a tartalom engedélyezése** egyéni házirend-beállítást.|**Másolás és az Extract tartalom**|**Kivonat**|IPC_GENERIC_EXTRACTL "KIVONAT"|Az egyes alkalmazások is lehetővé teszi a teljes dokumentum nem védett formában kell menteni.|
+|Jogok megtekintése|VIEWRIGHTSDATA|Lehetővé teszi a felhasználó számára, hogy a dokumentum alkalmazza a házirend.|Nincs megvalósítva|**Hozzárendelt jogok megtekintése**|**Jogok megtekintése**|IPC_READ_RIGHTSL "VIEWRIGHTSDATA"|Egyes alkalmazások figyelmen kívül hagyja.|
+|Jogok módosítása|EDITRIGHTSDATA|Lehetővé teszi a felhasználó módosíthatja a házirend, amelyre a dokumentum vonatkozik. Tartalmaz, beleértve a védelem eltávolítása.|Nincs megvalósítva|**Jogok módosítása**|**Jogok szerkesztése**|IPC_WRITE_RIGHTSL "EDITRIGHTSDATA"|Nincs további információ|
+|Lehetővé teszi makrók|OBJMODEL|Lehetővé teszi, hogy a makrók futtatásához, vagy más programozott vagy a távoli hozzáférést a tartalomhoz végrehajtására a dokumentum lehetőséget.|Mint a **programozott hozzáférés engedélyezése** egyéni házirend-beállítást. Címzett-beállítás.|**Lehetővé teszi makrók**|**Lehetővé teszi makrók**|Nem alkalmazható|Nincs további információ|
 
-## Rights included in permissions  levels
-Some applications group usage rights together into permissions levels, to make it easier to select usage rights that are typically used together. These permisisons levels help to abstract a level of complexity from users, so they can choose options that are role-based.  For example, **Reviewer** and **Co-Author**. Although these options often show users a summary of the rights, they might not include every right that is listed in the previous table.
+## Engedélyek szintek jogok
+Egyes alkalmazások csoportba a használati jogok történő engedélyek szintek, így könnyebb válassza ki a használati jogok jellemzően használt együtt. Ezek a permisisons szintek súgó a felhasználóktól, összetettségét szintű absztrakt, így azok, válassza a beállítások, amelyek a szerepkör-alapú.  Például **felülvizsgáló** és **együttes Szerző**. Bár ezek a beállítások a jogok összefoglalása gyakran megjelenítése a felhasználók, előfordulhat, hogy nem tartoznak minden jobb, amely szerepel az előző táblázatban.
 
-Use the following table for a list of these permissions levels and a complete list of the rights that they contain.
+Használja az alábbi táblázat ezek engedélyek szintek listáját, és a bennük jogok teljes listáját.
 
-|Permissions Level|Applications|Rights included (common name)|
-|---------------------|----------------|---------------------------------|
-|Viewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Reply<br /><br />Reply All|
-|Reviewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Author|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Owner|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]<br /><br />Full Control|
-Footnote 1: Not applicable to the Rights Management sharing application for Windows
+|Engedélyek szintje|Alkalmazások|Jogok (köznapi név)|
+|----------------------|----------------|-----------------------|
+|Viewer|Azure portál<br /><br />Rights Management megosztóalkalmazás Windows|A nézet, a Megnyitás, Olvasás<br /><br />Válasz<br /><br />Válasz mindenkinek|
+|Felülvizsgáló|Azure portál<br /><br />Rights Management megosztóalkalmazás Windows|A nézet, a Megnyitás, Olvasás<br /><br />Mentés<br /><br />Szerkesztés tartalom szerkesztése<br /><br />Reply<sup>*</sup><br /><br />Válasz mindenkinek<sup>*</sup><br /><br />Előre<sup>*</sup>|
+|Társ Szerző|Azure portál<br /><br />Rights Management megosztóalkalmazás Windows|A nézet, a Megnyitás, Olvasás<br /><br />Mentés<br /><br />Szerkesztés tartalom szerkesztése<br /><br />Másolás<br /><br />Jogok megtekintése<br /><br />Jogok módosítása<br /><br />Lehetővé teszi makrók<br /><br />Mentés másként exportálása<br /><br />Nyomtatás<br /><br />Reply<sup>*</sup><br /><br />Válasz mindenkinek<sup>*</sup><br /><br />Előre<sup>*</sup>|
+|Társ-tulajdonos|Azure portál<br /><br />Rights Management megosztóalkalmazás Windows|A nézet, a Megnyitás, Olvasás<br /><br />Mentés<br /><br />Szerkesztés tartalom szerkesztése<br /><br />Másolás<br /><br />Jogok megtekintése<br /><br />Jogok módosítása<br /><br />Lehetővé teszi makrók<br /><br />Mentés másként exportálása<br /><br />Nyomtatás<br /><br />Reply<sup>*</sup><br /><br />Válasz mindenkinek<sup>*</sup><br /><br />Előre<sup>*</sup><br /><br />Teljes hozzáférés|
+<sup>*</sup> Nem alkalmazható a Rights Management megosztóalkalmazás Windows
 
-## Rights included in the default templates
-The rights that are included with the default templates are as follows:
+## Az alapértelmezett sablonokat jogok
+Az alapértelmezett sablonokat mellékelt jogosultságot a következők:
 
-|Display Name|Rights included (common name)|
-|----------------|---------------------------------|
-|&lt;organization name&gt; - Confidential View Only|View, Open, Read|
-|&lt;organization name&gt; - Confidential|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />View Rights<br /><br />Allow Macros<br /><br />Forward<br /><br />Reply<br /><br />Reply All|
+|Megjelenített név|Jogok (köznapi név)|
+|---------------------|-----------------------|
+|&lt; Szervezetnév &gt; – csak a bizalmas megjelenítése|A nézet, a Megnyitás, Olvasás|
+|&lt; Szervezetnév &gt; - bizalmas|A nézet, a Megnyitás, Olvasás<br /><br />Mentés<br /><br />Szerkesztés tartalom szerkesztése<br /><br />Jogok megtekintése<br /><br />Lehetővé teszi makrók<br /><br />Előre<br /><br />Válasz<br /><br />Válasz mindenkinek|
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

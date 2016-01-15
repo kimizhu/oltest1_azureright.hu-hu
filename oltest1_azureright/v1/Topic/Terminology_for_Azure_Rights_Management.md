@@ -3,57 +3,56 @@ description: na
 keywords: na
 title: Terminology for Azure Rights Management
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 742877bf-26f5-40e3-b1f7-8475e7c3ce11
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Terminology for Azure Rights Management
-Confused by a word, phrase, or acronym that’s related to Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS)? Find the definition here for terms and abbreviations that are either specific to Azure RMS or have a specific meaning when used in the context of [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].
+# Az Azure Rights Management kifejez&#233;sekkel
+Hogy a word, kifejezés vagy kifejezés, amely kapcsolódik a Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS)? Feltételek és rövidítések, amelyek vagy az itt definíciója található adott Azure RMS vagy egy adott értelmezhető, ha a környezetében használt [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].
 
-|Term|Definition|
-|--------|--------------|
-|AADRM|The name of the Windows PowerShell module for Azure Rights Management, which was derived from the unofficial abbreviation for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] when it was previously named (Windows) Azure Active Directory Rights Management.|
-|activate|To enable the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service so that an organization can add information protection to their documents and email. This action also enables Rights Management features in Exchange Online and SharePoint Online.|
-|Active Directory Rights Management Services|Frequently abbreviated to *AD RMS*.<br /><br />A Windows Server role that that provides information protection by using encryption and policy to help secure documents, files, and email.|
-|AD RMS|See *Active Directory Rights Management Services*.|
-|Azure Rights Management|Frequently abbreviated to *Azure RMS*.<br /><br />An Azure service that provides information protection by using encryption and policy to help secure documents, files, and email.  Also known as *Azure Rights Management service*. Previous names have included:<br /><br />*Windows Azure Active Directory Rights Management*: Frequently abbreviated to Windows Azure AD Rights Management Service.<br /><br />*RMS Online*: The original, proposed name, which you might sometimes see in error messages and log file entries.|
-|Azure RMS|See *Azure Rights Management*.|
-|BYOK|See *bring your own key*.|
-|bring your own key|Frequently abbreviated to *BYOK*.<br /><br />A configuration option chosen by an organization that wants to generate and manage their own tenant key for [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].|
-|content key|A unique key that is created by RMS-enlightened applications for each document or email that is protected by using [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] and that helps to limit the risk of information disclosure.|
-|consume|To unlock a file to read or use it when that file has been protected by [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
-|deactivate|To disable the Rights Management service so that the organization can no longer use [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].|
-|departmental template|A rights policy template that you create (a custom template) and is configured to be visible for selected users rather than all users in your organization.|
-|enlightened applications|Applications that natively support Rights Management, which includes Office applications, such as Word and Excel. Independent software vendors (ISVs) and developers can also write applications that natively support [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
-|enterprise rights management|An industry-standard, generic term that is often used to describe products and solutions that help organizations protect sensitive or valuable information by using a combination of encryption and policy authorization tools. Microsoft Rights Management is an example of an enterprise rights management (ERM) solution.|
-|ERM|See *enterprise rights management*.|
-|generic protection|A level of protection that encrypts any file type and prevents unauthorized people from opening the file. After the file is opened, the file is now unencrypted and usable in an application that doesn’t natively support [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
-|information protection|Sometimes abbreviated to *IP*.<br /><br />An industry-standard, generic term that refers to protecting data and files from unauthorized access, even after the data and files leave the organizational boundaries by using email or document sharing. Microsoft Rights Management is an example of an information protection (IP) solution.|
-|Information Rights Management|Frequently abbreviated to *IRM*.<br /><br />A term used in conjunction with Office services, such as Exchange Server, Word, and SharePoint Online, to describe the ability to support Rights Management.|
-|IRM|See *Information Rights Management*.|
-|MSDRM|Sometimes seen as references for the RMS client 1.0, which is replaced with the newer RMS client, MSIPC. This older client supports applications that are developed with the RMS SDK 1.0 and supports Office 2010 and Office 2007, Exchange 2010 and Exchange 2013, and SharePoint 2010 and SharePoint 2007.|
-|MSIPC|Sometimes seen as references for the RMS client 2.0, which replaced the older RMS client, MSDRM. This later client supports applications that are developed with the RMS SDK 2.0 and supports Office 2016 and Office 2013, SharePoint 2013, and the RMS sharing application.|
-|native protection|A level of protection available in all enlightened applications that prevents unauthorized people from opening a file and that can also enforce more stringent policies, such as read-only, and do not print. In addition, this protection stays with the file, even when the file is forwarded to other people or saved in a public location that others can access.|
-|.pfile|The file name extension that is appended to all files that Rights Management generically protects.|
-|.ppdf|The file name extension that Rights Management creates when it automatically creates a PDF copy of a file (Word, Excel, PowerPoint, or PDF) that you share by email, so that the file can be read (but not edited) on all devices.|
-|permissions level|A logical grouping of usage rights that make it easier for end-users and administrators to choose configuration options that are role-based. For example, Reviewer and Co-Author.|
-|protect|Apply Rights Management controls to files or email messages by using encryption, identity, and access control policies to help secure your data.|
-|publish|To protect a file in order to safeguard it from unauthorized access and use.|
-|Rights Management connector|An outbound proxy relay that you can deploy for on-premises services such as Exchange Server and SharePoint, to protect data by using Azure Rights Management.|
-|Rights Management services|The generic term that applies to both the cloud version of [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] ([!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]) and the on-premises version of [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] (AD RMS).|
-|Rights Management sharing application|An optional downloadable application for Windows and most popular mobile devices, which supports safely sharing files in-place and by email.|
-|RMS|See *Rights Management services*.|
-|RMS connector|See *Rights Management connector*.|
-|RMS for individuals|A free subscription for a user to use [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] when their organization does not have a subscription to Office 365 or Azure Active Directory.|
-|RMS sharing app|See *Rights Management sharing application*.|
-|super user|A group of highly trusted administrators who can decrypt and access files that the organization has protected by using Rights Management. Typically, this level of access is required for legal eDiscovery and by auditing teams.|
-|tenant key|Also known as the server licensor certificate (SLC) key.<br /><br />The key that is unique to an organization and ultimately secures all [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] cryptographic functions that chain to this tenant key.|
-|unprotect|Remove Rights Management controls from files or email messages, which used encryption, identity, and access control policies to help secure your data.|
-|use license|A per-document certificate that is granted to a user who opens a file or email message that has been protected by [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]. This certificate contains that user’s rights for the file or email message and the encryption key that was used to encrypt the content, as well as additional access restrictions defined in the document’s policy.|
+|Kifejezés|Meghatározása|
+|-------------|-----------------|
+|AADRM|A Windows PowerShell-modul nevét a hivatalos rövidítése lett származtatva Azure Rights Management [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] Amikor azt korábban neve (Windows) Azure Active Directory tartalomvédelmi szolgáltatások.|
+|aktiválása|Ahhoz, hogy a [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] hogy a szervezet adatvédelem dokumentumokat és e-mailek szolgáltatás. A művelet lehetővé teszi az Exchange online-hoz és a SharePoint Online tartalomvédelmi szolgáltatások.|
+|Active Directory tartalomvédelmi szolgáltatások|A gyakran rövidített *AD RMS*.<br /><br />A Windows Server szerepkör adatvédelem biztosítja a biztonságos dokumentumok, a fájlok és az e-mailek titkosítás és a csoportházirend használatával.|
+|ACTIVE DIRECTORY TARTALOMVÉDELMI SZOLGÁLTATÁSOK|Lásd: *Active Directory tartalomvédelmi szolgáltatások*.|
+|Azure Rights Management|A gyakran rövidített *Azure RMS*.<br /><br />Egy Azure szolgáltatás adatvédelem a biztonságos dokumentumok, a fájlok és az e-mailek titkosítás és a csoportházirend használatával.  Más néven *Azure Rights Management szolgáltatás*. Előző nevek vette fel:<br /><br />-   *Windows Azure Active Directory tartalomvédelmi*: A Windows Azure AD Rights Management szolgáltatáshoz gyakran rövidítve.<br />-   *RMS Online*: Az eredeti, javasolt nevet, amely időnként megjelenhet a hibaüzenetek és a naplófájl-bejegyzéseket.|
+|Az Azure RMS|Lásd: *Azure Rights Management*.|
+|BYOK|Lásd: *saját kulcsot kerüljön*.|
+|a saját kulcs kerüljön.|A gyakran rövidített *BYOK*.<br /><br />Egy szervezet, amely szeretne létrehozása és kezelése a saját bérlői kulcsa által kiválasztott konfigurációs beállítás [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].|
+|tartalom kulcs|Az egyes dokumentumot vagy e-mailben használatával védett RMS-kompatibilis alkalmazások által létrehozott egyedi kulcs [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] és korlátozza az információfelfedés veszélyét, amely segít.|
+|igényel|A fájl olvasására vagy a használata, ha a fájlt védi feloldásához [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
+|inaktiválása|A Rights Management szolgáltatás letiltása, hogy a szervezet már nem használható [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].|
+|Részlegek sablon|Jogmegadási sablon (egyéni-sablon létrehozása), és a látható a szervezet minden felhasználója helyett a kiválasztott felhasználók van konfigurálva.|
+|kompatibilis alkalmazásoknak|Rights Management, amely tartalmazza az Office alkalmazások, például a Word és Excel natív módon támogató alkalmazások. Független szoftverszállítók (ISV) és a fejlesztők is is írási natív módon támogató alkalmazások [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
+|a rights management Enterprise|Olyan gyakran használt termékek és-megoldások, amelyek segítségével a szervezetek szabványos, általános kifejezés bizalmas vagy értékes információk védelme a titkosítás és a csoportházirend-engedélyezési eszközök együttes használatával. A Microsoft Rights Management példája egy vállalati rights management (ERM) megoldást.|
+|ERM|Lásd: *Vállalati rights management-*.|
+|Általános védelem|Olyan szintű védelmet biztosít, amely bármilyen típusú fájl titkosítását, és megakadályozza, hogy a jogosulatlan személyek a fájl megnyitásakor. Miután a fájl megnyitásakor, a fájl jelenleg titkosítatlan és használható az alkalmazás nem natív módon támogató [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].|
+|Adatvédelem|Rövidítése egyes esetekben *IP*.<br /><br />Egy szabványos, általános kifejezés, amely hivatkozik a védett adatok és fájlok illetéktelen hozzáféréstől, után is az adatok és fájlok hagyja a szervezeti határok e-mail vagy dokumentum megosztásának használatával. A Microsoft Rights Management példája egy (IP) adatvédelmi megoldás.|
+|A tartalomvédelmi szolgáltatás|A gyakran rövidített *IRM*.<br /><br />Egy Office-szolgáltatásokra, például Exchange Server, a Word és a SharePoint Online, együtt a képesek támogatni a Rights Management használt kifejezés.|
+|A TARTALOMVÉDELMI SZOLGÁLTATÁS|Lásd: *információk a Rights Management*.|
+|MSDRM|Egyes esetekben látható hivatkozásként az RMS-ügyfél 1.0, amely az újabb RMS-ügyfél, MSIPC cseréli. A régebbi ügyfél támogatja az RMS SDK 1.0 a kifejlesztett alkalmazások, és az Office 2010 és Office 2007, Exchange 2010 és Exchange 2013, és a SharePoint 2010 és SharePoint 2007 támogatja.|
+|MSIPC|Egyes esetekben látható hivatkozásként az RMS-ügyfél 2.0-s verzióját, amely a régi RMS-ügyfél, MSDRM cseréjét. Ez az újabb ügyfél támogatja az RMS SDK 2.0 kifejlesztett alkalmazások, és Office 2016 és Office 2013, SharePoint 2013 és az RMS-megosztó alkalmazás támogatja.|
+|natív védelem|A szintű védelem minden enlightened alkalmazásban érhető el, amely megakadályozza, hogy a jogosulatlan személyek a fájl megnyitása és, hogy is kényszeríthetik szigorúbb házirendeket, például a csak olvasható, és ne lehessen kinyomtatni. Emellett a védelmi marad a fájlt akkor is, ha a fájl mások számára továbbított vagy mások is hozzáférhetnek a nyilvános helyre menti.|
+|.pfile|A fájlnévkiterjesztés minden fájl általános védő Rights Management hozzáfűzendő.|
+|.ppdf|A Rights Management hoz létre, amikor automatikusan létrehozza (Word, Excel, PowerPoint vagy PDF) fájl PDF-példányának, amely fájlnévkiterjesztés oszthat meg e-mailben, hogy a fájl csak olvasni lehet (nem szerkeszthető) minden eszközön.|
+|engedélyek szint|Használati engedélyek, amelyek megkönnyítik a végfelhasználók és a rendszergazda adja meg a beállításokat, amelyek a szerepkör alapú logikai csoportját. Például a felülvizsgáló és Társszerző.|
+|védelme|Fájlok vagy e-mailek titkosítási identitás használatával Rights Management vezérlők vonatkoznak, és a biztonságossá vezérlési házirendeket az adatok eléréséhez.|
+|közzététele|Annak érdekében, hogy annak védelme a jogosulatlan hozzáférés ellen, és használja a fájl védelmét.|
+|A Rights Management-összekötő|Egy kimenő proxy továbbító, amely a helyszíni szolgáltatások, mint az Exchange-kiszolgáló és a SharePoint, a adatok védelméhez az Azure Rights Management használatával telepíthet.|
+|Tartalomvédelmi szolgáltatások|Az általános kifejezés, és mindkét a felhő verziójára vonatkozik [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] ([!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]) és a helyszíni verziójának [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] (AD RMS).|
+|A Rights Management megosztóalkalmazás|Opcionálisan letölthető alkalmazás Windows és a legnépszerűbb mobil eszközök, amely támogatja a biztonságos fájlmegosztás helyben és e-mailben.|
+|RMS|Lásd: *Rights Management services*.|
+|RMS-összekötő|Lásd: *Rights Management összekötő*.|
+|RMS számára|A felhasználó a szabad előfizetést [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] Ha a szervezete nincs előfizetése az Office 365 vagy az Azure Active Directory.|
+|RMS-megosztási alkalmazás|Lásd: *Rights Management megosztóalkalmazás*.|
+|felügyelői|Magas megbízható rendszergazdák, akik visszafejteni és férhetnek hozzá a fájlokhoz, amely a szervezet rendelkezik védett Rights Management használatával csoportja. A hozzáférési szintet általában jogi elektronikus adatok feltárása és csoportok naplózásával szükséges.|
+|Bérlői kulcs|Más néven a kiszolgáló kiszolgálólicenc-tanúsítvány kulcs.<br /><br />A kulcs, amely a szervezet egyedi és végső soron amelyikkel összes [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] titkosítási működik, hogy a bérlő kulcs láncban.|
+|védelem|Rights Management vezérlők fájlok vagy e-mailek használt titkosítási identitás, távolítsa el, és a biztonságossá vezérlési házirendeket az adatok elérése.|
+|licenc használata|A dokumentum tanúsítvány, amely számára engedélyezett megnyitó felhasználók egy fájl vagy e-mail üzenet által védett [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]. Ezt a tanúsítványt, hogy felhasználói jogosultság a fájl vagy e-mailt, és a tartalmat, valamint a további hozzáférési korlátozások a dokumentum a házirendben definiált titkosításához használt titkosítási kulcsot tartalmaz.|
 
-## See Also
+## Lásd még
 [Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

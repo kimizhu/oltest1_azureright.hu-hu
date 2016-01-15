@@ -3,27 +3,26 @@ description: na
 keywords: na
 title: Use keyboard shortcuts in the Rights Management sharing application
 search: na
-ms.date: 2015-09-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 72760134-94e0-4699-b20c-07b96aa061f1
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Use keyboard shortcuts in the Rights Management sharing application
-When you use the RMS sharing application, press the **Alt** key to see the available access keys, and then press **Alt** + the access key to select an option.
+# A Rights Management megoszt&#243;alkalmaz&#225;s billentyűparancsok haszn&#225;lata
+Az RMS-megosztó alkalmazás használatakor nyomja meg a **Alt** a rendelkezésre álló hozzáférési kulcsok megtekintéséhez billentyűt, és nyomja le az **Alt** + a beállítás kiválasztása a hozzáférési kulcs.
 
-For example, in the **share protected** dialog box, press **Alt** to see the access keys, and then press **Alt + m** to select the **Email me when somebody tries to open these documents** check box.
+Például a **védett megosztás** párbeszédpanel, nyomja meg az **Alt** a hozzáférési kulcsok megtekintéséhez, és nyomja le az **Alt + m** jelölje be a **e-mailt kérek, ha valaki megpróbálja megnyitni ezeket a dokumentumokat** jelölőnégyzetet.
 
 ![](../Image/ADRMS_MSRMSApp_AccessKeys.png)
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

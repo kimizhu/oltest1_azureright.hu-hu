@@ -3,85 +3,84 @@ description: na
 keywords: na
 title: Track and revoke your documents when you use the RMS sharing application
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 61f349ce-bdd2-45c1-acc5-bc83937fb187
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Track and revoke your documents when you use the RMS sharing application
-After you have protected your documents by using the RMS sharing application, if your organization is using Azure Rights Management rather than Active Directory Rights Management Services, you can track how people are using your protected documents. If necessary, you can also revoke access to these documents when you want to stop sharing them. To do this, you use the **document tracking site**, which you can access from Windows computers, Mac computers, and even from tablets and phones.
+# Nyomon k&#246;vet&#233;se, &#233;s a dokumentumok visszavonni, az RMS-megoszt&#243; alkalmaz&#225;s haszn&#225;lata eset&#233;n
+Után a dokumentumok védelme, ha az RMS-megosztó alkalmazás, ha a szervezet használja az Active Directory tartalomvédelmi szolgáltatások helyett Azure Rights Management használatával, a személyek hogyan használja a védett dokumentumok is követheti. Szükség esetén is vonhatja ezeket a dokumentumokat a hozzáférést, ha le szeretné állítani a megosztás őket. Ehhez használja a **hely követési dokumentum**, amely a Windows rendszerű számítógép, Mac-számítógépek, és még táblagépek és telefonok érheti el.
 
 > [!TIP]
-> Two minute video: [Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
+> Két perc videó: [Azure RMS-dokumentum követési és visszavonása](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
 
-When you access this site, sign in to track your documents. Providing your organization has a [subscription that supports document tracking and revocation](https://technet.microsoft.com/dn858608.aspx) and you are assigned a license for this subscription, you can then see who tried to open the files that you protected and whether they were successful (they were successfully authenticated) or not. Each time they tried to access the document, and their location at the time. In addition:
+Amikor ezen a webhelyen fér hozzá, jelentkezzen be a dokumentumok nyomon követésére. A szervezet mutató van egy [előfizetés, amely támogatja a dokumentum követési és a visszavont tanúsítványok](https://technet.microsoft.com/dn858608.aspx) és a hozzá van rendelve a licenc az előfizetés, majd megtekintheti ki próbált meg, akkor a védett fájlok megnyitása, és hogy jártak sikerrel (azok voltak sikeresen hitelesített) vagy sem. Minden alkalommal azok megpróbált hozzáférni a dokumentum, és a helyük időpontjában. Ezenkívül:
 
--   If you need to stop sharing a document: Click **Revoke access**, note the period of time that the document will continue to be available, and decide whether to let people know that you’re revoking access to the document you previously shared, and provide a customized message.
+-   Ha le kell állítania a megosztott dokumentumot: Kattintson a **hozzáférésének megvonása**, vegye figyelembe, hogy a dokumentum továbbra is elérhető, és úgy dönt, hogy tudathatja másokkal, hogy Ön visszavonja a dokumentum való hozzáférés meg a korábban megosztott, és adjon meg egy testreszabott üzenet időn.
 
--   If you want to export to Excel: Click **Open in Excel**, so that you can then modify the data, and create your own views and graphs.
+-   Ha az Excel exportálni kívánt: Kattintson a **Nyissa meg az Excel**, hogy az adatok módosítása, majd a saját nézeteket és diagramok létrehozása.
 
--   If you want to configure email notifications: Click **Settings** and select how and whether to be emailed when the document is accessed.
+-   Ha azt szeretné, e-mail értesítések konfigurálása: Kattintson a **Beállítások** és válassza ki, hogy miként, és hogy a kell küldve, ha érhető el a dokumentum-e.
 
--   If you have questions or want to provide feedback about the document tracking site: Click the Help icon to access the [FAQ for Document Tracking](http://go.microsoft.com/fwlink/?LinkId=523977).
+-   Ha kérdése van, vagy a hely követési dokumentummal kapcsolatos visszajelzés: Kattintson a súgó ikon eléréséhez a [gyakran ismételt kérdések a dokumentum követési](http://go.microsoft.com/fwlink/?LinkId=523977).
 
-## Using Office to access the document tracking site
+## Office használatával megnyitni a dokumentumot, hely nyomon követése
 
--   For the Office applications, Word, Excel, and PowerPoint: On the **Home** tab, in the **RMS** group, click **Share Protected**, and then click **Track Usage**.
+-   Az Office alkalmazások, a Word, Excel és PowerPoint: Az a **kezdőlap** lapon, a a **RMS** csoportjában kattintson **védett megosztás**, és kattintson a **nyomon követése használati**.
 
     ![](../Image/ADRMS_MSRMSApp_OfficeToolbarTrackUsage.png)
 
--   For Outlook: On the **Home** tab, in the  **RMS** group, click **Track Usage**:
+-   Az Outlook: Az a **kezdőlap** lapon, a a  **RMS** csoportjában kattintson **nyomon követése használati**:
 
     ![](../Image/ADRMS_MSRMSApp_OutlookTrackUsage.png)
 
-If you do not see these options for RMS, it’s likely that either the RMS sharing application is not installed on your computer, the latest version isn’t installed, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+Ha ezek a beállítások az RMS szolgáltatást nem látja, valószínű, hogy az RMS-megosztó alkalmazás nincs telepítve a számítógépen, a legújabb verzióra nincs telepítve, vagy a telepítés befejezéséhez újra kell indítani a számítógépet. A megosztóalkalmazás telepítésével kapcsolatos további tudnivalókért tekintse meg a [Töltse le és telepítse a Rights Management megosztóalkalmazás](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-### Other ways to track and revoke your documents
-In addition to tracking your documents on Windows computers by using Office applications, you can also use these alternatives:
+### Más módon nyomon követésére és a dokumentumok visszavonása
+Kívül dokumentumok nyomon követése a Windows rendszerű számítógép által az Office-alkalmazásokat használ, másik módszert is használható:
 
--   **Using a web browser**: This method works for all supported devices.
+-   **Webböngészővel**: Ez a módszer használható minden támogatott eszközökhöz.
 
--   **Using File Explorer**: This method works for Windows computers.
+-   **Fájl Intéző használatával**: Ez a módszer használható a Windows rendszerű számítógépeken.
 
--   **Using an Outlook email message**: This method works for Windows computers.
+-   **Használatával az Outlook e-mailben**: Ez a módszer használható a Windows rendszerű számítógépeken.
 
-##### Using a web browser to access the doc tracking site
+##### A doc követési webhely eléréséhez böngészővel
 
--   Using a supported browser, go to the [document tracking site](http://go.microsoft.com/fwlink/?LinkId=529562).
+-   Támogatott böngészővel, nyissa meg a [hely követési dokumentum](http://go.microsoft.com/fwlink/?LinkId=529562).
 
-    Supported browsers: We recommend using Internet Explorer that is at least version 10, but you can use any of following browsers to use the document tracking site:
+    A támogatott böngészők: Javasoljuk, hogy a Internet Explorer, amely legalább 10-es verzióját, de bármelyike használható alábbi böngészőket használni a webhely követési dokumentumot:
 
-    -   Internet Explorer: At least version 10
+    -   Az Internet Explorer: Legalább 10-es verzió
 
-    -   Internet Explorer 9 with at least MS12-037: Cumulative Security Update for Internet Explorer: June 12, 2012
+    -   Az Internet Explorer 9 rendelkező legalább MS12-037: Összesített frissítés az Internet Explorer: 2012. június 12.
 
-    -   Mozilla Firefox: At least version 12
+    -   Mozilla Firefox: Legalább verziója 12
 
-    -   Apple Safari 5: At least version 5
+    -   Az Apple Safari 5: Legalább 5-ös verzióját
 
-    -   Google Chrome: At least version 18
+    -   Google Chrome: Legalább 18. verziója
 
-##### Using File Explorer to access the doc tracking site
+##### Fájl Intéző használatával a doc követési hely elérésére.
 
--   Right-click the file, select **Protect with RMS**, and then select **Track Usage**:
+-   Kattintson a jobb gombbal a fájlt, jelölje be **védelme az RMS**, majd válassza ki **nyomon követése használati**:
 
     ![](../Image/ADRMS_MSRMSApp_ExplorerTrackUsage.png)
 
-##### Using an Outlook email message to access the doc tracking site
+##### Az Outlook e-mailben használatával a doc követési hely elérésére.
 
--   In an email message, in the **Message** tab, in the  **RMS** group, click **Share Protected**, and then click **Track Usage**:
+-   Az e-mail üzenet a a **üzenet** lapon, a a  **RMS** csoportjában kattintson **védett megosztás**, és kattintson a **nyomon követése használati**:
 
     ![](../Image/ADRMS_MSRMSApp_OutlookMessageTrackUsage.png)
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Példák és más utasítások
+Előfordulhat, hogy hogyan használhatja a Rights Management megosztó alkalmazás- és útmutató utasításokat a, tekintse meg az alábbi szakaszok a Rights Management megosztási alkalmazás felhasználói útmutató:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Példák az RMS-megosztó alkalmazás használatával](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Választható?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Lásd még
+[A Rights Management megosztási alkalmazás felhasználói útmutató](../Topic/Rights_Management_sharing_application_user_guide.md)
 

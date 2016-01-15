@@ -3,78 +3,77 @@ description: na
 keywords: na
 title: Decommissioning and Deactivating Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 0b1c2064-0d01-45ae-a541-cebd7fd762ad
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Decommissioning and Deactivating Azure Rights Management
-You are always in control of whether your organization protects content by using [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS), and if you decide you no longer want to use this information protection solution, you have the assurance that you won’t be locked out of content that was previously protected. If you don’t need continued access to previously protected content, you simply deactivate the service and you can let your subscription for Azure Rights Management expire. For example, this would be appropriate for when you have completed testing [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] before you deploy it in a production environment.
+# Le&#225;ll&#237;t&#225;s&#225;ra, &#233;s az Azure Rights Management inaktiv&#225;l&#225;s&#225;r&#243;l
+Mindig irányítását, hogy a szervezet tartalmat védő használatával vannak [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS), és úgy dönt, akkor már nem szeretné használni, ez az információvédelmi megoldás, ha rendelkezik-e a biztosítékot, hogy meg nem zárható ki korábban védett tartalmat. Folyamatos korábban védett tartalomhoz való hozzáférés nem szükséges, ha egyszerűen inaktiválhatja a szolgáltatást, és lehetővé teszi az Azure Rights Management az előfizetés lejár. Például lenne megfelelő Miután végrehajtotta tesztelési [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] Mielőtt éles környezetben telepítené.
 
-However, if you have deployed [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] in production, make sure that you have a copy of your Azure Rights Management tenant key before you deactivate the service and do this before your subscription expires, because this will ensure that you can retain access to content that was protected by Azure Rights Management after the service is deactivated. If you used the bring your own key solution (BYOK) where you generate and manage your own key in an HSM, you will already have your Azure Rights Management tenant key. But if it was managed by Microsoft (the default), see the instructions for exporting your tenant key in [Operations for Your Azure Rights Management Tenant Key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md) topic.
-
-> [!TIP]
-> Even after your subscription expires, your Azure Rights Management tenant remains available for consuming content for an extended period. However, you will no longer be able to export your tenant key.
-
-When you have your Azure Rights Management tenant key, you can deploy Rights Management on premises (AD RMS) and import your tenant key as a trusted publishing domain (TPD). You then have the following options for decommissioning your Azure Rights Management deployment:
-
-|If this applies to you …|… do this:|
-|----------------------------|--------------|
-|You want all users to continue using Rights Management, but use an on-premises solution rather than using Azure RMS    →|Use the [Set-AadrmMigrationUrl](https://msdn.microsoft.com/library/azure/dn629429.aspx) cmdlet to direct existing users to your on-premises deployment when they consume content protected after this change. Users will automatically use the AD RMS installation to consume the protected content.<br /><br />For users to consume content that was protected before this change, redirect your clients to the on-premises deployment by using the **LicensingRedirection** registry key for Office 2016 or Office 2013, as described in the [service discovery section](https://technet.microsoft.com/library/jj159267%28v=ws.10%29.aspx) in the RMS client deployment notes, and the **LicenseServerRedirection** registry key for Office 2010, as described in [Office Registry Settings](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
-|You want to stop using Rights Management technologies completely    →|Grant a designated administrator [super user rights](https://technet.microsoft.com/library/mt147272.aspx) and give this person the [RMS Protection Tool](http://www.microsoft.com/en-us/download/details.aspx?id=47256).<br /><br />This administrator can then use the tool to bulk-decrypt files in folders that were protected by Azure Rights Management so that the files revert to being unprotected and can therefore be read without a Rights Management technology such as Azure RMS or AD RMS. This tool can be used with both Azure RMS and AD RMS, so you have the choice of decrypting files before or after you deactivate Azure RMS, or a combination.|
-|You are not able to identify all the files that were protected by Azure RMS, or you want all users to be able to automatically read any protected files that were missed    →|Deploy a registry setting on all client computers by using the **LicensingRedirection** registry key for Office 2016 and Office 2013, as described in the [service discovery section](https://technet.microsoft.com/library/jj159267%28v=ws.10%29.aspx) in the RMS client deployment notes, and the **LicenseServerRedirection** registry key for Office 2010, as described in [Office Registry Settings](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).<br /><br />Also deploy another registry setting to prevent users from protecting new files by setting **DisableCreation** to **1**, as described in [Office Registry Settings](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
-|You want a controlled, manual recovery service for any files that were missed    →|Grant designated users in a data recovery group [super user rights](https://technet.microsoft.com/library/mt147272.aspx) and give them the [RMS Protection Tool](http://www.microsoft.com/en-us/download/details.aspx?id=47256) so that they can unprotect files when requested by standard users.<br /><br />On all computers, deploy the registry setting to prevent users from protecting new files by setting **DisableCreation** to **1**, as described in [Office Registry Settings](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
-For more information about the procedures in this table, see the following resources:
-
--   For information about AD RMS and deployment references, see [Active Directory Rights Management Services Overview](https://technet.microsoft.com/library/hh831364.aspx).
-
--   For instructions to import your Azure RMS tenant key as a TPD file, see [Add a Trusted Publishing Domain](https://technet.microsoft.com/library/cc771460.aspx).
-
--   To install the Windows PowerShell module for Azure RMS, to set the migration URL, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
-
-When you are ready to deactivate the Azure RMS service for your organization, use the following instructions.
-
-## Deactivating Rights Management
-Use one of the following procedures to deactivate [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+Azonban ha előzőleg telepített [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] üzemi környezetben, győződjön meg arról, hogy az Azure Rights Management bérlői kulcsának egy példánya van ehhez az előfizetés lejárta előtt és a szolgáltatás inaktiválása előtt, mert ezzel biztosíthatja, hogy őrizheti után Azure Rights Management által védett tartalomhoz való hozzáférést a szolgáltatás inaktiváltuk. A kerüljön a saját kulcs-megoldása (BYOK) ahol létrehozása és kezelése a saját Hardvermodult kulcs használata esetén az Azure Rights Management bérlői kulcs már lesz. De volt kezelve, a Microsoft (alapértelmezett), ha a bérlő kulcs exportálása vonatkozó utasításokat lásd [A Azure Rights Management bérlői kulcs műveletek](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md) témakör.
 
 > [!TIP]
-> You can also use the Windows PowerShell cmdlet, [Disable-Aadrm](http://msdn.microsoft.com/library/windowsazure/dn629422.aspx), to deactivate [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].
+> Az előfizetés lejárta után is az Azure Rights Management bérlői hosszabb ideig fel a tartalom elérhető marad. Azonban már nem fogja tudni a bérlő kulcs exportálása.
 
-#### To deactivate Rights Management from the Office 365 admin center
+Ha az Azure Rights Management bérlői kulccsal rendelkezik, telepítheti a Rights Management (AD RMS) helyszíni és importálása a bérlő kulcs megbízható közzétételi tartomány (TPD). Választhat leszerelése az Azure Rights Management-telepítés a következő beállításokat:
 
-1.  [Sign in to Office 365 with your work or school account](https://portal.office.com/) that is an administrator for your Office 365 deployment.
+|Ez vonatkozik, ha...|… tegye a következőket:|
+|------------------------|---------------------------|
+|Az összes felhasználóinak tartalomvédelmi szolgáltatás használatának folytatásához, de használja az Azure RMS → használata helyett egy helyszíni megoldás|Használja a [Set-AadrmMigrationUrl](https://msdn.microsoft.com/library/azure/dn629429.aspx) parancsmag közvetlen meglévő felhasználók a helyszíni telepítésére, ha ez a módosítás után védett tartalmak igényelnek. Felhasználók automatikusan használja az Active Directory tartalomvédelmi szolgáltatások telepítése a védett tartalmakat.<br /><br />A felhasználók számára, hogy ez a módosítás előtt védett tartalmakat, az ügyfelek átirányítása a helyszíni központi telepítés használatával a **LicensingRedirection** Office 2016 vagy Office 2013, az ismertetett beállításkulcs a [felderítési szakasz szolgáltatás](https://technet.microsoft.com/library/jj159267%28v=ws.10%29.aspx) RMS ügyfél központi telepítési megjegyzések és a **LicenseServerRedirection** beállításkulcs az Office 2010, a következő témakörben ismertetett módon [Office beállításjegyzék-beállítások](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
+|Szeretné leállítani a Rights Management technológiák használatával, teljesen →|Adjon meg egy kijelölt rendszergazdához [felhasználói jogok Szuper](https://technet.microsoft.com/library/mt147272.aspx) és a személynek a [RMS védelmi eszköz](http://www.microsoft.com/en-us/download/details.aspx?id=47256).<br /><br />Ez a rendszergazda ezután az eszköz segítségével tömeges-visszafejtési fájlok és mappák, hogy éppen nem védett vissza a fájlokat, és ezért a tartalomvédelmi technológiával, mint például a Azure RMS vagy Active Directory tartalomvédelmi szolgáltatások nélkül olvasható Azure Rights Management által védett. Ez az eszköz Azure RMS és AD RMS, is használható, hogy jogosult-e a kiválasztott fájlok előtt visszafejtése vagy az Azure RMS vagy együttes inaktiválása után.|
+|Nem lehet azonosítani a Azure RMS által védett fájlokat, vagy azt szeretné, hogy minden felhasználó automatikusan beolvasásához → nem talált meg minden védett fájlok|A beállításjegyzék-beállítást az összes ügyfélszámítógépen telepíteni a **LicensingRedirection** Office 2016 és Office 2013, az ismertetett beállításkulcs a [felderítési szakasz szolgáltatás](https://technet.microsoft.com/library/jj159267%28v=ws.10%29.aspx) RMS ügyfél központi telepítési jegyzetek a és a **LicenseServerRedirection** beállításkulcs az Office 2010, a következő témakörben ismertetett módon [Office beállításjegyzék-beállításokat](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).<br /><br />Annak megakadályozásához, hogy a felhasználók úgy, hogy az új fájlok védelme egy másik beállításjegyzék-beállítást is telepíthet **DisableCreation** a **1**, leírtak szerint [Office beállításjegyzék-beállítások](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
+|Azt szeretné, hogy azokat a fájlokat, a kihagyott → volt ellenőrzött, kézi helyreállítási szolgáltatás|Támogatás a kijelölt felhasználók helyreállítási csoportokban [felhasználói jogok Szuper](https://technet.microsoft.com/library/mt147272.aspx) így azok a [RMS védelmi eszköz](http://www.microsoft.com/en-us/download/details.aspx?id=47256) hogy ezeket a fájlokat a normál felhasználók által kért feloldásához.<br /><br />Minden számítógépen, telepítse a beállításjegyzék-beállítást annak megakadályozása, hogy a felhasználók új fájlok védelme beállításával **DisableCreation** a **1**, leírtak szerint [Office beállításjegyzék-beállítások](https://technet.microsoft.com/library/dd772637%28v=ws.10%29.aspx).|
+A táblázatban szereplő eljárásokat kapcsolatos további információkért lásd a következőket:
 
-2.  If the Office 365 admin center does not automatically display, select the app launcher icon in the upper-left and choose **Admin**. The **Admin** tile appears only to Office 365 administrators.
+-   Információt AD RMS és a központi telepítési hivatkozik: [Active Directory tartalomvédelmi szolgáltatások – áttekintés](https://technet.microsoft.com/library/hh831364.aspx).
+
+-   Az Azure RMS bérlői kulcs TPD fájlként importálása útmutatásért lásd: [megbízható közzétételi tartomány hozzáadása](https://technet.microsoft.com/library/cc771460.aspx).
+
+-   Az Azure RMS áttelepítés URL-Címének beállítása a Windows PowerShell moduljának telepítése lásd: [A Windows PowerShell telepítése Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+
+Amikor készen áll a szervezet az Azure RMS szolgáltatás inaktiválása, kövesse az alábbi utasításokat.
+
+## A Rights Management inaktiválásával
+Használja az alábbi eljárások egyikét inaktiválása [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+
+> [!TIP]
+> Használhatja a Windows PowerShell-parancsmag [letiltása-Aadrm](http://msdn.microsoft.com/library/windowsazure/dn629422.aspx), inaktiválása [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)].
+
+#### Az Office 365 felügyeleti központban a Rights Management inaktiválása
+
+1.  [a munkahelyi vagy iskolai fiókkal jelentkezzen be Office 365](https://portal.office.com/) amely az Office 365-telepítés rendszergazdája.
+
+2.  Ha nem jelennek meg automatikusan az Office 365 felügyeleti központban jelölje ki az alkalmazás indítója ikon bal felső sarkában, majd válassza **Admin**. A **Admin** mozaik csak a rendszergazdák Office 365 jelenik meg.
 
     > [!TIP]
-    > For admin center help, see [About the Office 365 admin center - Admin Help](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
+    > Felügyeleti központ talál segítséget [kapcsolatos az Office 365 felügyeleti központban - rendszergazda súgó](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
 
-3.  In the left pane, expand **SERVICE SETTINGS**.
+3.  A bal oldali panelen bontsa ki a **SZOLGÁLTATÁSBEÁLLÍTÁSOK**.
 
-4.  Click **Rights Management**.
+4.  Kattintson a **Rights Management**.
 
-5.  On the **RIGHTS MANAGEMENT** page, click **Manage**.
+5.  Az a **RIGHTS MANAGEMENT** lap **kezelése**.
 
-6.  On the **rights management** page, click **deactivate**.
+6.  Az a **a rights management** lapján kattintson **inaktiválása**.
 
-7.  When prompted **Do you want to deactivate Rights Management?**, click **deactivate**.
+7.  Ha a rendszer kéri **szeretné inaktiválni a Rights Management?**, kattintson a **inaktiválása**.
 
-You should now see **Rights Management is not activated** and the option to activate.
+Most látnia **Rights Management nincs aktiválva** és a beállítás aktiválásához.
 
-#### To deactivate Rights Management from the Azure portal
+#### Az Azure portálról Rights Management inaktiválása
 
-1.  Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081).
+1.  Jelentkezzen be a [hagyományos Azure portál](http://go.microsoft.com/fwlink/p/?LinkID=275081).
 
-2.  In the left pane, click **ACTIVE DIRECTORY**.
+2.  Kattintson a bal oldali ablaktáblában **ACTIVE DIRECTORY**.
 
-3.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+3.  Az a **az active directory** lap **RIGHTS MANAGEMENT**.
 
-4.  Select the directory to manage for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], click **DEACTIVATE**, and then confirm your action.
+4.  Jelölje ki a könyvtárat, kezelheti a [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], kattintson a **INAKTIVÁLJA**, majd erősítse meg a műveletet.
 
-The **RIGHTS MANAGEMENT STATUS** should now display **Inactive** and the **DEACTIVATE** option is replaced with **ACTIVATE**.
+A **RIGHTS MANAGEMENT állapot** most meg kell jelenítenie **Inaktív** és a **INAKTIVÁLJA** beállítás cserélődik **AKTIVÁLÁSA**.
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Lásd még
+[Azure Rights Management konfigurálása](../Topic/Configuring_Azure_Rights_Management.md)
 

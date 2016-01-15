@@ -3,52 +3,51 @@ description: na
 keywords: na
 title: Rights Management sharing application user guide
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: eaf6d02c-aa36-4915-856e-49bb71ab1484
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Rights Management sharing application user guide
-The Microsoft Rights Management (RMS) sharing application for Windows helps you keep important documents and pictures safe from people who shouldn’t see them, even if you email them or save them to another device. You can also use this application to open and use files that other people have protected by using the same Rights Management technology.
+# A Rights Management megoszt&#225;si alkalmaz&#225;s felhaszn&#225;l&#243;i &#250;tmutat&#243;
+A Microsoft tartalomvédelmi (RMS) megosztó alkalmazás Windows segíti elő az Ön biztonsága fontos dokumentumok és képek személyektől, akik nem adhat tekintse meg azokat, még akkor is, ha az e-mail őket, vagy mentse azokat egy másik eszköz. Ez az alkalmazás segítségével nyissa meg a fájlok és használatához, amely mások védelme ugyanazt a Rights Management technológia használatával.
 
-All you need is a computer that runs at least Windows 7 with Service Pack 1. Then [download and install](http://go.microsoft.com/fwlink/?LinkId=303970) this free application from Microsoft.
+Az összes szüksége-e legalább futtató számítógép Windows 7 Service Pack 1, és a helyi rendszergazdai fiók az RMS-megosztó alkalmazás telepítésére. Majd [Töltse le és telepítse](http://go.microsoft.com/fwlink/?LinkId=303970) a Microsoft szabad alkalmazás.
 
-If you have questions that are not answered by this guide, see [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+Ha nem ez az útmutató által megválaszolt kérdések, olvassa el [gyakran ismételt kérdések a Microsoft Rights Management megosztó alkalmazás for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
 
-## <a name="BKMK_SharingExamples"></a>Examples for using the RMS sharing application
-Here are just some examples of how you might use the RMS sharing application, to help protect your files.
+## <a name="BKMK_SharingExamples"></a>Példák az RMS-megosztó alkalmazás használatával
+Az alábbiakban csak néhány példa hogyan segítségével lehet az RMS-megosztási alkalmazás fájlok védelme.
 
-|I want to ….|How to do this|
+|Szeretném...|Ennek módjáról|
 |----------------|------------------|
-|**… safely share financial information with somebody I trust who works for another organization**<br /><br />You work with a partner company and want to email them an Excel spreadsheet that contains projected sales figures. You want them to be able to view the figures but not change them.|You use the **Share Protected** button on the ribbon in Excel, type the email addresses of the two people that you work with in the partner company, select **Viewer – View Only**, and click **Send**.<br /><br />When the email arrives at the partner company, only the recipients in the email can view the spreadsheet and they cannot save, edit, print, or forward it.<br /><br />Step-by-step: [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
-|**… safely send a document by email to somebody who uses an iOS device**<br /><br />You want to email a highly confidential Word document to a coworker, who you know, regularly checks email on their iOS device.|You use File Explorer to right-click the file, and select **Share Protected** to. send the file as an attachment to your coworker.<br /><br />The recipient receives the email on their iOS device, clicks the link in the email that tells them how to download the sharing application, installs the version for iOS devices, and then views the document¹.<br /><br />Step-by-step: [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
-|**… check who’s opened my protected documents and when, and revoke access if necessary**<br /><br />You safely shared a confidential design document with potential suppliers and now you want to see who accessed it, when, and from where. Then, when one of the suppliers is awarded the business, you want to revoke access to the original document so the people you shared it with can no longer read it.|After you share a document by email, you go to the [document tracking site](http://go.microsoft.com/fwlink/?LinkId=529562) to check who has access that document and when. When you need to stop sharing it, you select the option to revoke access.<br /><br />Step-by-step: [Track and revoke your documents when you use the RMS sharing application](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).|
-|**… read an attachment I’ve received in an email message that has a securely shared file attachment but I can’t read it because my company doesn’t use Rights Management**<br /><br />The email sender is somebody who you trust because you’ve done business with them in the past and you suspect that they might be sending you information about a potential new business opportunity.|You follow the instructions in the email and click the link to sign up for Microsoft Rights Management. Microsoft confirms that your organization does not have a subscription that includes Azure Rights Management, sends you an email to complete the free signup process, and you sign in with your new account. You click the second link in the email to install the Rights Management sharing app and can then open the email attachment to read about the new business opportunity.<br /><br />Step-by-step: [View and use files that have been protected by Rights Management](../Topic/View_and_use_files_that_have_been_protected_by_Rights_Management.md).|
-|**… protect company-confidential files on my laptop so they can’t be accessed by people outside my company**<br /><br />You travel a lot and use your laptop to access and update files in a folder that must be secured against unauthorized access.|You have the RMS sharing application installed on your laptop. You use File Explorer to protect the files by using a template, which quickly protects the files. If your laptop is stolen, you have peace of mind that nobody outside your company can access these documents.<br /><br />Step-by-step: [Protect a file on a device &#40;protect in-place&#41; by using the Rights Management sharing application](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
-¹ PDF Rendering Powered by Foxit. Copyright © 2003–2014 by Foxit Corporation.
+|**… biztonságos pénzügyi információk megosztása valaki megbízható aki működik, a másik szervezet**<br /><br />A partner vállalati dolgozni, és szeretné e-mail azokat egy Excel-táblázatot, amely a tervezett értékesítési adatokat tartalmaz. Szeretné lehetővé tenni az adatait, de nem módosíthatja.|Használja a **védett megosztás** az Excel programban, a menüszalagon gomb, írja be az e-mail címek a két olyan személy, amely dolgozunk a partner vállalati, válassza a **Viewer – csak a nézet**, és kattintson a **küldése**.<br /><br />Ha az e-mail megérkezik a partner vállalati, csak az e-mailt a címzett tekintheti meg a táblázat és azok nem lehet menteni, szerkesztése, nyomtatás, vagy továbbítja.<br /><br />Részletes: [A Rights Management megosztóalkalmazás használatával e-mail megosztott fájl védelme](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
+|**… biztonságosan dokumentum küldése e-mailek által valaki, aki iOS-eszközt használja.**<br /><br />Szeretné a szigorúan bizalmas Word dokumentumba e-mail munkatársa, aki tudja, hogy rendszeresen ellenőrzi e-mail-e az iOS-eszközt.|Kattintson a jobb gombbal a fájlt, és válassza az fájl Explorer böngészőben **védett megosztás** a. a munkatársa mellékletként küldje el a fájlt.<br /><br />A címzett kap az iOS eszközére az e-mailt, az e-mailt, amely meghatározza, hogyan lehet letölteni a megosztóalkalmazás, telepíti az iOS-eszközök található hivatkozásra kattint, és majd megjeleníti a document¹.<br /><br />Részletes: [A Rights Management megosztóalkalmazás használatával e-mail megosztott fájl védelme](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
+|**… Ellenőrizze, aki megnyitotta a védett dokumentumok és mikor, és hozzáférni, ha a szükséges visszavonása**<br /><br />A lehetséges beszállítói biztonságosan megosztott bizalmas tervezési dokumentum, és most tekintse meg, akik és elérhető, amikor, ahol szeretné. Majd ha az egyik a beszállítói nyújtják, az üzleti, kívánt visszavonni az eredeti dokumentum elérését, így az Ön megosztott, az többé nem olvasható azt.|A dokumentum megosztása által e-mailt, után Ugrás a a [hely követési dokumentum](http://go.microsoft.com/fwlink/?LinkId=529562) ellenőrizze, hogy a dokumentum-hozzáférés, és ha. Ha le kell állítania a megosztás, ki kell választania hozzáférésének megvonása beállítás.<br /><br />Részletes: [Nyomon követése, és a dokumentumok visszavonni, az RMS-megosztó alkalmazás használata esetén](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).|
+|**… olvassa el a fogadott biztonságosan megosztott fájlmelléklet rendelkező e-mailben mellékletet, de nem olvashatók, mert a vállalatom nem használja a Rights Management**<br /><br />Az e-mail küldője valaki megbízik, mert ezt velük üzleti az elmúlt, és úgy véli, hogy azok előfordulhat, hogy lehet Ön kapcsolatos információk elküldését potenciális új üzleti lehetőséget.|Kövesse az utasításokat az e-mailben, és kattintson a Feliratkozás a Microsoft Rights Management hivatkozásra. A Microsoft megerősíti, hogy a szervezet, amely nem rendelkezik, amely tartalmazza az Azure Rights Management, küld, a szabad előfizetési folyamat befejezéséhez e-mailt, és az új fiók bejelentkezés előfizetéssel. A Rights Management megosztó alkalmazás telepítése az e-mailben található második hivatkozásra, és tudja majd nyissa meg az e-mail mellékletek olvashat arról, hogy az új üzleti lehetőség.<br /><br />Részletes: [Megtekintése és használata a Rights Management védett fájlok](../Topic/View_and_use_files_that_have_been_protected_by_Rights_Management.md).|
+|**… a hordozható számítógépen vállalati bizalmas fájlok védelme, így azok nem érhetők el a vállalatom kívül személyek**<br /><br />Sokkal utazási, és a hordozható számítógép segítségével egy mappában, amely elleni jogosulatlan hozzáférést kell biztosítani a hozzáférés és a frissítés fájlokat.|Az RMS-megosztó alkalmazás a hordozható számítógépen telepítve van. Fájl Intéző segítségével a fájlok védelme a használatával egy sablont, amely gyorsan védi a fájlokat. A hordozható számítógép ellopott van, akkor a vállalaton kívüli senki érhetik el ezeket a dokumentumokat a béke.<br /><br />Részletes: [Az eszközön a fájl védelme &#40;helyi védelem&#41; a Rights Management megosztóalkalmazás használatával](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
+¹ PDF-megjelenítő a Foxit által. Copyright © 2003-2014, Foxit Corporation.
 
-## <a name="BKMK_SharingInstructions"></a>What do you want to do?
+## <a name="BKMK_SharingInstructions"></a>Választható?
 > [!NOTE]
-> For more technical information, such as supported file types and how to install this application on an enterprise network, see the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+> További technikai információkat, például a támogatott fájltípusok és az alkalmazás telepítése a vállalati hálózatra, tekintse meg a [A Rights Management megosztási alkalmazás rendszergazda guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
 
--   [Download and install the sharing application](https://technet.microsoft.com/library/dn574734.aspx)
+-   [Töltse le és telepítse a megosztóalkalmazás](https://technet.microsoft.com/library/dn574734.aspx)
 
--   [Protect a file on a device (protect in-place)](https://technet.microsoft.com/library/dn574733.aspx)
+-   [Az eszközön a fájl védelme (helyi védelem)](https://technet.microsoft.com/library/dn574733.aspx)
 
--   [Protect a file that you share by email](https://technet.microsoft.com/library/dn574735.aspx)
+-   [Egy e-mail megosztott fájl védelme](https://technet.microsoft.com/library/dn574735.aspx)
 
--   [Track and revoke your documents](https://technet.microsoft.com/library/dn986611.aspx)
+-   [Nyomon követése, és a dokumentumok visszavonása](https://technet.microsoft.com/library/dn986611.aspx)
 
--   [View and use files that have been protected](https://technet.microsoft.com/library/dn574741.aspx)
+-   [Megtekintése és használata, amely védetté fájlok](https://technet.microsoft.com/library/dn574741.aspx)
 
--   [Remove protection from a file](https://technet.microsoft.com/library/dn574739.aspx)
+-   [Fájl védelmének megszüntetése](https://technet.microsoft.com/library/dn574739.aspx)
 
--   [Use keyboard shortcuts](https://technet.microsoft.com/library/dn574737.aspx)
+-   [Billentyűparancsok használata](https://technet.microsoft.com/library/dn574737.aspx)
 
--   [Specify settings in the dialog box](https://technet.microsoft.com/library/dn574738.aspx)
+-   [A párbeszédpanelen adja meg a beállításokat](https://technet.microsoft.com/library/dn574738.aspx)
 
-## See Also
-[Protect your docs!](http://curah.microsoft.com/60308/protect-your-docs)
+## Lásd még
+[A dokumentumok védelme!](http://curah.microsoft.com/60308/protect-your-docs)
 

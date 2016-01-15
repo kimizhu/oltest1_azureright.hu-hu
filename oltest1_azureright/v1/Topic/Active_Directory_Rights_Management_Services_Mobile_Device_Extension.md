@@ -6,63 +6,62 @@ search: na
 ms.date: na
 ms.tgt_pltfrm: na
 ms.assetid: a69ead9d-7dd3-4b38-9830-4728e9757341
-ms.author: e8f708ba3bce4153b61467184c747c7f
 robots: noindex,nofollow
 ---
-# Active Directory Rights Management Services Mobile Device Extension
-The Active Directory Rights Management Services (AD RMS) mobile device extension runs on top of an existing AD RMS deployment. This lets users who have mobile devices protect and consume sensitive data when their device supports the latest RMS client and uses RMS-enlightened apps. For example, users on these device can do the following:
+# Az Active Directory Rights Management Services mobileszk&#246;z-bőv&#237;tm&#233;nye
+Az Active Directory Rights Management Services (AD RMS) mobileszköz-bővítménye meglévő AD RMS-környezetben futtatható. Ez lehetővé teszi a mobileszközökkel rendelkező felhasználók számára, hogy védetté tehessék és használhassák a bizalmas adatokat, ha az eszközük támogatja a legújabb RMS-ügyfelet, és RMS-kompatibilis alkalmazásokat futtat. Ezen eszközök felhasználói számára többek között az alábbi lehetőségek érhetők el:
 
--   Use the RMS sharing app to consume protected text files in different formats (including .txt, .csv, and .xml).
+-   Különböző fájlformátumú (például .txt, .csv és .xml) védett szövegfájlok használata az RMS-megosztó alkalmazással.
 
--   Use the RMS sharing app to consume protected image files (including .jpg, .gif, and .tif.
+-   Védett képfájlok (például .jpg, .gif és .tif) használata az RMS-megosztó alkalmazással.
 
--   Use the RMS sharing app to open any file that have been generically protected (.pfile format).
+-   Bármely általános védelemmel ellátott fájl (.pfile formátum) megnyitása az RMS megosztóalkalmazással.
 
--   Use the RMS sharing app to protect image files on the device.
+-   Az eszközön lévő képfájlok védelme az RMS megosztóalkalmazással.
 
--   Use an RMS-enlightened PDF viewer for mobile devices to open PDF files that were protected with the RMS sharing application for Windows, or another RMS-enlightened application.
+-   A Windows-alapú RMS-megosztó alkalmazással vagy egyéb RMS-kompatibilis alkalmazással védetté tett PDF-fájlok megnyitása mobileszközökhöz készült RMS-kompatibilis PDF-megjelenítővel.
 
--   Use other apps from software vendors who provide RMS-enlightened apps that support file types that natively support RMS.
+-   Olyan RMS-kompatibilis alkalmazásokat biztosító szoftvergyártók egyéb alkalmazásainak használata, amelyek támogatják az RMS-t natív módon támogató fájltípusokat.
 
--   Use your internally developed RMS-enlightened apps that were written by using the RMS SDK.
+-   Olyan saját fejlesztésű RMS-kompatibilis alkalmazások használata, amelyek az RMS SDK használatával készültek.
 
 > [!NOTE]
-> You can download the RMS sharing app from the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+> Az RMS megosztóalkalmazást a Microsoft webhelyén, a [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) oldalról töltheti le.
 > 
-> For more information about the different file types that RMS supports, see the [Supported file types and file name extensions](http://technet.microsoft.com/library/dn339003.aspx) section in the Rights Management sharing application administrator guide.
+> Az RMS által támogatott különböző fájltípusokról további információt a Rights Management megosztóalkalmazás rendszergazdai kézikönyvének [Támogatott fájltípusok és fájlnévkiterjesztések](http://technet.microsoft.com/library/dn339003.aspx) című szakaszában talál.
 
-You don’t need the mobile device extension to consume or author protected email on devices if they use mail applications that support Exchange ActiveSync IRM. This native support for RMS and mobile devices was introduced with Exchange 2010 Service Pack 1.
+Nem szükséges a mobileszköz-bővítmény védett e-mailek használatához vagy létrehozásához az eszközökön, ha azok Exchange ActiveSync IRM szolgáltatást támogató levelezőalkalmazásokat futtatnak. Az RMS és a mobileszközök natív támogatása az Exchange 2010 1. szervizcsomagjával kezdődően áll rendelkezésre.
 
-Use the following sections to deploy the Active Directory Rights Management Services (AD RMS) mobile device extension:
+Az alábbi szakaszok az Active Directory Rights Management Services (AD RMS) mobileszköz-bővítményének üzembe helyezéséhez nyújtanak útmutatást:
 
--   [Prerequisites for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Preqs)
+-   [Az AD RMS mobileszköz-bővítményének telepítési előfeltételei](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Preqs)
 
-    -   [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
+    -   [Az AD FS beállítása az AD RMS mobileszköz-bővítményének használatára](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
 
-    -   [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
+    -   [Az AD FS beállítása az AD RMS mobileszköz-bővítményének használatára](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS)
 
--   [Specifying the DNS SRV records for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV)
+-   [A DNS SRV-rekordok megadása az AD RMS mobileszköz-bővítményéhez](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV)
 
--   [Deploying the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Deploy)
+-   [Az AD RMS mobileszköz-bővítményének telepítése](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_Deploy)
 
-## <a name="BKMK_Preqs"></a>Prerequisites for the AD RMS mobile device extension
-Before you install the AD RMS mobile device extension, make sure that these dependencies are in place.
+## <a name="BKMK_Preqs"></a>Az AD RMS mobileszköz-bővítményének telepítési előfeltételei
+Az AD RMS mobileszköz-bővítményének telepítése előtt győződjön meg arról, hogy ezek a feltételek teljesülnek.
 
-|Requirement|More information|
-|---------------|--------------------|
-|An existing AD RMS deployment on Windows Server 2012 R2 or Windows Server 2012. **Note:** AD RMS must be using a full Microsoft SQL Server-based database on a separate server and not the Windows Internal Database that is often used for testing on the same server.|For documentation about AD RMS, see [Active Directory Rights Management Services](http://technet.microsoft.com/library/hh831364.aspx) in the Windows Server library.|
-|AD FS deployed on Windows Server 2012 R2|For documentation about AD FS, see [Windows Server 2012 R2 AD FS Deployment Guide](http://technet.microsoft.com/library/dn486820.aspx) in the Windows Server library.<br /><br />AD FS must be configured for the mobile device extension. For instructions, see the [Configuring AD FS for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS) section in this topic.|
-|SRV records in DNS|Create one or more SRV records in your company domain or domains:<br /><br />-   One record for each email domain suffix that users will use<br />-   One record for every FQDN used by your RMS clusters to protect content<br /><br />When users supply their email address from their mobile device, the domain suffix is used to identify whether they should use an AD RMS infrastructure or Azure RMS. When the SRV record is found, clients are redirected to the AD RMS server that responds to that URL.<br /><br />When users consume protected content with a mobile device, the client application looks in DNS for a record that matches the FQDN in the URL of the cluster that protected the content. The device is then directed to the AD RMS cluster specified in the DNS record and acquires a license to open the content. In most cases, the RMS cluster will be the same RMS cluster that protected the content.<br /><br />For information about how to specify the SRV records, see the [Specifying the DNS SRV records for the AD RMS mobile device extension](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV) section in this topic.|
-|Currently supported clients:<br /><br />-   Android devices using the latest version of the RMS sharing app for Android|Minimum version of Android 4.0.3.<br /><br />Download the RMS sharing app for Android from the [Microsoft Connect site](https://connect.microsoft.com/site1170/Downloads) and sideload it onto the device.|
+|Követelmény|További információ|
+|---------------|----------------------|
+|Meglévő AD RMS-környezet Windows Server 2012 R2 vagy Windows Server 2012 rendszerben. **Note:** Az AD RMS szolgáltatásnak teljes értékű Microsoft SQL Server-alapú adatbázist kell használnia egy különálló kiszolgálón, nem pedig a belső Windows-adatbázist, amelyet gyakran ugyanazon a kiszolgálón használnak tesztelésre.|Az AD RMS-ről további dokumentációt a Windows Server könyvtár következő részében talál: [Active Directory Rights Management Services](http://technet.microsoft.com/library/hh831364.aspx).|
+|Windows Server 2012 R2 rendszerben üzembe helyezett AD FS szolgáltatás|Az AD FS-ről további dokumentációt a Windows Server könyvtár következő részében talál: [Windows Server 2012 R2 AD FS telepítési útmutató](http://technet.microsoft.com/library/dn486820.aspx).<br /><br />Az AD FS-t konfigurálni kell a mobileszköz-bővítmény használatához. Az előfeltétel-ellenőrzővel kapcsolatos további tudnivalókért olvassa el ezen témakör [Az AD FS beállítása az AD RMS mobileszköz-bővítményének használatára](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_ADFS) című részét.|
+|SRV-rekordok a DNS-ben|Hozzon létre egy vagy több SRV-rekordot a vállalati tartományban vagy tartományokban:<br /><br />-   külön rekordot minden olyan e-mail tartomány utótagjához, amelyet a felhasználók használni fognak<br />-   külön rekordot az RMS-fürtök által használt minden teljes tartománynév esetében a tartalom védelméhez<br /><br />Amikor a felhasználók megadják az e-mail címüket a mobileszközükről, a rendszer a tartományi utótag alapján határozza meg, hogy az AD RMS infrastruktúrát vagy az Azure RMS-t kell-e használniuk. Amikor megtalálja az SRV-rekordot, átirányítja az ügyfeleket arra az AD RMS-kiszolgálóra, amelyik erre az URL-címre válaszol.<br /><br />Ha a felhasználók védett tartalmat tekintenek meg egy mobileszközön, az ügyfélalkalmazás az teljes tartománynévvel egyező rekordot keres a DNS-ben a tartalmat védetté tevő fürt URL-címében. A rendszer ekkor átirányítja az eszközt a DNS-rekordban megadott AD RMS-fürthöz, és beszerzi a licencet a tartalom megnyitásához. A legtöbb esetben az RMS-fürt ugyanaz az RMS-fürt lesz, amelyik védelemmel látta el a tartalmat.<br /><br />Az előfeltétel-ellenőrzővel kapcsolatos további tudnivalókért olvassa el ezen témakör [A DNS SRV-rekordok megadása az AD RMS mobileszköz-bővítményéhez](../Topic/Active_Directory_Rights_Management_Services_Mobile_Device_Extension.md#BKMK_SRV) című részét.|
+|A jelenleg támogatott ügyfelek:<br /><br />-   Az Androidhoz készült RMS megosztóalkalmazás legújabb verzióját futtató Android-alapú készülékek|A minimálisan szükséges verzió az Android 4.0.3.<br /><br />A [Microsoft Connect webhelyről](https://connect.microsoft.com/site1170/Downloads) töltse le az Androidra készült RMS megosztóalkalmazást, és telepítse közvetlenül a készülékre.|
 
-### <a name="BKMK_ADFS"></a>Configuring AD FS for the AD RMS mobile device extension
-You must first configure AD FS, and then authorize the RMS sharing app for Android.
+### <a name="BKMK_ADFS"></a>Az AD FS beállítása az AD RMS mobileszköz-bővítményének használatára
+Először konfigurálnia kell az AD FS-t, majd engedélyezni az Androidhoz készült RMS megosztóalkalmazást.
 
-##### Step 1: To configure AD FS
+##### 1. lépés: Az AD FS konfigurálása
 
--   You can either run a Windows PowerShell script to automatically configure AD FS to support the AD RMS mobile device extension, or you can manually specify the configuration options and values:
+-   Az AD FS-t automatikusan beállíthatja az AD RMS mobileszköz-bővítmény támogatására egy Windows PowerShell-parancsprogram futtatásával, illetve manuálisan is megadhatja a konfigurációs beállításokat és értékeket:
 
-    -   To automatically configure AD FS, copy and paste the following into a Windows PowerShell script file, and then run it:
+    -   Az AD FS automatikus konfigurálásához másolja az alábbi szöveget a vágólapra, és illessze be egy Windows PowerShell-parancsfájlba, majd futtassa a parancsfájlt:
 
         ```
         # This Script Configures the Microsoft Rights Management Mobile Device Extension and Claims used in the ADFS Server
@@ -123,27 +122,27 @@ You must first configure AD FS, and then authorize the RMS sharing app for Andro
         }
         ```
 
-    -   To manually configure AD FS, use these settings:
+    -   Az AD FS manuális konfigurálásához használja az alábbi beállításokat:
 
-        |Configuration|Value|
-        |-----------------|---------|
-        |**Relying Party Trust**|api.rms.rest.com|
-        |**Claim rule**|**Attribute store**:  Active Directory<br /><br />**E Mail-Addresses**:  E-Mail-Address<br /><br />**User-Principal-Name**:  UPN<br /><br />**Proxy-Address**:  https://schemas.xmlsoap.org/claims/ProxyAddresses|
+        |Konfiguráció|Érték|
+        |----------------|---------|
+        |**Megbízható függő entitás**|api.rms.rest.com|
+        |**Jogcímszabály**|**Attribútumtár**:  Active Directory<br /><br />**E-mail címek**:  E-mail cím<br /><br />**Egyszerű felhasználónév**:  UPN<br /><br />**Proxycím**:  https://schemas.xmlsoap.org/claims/ProxyAddresses|
 
-##### Step 2: Authorize the RMS sharing app for Android
+##### 2. lépés: Az Androidhoz készült RMS megosztóalkalmazás engedélyezése
 
--   Run the following Windows PowerShell command to add support for Android devices:
+-   Futtassa a következő Windows PowerShell-parancsot az Android készülékek támogatásának hozzáadásához:
 
     ```
     Add-AdfsClient -Name "RMSsharingAndroid" -ClientId "com.microsoft.ipviewer" -RedirectUri @("com.microsoft.ipviewer://authorize")
     ```
 
-### <a name="BKMK_SRV"></a>Specifying the DNS SRV records for the AD RMS mobile device extension
-You must create DNS SRV records for each email domain that your users use. If all your users use child domains from a single parent domain, and all users from this contiguous namespace use the same RMS cluster, you can use just one SRV record in the parent domain, and RMS will find the appropriate DNS records.
+### <a name="BKMK_SRV"></a>A DNS SRV-rekordok megadása az AD RMS mobileszköz-bővítményéhez
+Minden felhasználók által használt e-mail tartományhoz létre kell hoznia DNS SRV-rekordokat. Ha minden felhasználó egyetlen szülőtartomány gyermektartományait használja, és ennek a folyamatos névtérnek minden felhasználója ugyanazt az RMS-fürtöt használja, akkor elegendő egyetlen SRV-rekordot használnia a szülőtartományban, és az RMS megkeresi a megfelelő DNS-rekordokat.
 
-The SRV records have the following format: _rmsdisco._http._tcp. *&lt;emailsuffix&gt;**&lt;portnumber&gt;**&lt;RMSClusterFQDN&gt;*
+Az SRV-rekordok formátuma a következő: _rmsdisco._http._tcp. *&lt;e-mailutótag&gt;**&lt;portszám&gt;**&lt;RMSfürteljestartományneve&gt;*
 
-For example, if your organization has users with the following email addresses:
+Ha például a szervezetének felhasználói a
 
 -   user@contoso.com
 
@@ -151,26 +150,26 @@ For example, if your organization has users with the following email addresses:
 
 -   user@fabrikam.com
 
-- and there are no other child domains for contoso.com that use a different RMS cluster than the one named **rmsserver.contoso.com**, create two DNS SRV records that have these values:
+e-mail címeket használják, és a contoso.com nem rendelkezik egy másik, az **rmsserver.contoso.com** nevű tartománytól eltérő, RMS-fürtöt használó gyermektartománnyal, akkor hozzon létre két DNS SRV-rekordot a következő értékekkel:
 
 -   _rmsdisco._http._tcp.contoso.com 443 rmsserver.contoso.com
 
 -   _rmsdisco._http._tcp.fabrikam.com 443 rmsserver.contoso.com
 
-In addition to these DNS SRV records for your email domains, you must create another DNS SRV record in the user domains. This record must specify the URLs of your RMS cluster that protects content. Every file that is protected by RMS includes a URL to the cluster that protected that file. Mobile devices use the DNS SRV record and the URL FQDN specified in the record to find the corresponding RMS cluster that can support mobile devices.
+Az e-mail tartományokhoz létrehozott fenti DNS SRV-rekordokon kívül egy másik DNS SRV-rekordot is létre kell hoznia a felhasználói tartományokban. Ennek a rekordnak meg kell adnia a tartalmat védő RMS-fürt URL-címeit. Minden RMS által védett fájl tartalmaz egy URL-címet, amely arra a fürtre mutat, amelyik védetté tette a fájlt. A mobileszközök a DNS SRV-rekordot és a rekordban megadott URL-cím teljes tartománynevét használják annak az RMS-fürtnek a megkereséséhez, amely alkalmas a mobileszközök támogatására.
 
-For example, if your RMS cluster is **rmsserver.contoso.com**, create a DNS SRV record that has the following values: **_rmsdisco._http._tcp.rmsserver.contoso.com 443 rmsserver.contoso.com**
+Ha például az **rmsserver.contoso.com** RMS-fürthöz tartozik, akkor hozzon létre egy DNS SRV-rekordot a következő értékekkel: **_rmsdisco._http._tcp.rmsserver.contoso.com 443 rmsserver.contoso.com**
 
-## <a name="BKMK_Deploy"></a>Deploying the AD RMS mobile device extension
-Before you install the AD RMS mobile device extension, make sure that the prerequisites from the preceding section are first in place, and that you know the URL of your AD FS server. Then do the following:
+## <a name="BKMK_Deploy"></a>Az AD RMS mobileszköz-bővítményének telepítése
+Az AD RMS mobileszköz-bővítményének telepítése előtt győződjön meg arról, hogy teljesülnek az előző szakaszban ismertetett előfeltételek, és ismeri az AD FS-kiszolgáló URL-címét. Ezután tegye a következőket:
 
-1.  Download the AD RMS mobile device extension from the [Microsoft Connect site](http://go.microsoft.com/fwlink/?LinkId=397245).
+1.  Töltse le az AD RMS mobileszköz-bővítményét a [Microsoft Connect webhelyről](http://go.microsoft.com/fwlink/?LinkId=397245).
 
-2.  Run Setup.exe to start the Active Directory Rights Management Services Mobile Device Extension Setup Wizard.
+2.  A Setup.exe fájlt futtatva indítsa el az Active Directory Rights Management Services mobileszköz-bővítményének telepítővarázslóját.
 
-3.  When prompted, enter the URL of the AD FS server that you configured previously.
+3.  Amikor a program kéri, adja meg a korábban konfigurált AD FS-kiszolgáló URL-címét.
 
-4.  Complete the wizard.
+4.  Végezze el a varázsló lépéseit.
 
-Run this wizard on all the nodes in your RMS cluster.
+Futtassa a varázslót a RMS-fürt minden csomópontján.
 
